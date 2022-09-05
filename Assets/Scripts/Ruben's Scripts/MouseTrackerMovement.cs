@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class MouseTrackerMovement : MonoBehaviour
 {
+    public float mousePos;
+    public float mousePosTest;
     void Start()
     {
         
@@ -12,5 +14,9 @@ public class MouseTrackerMovement : MonoBehaviour
     void Update()
     {
         
+    }
+    public void OnMouse(InputValue value)
+    {
+        mousePos = value.Get<float>();
     }
 }
