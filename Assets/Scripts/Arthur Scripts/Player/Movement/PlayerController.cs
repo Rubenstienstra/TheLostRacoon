@@ -12,17 +12,14 @@ public class PlayerController : MonoBehaviour {
     public int camSensitivity;
     public Transform cam;
     public Rigidbody rb;
-    public InputAction playerControls;
+    //Input
+    public PlayerInput playerInput;
+    public InputAction moveAction;
     // Update is called once per frame
     private void Start() {
+        moveAction = playerInput.actions["WASD"];
         cameraPitch = 0f;
         Cursor.lockState = CursorLockMode.Locked;
-    }
-    private void OnEnable() {
-        playerControls.Enable();
-    }
-    private void OnDisable() {
-        playerControls.Disable();
     }
     void Update() {
 
@@ -30,21 +27,32 @@ public class PlayerController : MonoBehaviour {
         Vector3 move = new Vector3();
         Vector3 rotateBody = new Vector3();
         Vector3 rotateCam = new Vector3();
-        move = playerControls.ReadValue<Vector2>();
+        Vector2 input = moveAction.ReadValue<Vector2>();
+        move = new Vector3(input.x, 0, input.y).normalized;
         float v = new float();
         float h = new float();
         float j = new float();
-        v = Input.GetAxis("Vertical");
-        h = Input.GetAxis("Horizontal");
-        move.x = h;
-        move.z = v;
-        transform.Translate(move * Time.deltaTime * speed);
+//        v = Input.GetAxis("Vertical");
+//        h = Input.GetAxis("Horizontal");
+//        move.x = h;
+//        move.z = v;
 
+        //transform.rotation = Quaternion.LookRotation(move);
+
+
+        if (move.magnitude >= 0.1f) {
+            float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+
+            transform.Translate(move * Time.deltaTime * speed);
+            
+        }
+        /*
         //Mouse
         float mouseX = new float();
         float mouseY = new float();
-        mouseX = Input.GetAxis("Mouse X");
-        mouseY = Input.GetAxis("Mouse Y");
+        //mouseX = Input.GetAxis("Mouse X");
+        //mouseY = Input.GetAxis("Mouse Y");
         rotateCam.x = mouseY;
         rotateBody.y = mouseX;
         transform.Rotate(rotateBody * camSensitivity);
@@ -52,5 +60,6 @@ public class PlayerController : MonoBehaviour {
         cameraPitch -= mouseY * camSensitivity;
         cameraPitch = Mathf.Clamp(cameraPitch, -90.0f, 90.0f);
         cam.localEulerAngles = new Vector3(cameraPitch, 0, 0);
+        */
     }
 }
