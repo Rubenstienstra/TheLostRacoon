@@ -23,7 +23,6 @@ public class ThirdPersonCam : MonoBehaviour
         Cursor.visible = false;
     }
     private void Update() {
-        controller.transform.position = transform.position;
         Vector2 input = moveAction.ReadValue<Vector2>();
         
         Vector3 direction = new Vector3(input.x, 0f, input.y).normalized;
@@ -43,5 +42,6 @@ public class ThirdPersonCam : MonoBehaviour
                 controller.Move(moveDir.normalized * sprintSpeed * Time.deltaTime);
             }
         }
+        controller.transform.position = transform.position;
     }
 }
