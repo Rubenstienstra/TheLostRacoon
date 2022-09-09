@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public ScriptableSaving savingInfo;
     public MouseTrackerMovement mouseInfo;
     public bool minigameActiveMouse;
     
     void Start()
     {
-       // minigameActiveMouse = true;
+        ResetProgress();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void ResetProgress()
     {
-        
+        savingInfo.totalMissionsCompleted = 0;
+        savingInfo.totalMissionsCompleted = 0;
     }
 }
