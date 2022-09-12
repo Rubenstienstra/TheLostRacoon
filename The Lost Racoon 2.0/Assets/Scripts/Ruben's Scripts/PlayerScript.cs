@@ -17,6 +17,6 @@ public class PlayerScript : MonoBehaviour
     public void ResetProgress()
     {
         savingInfo.totalMissionsCompleted = 0;
-        savingInfo.totalMissionsCompleted = 0;
+        savingInfo.mouseTrackerTimesDone = 0;
     }
 }
