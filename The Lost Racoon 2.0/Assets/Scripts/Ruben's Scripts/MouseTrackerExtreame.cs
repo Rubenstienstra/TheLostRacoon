@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class MouseTrackerMovement : MonoBehaviour
+public class MouseTrackerExtreame : MonoBehaviour
 {
     public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
@@ -13,13 +13,15 @@ public class MouseTrackerMovement : MonoBehaviour
     private float mousePosY;
     private float randomMousePosX;
     private float randomMousePosY;
-    public bool activatedOnEnter;
+
+    public Level mission;
+    public bool activatedOnPos;
 
     public int currentPhase;
     public float[] phaseTime;
     public float[] strengthBuff;
 
-                                  //default  up  down  left  Right
+    //default  up  down  left  Right
     private int minRandomLengthX; //  -2,    -     -    <0     0>
     private int maxRandomLengthX; //   3 ,   -     -     -3    3
     private int minRandomLengthY; //  -2,    0>   <0     -     -
@@ -29,20 +31,20 @@ public class MouseTrackerMovement : MonoBehaviour
     // 0 = default, 1 = phase 1, 2 = phase end.
 
     public bool mouseInZone;
-    
+
     void Start()
     {
         //saving data
 
         //start minigame
         StartAreaMinigame();
-        
+
     }
     //If in Area load this
     public void StartAreaMinigame()
     {
         playerInfo.minigameActiveMouse = true;
-        activatedOnEnter = true;
+        activatedOnPos = true;
 
         //safety
         StopCoroutine(CountDown());
@@ -50,7 +52,7 @@ public class MouseTrackerMovement : MonoBehaviour
     // Use ontrigger enter
     public void StartMinigame()
     {
-        activatedOnEnter = false;
+        activatedOnPos = false;
         StartCoroutine(CountDown());
     }
 
@@ -59,6 +61,7 @@ public class MouseTrackerMovement : MonoBehaviour
         if (playerInfo.minigameActiveMouse == true)
         {
             mousePosX = value.Get<float>();
+            CheckMouseTracker();
         }
     }
     public void OnMouseY(InputValue value)
@@ -66,16 +69,36 @@ public class MouseTrackerMovement : MonoBehaviour
         if (playerInfo.minigameActiveMouse == true)
         {
             mousePosY = value.Get<float>();
+            CheckMouseTracker();
         }
 
     }
+    public void CheckMouseTracker()
+    {
+        if (mousePosX >= mission.requirementLeftX[savingInfo.mouseTrackerTimesDone] && mousePosX <= mission.requirementRightX[savingInfo.mouseTrackerTimesDone] && mousePosY <= mission.requirementUpY[savingInfo.mouseTrackerTimesDone] && mousePosY >= mission.requirementDownY[savingInfo.mouseTrackerTimesDone])
+        {
+
+            if (activatedOnPos == true)
+            {
+                activatedOnPos = false;
+                StartMinigame();
+            }
+            mouseInZone = true;
+            StartCoroutine(MouseMover());
+        }
+        else if (activatedOnPos == false && playerInfo.minigameActiveMouse == true)
+        {
+            mouseInZone = false;
+            StartCoroutine(WaitingForShutDown());
+        }
+    }
     public IEnumerator MouseMover()
     {
-        if(mouseInZone == true && playerInfo.minigameActiveMouse == true)
+        if (mouseInZone == true && playerInfo.minigameActiveMouse == true)
         {
             randomMousePosX = Random.Range(minRandomLengthX, maxRandomLengthX) * strengthBuff[currentPhase];
             randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
-            Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + mousePosX ,randomMousePosY + mousePosY));
+            Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + mousePosX, randomMousePosY + mousePosY));
             yield return new WaitForSeconds(0.1f);
             StartCoroutine(MouseMover());
         }
@@ -99,7 +122,7 @@ public class MouseTrackerMovement : MonoBehaviour
         if (mouseInZone == true)
         {
             playerInfo.minigameActiveMouse = false;
-            activatedOnEnter = false;
+            activatedOnPos = false;
             savingInfo.totalMissionsCompleted++;
             savingInfo.mouseTrackerTimesDone++;
             ShutDown();
@@ -111,7 +134,7 @@ public class MouseTrackerMovement : MonoBehaviour
     }
     public void RandomRangeMinMax()
     {
-       int i = Random.Range(0, 4);
+        int i = Random.Range(0, 4);
         switch (i)
         {
             case 0: //Default
@@ -160,7 +183,7 @@ public class MouseTrackerMovement : MonoBehaviour
     public IEnumerator WaitingForShutDown()
     {
         yield return new WaitForSeconds(waitingTime);
-        if(mouseInZone == false)
+        if (mouseInZone == false)
         {
             ShutDown();
         }
@@ -172,4 +195,12 @@ public class MouseTrackerMovement : MonoBehaviour
         playerInfo.minigameActiveMouse = false;
         currentPhase = 0;
     }
+}
+[System.Serializable]
+public class Level
+{
+    public int[] requirementRightX;
+    public int[] requirementLeftX;
+    public int[] requirementUpY;
+    public int[] requirementDownY;
 }

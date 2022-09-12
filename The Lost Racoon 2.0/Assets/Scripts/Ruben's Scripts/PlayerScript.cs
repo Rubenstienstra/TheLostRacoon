@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerScript : MonoBehaviour
 {
     public ScriptableSaving savingInfo;
@@ -10,12 +11,13 @@ public class PlayerScript : MonoBehaviour
     
     void Start()
     {
-        ResetProgress();
+        //ResetProgress();
     }
 
 
     public void ResetProgress()
     {
+        print("All Progress Reset");
         savingInfo.totalMissionsCompleted = 0;
         savingInfo.mouseTrackerTimesDone = 0;
     }
