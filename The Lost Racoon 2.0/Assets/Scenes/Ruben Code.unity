@@ -699,9 +699,10 @@ MonoBehaviour:
   - 5
   - 5
   strengthBuff:
-  - 1
-  - 1.5
   - 2
+  - 2.5
+  - 3
+  circleCollider: {fileID: 845968049}
   waitingTime: 0.5
   mouseInZone: 0
 --- !u!114 &537946617
@@ -920,7 +921,7 @@ GameObject:
   - component: {fileID: 845968049}
   - component: {fileID: 845968048}
   m_Layer: 0
-  m_Name: GameObject (second option , does not work)
+  m_Name: Mouse collision Start area minigame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -970,7 +971,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 100
+  m_Radius: 75
 --- !u!4 &845968050
 Transform:
   m_ObjectHideFlags: 0
@@ -1247,7 +1248,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 537946616}
           m_TargetAssemblyTypeName: MouseTrackerMovement, Assembly-CSharp
-          m_MethodName: StartMinigame
+          m_MethodName: ActivateWaitingForShutDown
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
