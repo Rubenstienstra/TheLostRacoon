@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ThirdPersonCam : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [Header("References", order = 0)]
     public PlayerInput playerInput;
@@ -16,9 +16,11 @@ public class ThirdPersonCam : MonoBehaviour
     public float sprintSpeed;
     public float jumpCharge, jumpMin, jumpMax, chargePerSec;
     [Header("Debug", order = 2)]
+    public bool movementLock;
     float turnSmoothVelocity;
     bool isGrounded;
     bool charged;
+    
     Vector3 jump;
 
     private void Start() {
@@ -36,31 +38,33 @@ public class ThirdPersonCam : MonoBehaviour
         float sprintInput = sprintAction.ReadValue<float>();
         float jumpInput = jumpAction.ReadValue<float>();
 
-        //Movement
-        if (direction.magnitude >= 0.1f) {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, 0.1f);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        if (!movementLock) {
+            //Movement
+            if (direction.magnitude >= 0.1f) {
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, 0.1f);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            if (sprintInput == 0) {
-                controller.Move(moveDir.normalized * speed * Time.deltaTime);
-            } else { //Sprint
-                controller.Move(moveDir.normalized * sprintSpeed * Time.deltaTime);
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                if (sprintInput == 0) {
+                    controller.Move(moveDir.normalized * speed * Time.deltaTime);
+                } else { //Sprint
+                    controller.Move(moveDir.normalized * sprintSpeed * Time.deltaTime);
+                }
             }
-        }
-        //controller.transform.position = transform.position;
-        if (jumpInput == 1 && isGrounded == true) {
-            if (jumpCharge <= jumpMax) {
-                jumpCharge += chargePerSec * Time.deltaTime;
+            //controller.transform.position = transform.position;
+            if (jumpInput == 1 && isGrounded == true) {
+                if (jumpCharge <= jumpMax) {
+                    jumpCharge += chargePerSec * Time.deltaTime;
+                }
+                charged = true;
             }
-            charged = true;
-        }
-        if (jumpInput == 0 && charged == true) {
-            rb.AddForce(jump * jumpCharge, ForceMode.Impulse);
-            jumpCharge = jumpMin;
-            charged = false;
-            isGrounded = false;
+            if (jumpInput == 0 && charged == true) {
+                rb.AddForce(jump * jumpCharge, ForceMode.Impulse);
+                jumpCharge = jumpMin;
+                charged = false;
+                isGrounded = false;
+            }
         }
     }
     private void OnCollisionEnter(Collision collision) {
