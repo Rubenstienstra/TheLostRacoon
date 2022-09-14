@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d82f21995b4014aac5c3ff6cb42322, type: 3}
   m_Name: ScriptableObjectSaving
   m_EditorClassIdentifier: 
+  totalMissionsCompleted: 0
+  mouseTrackerTimesDone: 0

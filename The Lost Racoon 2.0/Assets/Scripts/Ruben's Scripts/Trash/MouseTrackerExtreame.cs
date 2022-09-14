@@ -4,70 +4,56 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class MouseTrackerMovement : MonoBehaviour
+public class MouseTrackerExtreame : MonoBehaviour
 {
     public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
 
-    public float mousePosX;
-    public float mousePosY;
+    private float mousePosX;
+    private float mousePosY;
     private float randomMousePosX;
     private float randomMousePosY;
-    //public bool activatedOnEnter;
 
-    public Vector2 mouseStartPos;
-    public GameObject[] images;
+    public Level mission;
+    public bool activatedOnPos;
 
-    // 0 = default, 1 = phase 1, 2 = phase end.
     public int currentPhase;
     public float[] phaseTime;
     public float[] strengthBuff;
 
-    public CircleCollider2D circleCollider;
-
-                                  //default  up  down  left  Right
+    //default  up  down  left  Right
     private int minRandomLengthX; //  -2,    -     -    <0     0>
     private int maxRandomLengthX; //   3 ,   -     -     -3    3
     private int minRandomLengthY; //  -2,    0>   <0     -     -
     private int maxRandomLengthY; //   3 ,   3     3     -     -
 
     public float waitingTime;
-    
+    // 0 = default, 1 = phase 1, 2 = phase end.
+
     public bool mouseInZone;
-    
+
     void Start()
     {
-        StartAreaMinigame();
         //saving data
-        
+
+        //start minigame
+        StartAreaMinigame();
+
     }
     //If in Area load this
     public void StartAreaMinigame()
     {
         playerInfo.minigameActiveMouse = true;
-        for (int i = 0; i < images.Length; i++)
-        {
-            images[i].SetActive(true);
-        }
-        Mouse.current.WarpCursorPosition(mouseStartPos);
-
-        StartMinigame();
+        activatedOnPos = true;
 
         //safety
         StopCoroutine(CountDown());
-        if (circleCollider != null)
-        {
-            circleCollider.enabled = !circleCollider.enabled;
-        }
     }
-    // Use Interactable enter
+    // Use ontrigger enter
     public void StartMinigame()
     {
-        if(playerInfo.minigameActiveMouse == true)
-        {
-            StartCoroutine(MouseMover());
-            StartCoroutine(CountDown());
-        }
+        activatedOnPos = false;
+        StartCoroutine(CountDown());
     }
 
     public void OnMouseX(InputValue value)
@@ -75,6 +61,7 @@ public class MouseTrackerMovement : MonoBehaviour
         if (playerInfo.minigameActiveMouse == true)
         {
             mousePosX = value.Get<float>();
+            CheckMouseTracker();
         }
     }
     public void OnMouseY(InputValue value)
@@ -82,35 +69,60 @@ public class MouseTrackerMovement : MonoBehaviour
         if (playerInfo.minigameActiveMouse == true)
         {
             mousePosY = value.Get<float>();
+            CheckMouseTracker();
         }
 
     }
+    public void CheckMouseTracker()
+    {
+        if (mousePosX >= mission.requirementLeftX[savingInfo.mouseTrackerTimesDone] && mousePosX <= mission.requirementRightX[savingInfo.mouseTrackerTimesDone] && mousePosY <= mission.requirementUpY[savingInfo.mouseTrackerTimesDone] && mousePosY >= mission.requirementDownY[savingInfo.mouseTrackerTimesDone])
+        {
+
+            if (activatedOnPos == true)
+            {
+                activatedOnPos = false;
+                StartMinigame();
+            }
+            mouseInZone = true;
+            StartCoroutine(MouseMover());
+        }
+        else if (activatedOnPos == false && playerInfo.minigameActiveMouse == true)
+        {
+            mouseInZone = false;
+            StartCoroutine(WaitingForShutDown());
+        }
+    }
     public IEnumerator MouseMover()
     {
-        if(mouseInZone == true && playerInfo.minigameActiveMouse == true)
+        if (mouseInZone == true && playerInfo.minigameActiveMouse == true)
         {
             randomMousePosX = Random.Range(minRandomLengthX, maxRandomLengthX) * strengthBuff[currentPhase];
             randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
-            Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + mousePosX ,randomMousePosY + mousePosY));
-            yield return new WaitForSeconds(0f);
+            Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + mousePosX, randomMousePosY + mousePosY));
+            yield return new WaitForSeconds(0.1f);
             StartCoroutine(MouseMover());
         }
     }
     public IEnumerator CountDown()
     {
         RandomRangeMinMax();
+        //print("Phase Begin");
         yield return new WaitForSeconds(phaseTime[0]);
         currentPhase++;
         RandomRangeMinMax();
+        //print("Phase1");
 
         yield return new WaitForSeconds(phaseTime[1]);
         currentPhase++;
         RandomRangeMinMax();
+        //print("Phase2");
 
         yield return new WaitForSeconds(phaseTime[2]);
+        //print("Phase Done");
         if (mouseInZone == true)
         {
             playerInfo.minigameActiveMouse = false;
+            activatedOnPos = false;
             savingInfo.totalMissionsCompleted++;
             savingInfo.mouseTrackerTimesDone++;
             ShutDown();
@@ -122,48 +134,47 @@ public class MouseTrackerMovement : MonoBehaviour
     }
     public void RandomRangeMinMax()
     {
-       int i = Random.Range(0, 5);
-        print(i);
+        int i = Random.Range(0, 4);
         switch (i)
         {
             case 0: //Default
                 {
-                    minRandomLengthX = -4;
-                    maxRandomLengthX = 6;
-                    minRandomLengthY = -4;
-                    maxRandomLengthY = 6;
+                    minRandomLengthX = -2;
+                    maxRandomLengthX = 3;
+                    minRandomLengthY = -2;
+                    maxRandomLengthY = 3;
                     return;
                 }
             case 1: //Up
                 {
-                    minRandomLengthX = -4;
-                    maxRandomLengthX = 6;
+                    minRandomLengthX = -2;
+                    maxRandomLengthX = 3;
                     minRandomLengthY = 0;
-                    maxRandomLengthY = 6;
+                    maxRandomLengthY = 3;
                     return;
                 }
             case 2: //Down
                 {
-                    minRandomLengthX = -4;
-                    maxRandomLengthX = 6;
+                    minRandomLengthX = -2;
+                    maxRandomLengthX = 3;
                     minRandomLengthY = 0;
-                    maxRandomLengthY = -6;
+                    maxRandomLengthY = -3;
                     return;
                 }
             case 3: //Left
                 {
                     minRandomLengthX = 0;
-                    maxRandomLengthX = -6;
-                    minRandomLengthY = -4;
-                    maxRandomLengthY = 6;
+                    maxRandomLengthX = -3;
+                    minRandomLengthY = -2;
+                    maxRandomLengthY = 3;
                     return;
                 }
             case 4: //Right
                 {
                     minRandomLengthX = 0;
-                    maxRandomLengthX = 6;
-                    minRandomLengthY = -4;
-                    maxRandomLengthY = 6;
+                    maxRandomLengthX = 3;
+                    minRandomLengthY = -2;
+                    maxRandomLengthY = 3;
                     return;
                 }
 
@@ -172,55 +183,24 @@ public class MouseTrackerMovement : MonoBehaviour
     public IEnumerator WaitingForShutDown()
     {
         yield return new WaitForSeconds(waitingTime);
-        if(mouseInZone == false)
+        if (mouseInZone == false)
         {
             ShutDown();
         }
     }
     public void ShutDown()
     {
-        print("ended minigame at Phase: " + currentPhase.ToString());
+        //print("Shutdown");
         StopCoroutine(CountDown());
-        StopCoroutine(MouseMover());
-        for (int i = 0; i < images.Length; i++)
-        {
-            images[i].SetActive(false);
-        }
         playerInfo.minigameActiveMouse = false;
         currentPhase = 0;
     }
-
-    //For button Event trigger
-    public void ActivateWaitingForShutDown()
-    {
-        StartCoroutine(WaitingForShutDown());
-    }
-    //For Image animating/editing
-    public void InFirstCircle()
-    {
-
-    }
-    public void OutOfFirstCircle()
-    {
-
-    }
-    public void InSecondCircle()
-    {
-
-    }
-    public void OutOfSecondCircle()
-    {
-
-    }
-    public void InThirdCircle()
-    {
-        StopCoroutine(WaitingForShutDown());
-        mouseInZone = true;
-    }
-    public void OutOfThirdCircle()
-    {
-        StartCoroutine(WaitingForShutDown());
-        mouseInZone = false;
-    }
-
+}
+[System.Serializable]
+public class Level
+{
+    public int[] requirementRightX;
+    public int[] requirementLeftX;
+    public int[] requirementUpY;
+    public int[] requirementDownY;
 }
