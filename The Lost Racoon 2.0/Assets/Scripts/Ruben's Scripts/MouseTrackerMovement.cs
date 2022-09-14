@@ -9,11 +9,14 @@ public class MouseTrackerMovement : MonoBehaviour
     public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
 
-    private float mousePosX;
-    private float mousePosY;
+    public float mousePosX;
+    public float mousePosY;
     private float randomMousePosX;
     private float randomMousePosY;
-    public bool activatedOnEnter;
+    //public bool activatedOnEnter;
+
+    public Vector2 mouseStartPos;
+    public GameObject[] images;
 
     // 0 = default, 1 = phase 1, 2 = phase end.
     public int currentPhase;
@@ -30,34 +33,38 @@ public class MouseTrackerMovement : MonoBehaviour
 
     public float waitingTime;
     
-
     public bool mouseInZone;
     
     void Start()
     {
-        //saving data
-
-        //start minigame
         StartAreaMinigame();
+        //saving data
         
     }
     //If in Area load this
     public void StartAreaMinigame()
     {
         playerInfo.minigameActiveMouse = true;
-        activatedOnEnter = true;
+        for (int i = 0; i < images.Length; i++)
+        {
+            images[i].SetActive(true);
+        }
+        Mouse.current.WarpCursorPosition(mouseStartPos);
 
-        circleCollider.enabled = !circleCollider.enabled;
+        StartMinigame();
+
         //safety
         StopCoroutine(CountDown());
+        if (circleCollider != null)
+        {
+            circleCollider.enabled = !circleCollider.enabled;
+        }
     }
-    // Use ontrigger enter
+    // Use Interactable enter
     public void StartMinigame()
     {
-        if(activatedOnEnter == true)
+        if(playerInfo.minigameActiveMouse == true)
         {
-            activatedOnEnter = false;
-            mouseInZone = true;
             StartCoroutine(MouseMover());
             StartCoroutine(CountDown());
         }
@@ -104,7 +111,6 @@ public class MouseTrackerMovement : MonoBehaviour
         if (mouseInZone == true)
         {
             playerInfo.minigameActiveMouse = false;
-            activatedOnEnter = false;
             savingInfo.totalMissionsCompleted++;
             savingInfo.mouseTrackerTimesDone++;
             ShutDown();
@@ -122,42 +128,42 @@ public class MouseTrackerMovement : MonoBehaviour
         {
             case 0: //Default
                 {
-                    minRandomLengthX = -2;
-                    maxRandomLengthX = 3;
-                    minRandomLengthY = -2;
-                    maxRandomLengthY = 3;
+                    minRandomLengthX = -4;
+                    maxRandomLengthX = 6;
+                    minRandomLengthY = -4;
+                    maxRandomLengthY = 6;
                     return;
                 }
             case 1: //Up
                 {
-                    minRandomLengthX = -2;
-                    maxRandomLengthX = 3;
+                    minRandomLengthX = -4;
+                    maxRandomLengthX = 6;
                     minRandomLengthY = 0;
-                    maxRandomLengthY = 3;
+                    maxRandomLengthY = 6;
                     return;
                 }
             case 2: //Down
                 {
-                    minRandomLengthX = -2;
-                    maxRandomLengthX = 3;
+                    minRandomLengthX = -4;
+                    maxRandomLengthX = 6;
                     minRandomLengthY = 0;
-                    maxRandomLengthY = -3;
+                    maxRandomLengthY = -6;
                     return;
                 }
             case 3: //Left
                 {
                     minRandomLengthX = 0;
-                    maxRandomLengthX = -3;
-                    minRandomLengthY = -2;
-                    maxRandomLengthY = 3;
+                    maxRandomLengthX = -6;
+                    minRandomLengthY = -4;
+                    maxRandomLengthY = 6;
                     return;
                 }
             case 4: //Right
                 {
                     minRandomLengthX = 0;
-                    maxRandomLengthX = 3;
-                    minRandomLengthY = -2;
-                    maxRandomLengthY = 3;
+                    maxRandomLengthX = 6;
+                    minRandomLengthY = -4;
+                    maxRandomLengthY = 6;
                     return;
                 }
 
@@ -175,6 +181,11 @@ public class MouseTrackerMovement : MonoBehaviour
     {
         print("ended minigame at Phase: " + currentPhase.ToString());
         StopCoroutine(CountDown());
+        StopCoroutine(MouseMover());
+        for (int i = 0; i < images.Length; i++)
+        {
+            images[i].SetActive(false);
+        }
         playerInfo.minigameActiveMouse = false;
         currentPhase = 0;
     }
@@ -184,4 +195,32 @@ public class MouseTrackerMovement : MonoBehaviour
     {
         StartCoroutine(WaitingForShutDown());
     }
+    //For Image animating/editing
+    public void InFirstCircle()
+    {
+
+    }
+    public void OutOfFirstCircle()
+    {
+
+    }
+    public void InSecondCircle()
+    {
+
+    }
+    public void OutOfSecondCircle()
+    {
+
+    }
+    public void InThirdCircle()
+    {
+        StopCoroutine(WaitingForShutDown());
+        mouseInZone = true;
+    }
+    public void OutOfThirdCircle()
+    {
+        StartCoroutine(WaitingForShutDown());
+        mouseInZone = false;
+    }
+
 }
