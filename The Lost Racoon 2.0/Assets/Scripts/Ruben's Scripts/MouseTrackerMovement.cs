@@ -120,7 +120,6 @@ public class MouseTrackerMovement : MonoBehaviour
     public void RandomRangeMinMax()
     {
        int i = Random.Range(0, 5);
-        print(i);
         switch (i)
         {
             case 0: //Default
@@ -186,6 +185,7 @@ public class MouseTrackerMovement : MonoBehaviour
         playerInfo.minigameActiveMouse = false;
         currentPhase = 0;
     }
+    
 
     //For button Event trigger
     public void ActivateWaitingForShutDown()

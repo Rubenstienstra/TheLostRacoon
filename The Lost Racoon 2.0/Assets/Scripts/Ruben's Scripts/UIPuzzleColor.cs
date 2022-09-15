@@ -14,23 +14,27 @@ public class UIPuzzleColor : MonoBehaviour
     public int totalButtons;
     public int totalButtonsCorrect;
 
-
+    public GameObject currentGameObject;
     public GameObject UIPuzzleColorGameObject;
-    
-    void Start()
+
+    private void Awake()
     {
-        if(savingInfo.minigame3x3 == true)
+        if (savingInfo.minigame3x3 == true)
         {
             totalButtons = 9;
         }
-        else if(savingInfo.minigame4x4 == true)
+        else if (savingInfo.minigame4x4 == true)
         {
             totalButtons = 16;
         }
+    }
+    void Start()
+    {
         ResetColors();
     }
     public void OnButtonColorPress()
     {
+        //changing colors and to neighbors
         for (int i = 0; i < colorButtons.Length; i++)
         {
             if(colorButtons[i].GetComponent<Image>().color == Color.red)
@@ -50,9 +54,13 @@ public class UIPuzzleColor : MonoBehaviour
         {
             this.gameObject.GetComponent<Image>().color = Color.red;
         }
-        for (int i = 0; i < totalButtons; i++)
+
+        //Checking witch buttons is color.Red
+        //need +1 because button 1 is not 0
+        for (int i = 1; i < totalButtons+1; i++)
         {
-            if(gameObject.name == "Color Change Button " + i.ToString() && gameObject.GetComponent<Image>().color == Color.red)
+          currentGameObject = GameObject.Find("Color Change Button " + i.ToString());
+            if (currentGameObject.GetComponent<Image>().color == Color.red)
             {
                 totalButtonsCorrect++;
                 if(totalButtonsCorrect >= totalButtons)
@@ -61,6 +69,9 @@ public class UIPuzzleColor : MonoBehaviour
                 }
             }
         }
+        //print(totalButtonsCorrect);
+        totalButtonsCorrect = 0;
+
     }
     public void ResetColors()
     {
