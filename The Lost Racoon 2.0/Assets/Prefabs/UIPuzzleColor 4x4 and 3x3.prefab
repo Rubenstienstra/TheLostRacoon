@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841214963839861}
   - {fileID: 54841214949892371}
@@ -467,6 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841214601227918}
   - {fileID: 54841214207762497}
@@ -706,6 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841213891047834}
   - {fileID: 54841214052332532}
@@ -863,6 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841213717113761}
   - {fileID: 54841215023967740}
@@ -1020,6 +1024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841214601227918}
   - {fileID: 54841214207762497}
@@ -1182,6 +1187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841213784479911}
   - {fileID: 54841215085801741}
@@ -1339,6 +1345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841214963839861}
   - {fileID: 54841214949892371}
@@ -1501,6 +1508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841215036960963}
   - {fileID: 54841213741523106}
@@ -1660,6 +1668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841213386202574}
   - {fileID: 54841213776906314}
@@ -1819,6 +1828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841214949892371}
   - {fileID: 54841215085801741}
@@ -2061,6 +2071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841213428880954}
   - {fileID: 54841213717113761}
@@ -2220,6 +2231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841215085801741}
   - {fileID: 54841214225629770}
@@ -2379,6 +2391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841214601227918}
   - {fileID: 54841215059437499}
@@ -2618,6 +2631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841213784479911}
   - {fileID: 54841213741523106}
@@ -3137,6 +3151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841214207762497}
   - {fileID: 54841213428880954}
@@ -3901,6 +3916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841213386202574}
   - {fileID: 54841213776906314}
@@ -4058,6 +4074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841215208030996}
   - {fileID: 54841215036960963}
@@ -4220,6 +4237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841215208030996}
   - {fileID: 54841215036960963}
@@ -4459,6 +4477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841213428880954}
   - {fileID: 54841213717113761}
@@ -4616,6 +4635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841214207762497}
   - {fileID: 54841215059437499}
@@ -4775,6 +4795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841215208030996}
   - {fileID: 54841213784479911}
@@ -5014,6 +5035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841214207762497}
   - {fileID: 54841213717113761}
@@ -5171,6 +5193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841215036960963}
   - {fileID: 54841213784479911}
@@ -5333,6 +5356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841213891047834}
   - {fileID: 54841214052332532}
@@ -5492,6 +5516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 54841215036960963}
   - {fileID: 54841214963839861}

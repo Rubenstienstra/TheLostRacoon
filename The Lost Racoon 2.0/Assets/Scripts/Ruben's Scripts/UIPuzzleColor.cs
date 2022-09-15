@@ -8,6 +8,7 @@ public class UIPuzzleColor : MonoBehaviour
     //public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
 
+    public PlayerScript playerInfo;
     public GameObject[] colorButtons;
 
     public bool startRed;
@@ -15,7 +16,7 @@ public class UIPuzzleColor : MonoBehaviour
     public int totalButtonsCorrect;
 
     public GameObject currentGameObject;
-    public GameObject UIPuzzleColorGameObject;
+    public GameObject UIPuzzleGameObject;
 
     private void Awake()
     {
@@ -30,6 +31,11 @@ public class UIPuzzleColor : MonoBehaviour
     }
     void Start()
     {
+        //find main player
+       GameObject playerScript = GameObject.Find("Player");
+        playerInfo = playerScript.GetComponent<PlayerScript>();
+        UIPuzzleGameObject = this.gameObject.transform.parent.gameObject;
+
         ResetColors();
     }
     public void OnButtonColorPress()
@@ -65,7 +71,7 @@ public class UIPuzzleColor : MonoBehaviour
                 totalButtonsCorrect++;
                 if(totalButtonsCorrect >= totalButtons)
                 {
-                    UIPuzzleColorGameObject.SetActive(false);
+                    UIPuzzleGameObject.SetActive(false);
                 }
             }
         }
@@ -90,5 +96,9 @@ public class UIPuzzleColor : MonoBehaviour
         {
             this.gameObject.GetComponent<Image>().color = Color.white;
         }
+    }
+    public void SpawnPuzzleUI()
+    {
+        UIPuzzleGameObject.SetActive(true);
     }
 }
