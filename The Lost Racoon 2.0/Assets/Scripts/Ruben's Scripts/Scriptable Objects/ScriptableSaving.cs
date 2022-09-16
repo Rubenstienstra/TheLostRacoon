@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class ScriptableSaving : ScriptableObject
 {
-    public int areas;
-    public int mouseTrackTimesDone;
+    public int totalMissionsCompleted;
+
+    public bool minigame3x3;
+    public bool minigame4x4;
+
+    //mousetracker movement minigame completed
+    public int mouseTrackerTimesDone;
 }
