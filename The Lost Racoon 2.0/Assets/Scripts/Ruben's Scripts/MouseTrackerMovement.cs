@@ -23,8 +23,6 @@ public class MouseTrackerMovement : MonoBehaviour
     public float[] phaseTime;
     public float[] strengthBuff;
 
-    public CircleCollider2D circleCollider;
-
                                   //default  up  down  left  Right
     private int minRandomLengthX; //  -2,    -     -    <0     0>
     private int maxRandomLengthX; //   3 ,   -     -     -3    3
@@ -37,28 +35,27 @@ public class MouseTrackerMovement : MonoBehaviour
     
     void Start()
     {
-        StartAreaMinigame();
         //saving data
         
     }
     //If in Area load this
     public void StartAreaMinigame()
     {
-        playerInfo.minigameActiveMouse = true;
         for (int i = 0; i < images.Length; i++)
         {
             images[i].SetActive(true);
         }
+
         Mouse.current.WarpCursorPosition(mouseStartPos);
+        mousePosX = mouseStartPos.x;
+        mousePosY = mouseStartPos.y;
+
+        mouseInZone = true;
+        playerInfo.minigameActiveMouse = true;
 
         StartMinigame();
-
         //safety
         StopCoroutine(CountDown());
-        if (circleCollider != null)
-        {
-            circleCollider.enabled = !circleCollider.enabled;
-        }
     }
     // Use Interactable enter
     public void StartMinigame()
@@ -87,7 +84,7 @@ public class MouseTrackerMovement : MonoBehaviour
     }
     public IEnumerator MouseMover()
     {
-        if(mouseInZone == true && playerInfo.minigameActiveMouse == true)
+        if(playerInfo.minigameActiveMouse == true)
         {
             randomMousePosX = Random.Range(minRandomLengthX, maxRandomLengthX) * strengthBuff[currentPhase];
             randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
@@ -123,7 +120,6 @@ public class MouseTrackerMovement : MonoBehaviour
     public void RandomRangeMinMax()
     {
        int i = Random.Range(0, 5);
-        print(i);
         switch (i)
         {
             case 0: //Default
@@ -189,6 +185,7 @@ public class MouseTrackerMovement : MonoBehaviour
         playerInfo.minigameActiveMouse = false;
         currentPhase = 0;
     }
+    
 
     //For button Event trigger
     public void ActivateWaitingForShutDown()
