@@ -694,7 +694,7 @@ MonoBehaviour:
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
   mousePosX: 0
   mousePosY: 0
-  mouseStartPos: {x: 1460, y: 400}
+  mouseStartPos: {x: 940, y: 560}
   images:
   - {fileID: 944891742}
   - {fileID: 1062244241}
@@ -708,7 +708,7 @@ MonoBehaviour:
   - 1
   - 1.5
   - 2
-  waitingTime: 0.01
+  waitingTime: 0.1
   mouseInZone: 0
 --- !u!114 &537946617
 MonoBehaviour:
@@ -1018,6 +1018,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749018415933016598, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6749018415933016601, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
