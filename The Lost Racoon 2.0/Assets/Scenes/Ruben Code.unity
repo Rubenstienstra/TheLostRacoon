@@ -744,7 +744,7 @@ MonoBehaviour:
   - 1
   - 1.5
   - 2
-  waitingTime: 0.5
+  waitingTime: 0.01
   mouseInZone: 0
 --- !u!114 &537946617
 MonoBehaviour:
@@ -1178,7 +1178,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 453444424}
-  - {fileID: 1740291867}
   - {fileID: 1268131501}
   - {fileID: 389132634}
   m_Father: {fileID: 0}
@@ -1217,17 +1216,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740291866}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9999678, y: 1.9999678, z: 1.0000306}
+  m_LocalPosition: {x: 0, y: 0, z: 2.9821775}
+  m_LocalScale: {x: 0.21383, y: 0.21383, z: 0.10692}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1030059697}
-  m_Father: {fileID: 1598838634}
-  m_RootOrder: 1
+  m_Father: {fileID: 1268131501}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26.549099, y: -427.4544}
+  m_AnchoredPosition: {x: -8.686764, y: -52.711548}
   m_SizeDelta: {x: 160, y: 26.557}
   m_Pivot: {x: 0.4999999, y: 0.5000003}
 --- !u!114 &1740291868
@@ -1274,7 +1273,7 @@ MonoBehaviour:
   totalButtons: 25
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
-  UIPuzzleColorGameObject: {fileID: 0}
+  UIPuzzleGameObject: {fileID: 0}
 --- !u!114 &1740291869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1388,10 +1387,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1598838634}
     m_Modifications:
+    - target: {fileID: 54841214330844905, guid: 975a4b065e6d59c4fb323efc9c36a161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54841214838962491, guid: 975a4b065e6d59c4fb323efc9c36a161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54841215208030987, guid: 975a4b065e6d59c4fb323efc9c36a161,
+        type: 3}
+      propertyPath: startRed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 54841215392128470, guid: 975a4b065e6d59c4fb323efc9c36a161,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 54841215392128470, guid: 975a4b065e6d59c4fb323efc9c36a161,
         type: 3}
@@ -1463,6 +1477,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIPuzzleColor 4x4 and 3x3
       objectReference: {fileID: 0}
+    - target: {fileID: 54841215392128471, guid: 975a4b065e6d59c4fb323efc9c36a161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 975a4b065e6d59c4fb323efc9c36a161, type: 3}
 --- !u!1001 &3127774346659520458
@@ -1480,7 +1499,7 @@ PrefabInstance:
     - target: {fileID: 220499237973576776, guid: fa87e2c49db8b6e429beb17d945f03e6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3127774346981462105, guid: fa87e2c49db8b6e429beb17d945f03e6,
         type: 3}
@@ -1492,6 +1511,16 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 537946616}
+    - target: {fileID: 3127774346981462107, guid: fa87e2c49db8b6e429beb17d945f03e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127774347065407636, guid: fa87e2c49db8b6e429beb17d945f03e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3127774347065407658, guid: fa87e2c49db8b6e429beb17d945f03e6,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1502,6 +1531,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 537946616}
+    - target: {fileID: 3127774347229594489, guid: fa87e2c49db8b6e429beb17d945f03e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3127774347229594495, guid: fa87e2c49db8b6e429beb17d945f03e6,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target

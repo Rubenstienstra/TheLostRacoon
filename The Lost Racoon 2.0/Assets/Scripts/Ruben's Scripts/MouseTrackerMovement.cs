@@ -54,8 +54,13 @@ public class MouseTrackerMovement : MonoBehaviour
         playerInfo.minigameActiveMouse = true;
 
         StartMinigame();
+
         //safety
         StopCoroutine(CountDown());
+        if(waitingTime == 0)
+        {
+            waitingTime = 0.01f;
+        }
     }
     // Use Interactable enter
     public void StartMinigame()
