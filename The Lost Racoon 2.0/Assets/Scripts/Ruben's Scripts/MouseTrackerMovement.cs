@@ -9,6 +9,7 @@ public class MouseTrackerMovement : MonoBehaviour
     public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
 
+    public GameObject mouseCursor;
     public float mousePosX;
     public float mousePosY;
     private float randomMousePosX;
@@ -24,14 +25,16 @@ public class MouseTrackerMovement : MonoBehaviour
     public float[] strengthBuff;
 
                                   //default  up  down  left  Right
-    private int minRandomLengthX; //  -2,    -     -    <0     0>
-    private int maxRandomLengthX; //   3 ,   -     -     -3    3
-    private int minRandomLengthY; //  -2,    0>   <0     -     -
-    private int maxRandomLengthY; //   3 ,   3     3     -     -
+    private int minRandomLengthX; //  -4,    -     -    <0     0>
+    private int maxRandomLengthX; //   6 ,   -     -     -6    6
+    private int minRandomLengthY; //  -4,    0>   <0     -     -
+    private int maxRandomLengthY; //   6 ,   6     6     -     -
 
     public float waitingTime;
     
     public bool mouseInZone;
+
+    public RectTransform bigCircleSchrink;
     
     void Start()
     {
@@ -59,8 +62,9 @@ public class MouseTrackerMovement : MonoBehaviour
         StopCoroutine(CountDown());
         if(waitingTime == 0)
         {
-            waitingTime = 0.01f;
+            waitingTime = 0.1f;
         }
+        
     }
     // Use Interactable enter
     public void StartMinigame()
@@ -74,18 +78,16 @@ public class MouseTrackerMovement : MonoBehaviour
 
     public void OnMouseX(InputValue value)
     {
-        if (playerInfo.minigameActiveMouse == true)
-        {
+        //if (playerInfo.minigameActiveMouse == true)
+        //{
             mousePosX = value.Get<float>();
-        }
+            mouseCursor.transform.position = new Vector2(mousePosX, mousePosY);
+        //}
     }
     public void OnMouseY(InputValue value)
     {
-        if (playerInfo.minigameActiveMouse == true)
-        {
-            mousePosY = value.Get<float>();
-        }
-
+        mousePosY = value.Get<float>();
+        mouseCursor.transform.position = new Vector2(mousePosX, mousePosY);
     }
     public IEnumerator MouseMover()
     {
@@ -94,6 +96,9 @@ public class MouseTrackerMovement : MonoBehaviour
             randomMousePosX = Random.Range(minRandomLengthX, maxRandomLengthX) * strengthBuff[currentPhase];
             randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
             Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + mousePosX ,randomMousePosY + mousePosY));
+            bigCircleSchrink.sizeDelta = new Vector2(bigCircleSchrink.rect.width - 0.05f, bigCircleSchrink.rect.height - 0.05f);
+            
+            
             yield return new WaitForSeconds(0f);
             StartCoroutine(MouseMover());
         }
@@ -115,6 +120,7 @@ public class MouseTrackerMovement : MonoBehaviour
             playerInfo.minigameActiveMouse = false;
             savingInfo.totalMissionsCompleted++;
             savingInfo.mouseTrackerTimesDone++;
+            print("Completed/Victory! :D");
             ShutDown();
         }
         else
@@ -130,41 +136,41 @@ public class MouseTrackerMovement : MonoBehaviour
             case 0: //Default
                 {
                     minRandomLengthX = -4;
-                    maxRandomLengthX = 6;
+                    maxRandomLengthX = 4;//6
                     minRandomLengthY = -4;
-                    maxRandomLengthY = 6;
+                    maxRandomLengthY = 4;//6
                     return;
                 }
             case 1: //Up
                 {
                     minRandomLengthX = -4;
-                    maxRandomLengthX = 6;
+                    maxRandomLengthX = 4;//6
                     minRandomLengthY = 0;
-                    maxRandomLengthY = 6;
+                    maxRandomLengthY = 4;//6
                     return;
                 }
             case 2: //Down
                 {
                     minRandomLengthX = -4;
-                    maxRandomLengthX = 6;
+                    maxRandomLengthX = 4;//6
                     minRandomLengthY = 0;
-                    maxRandomLengthY = -6;
+                    maxRandomLengthY = -4;//6
                     return;
                 }
             case 3: //Left
                 {
                     minRandomLengthX = 0;
-                    maxRandomLengthX = -6;
+                    maxRandomLengthX = -4;//6
                     minRandomLengthY = -4;
-                    maxRandomLengthY = 6;
+                    maxRandomLengthY = 4;//6
                     return;
                 }
             case 4: //Right
                 {
                     minRandomLengthX = 0;
-                    maxRandomLengthX = 6;
+                    maxRandomLengthX = 4;//6
                     minRandomLengthY = -4;
-                    maxRandomLengthY = 6;
+                    maxRandomLengthY = 4;//6
                     return;
                 }
 
@@ -189,6 +195,7 @@ public class MouseTrackerMovement : MonoBehaviour
         }
         playerInfo.minigameActiveMouse = false;
         currentPhase = 0;
+        bigCircleSchrink.sizeDelta = new Vector2(400,400);
     }
     
 

@@ -15,6 +15,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         ResetProgress();
+        Cursor.visible = false;
     }
 
 
@@ -29,7 +30,10 @@ public class PlayerScript : MonoBehaviour
         if(value.Get<float>() >= 1)
         {
             //Testing Press E
-            mouseInfo.StartAreaMinigame();
+            if(mouseInfo.currentPhase == 0)
+            {
+                mouseInfo.StartAreaMinigame();
+            }
         }
     }
 }

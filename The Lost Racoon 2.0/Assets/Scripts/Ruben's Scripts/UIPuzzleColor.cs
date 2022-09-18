@@ -71,6 +71,7 @@ public class UIPuzzleColor : MonoBehaviour
                 totalButtonsCorrect++;
                 if(totalButtonsCorrect >= totalButtons)
                 {
+                    savingInfo.totalMissionsCompleted++;
                     UIPuzzleGameObject.SetActive(false);
                 }
             }
