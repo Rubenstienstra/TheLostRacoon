@@ -17,7 +17,7 @@ public class MouseTrackerMovement : MonoBehaviour
     //public bool activatedOnEnter;
 
     public Vector2 mouseStartPos;
-    public GameObject[] images;
+    public GameObject[] circles;
 
     // 0 = default, 1 = phase 1, 2 = phase end.
     public int currentPhase;
@@ -35,6 +35,7 @@ public class MouseTrackerMovement : MonoBehaviour
     public bool mouseInZone;
 
     public RectTransform bigCircleSchrink;
+    public float circleSchrinkStrengthBuff =1;
     
     void Start()
     {
@@ -44,16 +45,16 @@ public class MouseTrackerMovement : MonoBehaviour
     //If in Area load this
     public void StartAreaMinigame()
     {
-        for (int i = 0; i < images.Length; i++)
+        for (int i = 0; i < circles.Length; i++)
         {
-            images[i].SetActive(true);
+            circles[i].SetActive(true);
         }
 
         Mouse.current.WarpCursorPosition(mouseStartPos);
         mousePosX = mouseStartPos.x;
         mousePosY = mouseStartPos.y;
 
-        mouseInZone = true;
+        savingInfo.mouseInZone = true;
         playerInfo.minigameActiveMouse = true;
 
         StartMinigame();
@@ -78,11 +79,8 @@ public class MouseTrackerMovement : MonoBehaviour
 
     public void OnMouseX(InputValue value)
     {
-        //if (playerInfo.minigameActiveMouse == true)
-        //{
-            mousePosX = value.Get<float>();
-            mouseCursor.transform.position = new Vector2(mousePosX, mousePosY);
-        //}
+       mousePosX = value.Get<float>();
+       mouseCursor.transform.position = new Vector2(mousePosX, mousePosY);
     }
     public void OnMouseY(InputValue value)
     {
@@ -96,11 +94,15 @@ public class MouseTrackerMovement : MonoBehaviour
             randomMousePosX = Random.Range(minRandomLengthX, maxRandomLengthX) * strengthBuff[currentPhase];
             randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
             Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + mousePosX ,randomMousePosY + mousePosY));
-            bigCircleSchrink.sizeDelta = new Vector2(bigCircleSchrink.rect.width - 0.05f, bigCircleSchrink.rect.height - 0.05f);
+            bigCircleSchrink.sizeDelta = new Vector2(bigCircleSchrink.rect.width - (0.05f * circleSchrinkStrengthBuff), bigCircleSchrink.rect.height - (0.05f * circleSchrinkStrengthBuff));
             
             
             yield return new WaitForSeconds(0f);
             StartCoroutine(MouseMover());
+            if(savingInfo.mouseInZone == false)
+            {
+                StartCoroutine(WaitingForShutDown());
+            }
         }
     }
     public IEnumerator CountDown()
@@ -126,6 +128,7 @@ public class MouseTrackerMovement : MonoBehaviour
         else
         {
             StopCoroutine(CountDown());
+            ShutDown();
         }
     }
     public void RandomRangeMinMax()
@@ -179,7 +182,7 @@ public class MouseTrackerMovement : MonoBehaviour
     public IEnumerator WaitingForShutDown()
     {
         yield return new WaitForSeconds(waitingTime);
-        if(mouseInZone == false)
+        if(savingInfo.mouseInZone == false)
         {
             ShutDown();
         }
@@ -189,9 +192,9 @@ public class MouseTrackerMovement : MonoBehaviour
         print("ended minigame at Phase: " + currentPhase.ToString());
         StopCoroutine(CountDown());
         StopCoroutine(MouseMover());
-        for (int i = 0; i < images.Length; i++)
+        for (int i = 0; i < circles.Length; i++)
         {
-            images[i].SetActive(false);
+            circles[i].SetActive(false);
         }
         playerInfo.minigameActiveMouse = false;
         currentPhase = 0;
@@ -224,12 +227,12 @@ public class MouseTrackerMovement : MonoBehaviour
     public void InThirdCircle()
     {
         StopCoroutine(WaitingForShutDown());
-        mouseInZone = true;
+        savingInfo.mouseInZone = true;
     }
     public void OutOfThirdCircle()
     {
         StartCoroutine(WaitingForShutDown());
-        mouseInZone = false;
+        savingInfo.mouseInZone = false;
     }
 
 }
