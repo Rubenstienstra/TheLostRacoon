@@ -8,7 +8,9 @@ public class PlayerScript : MonoBehaviour
 {
     public ScriptableSaving savingInfo;
     public MouseTrackerMovement mouseInfo;
+
     public bool minigameActiveMouse;
+    public bool minigameActive3x3Puzzle;
     
     void Start()
     {
