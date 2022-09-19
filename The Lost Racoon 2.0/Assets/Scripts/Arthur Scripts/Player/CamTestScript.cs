@@ -20,7 +20,7 @@ public class CamTestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
+        
         float interactInput = playerInput.actions["Interact"].ReadValue<float>();
         if (interactInput == 1 && !camFroze) {
             
@@ -36,6 +36,6 @@ public class CamTestScript : MonoBehaviour
             look.Enable();
             Debug.Log("Cam pos unlocked");
         }
-        */
+      
     }
 }
