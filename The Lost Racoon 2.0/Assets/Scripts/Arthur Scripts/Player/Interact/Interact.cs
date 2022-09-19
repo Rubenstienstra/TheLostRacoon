@@ -29,7 +29,8 @@ public class Interact : MonoBehaviour
             if(coll.gameObject.tag == "Interactible") {
                 Debug.Log("Interactible nearby");
                 //Ui elliment stage 1
-                
+                // check angle to avoid another time 
+
             }
         }
         interactionColliders = Physics.OverlapSphere(interactionAria.position, interactionDiameter * 2);
