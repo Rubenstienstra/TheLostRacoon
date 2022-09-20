@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
 {
     public ScriptableSaving savingInfo;
     public MouseTrackerMovement mouseInfo;
+    public MouseTrackerRectangleMovement mouseRectangleInfo;
 
     public bool minigameActiveMouse;
     public bool minigameActive3x3Puzzle;
@@ -24,6 +25,8 @@ public class PlayerScript : MonoBehaviour
         print("All Progress Reset");
         savingInfo.totalMissionsCompleted = 0;
         savingInfo.mouseTrackerTimesDone = 0;
+        savingInfo.strengthStage = 0;
+        savingInfo.mouseInZone = false;
     }
     
     public void OnInteract(InputValue value)
@@ -33,7 +36,8 @@ public class PlayerScript : MonoBehaviour
             //Testing Press E
             if(mouseInfo.currentPhase == 0 && minigameActiveMouse == false)
             {
-                mouseInfo.StartAreaMinigame();
+                //mouseInfo.StartAreaMinigame();
+                mouseRectangleInfo.StartAreaMinigame();
             }
         }
     }

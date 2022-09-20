@@ -22,16 +22,13 @@ public class MouseTrackerMovement : MonoBehaviour
     public int currentPhase;
     public float[] phaseTime;
     public float[] strengthBuff;
+    public float waitingTime;
 
-                                  //default  up  down  left  Right
+                                    //default  up  down  left  Right
     private float minRandomLengthX; //  -2,    -     -    <0     0>
     private float maxRandomLengthX; //   2 ,   -     -     -2    2
     private float minRandomLengthY; //  -2,    0>   <0     -     -
     private float maxRandomLengthY; //   2 ,   2     2     -     -
-
-    public float waitingTime;
-    
-    public bool mouseInZone;
 
     public RectTransform bigCircleSchrink;
     public CircleCollider2D bigCircleSchrinkCollider;
@@ -53,6 +50,7 @@ public class MouseTrackerMovement : MonoBehaviour
         Mouse.current.WarpCursorPosition(mouseStartPos);
         mousePosX = mouseStartPos.x;
         mousePosY = mouseStartPos.y;
+        currentPhase = 0;
 
         savingInfo.mouseInZone = true;
         playerInfo.minigameActiveMouse = true;

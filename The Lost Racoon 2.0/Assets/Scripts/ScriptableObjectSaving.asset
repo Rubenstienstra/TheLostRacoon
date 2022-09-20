@@ -16,3 +16,5 @@ MonoBehaviour:
   minigame3x3: 1
   minigame4x4: 0
   mouseTrackerTimesDone: 0
+  mouseInZone: 0
+  strengthMouse: 0
