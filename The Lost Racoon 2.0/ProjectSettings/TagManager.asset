@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Interactible
+  - CamFreezeZone
+  - Item
   layers:
   - Default
   - TransparentFX
