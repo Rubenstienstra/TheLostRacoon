@@ -7,6 +7,7 @@ public class Interact : MonoBehaviour
 {
     [Header("References", order = 0)]
     public PlayerInput playerInput;
+    public Pickup pickupscript;
     [Header("Detection Sphere", order = 1)]
     public Transform detectionAria;
     public float detectDiameter;
@@ -16,7 +17,6 @@ public class Interact : MonoBehaviour
     public Transform interactionAria;
     public float interactionDiameter;
     public Collider[] interactionColliders;
-    bool interacted;
     //piemel -davido 
     private void Start() {
         
@@ -26,23 +26,26 @@ public class Interact : MonoBehaviour
         float interactInput = playerInput.actions["Interact"].ReadValue<float>();
         detectedColliders = Physics.OverlapSphere(detectionAria.position, detectDiameter * 2);
         foreach (Collider coll in detectedColliders) {
-            if(coll.gameObject.tag == "Interactible") {
-                Debug.Log("Interactible nearby");
+            if(coll.gameObject.tag == "Interactible" || coll.gameObject.tag == "Item") {
+                Debug.Log("Interactible or Item nearby");
                 //Ui elliment stage 1
-                // check angle to avoid another time 
-
             }
         }
         interactionColliders = Physics.OverlapSphere(interactionAria.position, interactionDiameter * 2);
         
         foreach (Collider coll in interactionColliders) {
             if (coll.gameObject.tag == "Interactible") {
-                Debug.Log("Interactible in reach, press E to interact");
+                Debug.Log("Interactible or Item in reach, press E to interact or pick up");
                 //Ui elliment stage 2
                 if (interactInput == 1) {
                     //interaction here
                     Debug.Log("Interacted");
-                    coll.gameObject.SetActive(false);
+                    //coll.gameObject.SetActive(false);
+                }
+            }else if (coll.gameObject.tag == "Item") {
+                if (interactInput == 1) {
+                    //Pick up here
+                    pickupscript.PickUp(coll);
                 }
             }
         }

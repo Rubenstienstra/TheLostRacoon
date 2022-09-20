@@ -20,21 +20,26 @@ public class CamTestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float interactInput = playerInput.actions["Interact"].ReadValue<float>();
-        if (interactInput == 1 && !camFroze) {
-            
+      
+    }
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "CamFreezeZone" && camFroze) {
+            camFollow.position = Vector3.zero;
+
+            transform.position = Vector3.zero;
+            camFollow.parent = this.transform;
+            transform.rotation = Quaternion.Euler(Vector3.zero);
+            look.Enable();
+            camFroze = false;
+            Debug.Log("Cam pos unlocked");
+        }
+    }
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "CamFreezeZone" && !camFroze) {
             look.Disable();
             camFollow.parent = null;
             camFroze = true;
             Debug.Log("Cam pos locked");
         }
-        if (interactInput == 1 && camFroze) {
-            camFollow.parent = this.transform;
-            transform.position = Vector3.zero;
-            transform.rotation = Quaternion.Euler(Vector3.zero);
-            look.Enable();
-            Debug.Log("Cam pos unlocked");
-        }
-      
     }
 }
