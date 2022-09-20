@@ -14,7 +14,6 @@ public class MouseTrackerMovement : MonoBehaviour
     public float mousePosY;
     private float randomMousePosX;
     private float randomMousePosY;
-    //public bool activatedOnEnter;
 
     public Vector2 mouseStartPos;
     public GameObject[] circles;
@@ -25,17 +24,18 @@ public class MouseTrackerMovement : MonoBehaviour
     public float[] strengthBuff;
 
                                   //default  up  down  left  Right
-    private int minRandomLengthX; //  -4,    -     -    <0     0>
-    private int maxRandomLengthX; //   6 ,   -     -     -6    6
-    private int minRandomLengthY; //  -4,    0>   <0     -     -
-    private int maxRandomLengthY; //   6 ,   6     6     -     -
+    private float minRandomLengthX; //  -2,    -     -    <0     0>
+    private float maxRandomLengthX; //   2 ,   -     -     -2    2
+    private float minRandomLengthY; //  -2,    0>   <0     -     -
+    private float maxRandomLengthY; //   2 ,   2     2     -     -
 
     public float waitingTime;
     
     public bool mouseInZone;
 
     public RectTransform bigCircleSchrink;
-    public float circleSchrinkStrengthBuff =1;
+    public CircleCollider2D bigCircleSchrinkCollider;
+    public float circleSchrinkStrengthBuff = 1;
     
     void Start()
     {
@@ -88,22 +88,24 @@ public class MouseTrackerMovement : MonoBehaviour
         mouseCursor.transform.position = new Vector2(mousePosX, mousePosY);
     }
     public IEnumerator MouseMover()
-    {
-        if(playerInfo.minigameActiveMouse == true)
-        {
-            randomMousePosX = Random.Range(minRandomLengthX, maxRandomLengthX) * strengthBuff[currentPhase];
-            randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
-            Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + mousePosX ,randomMousePosY + mousePosY));
-            bigCircleSchrink.sizeDelta = new Vector2(bigCircleSchrink.rect.width - (0.05f * circleSchrinkStrengthBuff), bigCircleSchrink.rect.height - (0.05f * circleSchrinkStrengthBuff));
-            
-            
-            yield return new WaitForSeconds(0f);
-            StartCoroutine(MouseMover());
-            if(savingInfo.mouseInZone == false)
-            {
-                StartCoroutine(WaitingForShutDown());
-            }
-        }
+    {     
+          randomMousePosX = Random.Range(minRandomLengthX, maxRandomLengthX) * strengthBuff[currentPhase];
+          randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
+          Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + mousePosX ,randomMousePosY + mousePosY));
+
+          bigCircleSchrink.sizeDelta = new Vector2(bigCircleSchrink.rect.width - (0.25f * circleSchrinkStrengthBuff), bigCircleSchrink.rect.height - (0.25f * circleSchrinkStrengthBuff));
+          bigCircleSchrinkCollider.radius = bigCircleSchrink.rect.width/2;
+
+          yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
+          if(playerInfo.minigameActiveMouse == true) // double check
+          {
+             StartCoroutine(MouseMover());
+          }
+          if(savingInfo.mouseInZone == false)
+          {
+             StartCoroutine(WaitingForShutDown());
+          }
+        
     }
     public IEnumerator CountDown()
     {
@@ -111,13 +113,14 @@ public class MouseTrackerMovement : MonoBehaviour
         yield return new WaitForSeconds(phaseTime[0]);
         currentPhase++;
         RandomRangeMinMax();
+        
 
         yield return new WaitForSeconds(phaseTime[1]);
         currentPhase++;
         RandomRangeMinMax();
 
         yield return new WaitForSeconds(phaseTime[2]);
-        if (mouseInZone == true)
+        if (savingInfo.mouseInZone == true)
         {
             playerInfo.minigameActiveMouse = false;
             savingInfo.totalMissionsCompleted++;
@@ -133,47 +136,52 @@ public class MouseTrackerMovement : MonoBehaviour
     }
     public void RandomRangeMinMax()
     {
+        if(currentPhase >= 3)
+        {
+            print("ERROR to many phases ):");
+            currentPhase--;
+        }
        int i = Random.Range(0, 5);
         switch (i)
         {
             case 0: //Default
                 {
-                    minRandomLengthX = -4;
-                    maxRandomLengthX = 4;//6
-                    minRandomLengthY = -4;
-                    maxRandomLengthY = 4;//6
+                    minRandomLengthX = -2;
+                    maxRandomLengthX = 2;//6
+                    minRandomLengthY = -2;
+                    maxRandomLengthY = 2;//6
                     return;
                 }
             case 1: //Up
                 {
-                    minRandomLengthX = -4;
-                    maxRandomLengthX = 4;//6
+                    minRandomLengthX = -2;
+                    maxRandomLengthX = 2;//6
                     minRandomLengthY = 0;
-                    maxRandomLengthY = 4;//6
+                    maxRandomLengthY = 2;//6
                     return;
                 }
             case 2: //Down
                 {
-                    minRandomLengthX = -4;
-                    maxRandomLengthX = 4;//6
+                    minRandomLengthX = -2;
+                    maxRandomLengthX = 2;//6
                     minRandomLengthY = 0;
-                    maxRandomLengthY = -4;//6
+                    maxRandomLengthY = -2;//6
                     return;
                 }
             case 3: //Left
                 {
                     minRandomLengthX = 0;
-                    maxRandomLengthX = -4;//6
-                    minRandomLengthY = -4;
-                    maxRandomLengthY = 4;//6
+                    maxRandomLengthX = -2;//6
+                    minRandomLengthY = -2;
+                    maxRandomLengthY = 2;//6
                     return;
                 }
             case 4: //Right
                 {
                     minRandomLengthX = 0;
-                    maxRandomLengthX = 4;//6
-                    minRandomLengthY = -4;
-                    maxRandomLengthY = 4;//6
+                    maxRandomLengthX = 2;//6
+                    minRandomLengthY = -2;
+                    maxRandomLengthY = 2;//6
                     return;
                 }
 
@@ -196,13 +204,13 @@ public class MouseTrackerMovement : MonoBehaviour
         {
             circles[i].SetActive(false);
         }
-        playerInfo.minigameActiveMouse = false;
         currentPhase = 0;
+        playerInfo.minigameActiveMouse = false;
         bigCircleSchrink.sizeDelta = new Vector2(400,400);
     }
     
 
-    //For button Event trigger
+    //For button Event triggers
     public void ActivateWaitingForShutDown()
     {
         StartCoroutine(WaitingForShutDown());

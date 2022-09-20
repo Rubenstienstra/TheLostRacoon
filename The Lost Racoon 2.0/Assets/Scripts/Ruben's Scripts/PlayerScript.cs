@@ -13,8 +13,6 @@ public class PlayerScript : MonoBehaviour
     public bool minigameActiveMouse;
     public bool minigameActive3x3Puzzle;
 
-    public GameObject pointer;
-
     void Start()
     {
         ResetProgress();
