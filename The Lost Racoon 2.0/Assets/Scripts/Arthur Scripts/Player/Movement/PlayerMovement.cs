@@ -10,18 +10,19 @@ public class PlayerMovement : MonoBehaviour
     public InputAction moveAction, sprintAction, jumpAction;
     public CharacterController controller;
     public Transform cam;
-    public Rigidbody rb;
     [Header("Changeable", order = 1)]
     public float speed;
     public float sprintSpeed;
     public float jumpCharge, jumpMin, jumpMax, chargePerSec;
     [Header("Debug", order = 2)]
     public bool movementLock;
+    public Vector3 moveDir;
+    public float verticalVelocity = 0f;
+    public float gravityValue = 9.81f;
     float turnSmoothVelocity;
-    bool isGrounded;
+    public Collider[] coll;
+    public bool isGrounded;
     bool charged;
-    
-    Vector3 jump;
 
     private void Start() {
         moveAction = playerInput.actions["WASD"];
@@ -29,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        jump = new Vector3(0.0f, 0.2f, 0.0f);
+        jumpCharge = jumpMin;
     }
     private void Update() {
         //input
@@ -37,6 +38,20 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = new Vector3(input.x, 0f, input.y).normalized;
         float sprintInput = sprintAction.ReadValue<float>();
         float jumpInput = jumpAction.ReadValue<float>();
+        transform.parent.position = transform.position;
+
+        bool groundedPlayer = controller.isGrounded;
+
+        // gravity
+        coll = Physics.OverlapSphere(transform.position, 0.41f);
+        if (coll.Length >= 3) {
+            verticalVelocity = 0f;
+            isGrounded = true;
+        } else {
+            isGrounded = false;
+        }
+        verticalVelocity -= gravityValue * Time.deltaTime;
+
 
         if (!movementLock) {
             //Movement
@@ -44,14 +59,29 @@ public class PlayerMovement : MonoBehaviour
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, 0.1f);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                if (sprintInput == 0) {
-                    controller.Move(moveDir.normalized * speed * Time.deltaTime);
+                moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                if (sprintInput == 1) {
+                    moveDir.x = moveDir.x * sprintSpeed;
+                    moveDir.z = moveDir.z * sprintSpeed;
+                    moveDir.y = verticalVelocity * sprintSpeed;
+                    controller.Move(moveDir * Time.deltaTime);
+                    verticalVelocity = 0f;
                 } else { //Sprint
-                    controller.Move(moveDir.normalized * sprintSpeed * Time.deltaTime);
+                    moveDir.x = moveDir.x * speed;
+                    moveDir.z = moveDir.z * speed;
+                    moveDir.y = verticalVelocity * speed;
+                    controller.Move(moveDir * speed * Time.deltaTime);
+                    verticalVelocity = 0f;
                 }
+            } else {
+                moveDir.x = 0f;
+                moveDir.z = 0f;
+                moveDir.y = verticalVelocity;
+                controller.Move(moveDir);
+                verticalVelocity = 0f;
             }
+            controller.Move(moveDir * speed * Time.deltaTime);
+
             //controller.transform.position = transform.position;
             if (jumpInput == 1 && isGrounded == true) {
                 if (jumpCharge <= jumpMax) {
@@ -60,16 +90,16 @@ public class PlayerMovement : MonoBehaviour
                 charged = true;
             }
             if (jumpInput == 0 && charged == true) {
-                rb.AddForce(jump * jumpCharge, ForceMode.Impulse);
+                verticalVelocity = jumpCharge;
                 jumpCharge = jumpMin;
                 charged = false;
                 isGrounded = false;
             }
         }
     }
-    private void OnCollisionEnter(Collision collision) {
-        if(collision.gameObject.tag == "Ground") {
-            isGrounded = true;
-        }
+    private void OnDrawGizmos() {
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, 0.41f);
     }
 }
