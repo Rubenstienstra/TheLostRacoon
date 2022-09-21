@@ -583,7 +583,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2916023789508095782}
-  m_LocalRotation: {x: 0.22120777, y: -0.000000023730676, z: 0.000000005382759, w: 0.97522676}
+  m_LocalRotation: {x: 0.22120775, y: -0.000000012780761, z: 0.0000000028990224, w: 0.97522676}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -671,8 +671,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3890448570852093856}
-  m_LocalRotation: {x: 0.26857778, y: -1.7646043e-15, z: 4.92011e-16, w: 0.96325797}
-  m_LocalPosition: {x: 0, y: 6, z: -8}
+  m_LocalRotation: {x: 0.19791636, y: -0.62791526, z: 0.1694563, w: 0.7333731}
+  m_LocalPosition: {x: 11.041622, y: 7.334939, z: 11.247696}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1073,6 +1073,7 @@ GameObject:
   - component: {fileID: 6596604511056919649}
   - component: {fileID: 6596604511056919648}
   - component: {fileID: 6596604511056919679}
+  - component: {fileID: 3865723428416789457}
   m_Layer: 0
   m_Name: racoon lookin ass
   m_TagString: Untagged
@@ -1240,7 +1241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 6596604511863840430}
-  pickupscript: {fileID: 0}
+  pickupscript: {fileID: 3865723428416789457}
   detectionAria: {fileID: 6596604511056919653}
   detectDiameter: 3
   detectedColliders: []
@@ -1248,6 +1249,23 @@ MonoBehaviour:
   interactionAria: {fileID: 6596604511136612676}
   interactionDiameter: 1.5
   interactionColliders: []
+--- !u!114 &3865723428416789457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596604511056919654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e36ef02e65fef54c91cbb42be173db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropForwardForce: 5
+  dropUpwardForce: 10
+  slotfull: 0
+  playerInput: {fileID: 6596604511863840430}
+  itemContainer: {fileID: 6596604510762072791}
 --- !u!1 &6596604511109715871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,7 +1537,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6868623704116790666}
-  m_LocalRotation: {x: 0.26857775, y: -1.6458231e-15, z: 6.600137e-17, w: 0.963258}
+  m_LocalRotation: {x: 0.26857772, y: 0.000000018835621, z: -0.000000005251789, w: 0.9632581}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1731,7 +1749,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7998549588743268217}
-  m_LocalRotation: {x: 0.31622773, y: 3e-45, z: -1e-45, w: 0.9486833}
+  m_LocalRotation: {x: 0.31622776, y: 0.000000008986204, z: -0.0000000029954006, w: 0.9486833}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
