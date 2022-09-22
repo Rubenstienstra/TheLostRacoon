@@ -671,7 +671,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3890448570852093856}
-  m_LocalRotation: {x: 0.24174811, y: -0.000000033392045, z: 0.000000008319219, w: 0.9703391}
+  m_LocalRotation: {x: 0.24174811, y: 0.000000033392045, z: -0.000000008319219, w: 0.9703391}
   m_LocalPosition: {x: 0, y: 4, z: -6}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -1203,7 +1203,6 @@ MonoBehaviour:
     m_Flags: 0
   controller: {fileID: 6596604511863840429}
   cam: {fileID: 2867174878968329352}
-  rb: {fileID: 0}
   speed: 6
   sprintSpeed: 10
   jumpCharge: 0
@@ -1212,6 +1211,10 @@ MonoBehaviour:
   chargePerSec: 20
   movementLock: 0
   moveDir: {x: 0, y: 0, z: 0}
+  verticalVelocity: 0
+  gravityValue: 9.81
+  coll: []
+  isGrounded: 0
 --- !u!114 &6596604511056919679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,8 +1248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e36ef02e65fef54c91cbb42be173db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropForwardForce: 5
-  dropUpwardForce: 10
+  dropForwardForce: 0
+  dropUpwardForce: 0
   slotfull: 0
   playerInput: {fileID: 6596604511863840430}
   itemContainer: {fileID: 6596604510762072791}
