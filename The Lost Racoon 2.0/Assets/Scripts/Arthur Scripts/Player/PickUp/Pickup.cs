@@ -53,7 +53,7 @@ public class Pickup : MonoBehaviour
         rb.isKinematic = false;
         item.isTrigger = false;
 
-        rb.velocity = this.GetComponent<Rigidbody>().velocity;
+        //rb.velocity = this.GetComponent<Rigidbody>().velocity;
 
         //Add dropforce
         rb.AddForce(this.transform.forward * dropForwardForce, ForceMode.Impulse);
