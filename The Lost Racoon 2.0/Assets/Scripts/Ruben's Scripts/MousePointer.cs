@@ -30,6 +30,7 @@ public class MousePointer : MonoBehaviour
         {
             mouseRectangleInfo.strengthStage = 0;
         }
+        
     }
     public void OnTriggerExit2D(Collider2D col)
     {
@@ -44,7 +45,7 @@ public class MousePointer : MonoBehaviour
             {
                 if(mouseRectangleInfo.strengthStage >= 1)
                 {
-                    //mouseRectangleInfo.ReconnectPosition();
+                    
                     mouseRectangleInfo.strengthStage--;
                 }
                 
@@ -55,5 +56,14 @@ public class MousePointer : MonoBehaviour
             mouseRectangleInfo.mouseInZone = false;
             mouseRectangleInfo.strengthStage = 0;
         }
+        
+    }
+    public void GoingUp()
+    {
+
+    }
+    public void GoingDown()
+    {
+
     }
 }

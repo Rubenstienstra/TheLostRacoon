@@ -58,7 +58,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         strengthStage = 0;
 
         mouseInZone = true;
-        playerInfo.minigameActiveMouse = true;
+        playerInfo.minigameActiveMouseRectangle = true;
         mouseCursor.GetComponent<Image>().enabled = enabled; //!
 
         StartMinigame();
@@ -72,7 +72,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     // Use Interactable enter
     public void StartMinigame()
     {
-        if (playerInfo.minigameActiveMouse == true)
+        if (playerInfo.minigameActiveMouseRectangle == true)
         {
             StartCoroutine(MouseMover());
         }
@@ -81,12 +81,14 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public void OnMouseX(InputValue value)
     {
         mousePosX = value.Get<float>();
-        mouseCursor.transform.position = new Vector2(mousePosX, mousePosY);
+        if(playerInfo.minigameActiveMouseRectangle == true)
+        {
+            ReconnectPosition();
+        }
     }
     public void OnMouseY(InputValue value)
     {
         mousePosY = value.Get<float>();
-        mouseCursor.transform.position = new Vector2(mousePosX, mousePosY);
     }
     public IEnumerator MouseMover()
     {
@@ -95,7 +97,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         movingSlider.value = mousePosY - mouseStartPos.y;
 
         yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
-        if (playerInfo.minigameActiveMouse == true) // double check
+        if (playerInfo.minigameActiveMouseRectangle == true) // double check
         {
             StartCoroutine(MouseMover());
         }
@@ -133,12 +135,12 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         mouseCursor.GetComponent<Image>().enabled = enabled;
 
         strengthStage = 0;
-        playerInfo.minigameActiveMouse = false;
+        playerInfo.minigameActiveMouseRectangle = false;
 
         //Completed
         if (mouseInZone == true)
         {
-            playerInfo.minigameActiveMouse = false;
+            playerInfo.minigameActiveMouseRectangle = false;
             savingInfo.totalMissionsCompleted++;
             savingInfo.mouseTrackerTimesDone++;
             print("Completed/Victory!:D");

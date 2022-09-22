@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     public MouseTrackerRectangleMovement mouseRectangleInfo;
 
     public bool minigameActiveMouse;
+    public bool minigameActiveMouseRectangle;
     public bool minigameActive3x3Puzzle;
 
     void Start()
@@ -33,7 +34,7 @@ public class PlayerScript : MonoBehaviour
         if(value.Get<float>() >= 1)
         {
             //Testing Press E
-            if(mouseInfo.currentPhase == 0 && minigameActiveMouse == false)
+            if(mouseInfo.currentPhase == 0 && minigameActiveMouseRectangle == false)
             {
                 //mouseInfo.StartAreaMinigame();
                 mouseRectangleInfo.StartAreaMinigame();
