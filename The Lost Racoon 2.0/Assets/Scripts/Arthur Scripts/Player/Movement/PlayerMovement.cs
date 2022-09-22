@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 moveDir;
     public float verticalVelocity = 0f;
     public float gravityValue = 9.81f;
+    public Vector3 playerVelocity;
     float turnSmoothVelocity;
     public Collider[] coll;
     public bool isGrounded;
@@ -43,14 +44,14 @@ public class PlayerMovement : MonoBehaviour
         bool groundedPlayer = controller.isGrounded;
 
         // gravity
-        coll = Physics.OverlapSphere(transform.position, 0.41f);
+        coll = Physics.OverlapSphere(transform.position, 0.43f);
         if (coll.Length >= 3) {
-            verticalVelocity = 0f;
+            playerVelocity.y = 0;
             isGrounded = true;
         } else {
             isGrounded = false;
         }
-        verticalVelocity -= gravityValue * Time.deltaTime;
+        //verticalVelocity -= gravityValue * Time.deltaTime;
 
 
         if (!movementLock) {
@@ -63,26 +64,19 @@ public class PlayerMovement : MonoBehaviour
                 if (sprintInput == 1) {
                     moveDir.x = moveDir.x * sprintSpeed;
                     moveDir.z = moveDir.z * sprintSpeed;
-                    moveDir.y = verticalVelocity * sprintSpeed;
                     controller.Move(moveDir * Time.deltaTime);
                     verticalVelocity = 0f;
                 } else { //Sprint
                     moveDir.x = moveDir.x * speed;
                     moveDir.z = moveDir.z * speed;
-                    moveDir.y = verticalVelocity * speed;
                     controller.Move(moveDir * speed * Time.deltaTime);
                     verticalVelocity = 0f;
                 }
             } else {
                 moveDir.x = 0f;
                 moveDir.z = 0f;
-                moveDir.y = verticalVelocity;
-                controller.Move(moveDir);
                 verticalVelocity = 0f;
             }
-            controller.Move(moveDir * speed * Time.deltaTime);
-
-            //controller.transform.position = transform.position;
             if (jumpInput == 1 && isGrounded == true) {
                 if (jumpCharge <= jumpMax) {
                     jumpCharge += chargePerSec * Time.deltaTime;
@@ -90,16 +84,17 @@ public class PlayerMovement : MonoBehaviour
                 charged = true;
             }
             if (jumpInput == 0 && charged == true) {
-                verticalVelocity = jumpCharge;
+                playerVelocity.y += Mathf.Sqrt(jumpCharge * -7.0f * gravityValue);
                 jumpCharge = jumpMin;
                 charged = false;
-                isGrounded = false;
             }
         }
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
     }
     private void OnDrawGizmos() {
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, 0.41f);
+        Gizmos.DrawWireSphere(transform.position, 0.43f);
     }
 }
