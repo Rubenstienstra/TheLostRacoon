@@ -13,32 +13,47 @@ public class MousePointer : MonoBehaviour
     {
         if (col.gameObject == mouseInfo.circles[0])
         {
-            savingInfo.mouseInZone = true;
+            mouseInfo.mouseInZone = true;
         }
-        if (col.gameObject == mouseRectangleInfo.squares[savingInfo.strengthStage])
+
+
+        if (col.gameObject == mouseRectangleInfo.squares[mouseRectangleInfo.strengthStage++])
         {
-            savingInfo.mouseInZone = true;
-            savingInfo.strengthStage++;
+            mouseRectangleInfo.mouseInZone = true;
+
+            if(mouseRectangleInfo.strengthStage <= mouseRectangleInfo.squares.Length -1)
+            {
+                mouseRectangleInfo.strengthStage++;
+            }
+        }
+        if (col.gameObject == mouseRectangleInfo.squares[0])
+        {
+            mouseRectangleInfo.strengthStage = 0;
         }
     }
     public void OnTriggerExit2D(Collider2D col)
     {
+        if (col.gameObject == mouseInfo.circles[0])
+        {
+            mouseInfo.mouseInZone = false;
+        }
+
         for (int i = 0; i < mouseRectangleInfo.squares.Length; i++)
         {
             if (col.gameObject == mouseRectangleInfo.squares[i])
             {
-                savingInfo.strengthStage--;
+                if(mouseRectangleInfo.strengthStage >= 1)
+                {
+                    //mouseRectangleInfo.ReconnectPosition();
+                    mouseRectangleInfo.strengthStage--;
+                }
+                
             }
         }
-        if (col.gameObject == mouseInfo.circles[0])
+        if (col.gameObject == mouseRectangleInfo.squares[0])
         {
-            savingInfo.mouseInZone = false;
+            mouseRectangleInfo.mouseInZone = false;
+            mouseRectangleInfo.strengthStage = 0;
         }
-        else if (col.gameObject == mouseRectangleInfo.squares[0])
-        {
-            savingInfo.mouseInZone = false;
-            savingInfo.strengthStage = 0;
-        }
-        
     }
 }

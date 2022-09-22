@@ -25,8 +25,7 @@ public class PlayerScript : MonoBehaviour
         print("All Progress Reset");
         savingInfo.totalMissionsCompleted = 0;
         savingInfo.mouseTrackerTimesDone = 0;
-        savingInfo.strengthStage = 0;
-        savingInfo.mouseInZone = false;
+        mouseRectangleInfo.strengthStage = 0;
     }
     
     public void OnInteract(InputValue value)

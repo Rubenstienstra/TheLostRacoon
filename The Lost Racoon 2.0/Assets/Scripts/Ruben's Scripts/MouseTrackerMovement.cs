@@ -33,6 +33,8 @@ public class MouseTrackerMovement : MonoBehaviour
     public RectTransform bigCircleSchrink;
     public CircleCollider2D bigCircleSchrinkCollider;
     public float circleSchrinkStrengthBuff = 1;
+
+    public bool mouseInZone;
     
     void Start()
     {
@@ -52,7 +54,7 @@ public class MouseTrackerMovement : MonoBehaviour
         mousePosY = mouseStartPos.y;
         currentPhase = 0;
 
-        savingInfo.mouseInZone = true;
+        mouseInZone = true;
         playerInfo.minigameActiveMouse = true;
 
         StartMinigame();
@@ -99,7 +101,7 @@ public class MouseTrackerMovement : MonoBehaviour
           {
              StartCoroutine(MouseMover());
           }
-          if(savingInfo.mouseInZone == false)
+          if(mouseInZone == false)
           {
              StartCoroutine(WaitingForShutDown());
           }
@@ -118,7 +120,7 @@ public class MouseTrackerMovement : MonoBehaviour
         RandomRangeMinMax();
 
         yield return new WaitForSeconds(phaseTime[2]);
-        if (savingInfo.mouseInZone == true)
+        if (mouseInZone == true)
         {
             playerInfo.minigameActiveMouse = false;
             savingInfo.totalMissionsCompleted++;
@@ -188,7 +190,7 @@ public class MouseTrackerMovement : MonoBehaviour
     public IEnumerator WaitingForShutDown()
     {
         yield return new WaitForSeconds(waitingTime);
-        if(savingInfo.mouseInZone == false)
+        if(mouseInZone == false)
         {
             ShutDown();
         }
@@ -233,12 +235,12 @@ public class MouseTrackerMovement : MonoBehaviour
     public void InThirdCircle()
     {
         StopCoroutine(WaitingForShutDown());
-        savingInfo.mouseInZone = true;
+        mouseInZone = true;
     }
     public void OutOfThirdCircle()
     {
         StartCoroutine(WaitingForShutDown());
-        savingInfo.mouseInZone = false;
+        mouseInZone = false;
     }
 
 }

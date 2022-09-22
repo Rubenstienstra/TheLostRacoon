@@ -13,6 +13,5 @@ public class ScriptableSaving : ScriptableObject
 
     //mousetracker movement minigame completed
     public int mouseTrackerTimesDone;
-    public bool mouseInZone;
-    public int strengthStage;
+    //public int strengthStage;
 }

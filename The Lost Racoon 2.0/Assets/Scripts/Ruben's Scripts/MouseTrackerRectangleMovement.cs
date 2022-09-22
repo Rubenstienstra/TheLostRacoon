@@ -17,22 +17,31 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     private float randomMousePosY;
 
     public Vector2 mouseStartPos;
+    public Vector2 mouseEndPos;
     public GameObject[] squares;
 
     // 0 = default, 1 = phase 1, 2 = phase end.
     public float[] strengthBuff;
     public float waitingTime;
+    public bool IsWaiting;
 
                                     //   up  down  
     private float minRandomLengthY; //   0>   <0
     private float maxRandomLengthY; //   2     2
 
+    public Slider movingSlider;
+
+    public bool mouseInZone;
+    public int strengthStage;
+
 
     void Start()
     {
-        //saving data
+        //start settings
         minRandomLengthY = 0;
         maxRandomLengthY = -4;//6
+        
+        
     }
     //If in Area load this
     public void StartAreaMinigame()
@@ -41,14 +50,16 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             squares[i].SetActive(true);
         }
+        movingSlider.gameObject.SetActive(true);
 
         Mouse.current.WarpCursorPosition(mouseStartPos);
         mousePosX = mouseStartPos.x;
         mousePosY = mouseStartPos.y;
-        savingInfo.strengthStage = 0;
+        strengthStage = 0;
 
-        savingInfo.mouseInZone = true;
+        mouseInZone = true;
         playerInfo.minigameActiveMouse = true;
+        mouseCursor.GetComponent<Image>().enabled = enabled; //!
 
         StartMinigame();
 
@@ -57,7 +68,6 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             waitingTime = 0.01f;
         }
-
     }
     // Use Interactable enter
     public void StartMinigame()
@@ -80,40 +90,53 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     }
     public IEnumerator MouseMover()
     {
-        randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[savingInfo.strengthStage];
-        Mouse.current.WarpCursorPosition(new Vector2(mousePosX, randomMousePosY + mousePosY));
+        randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[strengthStage];
+        Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, randomMousePosY + mousePosY));
+        movingSlider.value = mousePosY - mouseStartPos.y;
 
         yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
         if (playerInfo.minigameActiveMouse == true) // double check
         {
             StartCoroutine(MouseMover());
         }
-        if (savingInfo.mouseInZone == false)
+        if(mouseInZone == false)
         {
+            ReconnectPosition();
+        }
+        if (strengthStage == squares.Length -1 && IsWaiting == false)
+        {
+            IsWaiting = true;
             StartCoroutine(WaitingForShutDown());
         }
     }
     public IEnumerator WaitingForShutDown()
     {
+        print("activating shutdown");
         yield return new WaitForSeconds(waitingTime);
-        if (savingInfo.mouseInZone == false)
+        if (strengthStage == squares.Length -1)
         {
             ShutDown();
         }
+        IsWaiting = false;
     }
     public void ShutDown()
     {
-        print("ended minigame at Phase: " + savingInfo.strengthStage.ToString());
+        print("ended minigame at Phase: " + strengthStage.ToString() + " Victory!");
         StopCoroutine(MouseMover());
+        StopCoroutine(WaitingForShutDown());
+
         for (int i = 0; i < squares.Length; i++)
         {
             squares[i].SetActive(false);
         }
-        savingInfo.strengthStage = 0;
+        movingSlider.gameObject.SetActive(false);
+        mouseCursor.GetComponent<Image>().enabled = enabled;
+
+        strengthStage = 0;
         playerInfo.minigameActiveMouse = false;
 
         //Completed
-        if (savingInfo.mouseInZone == true)
+        if (mouseInZone == true)
         {
             playerInfo.minigameActiveMouse = false;
             savingInfo.totalMissionsCompleted++;
@@ -123,13 +146,31 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     }
     public void InSquare()
     {
-        StopCoroutine(WaitingForShutDown());
-        savingInfo.mouseInZone = true;
+        mouseInZone = true;
     }
     public void OutOfSquare()
     {
-        StartCoroutine(WaitingForShutDown());
-        savingInfo.mouseInZone = false;
+        mouseInZone = false;
+    }
+    public void ReconnectPosition()
+    {
+        if(mousePosY >= mouseEndPos.y)
+        {
+            print("Mouse to far!");
+            Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, mouseEndPos.y));
+            strengthStage = squares.Length -1;
+            mouseInZone = true;
+            IsWaiting = true;
+
+        }
+        else if (mousePosY <= mouseStartPos.y)
+        {
+            Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, mouseStartPos.y));
+        } 
+        else
+        {
+            Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, mousePosY));
+        }
     }
 
 }
