@@ -21,9 +21,9 @@ public class MousePointer : MonoBehaviour
         {
             mouseRectangleInfo.mouseInZone = true;
 
-            if(mouseRectangleInfo.strengthStage <= mouseRectangleInfo.squares.Length -1)
+            if (mouseRectangleInfo.strengthStage <= mouseRectangleInfo.squares.Length - 1)
             {
-                mouseRectangleInfo.strengthStage++;
+            mouseRectangleInfo.strengthStage++;
             }
         }
         if (col.gameObject == mouseRectangleInfo.squares[0])
@@ -64,6 +64,6 @@ public class MousePointer : MonoBehaviour
     }
     public void GoingDown()
     {
-
+        mouseRectangleInfo.strengthStage--;
     }
 }

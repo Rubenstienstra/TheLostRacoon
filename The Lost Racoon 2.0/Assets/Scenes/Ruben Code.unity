@@ -853,6 +853,7 @@ MonoBehaviour:
   mouseInfo: {fileID: 537946616}
   mouseRectangleInfo: {fileID: 537946623}
   minigameActiveMouse: 0
+  minigameActiveMouseRectangle: 0
   minigameActive3x3Puzzle: 0
 --- !u!114 &537946623
 MonoBehaviour:
@@ -872,6 +873,7 @@ MonoBehaviour:
   mouseCursor: {fileID: 629538520}
   mousePosX: 0
   mousePosY: 0
+  randomMousePosY: 0
   mouseStartPos: {x: 1150, y: 350}
   mouseEndPos: {x: 1150, y: 775}
   squares:
@@ -889,6 +891,9 @@ MonoBehaviour:
   movingSlider: {fileID: 1239883289}
   mouseInZone: 0
   strengthStage: 0
+  ActivateOption1: 1
+  strengthDebuff: 100
+  totalMousePos: 0
 --- !u!1 &608070987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1692770622066322848, guid: a3ef4845f4140b54789da1fef40873d4,
@@ -1081,6 +1086,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1239883287, guid: a3ef4845f4140b54789da1fef40873d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239883289, guid: a3ef4845f4140b54789da1fef40873d4, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602902578, guid: a3ef4845f4140b54789da1fef40873d4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662468405, guid: a3ef4845f4140b54789da1fef40873d4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3765202786364901645, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
       propertyPath: mouseInfo

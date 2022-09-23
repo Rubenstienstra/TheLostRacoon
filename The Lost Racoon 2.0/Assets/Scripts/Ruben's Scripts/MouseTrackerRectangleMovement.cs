@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 public class MouseTrackerRectangleMovement : MonoBehaviour
 {
     public PlayerScript playerInfo;
@@ -13,8 +12,8 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public GameObject mouseCursor;
     public float mousePosX;
     public float mousePosY;
-    private float randomMousePosX;
-    private float randomMousePosY;
+
+    public float randomMousePosY;
 
     public Vector2 mouseStartPos;
     public Vector2 mouseEndPos;
@@ -34,12 +33,19 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public bool mouseInZone;
     public int strengthStage;
 
+    public bool ActivateOption1;
+    public float strengthDebuff;
+    public float totalMousePos;
 
     void Start()
     {
         //start settings
-        minRandomLengthY = 0;
-        maxRandomLengthY = -4;//6
+        if(ActivateOption1 == false)
+        {
+            minRandomLengthY = 0;
+            maxRandomLengthY = -4;//6
+        }
+        
         
         
     }
@@ -68,6 +74,11 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             waitingTime = 0.01f;
         }
+        if(strengthDebuff == 0)
+        {
+            strengthDebuff = 1;
+        }
+        movingSlider.maxValue = mouseEndPos.y - mouseStartPos.y;
     }
     // Use Interactable enter
     public void StartMinigame()
@@ -90,26 +101,44 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     {
         mousePosY = value.Get<float>();
     }
+    //else
+    //{
+    //    randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[strengthStage];
+    //    Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, randomMousePosY + mousePosY));
+    //}
+    //formule: player pos + moustartpos /2 = gemmidelde pos: zorgt er voor dat als je hoger gaat het getal verschil steeds hoger wordt. Met strength Debuff maak je het nog getal kleiner.
+    //randomMousePosY = mouseStartPos.y + mousePosY;
+    //randomMousePosY /= 2;
+    //randomMousePosY /= strengthDebuff;
+    //totalMousePos = mousePosY - randomMousePosY;
     public IEnumerator MouseMover()
     {
-        randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[strengthStage];
-        Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, randomMousePosY + mousePosY));
-        movingSlider.value = mousePosY - mouseStartPos.y;
+        if (ActivateOption1 == true)
+        {
+            randomMousePosY = mousePosY - mouseStartPos.y;
+            randomMousePosY /= strengthDebuff;
+            totalMousePos = randomMousePosY;
+        }
 
-        yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
+        movingSlider.value = mousePosY - mouseStartPos.y;
+        if (mousePosY > mouseStartPos.y)
+        {
+            Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, totalMousePos));
+        }
         if (playerInfo.minigameActiveMouseRectangle == true) // double check
         {
             StartCoroutine(MouseMover());
         }
-        if(mouseInZone == false)
+        if (mouseInZone == false)
         {
             ReconnectPosition();
         }
-        if (strengthStage == squares.Length -1 && IsWaiting == false)
+        if (strengthStage == squares.Length - 1 && IsWaiting == false)
         {
             IsWaiting = true;
             StartCoroutine(WaitingForShutDown());
         }
+        yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
     }
     public IEnumerator WaitingForShutDown()
     {
