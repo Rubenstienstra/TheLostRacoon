@@ -1184,25 +1184,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2867174878968329352, guid: daa491ec766b8ed49a394ecb9dea55b1,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.000000033392045
-      objectReference: {fileID: 0}
-    - target: {fileID: 2867174878968329352, guid: daa491ec766b8ed49a394ecb9dea55b1,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.000000008319219
-      objectReference: {fileID: 0}
     - target: {fileID: 3404002170308338672, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001646809
+      value: -0.00000001589621
       objectReference: {fileID: 0}
     - target: {fileID: 3404002170308338672, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000004986136
+      value: 0.000000006584427
       objectReference: {fileID: 0}
     - target: {fileID: 6596604510309306397, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
@@ -1269,15 +1259,5 @@ PrefabInstance:
       propertyPath: camSpot
       value: 
       objectReference: {fileID: 401086937}
-    - target: {fileID: 6705903009740407993, guid: daa491ec766b8ed49a394ecb9dea55b1,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.000000016696022
-      objectReference: {fileID: 0}
-    - target: {fileID: 6705903009740407993, guid: daa491ec766b8ed49a394ecb9dea55b1,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.0000000041596095
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa491ec766b8ed49a394ecb9dea55b1, type: 3}

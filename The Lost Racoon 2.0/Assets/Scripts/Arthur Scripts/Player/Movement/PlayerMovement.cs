@@ -10,18 +10,21 @@ public class PlayerMovement : MonoBehaviour
     public InputAction moveAction, sprintAction, jumpAction;
     public CharacterController controller;
     public Transform cam;
+    public Collider playerModel;
     [Header("Changeable", order = 1)]
     public float speed;
     public float sprintSpeed;
     public float jumpCharge, jumpMin, jumpMax, chargePerSec;
     [Header("Debug", order = 2)]
+    public float distToGround;
     public bool movementLock;
     public Vector3 moveDir;
     public float verticalVelocity = 0f;
     public float gravityValue = 9.81f;
     public Vector3 playerVelocity;
+    public float groundDetectRadius;
     float turnSmoothVelocity;
-    public Collider[] coll;
+    public Collider[] colliders;
     public bool isGrounded;
     bool charged;
 
@@ -32,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         jumpCharge = jumpMin;
+        distToGround = playerModel.bounds.extents.y;
+        
     }
     private void Update() {
         //input
@@ -42,15 +47,27 @@ public class PlayerMovement : MonoBehaviour
         transform.parent.position = transform.position;
 
         bool groundedPlayer = controller.isGrounded;
-
-        // gravity
-        coll = Physics.OverlapSphere(transform.position, 0.43f);
-        if (coll.Length >= 3) {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, -Vector3.up, out hit, 0.02f);
+        if (hit.collider != null) //out is output (to hit)
+        {
             playerVelocity.y = 0;
             isGrounded = true;
         } else {
             isGrounded = false;
         }
+        // gravity
+        /*
+        colliders = Physics.OverlapSphere(transform.position, groundDetectRadius);
+        foreach (Collider coll in colliders) {
+        if (colliders.Length >= 3) {
+            
+        } else {
+            isGrounded = false;
+        }
+        }
+        */
+
         //verticalVelocity -= gravityValue * Time.deltaTime;
 
 
@@ -95,6 +112,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmos() {
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, 0.43f);
+        Gizmos.DrawWireSphere(transform.position, groundDetectRadius);
     }
 }
