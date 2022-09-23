@@ -40,7 +40,6 @@ public class Pickup : MonoBehaviour
             item.transform.SetParent(itemContainer);
             item.transform.localPosition = Vector3.zero;
             item.transform.localRotation = Quaternion.Euler(Vector3.zero);
-            item.transform.localScale = Vector3.one;
             Debug.Log("Picked up");
         } else {
             Debug.Log("Can not pick up item because item = " + item + ", not null so an item is already in the slot");
