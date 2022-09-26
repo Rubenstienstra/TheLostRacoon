@@ -874,7 +874,7 @@ MonoBehaviour:
   mousePosX: 0
   mousePosY: 0
   randomMousePosY: 0
-  mouseStartPos: {x: 1150, y: 350}
+  mouseStartPos: {x: 1150, y: 300}
   mouseEndPos: {x: 1150, y: 775}
   squares:
   - {fileID: 730945933}
@@ -886,13 +886,13 @@ MonoBehaviour:
   - 2
   - 3
   - 4
-  waitingTime: 100
+  waitingTime: 0.5
   IsWaiting: 0
   movingSlider: {fileID: 1239883289}
   mouseInZone: 0
   strengthStage: 0
   ActivateOption1: 1
-  strengthDebuff: 100
+  strengthDebuff: 10
   totalMousePos: 0
 --- !u!1 &608070987 stripped
 GameObject:

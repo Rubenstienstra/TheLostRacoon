@@ -24,10 +24,6 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public float waitingTime;
     public bool IsWaiting;
 
-                                    //   up  down  
-    private float minRandomLengthY; //   0>   <0
-    private float maxRandomLengthY; //   2     2
-
     public Slider movingSlider;
 
     public bool mouseInZone;
@@ -42,8 +38,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         //start settings
         if(ActivateOption1 == false)
         {
-            minRandomLengthY = 0;
-            maxRandomLengthY = -4;//6
+            
         }
         
         
@@ -65,7 +60,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
 
         mouseInZone = true;
         playerInfo.minigameActiveMouseRectangle = true;
-        mouseCursor.GetComponent<Image>().enabled = enabled; //!
+        mouseCursor.GetComponent<Image>().enabled = !enabled; //!
 
         StartMinigame();
 
@@ -115,16 +110,20 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     {
         if (ActivateOption1 == true)
         {
-            randomMousePosY = mousePosY - mouseStartPos.y;
-            randomMousePosY /= strengthDebuff;
-            totalMousePos = randomMousePosY;
+            totalMousePos = mousePosY - mouseStartPos.y;
+            totalMousePos /= strengthDebuff;
+            if(totalMousePos > 0)
+            {
+                totalMousePos = -totalMousePos;
+            }
         }
 
         movingSlider.value = mousePosY - mouseStartPos.y;
         if (mousePosY > mouseStartPos.y)
         {
-            Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, totalMousePos));
+            Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, totalMousePos + mousePosY));
         }
+        yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
         if (playerInfo.minigameActiveMouseRectangle == true) // double check
         {
             StartCoroutine(MouseMover());
@@ -133,20 +132,24 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             ReconnectPosition();
         }
-        if (strengthStage == squares.Length - 1 && IsWaiting == false)
+        if (mousePosY > mouseEndPos.y && IsWaiting == false)
         {
             IsWaiting = true;
             StartCoroutine(WaitingForShutDown());
         }
-        yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
+        
     }
     public IEnumerator WaitingForShutDown()
     {
-        print("activating shutdown");
+        print("Activating WaitingShutdown");
         yield return new WaitForSeconds(waitingTime);
-        if (strengthStage == squares.Length -1)
+        if (mousePosY > mouseEndPos.y)
         {
             ShutDown();
+        }
+        else
+        {
+            StopCoroutine(WaitingForShutDown());
         }
         IsWaiting = false;
     }
