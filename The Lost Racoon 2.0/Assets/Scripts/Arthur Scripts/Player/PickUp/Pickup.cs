@@ -6,72 +6,59 @@ using UnityEngine.InputSystem;
 public class Pickup : MonoBehaviour
 {
     [Header("Debug", order = 0)]
-    public float pickUpRange;
-    public float dropForwardForce, dropUpwardForce;
+    public float dropForwardForce;
+    public float dropUpwardForce;
+    public bool slotfull;
 
-    [Header("References", order = 1)]
+    [Header("input", order = 1)]
     public PlayerInput playerInput;
 
     [Header("References", order = 2)]
-    public Rigidbody rb;
-    public Rigidbody playerRB;
-    public BoxCollider coll;
-    public Transform mouth, itemContainer, player;
-
-    public bool equipped;
-    public bool slotfull;
+    public Transform itemContainer;
+    private Collider item;
+    private Rigidbody rb;
 
     private void Start() {
-        if (!equipped) {
-            rb.isKinematic = false;
-            coll.isTrigger = false;
-        }
-        if (equipped) {
-            rb.isKinematic = true;
-            coll.isTrigger = true;
-            slotfull = true;
-        }
     }
     private void Update() {
-        //input
-        float interactInput = playerInput.actions["Interact"].ReadValue<float>();
-        float dropInput = playerInput.actions["Drop"].ReadValue<float>();
-        //Check if item is near hand and player pressed interaction key
-        Vector3 distanceToPaw = mouth.position - transform.position;
-        if(!equipped && distanceToPaw.magnitude <= pickUpRange && interactInput == 1 && !slotfull) {
-            PickUp();
-        }
-        if(equipped && dropInput == 1) {
+        if(slotfull && playerInput.actions["Drop"].ReadValue<float>() == 1) {
             Drop();
         }
     }
 
-    private void PickUp() {
-        equipped = true;
-        slotfull = true;
-
-        transform.SetParent(itemContainer);
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.Euler(Vector3.zero);
-        transform.localScale = Vector3.one;
-
-        rb.isKinematic = true;
-        coll.isTrigger = true;
+    public void PickUp(Collider coll) {
+        if (!slotfull) {
+            //bool for if slot is full
+            slotfull = true;
+            //getting the items references
+            item = coll;
+            rb = item.GetComponent<Rigidbody>();
+            //making it only visible
+            item.isTrigger = true;
+            rb.isKinematic = true;
+            //putting it in the actual slot
+            item.transform.SetParent(itemContainer);
+            item.transform.localPosition = Vector3.zero;
+            item.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            Debug.Log("Picked up");
+        } else {
+            Debug.Log("Can not pick up item because item = " + item + ", not null so an item is already in the slot");
+        }
     }
 
     private void Drop() {
-        equipped = false;
-        slotfull = false;
-
-        transform.SetParent(null);
+        item.transform.SetParent(null);
 
         rb.isKinematic = false;
-        coll.isTrigger = false;
+        item.isTrigger = false;
 
-        rb.velocity = playerRB.velocity;
+        //rb.velocity = this.GetComponent<Rigidbody>().velocity;
 
         //Add dropforce
-        rb.AddForce(player.forward * dropForwardForce, ForceMode.Impulse);
-        rb.AddForce(player.forward * dropUpwardForce, ForceMode.Impulse);
+        rb.AddForce(this.transform.forward * dropForwardForce, ForceMode.Impulse);
+        rb.AddForce(this.transform.forward * dropUpwardForce, ForceMode.Impulse);
+        slotfull = false;
+        Debug.Log("Dropped Item: " + item);
+        item = null;
     }
 }
