@@ -19,9 +19,17 @@ public class FileDataHandler
         GameData loadedData = null;
         if (File.Exists(fullPath)) {
             try {
+                string dataToLoad = "";
+                using (FileStream stream = new FileStream(fullPath, FileMode.Open)) {
+                    using (StreamReader reader = new StreamReader(stream)) {
+                        dataToLoad = reader.ReadToEnd();
+                    }
+                }
+
+                loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
 
             } catch(Exception e) {
-                //Debug.LogError("Error tijdens het proberen te laden van dit bestand: " + )
+                Debug.LogError("Error tijdens het proberen te laden van dit bestand: " + fullPath + "/n" + e);
             }
         }
         return loadedData;
