@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Interactible
+  - CamFreezeZone
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -12,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Camera obsticle ignore
   - 
   - 
   - 
