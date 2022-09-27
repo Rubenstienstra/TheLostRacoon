@@ -75,19 +75,6 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             StartCoroutine(MouseMover());
         }
     }
-
-    public void OnMouseX(InputValue value)
-    {
-        UIInfo.mousePosX = value.Get<float>();
-        if(playerInfo.minigameActiveMouseRectangle == true)
-        {
-            ReconnectPosition();
-        }
-    }
-    public void OnMouseY(InputValue value)
-    {
-        UIInfo.mousePosY = value.Get<float>();
-    }
     public IEnumerator MouseMover()
     {
         totalMousePos = UIInfo.mousePosY - mouseStartPos.y;
@@ -102,6 +89,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, totalMousePos + UIInfo.mousePosY));
         }
         yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
+
         if (playerInfo.minigameActiveMouseRectangle == true) // double check
         {
             StartCoroutine(MouseMover());
