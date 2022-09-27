@@ -8,10 +8,8 @@ public class MouseTrackerMovement : MonoBehaviour
 {
     public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
-
-    public GameObject mouseCursor;
-    public float mousePosX;
-    public float mousePosY;
+    public PlayerInputUIController UIInfo;
+    
     private float randomMousePosX;
     private float randomMousePosY;
 
@@ -34,6 +32,8 @@ public class MouseTrackerMovement : MonoBehaviour
     public CircleCollider2D bigCircleSchrinkCollider;
     public float circleSchrinkStrengthBuff = 1;
 
+    public PlayerInput crPlayerInput;
+
     public bool mouseInZone;
     
     void Start()
@@ -50,8 +50,8 @@ public class MouseTrackerMovement : MonoBehaviour
         }
 
         Mouse.current.WarpCursorPosition(mouseStartPos);
-        mousePosX = mouseStartPos.x;
-        mousePosY = mouseStartPos.y;
+        UIInfo.mousePosX = mouseStartPos.x;
+        UIInfo.mousePosY = mouseStartPos.y;
         currentPhase = 0;
 
         mouseInZone = true;
@@ -76,22 +76,11 @@ public class MouseTrackerMovement : MonoBehaviour
             StartCoroutine(CountDown());
         }
     }
-
-    public void OnMouseX(InputValue value)
-    {
-       mousePosX = value.Get<float>();
-       mouseCursor.transform.position = new Vector2(mousePosX, mousePosY);
-    }
-    public void OnMouseY(InputValue value)
-    {
-        mousePosY = value.Get<float>();
-        mouseCursor.transform.position = new Vector2(mousePosX, mousePosY);
-    }
     public IEnumerator MouseMover()
     {     
           randomMousePosX = Random.Range(minRandomLengthX, maxRandomLengthX) * strengthBuff[currentPhase];
           randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
-          Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + mousePosX ,randomMousePosY + mousePosY));
+          Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + UIInfo.mousePosX ,randomMousePosY + UIInfo.mousePosY));
 
           bigCircleSchrink.sizeDelta = new Vector2(bigCircleSchrink.rect.width - (0.25f * circleSchrinkStrengthBuff), bigCircleSchrink.rect.height - (0.25f * circleSchrinkStrengthBuff));
           bigCircleSchrinkCollider.radius = bigCircleSchrink.rect.width/2;

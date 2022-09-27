@@ -8,19 +8,17 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
     public MouseTrackerMovement circleMouseInfo;
+    public PlayerInputUIController UIInfo;
 
     public GameObject mouseCursor;
-    public float mousePosX;
-    public float mousePosY;
 
     public float randomMousePosY;
 
     public Vector2 mouseStartPos;
     public Vector2 mouseEndPos;
-    public GameObject[] squares;
+    public GameObject[] UIComponents;
 
     // 0 = default, 1 = phase 1, 2 = phase end.
-    public float[] strengthBuff;
     public float waitingTime;
     public bool IsWaiting;
 
@@ -29,33 +27,27 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public bool mouseInZone;
     public int strengthStage;
 
-    public bool ActivateOption1;
     public float strengthDebuff;
     public float totalMousePos;
 
+    public PlayerInput crPlayerInput;
+
     void Start()
     {
-        //start settings
-        if(ActivateOption1 == false)
-        {
-            
-        }
-        
-        
         
     }
     //If in Area load this
     public void StartAreaMinigame()
     {
-        for (int i = 0; i < squares.Length; i++)
+        for (int i = 0; i < UIComponents.Length; i++)
         {
-            squares[i].SetActive(true);
+            UIComponents[i].SetActive(true);
         }
         movingSlider.gameObject.SetActive(true);
 
         Mouse.current.WarpCursorPosition(mouseStartPos);
-        mousePosX = mouseStartPos.x;
-        mousePosY = mouseStartPos.y;
+        UIInfo.mousePosX = mouseStartPos.x;
+        UIInfo.mousePosY = mouseStartPos.y;
         strengthStage = 0;
 
         mouseInZone = true;
@@ -86,7 +78,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
 
     public void OnMouseX(InputValue value)
     {
-        mousePosX = value.Get<float>();
+        UIInfo.mousePosX = value.Get<float>();
         if(playerInfo.minigameActiveMouseRectangle == true)
         {
             ReconnectPosition();
@@ -94,34 +86,20 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     }
     public void OnMouseY(InputValue value)
     {
-        mousePosY = value.Get<float>();
+        UIInfo.mousePosY = value.Get<float>();
     }
-    //else
-    //{
-    //    randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[strengthStage];
-    //    Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, randomMousePosY + mousePosY));
-    //}
-    //formule: player pos + moustartpos /2 = gemmidelde pos: zorgt er voor dat als je hoger gaat het getal verschil steeds hoger wordt. Met strength Debuff maak je het nog getal kleiner.
-    //randomMousePosY = mouseStartPos.y + mousePosY;
-    //randomMousePosY /= 2;
-    //randomMousePosY /= strengthDebuff;
-    //totalMousePos = mousePosY - randomMousePosY;
     public IEnumerator MouseMover()
     {
-        if (ActivateOption1 == true)
+        totalMousePos = UIInfo.mousePosY - mouseStartPos.y;
+        totalMousePos /= strengthDebuff;
+        if(totalMousePos > 0)
         {
-            totalMousePos = mousePosY - mouseStartPos.y;
-            totalMousePos /= strengthDebuff;
-            if(totalMousePos > 0)
-            {
-                totalMousePos = -totalMousePos;
-            }
+            totalMousePos = -totalMousePos;
         }
-
-        movingSlider.value = mousePosY - mouseStartPos.y;
-        if (mousePosY > mouseStartPos.y)
+        movingSlider.value = UIInfo.mousePosY - mouseStartPos.y;
+        if (UIInfo.mousePosY > mouseStartPos.y)
         {
-            Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, totalMousePos + mousePosY));
+            Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, totalMousePos + UIInfo.mousePosY));
         }
         yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
         if (playerInfo.minigameActiveMouseRectangle == true) // double check
@@ -132,7 +110,11 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             ReconnectPosition();
         }
-        if (mousePosY > mouseEndPos.y && IsWaiting == false)
+        else if (UIInfo.mousePosX >= mouseStartPos.x || UIInfo.mousePosX <= mouseStartPos.x)
+        {
+            ReconnectPosition();
+        }
+        if (UIInfo.mousePosY > mouseEndPos.y && IsWaiting == false)
         {
             IsWaiting = true;
             StartCoroutine(WaitingForShutDown());
@@ -143,7 +125,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     {
         print("Activating WaitingShutdown");
         yield return new WaitForSeconds(waitingTime);
-        if (mousePosY > mouseEndPos.y)
+        if (UIInfo.mousePosY > mouseEndPos.y)
         {
             ShutDown();
         }
@@ -159,9 +141,9 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         StopCoroutine(MouseMover());
         StopCoroutine(WaitingForShutDown());
 
-        for (int i = 0; i < squares.Length; i++)
+        for (int i = 0; i < UIComponents.Length; i++)
         {
-            squares[i].SetActive(false);
+            UIComponents[i].SetActive(false);
         }
         movingSlider.gameObject.SetActive(false);
         mouseCursor.GetComponent<Image>().enabled = enabled;
@@ -188,22 +170,22 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     }
     public void ReconnectPosition()
     {
-        if(mousePosY >= mouseEndPos.y)
+        if(UIInfo.mousePosY >= mouseEndPos.y)
         {
             print("Mouse to far!");
             Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, mouseEndPos.y));
-            strengthStage = squares.Length -1;
+            strengthStage = UIComponents.Length -1;
             mouseInZone = true;
             IsWaiting = true;
 
         }
-        else if (mousePosY <= mouseStartPos.y)
+        else if (UIInfo.mousePosY <= mouseStartPos.y)
         {
             Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, mouseStartPos.y));
         } 
         else
         {
-            Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, mousePosY));
+            Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, UIInfo.mousePosY));
         }
     }
 
