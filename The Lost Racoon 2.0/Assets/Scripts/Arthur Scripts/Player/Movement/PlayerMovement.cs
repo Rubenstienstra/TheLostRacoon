@@ -45,8 +45,6 @@ public class PlayerMovement : MonoBehaviour
         float sprintInput = sprintAction.ReadValue<float>();
         float jumpInput = jumpAction.ReadValue<float>();
         transform.parent.position = transform.position;
-
-        bool groundedPlayer = controller.isGrounded;
         RaycastHit hit;
         Physics.Raycast(transform.position, -Vector3.up, out hit, 0.02f);
         if (hit.collider != null) //out is output (to hit)
