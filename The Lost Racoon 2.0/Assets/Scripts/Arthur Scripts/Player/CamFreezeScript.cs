@@ -37,6 +37,7 @@ public class CamFreezeScript : MonoBehaviour
         if (other.tag == "CamFreezeZone" && !camFroze) {
             freezeLook.SetActive(true); 
             freeLook.SetActive(false);
+            Debug.Log("cam froze");
             if (snapToTransform) {
                 freezeLook.transform.position = camSpot.position;
                 freezeLook.transform.rotation = camSpot.rotation;
