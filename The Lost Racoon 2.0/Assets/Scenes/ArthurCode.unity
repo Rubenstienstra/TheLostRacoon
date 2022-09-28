@@ -1584,6 +1584,7 @@ MonoBehaviour:
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
   circleMouseInfo: {fileID: 1911117141}
   UIInfo: {fileID: 19293605}
+  interactInfo: {fileID: 1838092288}
   mouseCursor: {fileID: 703476816}
   randomMousePosY: 0
   mouseStartPos: {x: 1150, y: 300}
@@ -1864,6 +1865,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6451736018155743805}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1838092288 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6596604511056919679, guid: daa491ec766b8ed49a394ecb9dea55b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6596604510722140623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878783c5dd0c155458c0925ed89c02b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1911117136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,6 +1991,7 @@ MonoBehaviour:
   playerInfo: {fileID: 53637382}
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
   UIInfo: {fileID: 19293605}
+  interactInfo: {fileID: 1838092288}
   mouseStartPos: {x: 940, y: 560}
   circles:
   - {fileID: 1224168881}
@@ -2158,12 +2172,12 @@ PrefabInstance:
     - target: {fileID: 2867174878968329352, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000032409787
+      value: -0.000000032409783
       objectReference: {fileID: 0}
     - target: {fileID: 2867174878968329352, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000011569107
+      value: 0.000000011569105
       objectReference: {fileID: 0}
     - target: {fileID: 3404002170308338672, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
@@ -2248,12 +2262,12 @@ PrefabInstance:
     - target: {fileID: 6705903009740407993, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016204893
+      value: -0.000000016204888
       objectReference: {fileID: 0}
     - target: {fileID: 6705903009740407993, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000005784554
+      value: 0.000000005784552
       objectReference: {fileID: 0}
     - target: {fileID: 7237360301854654331, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
