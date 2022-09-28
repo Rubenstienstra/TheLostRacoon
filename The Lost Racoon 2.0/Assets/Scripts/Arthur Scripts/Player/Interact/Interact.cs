@@ -37,7 +37,7 @@ public class Interact : MonoBehaviour
             {
                 print("Is in Range!");
                 minigameDetected = true;
-                coll.gameObject.SetActive(false);
+                //coll.gameObject.SetActive(false);
             }
             else if(minigameDetected != true)
             {

@@ -125,7 +125,7 @@ public class MouseTrackerMovement : MonoBehaviour
     }
     public void RandomRangeMinMax()
     {
-        if(currentPhase >= 3)
+        if(currentPhase >= circles.Length -1)
         {
             print("ERROR to many phases ):");
             currentPhase--;
