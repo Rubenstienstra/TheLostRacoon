@@ -28,11 +28,9 @@ public class MouseTrackerMovement : MonoBehaviour
     private float minRandomLengthY; //  -2,    0>   <0     -     -
     private float maxRandomLengthY; //   2 ,   2     2     -     -
 
-    public RectTransform bigCircleSchrink;
-    public CircleCollider2D bigCircleSchrinkCollider;
+    private RectTransform bigCircleSchrinkRect;
+    private CircleCollider2D bigCircleSchrinkCollider;
     public float circleSchrinkStrengthBuff = 1;
-
-    public PlayerInput crPlayerInput;
 
     public bool mouseInZone;
     
@@ -65,16 +63,15 @@ public class MouseTrackerMovement : MonoBehaviour
         {
             waitingTime = 0.1f;
         }
+        bigCircleSchrinkCollider = circles[0].GetComponent<CircleCollider2D>();
+        bigCircleSchrinkRect = circles[0].GetComponent<RectTransform>();
         
     }
     // Use Interactable enter
     public void StartMinigame()
     {
-        if(playerInfo.minigameActiveMouse == true)
-        {
-            StartCoroutine(MouseMover());
-            StartCoroutine(CountDown());
-        }
+        StartCoroutine(MouseMover());
+        StartCoroutine(CountDown());
     }
     public IEnumerator MouseMover()
     {     
@@ -82,8 +79,8 @@ public class MouseTrackerMovement : MonoBehaviour
           randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
           Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + UIInfo.mousePosX ,randomMousePosY + UIInfo.mousePosY));
 
-          bigCircleSchrink.sizeDelta = new Vector2(bigCircleSchrink.rect.width - (0.25f * circleSchrinkStrengthBuff), bigCircleSchrink.rect.height - (0.25f * circleSchrinkStrengthBuff));
-          bigCircleSchrinkCollider.radius = bigCircleSchrink.rect.width/2;
+          bigCircleSchrinkRect.sizeDelta = new Vector2(bigCircleSchrinkRect.rect.width - (0.25f * circleSchrinkStrengthBuff), bigCircleSchrinkRect.rect.height - (0.25f * circleSchrinkStrengthBuff));
+          bigCircleSchrinkCollider.radius = bigCircleSchrinkRect.rect.width/2;
 
           yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
           if(playerInfo.minigameActiveMouse == true) // double check
@@ -195,7 +192,7 @@ public class MouseTrackerMovement : MonoBehaviour
         }
         currentPhase = 0;
         playerInfo.minigameActiveMouse = false;
-        bigCircleSchrink.sizeDelta = new Vector2(400,400);
+        bigCircleSchrinkRect.sizeDelta = new Vector2(400,400); // default size
     }
     
 

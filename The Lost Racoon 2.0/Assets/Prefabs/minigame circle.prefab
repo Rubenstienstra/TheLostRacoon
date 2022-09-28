@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 6749018415140618695}
   - component: {fileID: 6749018415140618694}
   m_Layer: 5
-  m_Name: Small Image
+  m_Name: Small circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +209,7 @@ RectTransform:
   m_GameObject: {fileID: 6749018415140618691}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1343586019651452354}
@@ -301,7 +301,7 @@ RectTransform:
   m_GameObject: {fileID: 6749018415397933793}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000306, y: 1.0000306, z: 1.0000306}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1343586019651452354}
@@ -333,9 +333,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09234336, y: 7.2499914}
+  m_Offset: {x: 0, y: 7}
   serializedVersion: 2
-  m_Radius: 190
+  m_Radius: 189
 --- !u!1 &6749018415515335214
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +366,7 @@ RectTransform:
   m_GameObject: {fileID: 6749018415515335214}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1343586019651452354}

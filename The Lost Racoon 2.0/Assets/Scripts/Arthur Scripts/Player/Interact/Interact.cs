@@ -50,14 +50,15 @@ public class Interact : MonoBehaviour
         foreach (Collider coll in interactionColliders) {
             if (coll.gameObject.tag == "Minigame") {
                 Debug.Log("Interactible or Item in reach, press E to interact or pick up");
-                //Ui elliment stage 2
-                if (interactInput == 1 && minigameDetected) {
-                   
+                //Ui element stage 2
+                if (interactInput == 1 && minigameDetected)
+                {
+                    CollidedMinigame(coll);
                   //interaction here
                     Debug.Log("Interacted");
-                    //coll.gameObject.SetActive(false);
                 }
-            }else if (coll.gameObject.tag == "Item") {
+            }
+            else if (coll.gameObject.tag == "Item") {
                 if (interactInput == 1) {
                     //Pick up here
                     pickupscript.PickUp(coll);
@@ -71,5 +72,21 @@ public class Interact : MonoBehaviour
         Gizmos.DrawWireSphere(interactionAria.position, interactionDiameter * 2);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(detectionAria.position, detectDiameter * 2);
+    }
+    public void CollidedMinigame(Collider coll)
+    {
+        if (coll.gameObject.GetComponent<MouseTrackerMovement>())
+        {
+            coll.gameObject.GetComponent<MouseTrackerMovement>().StartAreaMinigame();
+        }
+        else if (coll.gameObject.GetComponent<MouseTrackerRectangleMovement>())
+        {
+            coll.gameObject.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
+        }
+        else if (coll.gameObject.GetComponent<MouseTrackerRectangleMovement>())
+        {
+
+        }
+        //coll.gameObject.GetComponent<Collider>().enabled 
     }
 }
