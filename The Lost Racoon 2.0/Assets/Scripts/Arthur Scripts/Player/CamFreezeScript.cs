@@ -14,6 +14,7 @@ public class CamFreezeScript : MonoBehaviour
     public bool snapToTransform;
     public Transform camSpot;
     bool camFroze;
+    public bool smoothTransition;
     //fix prefab
     // Start is called before the first frame update
     void Start()
@@ -29,8 +30,12 @@ public class CamFreezeScript : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         if (other.tag == "CamFreezeZone" && camFroze) {
             freezeLook.SetActive(false);
+            if (!smoothTransition) {
+                freezeLook.GetComponentInChildren<GameObject>().SetActive(false);
+                cam.SetActive(true);
+            }
             freeLook.SetActive(true);
-            cam.SetActive(true);
+
             camFroze = false;
             Debug.Log("Cam pos unlocked");
         }
@@ -39,15 +44,19 @@ public class CamFreezeScript : MonoBehaviour
         if (other.tag == "CamFreezeZone" && !camFroze) {
             freezeLook.SetActive(true); 
             freeLook.SetActive(false);
-            Camera.main.gameObject.SetActive(false);
-
-            if (snapToTransform) {
-                freezeLook.transform.position = camSpot.position;
-                freezeLook.transform.rotation = camSpot.rotation;
+            if (!smoothTransition) {
+                Camera.main.gameObject.SetActive(false);
             } else {
-                freezeLook.transform.position = freeLook.transform.position;
-                freezeLook.transform.rotation = freeLook.transform.rotation;
+                if (snapToTransform) {
+                    freezeLook.transform.position = camSpot.position;
+                    freezeLook.transform.rotation = camSpot.rotation;
+                } else {
+
+                }
+
             }
+            freezeLook.transform.position = freeLook.transform.position;
+            freezeLook.transform.rotation = freeLook.transform.rotation;
             camFroze = true;
             Debug.Log("Cam pos locked");
         }
