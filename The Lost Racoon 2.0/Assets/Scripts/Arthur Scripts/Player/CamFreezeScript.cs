@@ -9,6 +9,7 @@ public class CamFreezeScript : MonoBehaviour
     [Header("References", order = 0)]
     public GameObject freeLook;
     public GameObject freezeLook;
+    public GameObject cam;
     [Header("Snap to Transform", order = 1)]
     public bool snapToTransform;
     public Transform camSpot;
@@ -29,6 +30,7 @@ public class CamFreezeScript : MonoBehaviour
         if (other.tag == "CamFreezeZone" && camFroze) {
             freezeLook.SetActive(false);
             freeLook.SetActive(true);
+            cam.SetActive(true);
             camFroze = false;
             Debug.Log("Cam pos unlocked");
         }
@@ -37,6 +39,8 @@ public class CamFreezeScript : MonoBehaviour
         if (other.tag == "CamFreezeZone" && !camFroze) {
             freezeLook.SetActive(true); 
             freeLook.SetActive(false);
+            Camera.main.gameObject.SetActive(false);
+
             if (snapToTransform) {
                 freezeLook.transform.position = camSpot.position;
                 freezeLook.transform.rotation = camSpot.rotation;
