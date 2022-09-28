@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b6e9486bd13f1534d971bf09d3493968
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerInfo: {instanceID: 0}
+  - mouseInfo: {instanceID: 0}
+  - savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  - pointer: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

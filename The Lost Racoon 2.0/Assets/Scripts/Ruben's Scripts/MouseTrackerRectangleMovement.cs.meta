@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 5bc87cf06ae0f7e40bcf294a92e95b1d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerInfo: {instanceID: 0}
+  - savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  - circleMouseInfo: {instanceID: 0}
+  - mouseCursor: {instanceID: 0}
+  - bigCircleSchrink: {instanceID: 0}
+  - bigCircleSchrinkCollider: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -8,15 +8,18 @@ public class Interact : MonoBehaviour
     [Header("References", order = 0)]
     public PlayerInput playerInput;
     public Pickup pickupscript;
+    public ScriptableSaving savinginfo;
     [Header("Detection Sphere", order = 1)]
     public Transform detectionAria;
     public float detectDiameter;
     public Collider[] detectedColliders;
     public bool detected;
+    public bool minigameDetected;
     [Header("Interaction Sphere", order = 1)]
     public Transform interactionAria;
     public float interactionDiameter;
     public Collider[] interactionColliders;
+    public bool minigameActive;
     //piemel -davido 
     private void Start() {
         
@@ -30,15 +33,27 @@ public class Interact : MonoBehaviour
                 Debug.Log("Interactible or Item nearby");
                 //Ui elliment stage 1
             }
+            if(coll.gameObject.tag == "Minigame")
+            {
+                print("Is in Range!");
+                minigameDetected = true;
+                //coll.gameObject.SetActive(false);
+            }
+            else if(minigameDetected != true)
+            {
+                minigameDetected = false;
+                // - Ruben
+            }
         }
         interactionColliders = Physics.OverlapSphere(interactionAria.position, interactionDiameter * 2);
         
         foreach (Collider coll in interactionColliders) {
-            if (coll.gameObject.tag == "Interactible") {
+            if (coll.gameObject.tag == "Minigame") {
                 Debug.Log("Interactible or Item in reach, press E to interact or pick up");
                 //Ui elliment stage 2
-                if (interactInput == 1) {
-                    //interaction here
+                if (interactInput == 1 && minigameDetected) {
+                   
+                  //interaction here
                     Debug.Log("Interacted");
                     //coll.gameObject.SetActive(false);
                 }
