@@ -30,8 +30,6 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public float strengthDebuff;
     public float totalMousePos;
 
-    public PlayerInput crPlayerInput;
-
     void Start()
     {
         
