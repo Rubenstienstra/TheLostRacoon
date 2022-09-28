@@ -9,6 +9,7 @@ public class MouseTrackerMovement : MonoBehaviour
     public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
     public PlayerInputUIController UIInfo;
+    public Interact interactInfo;
     
     private float randomMousePosX;
     private float randomMousePosY;
@@ -28,10 +29,11 @@ public class MouseTrackerMovement : MonoBehaviour
     private float minRandomLengthY; //  -2,    0>   <0     -     -
     private float maxRandomLengthY; //   2 ,   2     2     -     -
 
-    private RectTransform bigCircleSchrinkRect;
-    private CircleCollider2D bigCircleSchrinkCollider;
+    public RectTransform bigCircleSchrinkRect;
+    public CircleCollider2D bigCircleSchrinkCollider;
     public float circleSchrinkStrengthBuff = 1;
 
+    public GameObject activateGameObject;
     public bool mouseInZone;
     
     void Start()
@@ -46,6 +48,7 @@ public class MouseTrackerMovement : MonoBehaviour
         {
             circles[i].SetActive(true);
         }
+        activateGameObject.SetActive(true);
 
         Mouse.current.WarpCursorPosition(mouseStartPos);
         UIInfo.mousePosX = mouseStartPos.x;
@@ -55,8 +58,6 @@ public class MouseTrackerMovement : MonoBehaviour
         mouseInZone = true;
         playerInfo.minigameActiveMouse = true;
 
-        StartMinigame();
-
         //safety
         StopCoroutine(CountDown());
         if(waitingTime == 0)
@@ -65,7 +66,8 @@ public class MouseTrackerMovement : MonoBehaviour
         }
         bigCircleSchrinkCollider = circles[0].GetComponent<CircleCollider2D>();
         bigCircleSchrinkRect = circles[0].GetComponent<RectTransform>();
-        
+
+        StartMinigame();
     }
     // Use Interactable enter
     public void StartMinigame()
@@ -99,7 +101,6 @@ public class MouseTrackerMovement : MonoBehaviour
         yield return new WaitForSeconds(phaseTime[0]);
         currentPhase++;
         RandomRangeMinMax();
-        
 
         yield return new WaitForSeconds(phaseTime[1]);
         currentPhase++;
@@ -193,6 +194,8 @@ public class MouseTrackerMovement : MonoBehaviour
         currentPhase = 0;
         playerInfo.minigameActiveMouse = false;
         bigCircleSchrinkRect.sizeDelta = new Vector2(400,400); // default size
+
+        interactInfo.minigameBeingPlayed = false;
     }
     
 

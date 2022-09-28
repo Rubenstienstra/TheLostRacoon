@@ -20,6 +20,7 @@ public class Interact : MonoBehaviour
     public float interactionDiameter;
     public Collider[] interactionColliders;
     public bool minigameActive;
+    public bool minigameBeingPlayed;
     //piemel -davido 
     private void Start() {
         
@@ -51,8 +52,9 @@ public class Interact : MonoBehaviour
             if (coll.gameObject.tag == "Minigame") {
                 Debug.Log("Interactible or Item in reach, press E to interact or pick up");
                 //Ui element stage 2
-                if (interactInput == 1 && minigameDetected)
+                if (interactInput == 1 && minigameDetected && minigameBeingPlayed == false)
                 {
+                    minigameBeingPlayed = true;
                     CollidedMinigame(coll);
                   //interaction here
                     Debug.Log("Interacted");
@@ -87,6 +89,6 @@ public class Interact : MonoBehaviour
         {
 
         }
-        //coll.gameObject.GetComponent<Collider>().enabled 
+        coll.gameObject.GetComponent<Collider>().enabled = !enabled;
     }
 }
