@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: 16a96929c0e69f746acec9124363ff49
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -728577360219184729
+    second: RaccoonRig|Idle
   externalObjects: {}
   materials:
     materialImportMode: 2
