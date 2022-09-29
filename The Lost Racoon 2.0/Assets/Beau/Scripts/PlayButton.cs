@@ -8,17 +8,28 @@ public class PlayButton : MonoBehaviour
     public Animator fade;
     public GameObject menuOpen;
     public GameObject fadeGameObject;
+    bool allowedToChange;
     public void Button()
     {
-        fade.SetBool("Fade", true);
-        
+        fade.SetTrigger("Fade to play");
+        allowedToChange = true;
     }
     public void Update()
     {
+
         if (fadeGameObject.GetComponent<AnimationIsDone>().done == true)
         {
-            menuClose.SetActive(false);
-            menuOpen.SetActive(true);
+            if (allowedToChange == true)
+            {
+                menuClose.SetActive(false);
+                menuOpen.SetActive(true);
+                allowedToChange = false;
+            }
+            
+        }
+        if (allowedToChange == false)
+        {
+            fadeGameObject.GetComponent<AnimationIsDone>().done = false;
         }
     }
 
