@@ -9,6 +9,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public ScriptableSaving savingInfo;
     public MouseTrackerMovement circleMouseInfo;
     public PlayerInputUIController UIInfo;
+    public Interact interactInfo;
 
     public GameObject mouseCursor;
 
@@ -136,6 +137,8 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
 
         strengthStage = 0;
         playerInfo.minigameActiveMouseRectangle = false;
+
+        interactInfo.minigameBeingPlayed = false;
 
         //Completed
         if (mouseInZone == true)
