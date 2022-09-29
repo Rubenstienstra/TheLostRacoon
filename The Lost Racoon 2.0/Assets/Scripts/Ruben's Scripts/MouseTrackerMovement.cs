@@ -29,8 +29,8 @@ public class MouseTrackerMovement : MonoBehaviour
     private float minRandomLengthY; //  -2,    0>   <0     -     -
     private float maxRandomLengthY; //   2 ,   2     2     -     -
 
-    public RectTransform bigCircleSchrinkRect;
-    public CircleCollider2D bigCircleSchrinkCollider;
+    private RectTransform bigCircleSchrinkRect;
+    private CircleCollider2D bigCircleSchrinkCollider;
     public float circleSchrinkStrengthBuff = 1;
 
     public GameObject activateGameObject;

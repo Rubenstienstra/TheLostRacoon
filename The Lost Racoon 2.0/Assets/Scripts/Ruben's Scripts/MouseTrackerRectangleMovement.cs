@@ -51,6 +51,11 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
 
         mouseInZone = true;
         playerInfo.minigameActiveMouseRectangle = true;
+
+        if(mouseCursor == null)
+        {
+            mouseCursor = GameObject.Find("MousePointer");
+        }
         mouseCursor.GetComponent<Image>().enabled = !enabled; //!
 
         StartMinigame();

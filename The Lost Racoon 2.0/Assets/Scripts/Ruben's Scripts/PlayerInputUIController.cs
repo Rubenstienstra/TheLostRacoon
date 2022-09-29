@@ -10,6 +10,14 @@ public class PlayerInputUIController : MonoBehaviour
     public float mousePosX;
     public float mousePosY;
 
+    public void Start()
+    {
+        if(mouseCursor == null)
+        {
+          mouseCursor = GameObject.Find("MousePointer");
+        }
+        
+    }
     public void OnMouseX(InputValue value)
     {
         mousePosX = value.Get<float>();

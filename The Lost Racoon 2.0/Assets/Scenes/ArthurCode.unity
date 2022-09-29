@@ -1136,12 +1136,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 703476814}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &703476816 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 629538520, guid: a3ef4845f4140b54789da1fef40873d4,
-    type: 3}
-  m_PrefabInstance: {fileID: 703476814}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &737928076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,7 +1579,7 @@ MonoBehaviour:
   circleMouseInfo: {fileID: 1911117141}
   UIInfo: {fileID: 19293605}
   interactInfo: {fileID: 1838092288}
-  mouseCursor: {fileID: 703476816}
+  mouseCursor: {fileID: 0}
   randomMousePosY: 0
   mouseStartPos: {x: 1150, y: 300}
   mouseEndPos: {x: 1150, y: 775}
@@ -1997,7 +1991,6 @@ MonoBehaviour:
   - {fileID: 1224168881}
   - {fileID: 103743306}
   - {fileID: 1365448559}
-  - {fileID: 703476816}
   currentPhase: 0
   phaseTime:
   - 3
@@ -2008,9 +2001,7 @@ MonoBehaviour:
   - 1.25
   - 1.5
   waitingTime: 0.01
-  bigCircleSchrinkRect: {fileID: 0}
-  bigCircleSchrinkCollider: {fileID: 0}
-  circleSchrinkStrengthBuff: 0.01
+  circleSchrinkStrengthBuff: 0.1
   activateGameObject: {fileID: 398144915}
   mouseInZone: 0
 --- !u!1001 &6451736018155743805
@@ -2168,7 +2159,7 @@ PrefabInstance:
     - target: {fileID: 19293605, guid: daa491ec766b8ed49a394ecb9dea55b1, type: 3}
       propertyPath: mouseCursor
       value: 
-      objectReference: {fileID: 703476816}
+      objectReference: {fileID: 0}
     - target: {fileID: 2867174878968329352, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
       propertyPath: m_LocalRotation.y
@@ -2182,12 +2173,12 @@ PrefabInstance:
     - target: {fileID: 3404002170308338672, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000015896623
+      value: 0.000000015896623
       objectReference: {fileID: 0}
     - target: {fileID: 3404002170308338672, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000065845964
+      value: -0.0000000065845964
       objectReference: {fileID: 0}
     - target: {fileID: 6596604510309306397, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
@@ -2249,11 +2240,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Prefab
       objectReference: {fileID: 0}
-    - target: {fileID: 6596604511056919679, guid: daa491ec766b8ed49a394ecb9dea55b1,
-        type: 3}
-      propertyPath: minigameActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6596604511863840428, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
       propertyPath: camSpot
@@ -2272,12 +2258,17 @@ PrefabInstance:
     - target: {fileID: 7237360301854654331, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -3e-45
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 7237360301854654331, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1e-45
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8227120992300225225, guid: daa491ec766b8ed49a394ecb9dea55b1,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9115052203366980396, guid: daa491ec766b8ed49a394ecb9dea55b1,
         type: 3}
