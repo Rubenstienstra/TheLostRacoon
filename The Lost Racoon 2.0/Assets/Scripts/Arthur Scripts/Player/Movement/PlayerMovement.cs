@@ -114,4 +114,8 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, groundDetectRadius);
     }
+    public void OnEnterMinigame()
+    {
+        movementLock = true;
+    }
 }

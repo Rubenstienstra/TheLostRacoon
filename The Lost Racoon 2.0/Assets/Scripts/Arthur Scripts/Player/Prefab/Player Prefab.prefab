@@ -1415,7 +1415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05754d928997cfc41938ed7d03effbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseCursor: {fileID: 0}
+  mouseCursor: {fileID: 8227120992300225225}
   mousePosX: 0
   mousePosY: 0
 --- !u!1 &6868623704116790666
@@ -1952,6 +1952,12 @@ PrefabInstance:
 --- !u!224 &8227120992300225224 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3368314807452155856, guid: fcfa7aad2b7d7e14b9ced6c832f8c9da,
+    type: 3}
+  m_PrefabInstance: {fileID: 6670449577850137880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8227120992300225225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3368314807452155857, guid: fcfa7aad2b7d7e14b9ced6c832f8c9da,
     type: 3}
   m_PrefabInstance: {fileID: 6670449577850137880}
   m_PrefabAsset: {fileID: 0}

@@ -7,6 +7,7 @@ public class UIPuzzleColor : MonoBehaviour
 {
     //public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
+    public PlayerMovement playerMovementInfo;
 
     public PlayerScript playerInfo;
     public GameObject[] colorButtons;
@@ -34,7 +35,7 @@ public class UIPuzzleColor : MonoBehaviour
         //find main player
         GameObject playerScript = GameObject.Find("Player");
         playerInfo = playerScript.GetComponent<PlayerScript>();
-        UIPuzzleGameObject = this.gameObject.transform.parent.gameObject;
+        
 
         ResetColors();
     }
@@ -63,7 +64,7 @@ public class UIPuzzleColor : MonoBehaviour
 
         //Checking witch buttons is color.Red
         //need +1 because button 1 is not 0
-        for (int i = 1; i < totalButtons+1; i++)
+        for (int i = 1; i < totalButtons +1; i++)
         {
           currentGameObject = GameObject.Find("Color Change Button " + i.ToString());
             if (currentGameObject.GetComponent<Image>().color == Color.red)
@@ -73,6 +74,7 @@ public class UIPuzzleColor : MonoBehaviour
                 {
                     savingInfo.totalMissionsCompleted++;
                     UIPuzzleGameObject.SetActive(false);
+
                 }
             }
         }

@@ -10,8 +10,10 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public MouseTrackerMovement circleMouseInfo;
     public PlayerInputUIController UIInfo;
     public Interact interactInfo;
+    public PlayerMovement playerMovementInfo;
 
     public GameObject mouseCursor;
+    public GameObject playerGameObject;
 
     public float randomMousePosY;
 
@@ -33,7 +35,24 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
 
     void Start()
     {
-        
+       GameObject parentPlayerGameObject = GameObject.Find("Player");
+
+        UIInfo = parentPlayerGameObject.GetComponent<PlayerInputUIController>();
+
+
+        playerGameObject = GameObject.Find("racoon lookin ass");
+
+        playerInfo = playerGameObject.GetComponent<PlayerScript>();
+        interactInfo = playerGameObject.GetComponent<Interact>();
+        playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
+        circleMouseInfo = playerGameObject.GetComponent<MouseTrackerMovement>();
+
+
+        GameObject gateCircleMinigame = GameObject.Find("Gate circle shrink minigame");
+
+        circleMouseInfo = gateCircleMinigame.GetComponent<MouseTrackerMovement>();
+
+        mouseCursor = GameObject.Find("MousePointer");
     }
     //If in Area load this
     public void StartAreaMinigame()
@@ -56,7 +75,13 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             mouseCursor = GameObject.Find("MousePointer");
         }
-        mouseCursor.GetComponent<Image>().enabled = !enabled; //!
+        mouseCursor.GetComponent<Image>().enabled = !enabled;
+
+        if (playerMovementInfo == null)
+        {
+            GameObject playerMovementInfoHolder = GameObject.Find("racoon lookin ass");
+            playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
+        }
 
         StartMinigame();
 
@@ -78,6 +103,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             StartCoroutine(MouseMover());
         }
+        playerMovementInfo.OnEnterMinigame();
     }
     public IEnumerator MouseMover()
     {
@@ -144,6 +170,8 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         playerInfo.minigameActiveMouseRectangle = false;
 
         interactInfo.minigameBeingPlayed = false;
+
+        playerMovementInfo.movementLock = false;
 
         //Completed
         if (mouseInZone == true)

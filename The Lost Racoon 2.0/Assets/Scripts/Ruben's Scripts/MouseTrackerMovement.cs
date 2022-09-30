@@ -10,12 +10,14 @@ public class MouseTrackerMovement : MonoBehaviour
     public ScriptableSaving savingInfo;
     public PlayerInputUIController UIInfo;
     public Interact interactInfo;
-    
+    public PlayerMovement playerMovementInfo;
+
     private float randomMousePosX;
     private float randomMousePosY;
 
     public Vector2 mouseStartPos;
     public GameObject[] circles;
+    public GameObject playerGameObject;
 
     // 0 = default, 1 = phase 1, 2 = phase end.
     public int currentPhase;
@@ -39,7 +41,14 @@ public class MouseTrackerMovement : MonoBehaviour
     void Start()
     {
         //saving data
-        
+        playerGameObject = GameObject.Find("racoon lookin ass");
+
+        GameObject gateMinigameCircleGameObject = GameObject.Find("Gate circle shrink minigame");
+        UIInfo = gateMinigameCircleGameObject.GetComponent<PlayerInputUIController>();
+
+        playerInfo = playerGameObject.GetComponent<PlayerScript>();
+        interactInfo = playerGameObject.GetComponent<Interact>();
+        playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
     }
     //If in Area load this
     public void StartAreaMinigame()
@@ -67,13 +76,20 @@ public class MouseTrackerMovement : MonoBehaviour
         bigCircleSchrinkCollider = circles[0].GetComponent<CircleCollider2D>();
         bigCircleSchrinkRect = circles[0].GetComponent<RectTransform>();
 
-        StartMinigame();
+        if (playerMovementInfo == null)
+        {
+            GameObject playerMovementInfoHolder = GameObject.Find("racoon lookin ass");
+            playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
+        }
+            StartMinigame();
     }
     // Use Interactable enter
     public void StartMinigame()
     {
         StartCoroutine(MouseMover());
         StartCoroutine(CountDown());
+
+        playerMovementInfo.OnEnterMinigame();
     }
     public IEnumerator MouseMover()
     {     
@@ -196,6 +212,8 @@ public class MouseTrackerMovement : MonoBehaviour
         bigCircleSchrinkRect.sizeDelta = new Vector2(400,400); // default size
 
         interactInfo.minigameBeingPlayed = false;
+        
+        playerMovementInfo.movementLock = false;
     }
     
 
