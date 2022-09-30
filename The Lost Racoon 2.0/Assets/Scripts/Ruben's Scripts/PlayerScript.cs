@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 
 public class PlayerScript : MonoBehaviour
 {
     public ScriptableSaving savingInfo;
     public MouseTrackerMovement mouseInfo;
+    public MouseTrackerRectangleMovement mouseRectangleInfo;
 
     public bool minigameActiveMouse;
+    public bool minigameActiveMouseRectangle;
     public bool minigameActive3x3Puzzle;
-    
+
     void Start()
     {
         ResetProgress();
+        Cursor.visible = false;
     }
-
 
     public void ResetProgress()
     {
@@ -24,12 +27,17 @@ public class PlayerScript : MonoBehaviour
         savingInfo.totalMissionsCompleted = 0;
         savingInfo.mouseTrackerTimesDone = 0;
     }
+    
     public void OnInteract(InputValue value)
     {
         if(value.Get<float>() >= 1)
         {
             //Testing Press E
-            mouseInfo.StartAreaMinigame();
+            if(mouseInfo.currentPhase == 0 && minigameActiveMouseRectangle == false)
+            {
+                //mouseInfo.StartAreaMinigame();
+                mouseRectangleInfo.StartAreaMinigame();
+            }
         }
     }
 }

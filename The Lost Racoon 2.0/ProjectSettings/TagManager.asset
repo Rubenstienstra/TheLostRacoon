@@ -8,6 +8,7 @@ TagManager:
   - Interactible
   - CamFreezeZone
   - Item
+  - Minigame
   layers:
   - Default
   - TransparentFX

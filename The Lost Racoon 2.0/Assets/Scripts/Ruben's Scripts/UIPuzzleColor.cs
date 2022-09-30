@@ -32,7 +32,7 @@ public class UIPuzzleColor : MonoBehaviour
     void Start()
     {
         //find main player
-       GameObject playerScript = GameObject.Find("Player");
+        GameObject playerScript = GameObject.Find("Player");
         playerInfo = playerScript.GetComponent<PlayerScript>();
         UIPuzzleGameObject = this.gameObject.transform.parent.gameObject;
 
@@ -71,6 +71,7 @@ public class UIPuzzleColor : MonoBehaviour
                 totalButtonsCorrect++;
                 if(totalButtonsCorrect >= totalButtons)
                 {
+                    savingInfo.totalMissionsCompleted++;
                     UIPuzzleGameObject.SetActive(false);
                 }
             }

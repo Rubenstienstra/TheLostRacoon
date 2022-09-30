@@ -8,29 +8,32 @@ public class MouseTrackerMovement : MonoBehaviour
 {
     public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
-
-    public float mousePosX;
-    public float mousePosY;
+    public PlayerInputUIController UIInfo;
+    public Interact interactInfo;
+    
     private float randomMousePosX;
     private float randomMousePosY;
-    //public bool activatedOnEnter;
 
     public Vector2 mouseStartPos;
-    public GameObject[] images;
+    public GameObject[] circles;
 
     // 0 = default, 1 = phase 1, 2 = phase end.
     public int currentPhase;
     public float[] phaseTime;
     public float[] strengthBuff;
-
-                                  //default  up  down  left  Right
-    private int minRandomLengthX; //  -2,    -     -    <0     0>
-    private int maxRandomLengthX; //   3 ,   -     -     -3    3
-    private int minRandomLengthY; //  -2,    0>   <0     -     -
-    private int maxRandomLengthY; //   3 ,   3     3     -     -
-
     public float waitingTime;
-    
+
+                                    //default  up  down  left  Right
+    private float minRandomLengthX; //  -2,    -     -    <0     0>
+    private float maxRandomLengthX; //   2 ,   -     -     -2    2
+    private float minRandomLengthY; //  -2,    0>   <0     -     -
+    private float maxRandomLengthY; //   2 ,   2     2     -     -
+
+    private RectTransform bigCircleSchrinkRect;
+    private CircleCollider2D bigCircleSchrinkCollider;
+    public float circleSchrinkStrengthBuff = 1;
+
+    public GameObject activateGameObject;
     public bool mouseInZone;
     
     void Start()
@@ -41,62 +44,56 @@ public class MouseTrackerMovement : MonoBehaviour
     //If in Area load this
     public void StartAreaMinigame()
     {
-        for (int i = 0; i < images.Length; i++)
+        for (int i = 0; i < circles.Length; i++)
         {
-            images[i].SetActive(true);
+            circles[i].SetActive(true);
         }
+        activateGameObject.SetActive(true);
 
         Mouse.current.WarpCursorPosition(mouseStartPos);
-        mousePosX = mouseStartPos.x;
-        mousePosY = mouseStartPos.y;
+        UIInfo.mousePosX = mouseStartPos.x;
+        UIInfo.mousePosY = mouseStartPos.y;
+        currentPhase = 0;
 
         mouseInZone = true;
         playerInfo.minigameActiveMouse = true;
-
-        StartMinigame();
 
         //safety
         StopCoroutine(CountDown());
         if(waitingTime == 0)
         {
-            waitingTime = 0.01f;
+            waitingTime = 0.1f;
         }
+        bigCircleSchrinkCollider = circles[0].GetComponent<CircleCollider2D>();
+        bigCircleSchrinkRect = circles[0].GetComponent<RectTransform>();
+
+        StartMinigame();
     }
     // Use Interactable enter
     public void StartMinigame()
     {
-        if(playerInfo.minigameActiveMouse == true)
-        {
-            StartCoroutine(MouseMover());
-            StartCoroutine(CountDown());
-        }
-    }
-
-    public void OnMouseX(InputValue value)
-    {
-        if (playerInfo.minigameActiveMouse == true)
-        {
-            mousePosX = value.Get<float>();
-        }
-    }
-    public void OnMouseY(InputValue value)
-    {
-        if (playerInfo.minigameActiveMouse == true)
-        {
-            mousePosY = value.Get<float>();
-        }
-
+        StartCoroutine(MouseMover());
+        StartCoroutine(CountDown());
     }
     public IEnumerator MouseMover()
-    {
-        if(playerInfo.minigameActiveMouse == true)
-        {
-            randomMousePosX = Random.Range(minRandomLengthX, maxRandomLengthX) * strengthBuff[currentPhase];
-            randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
-            Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + mousePosX ,randomMousePosY + mousePosY));
-            yield return new WaitForSeconds(0f);
-            StartCoroutine(MouseMover());
-        }
+    {     
+          randomMousePosX = Random.Range(minRandomLengthX, maxRandomLengthX) * strengthBuff[currentPhase];
+          randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
+          Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + UIInfo.mousePosX ,randomMousePosY + UIInfo.mousePosY));
+
+          bigCircleSchrinkRect.sizeDelta = new Vector2(bigCircleSchrinkRect.rect.width - (0.25f * circleSchrinkStrengthBuff), bigCircleSchrinkRect.rect.height - (0.25f * circleSchrinkStrengthBuff));
+          bigCircleSchrinkCollider.radius = bigCircleSchrinkRect.rect.width/2;
+
+          yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
+          if(playerInfo.minigameActiveMouse == true) // double check
+          {
+             StartCoroutine(MouseMover());
+          }
+          if(mouseInZone == false)
+          {
+             StartCoroutine(WaitingForShutDown());
+          }
+        
     }
     public IEnumerator CountDown()
     {
@@ -115,56 +112,63 @@ public class MouseTrackerMovement : MonoBehaviour
             playerInfo.minigameActiveMouse = false;
             savingInfo.totalMissionsCompleted++;
             savingInfo.mouseTrackerTimesDone++;
+            print("Completed/Victory! :D");
             ShutDown();
         }
         else
         {
             StopCoroutine(CountDown());
+            ShutDown();
         }
     }
     public void RandomRangeMinMax()
     {
+        if(currentPhase >= circles.Length -1)
+        {
+            print("ERROR to many phases ):");
+            currentPhase--;
+        }
        int i = Random.Range(0, 5);
         switch (i)
         {
             case 0: //Default
                 {
-                    minRandomLengthX = -4;
-                    maxRandomLengthX = 6;
-                    minRandomLengthY = -4;
-                    maxRandomLengthY = 6;
+                    minRandomLengthX = -2;
+                    maxRandomLengthX = 2;//6
+                    minRandomLengthY = -2;
+                    maxRandomLengthY = 2;//6
                     return;
                 }
             case 1: //Up
                 {
-                    minRandomLengthX = -4;
-                    maxRandomLengthX = 6;
+                    minRandomLengthX = -2;
+                    maxRandomLengthX = 2;//6
                     minRandomLengthY = 0;
-                    maxRandomLengthY = 6;
+                    maxRandomLengthY = 2;//6
                     return;
                 }
             case 2: //Down
                 {
-                    minRandomLengthX = -4;
-                    maxRandomLengthX = 6;
+                    minRandomLengthX = -2;
+                    maxRandomLengthX = 2;//6
                     minRandomLengthY = 0;
-                    maxRandomLengthY = -6;
+                    maxRandomLengthY = -2;//6
                     return;
                 }
             case 3: //Left
                 {
                     minRandomLengthX = 0;
-                    maxRandomLengthX = -6;
-                    minRandomLengthY = -4;
-                    maxRandomLengthY = 6;
+                    maxRandomLengthX = -2;//6
+                    minRandomLengthY = -2;
+                    maxRandomLengthY = 2;//6
                     return;
                 }
             case 4: //Right
                 {
                     minRandomLengthX = 0;
-                    maxRandomLengthX = 6;
-                    minRandomLengthY = -4;
-                    maxRandomLengthY = 6;
+                    maxRandomLengthX = 2;//6
+                    minRandomLengthY = -2;
+                    maxRandomLengthY = 2;//6
                     return;
                 }
 
@@ -183,16 +187,19 @@ public class MouseTrackerMovement : MonoBehaviour
         print("ended minigame at Phase: " + currentPhase.ToString());
         StopCoroutine(CountDown());
         StopCoroutine(MouseMover());
-        for (int i = 0; i < images.Length; i++)
+        for (int i = 0; i < circles.Length; i++)
         {
-            images[i].SetActive(false);
+            circles[i].SetActive(false);
         }
-        playerInfo.minigameActiveMouse = false;
         currentPhase = 0;
+        playerInfo.minigameActiveMouse = false;
+        bigCircleSchrinkRect.sizeDelta = new Vector2(400,400); // default size
+
+        interactInfo.minigameBeingPlayed = false;
     }
     
 
-    //For button Event trigger
+    //For button Event triggers
     public void ActivateWaitingForShutDown()
     {
         StartCoroutine(WaitingForShutDown());
