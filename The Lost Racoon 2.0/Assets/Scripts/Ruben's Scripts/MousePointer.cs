@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class MousePointer : MonoBehaviour
 {
-    public PlayerScript playerInfo;
     public MouseTrackerMovement mouseInfo;
-    public MouseTrackerRectangleMovement mouseRectangleInfo;
-    public ScriptableSaving savingInfo;
 
+    private GameObject findingScriptGameobject;
+
+    public void Start()
+    {
+      findingScriptGameobject = GameObject.Find("Gate circle shrink minigame");
+        if(mouseInfo == null)
+        {
+            mouseInfo = findingScriptGameobject.GetComponent<MouseTrackerMovement>();
+        }
+    }
     public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject == mouseInfo.circles[0])
