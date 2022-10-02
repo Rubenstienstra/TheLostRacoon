@@ -121,6 +121,7 @@ MonoBehaviour:
   - {fileID: 613998943852836343}
   - {fileID: 613998943836134712}
   - {fileID: 613998944083152410}
+  - {fileID: 4778852869459059321}
   playerGameObject: {fileID: 0}
   currentPhase: 0
   phaseTime:
@@ -132,7 +133,8 @@ MonoBehaviour:
   - 1.25
   - 1.5
   waitingTime: 0.01
-  circleSchrinkStrengthBuff: 0.1
+  circleSchrinkStrengthBuff: 1
+  boxcol: {fileID: 0}
   activateGameObject: {fileID: 613998943299012047}
   mouseInZone: 0
 --- !u!1001 &6137289965606555609
@@ -321,6 +323,12 @@ GameObject:
 --- !u!1 &613998944083152410 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6749018415140618691, guid: a3ef4845f4140b54789da1fef40873d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6137289965606555609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4778852869459059321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1692770622066322848, guid: a3ef4845f4140b54789da1fef40873d4,
     type: 3}
   m_PrefabInstance: {fileID: 6137289965606555609}
   m_PrefabAsset: {fileID: 0}

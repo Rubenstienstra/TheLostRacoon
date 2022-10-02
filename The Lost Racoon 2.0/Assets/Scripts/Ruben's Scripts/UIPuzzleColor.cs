@@ -78,7 +78,6 @@ public class UIPuzzleColor : MonoBehaviour
                 }
             }
         }
-        //print(totalButtonsCorrect);
         totalButtonsCorrect = 0;
 
     }

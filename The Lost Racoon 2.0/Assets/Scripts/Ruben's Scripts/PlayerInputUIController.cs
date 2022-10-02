@@ -14,7 +14,7 @@ public class PlayerInputUIController : MonoBehaviour
     {
         if(mouseCursor == null)
         {
-            mouseCursor = GameObject.Find("MousePointer");
+           mouseCursor = GameObject.Find("MousePointer");
         }
         
     }
