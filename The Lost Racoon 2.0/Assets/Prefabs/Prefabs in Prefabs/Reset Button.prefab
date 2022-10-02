@@ -111,7 +111,7 @@ RectTransform:
   m_GameObject: {fileID: 6198475529462114511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2.9821775}
-  m_LocalScale: {x: 0.21383, y: 0.21383, z: 0.10692}
+  m_LocalScale: {x: 1, y: 1, z: 11}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330097570445749064}
@@ -230,8 +230,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerMovementInfo: {fileID: 0}
   playerInfo: {fileID: 0}
   colorButtons:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

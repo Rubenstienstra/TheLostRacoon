@@ -35,7 +35,10 @@ public class UIPuzzleColor : MonoBehaviour
         //find main player
         GameObject playerScript = GameObject.Find("Player");
         playerInfo = playerScript.GetComponent<PlayerScript>();
-        
+
+       GameObject playerGameObject = GameObject.Find("racoon lookin ass");
+       playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
+
 
         ResetColors();
     }
@@ -74,12 +77,12 @@ public class UIPuzzleColor : MonoBehaviour
                 {
                     savingInfo.totalMissionsCompleted++;
                     UIPuzzleGameObject.SetActive(false);
+                    playerMovementInfo.movementLock = false;
 
                 }
             }
         }
         totalButtonsCorrect = 0;
-
     }
     public void ResetColors()
     {

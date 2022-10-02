@@ -116,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnEnterMinigame()
     {
+        //weet nog niet zeker welke CursorLockMode ik moet hebben.
         Cursor.lockState = CursorLockMode.Confined;
         movementLock = true;
     }
