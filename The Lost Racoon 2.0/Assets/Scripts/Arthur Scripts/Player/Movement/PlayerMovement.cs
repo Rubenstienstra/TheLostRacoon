@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
     public Collider playerModel;
+    public CamFreezeScript camFreezeInfo;
+    public Interact interactInfo;
     [Header("Changeable", order = 1)]
     public float speed;
     public float sprintSpeed;
@@ -114,8 +116,18 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnEnterMinigame()
     {
-        //weet nog niet zeker welke CursorLockMode ik moet hebben.
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         movementLock = true;
+        interactInfo.minigameBeingPlayed = true;
+        camFreezeInfo.CamFreeze();
+    }
+    public void OnExitMinigame()
+    {
+        Cursor.visible = false;
+        movementLock = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        interactInfo.minigameBeingPlayed = false;
+        camFreezeInfo.CamUnfreeze();
     }
 }

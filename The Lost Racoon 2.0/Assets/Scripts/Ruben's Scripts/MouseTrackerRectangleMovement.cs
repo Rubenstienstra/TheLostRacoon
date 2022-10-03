@@ -24,6 +24,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     // 0 = default, 1 = phase 1, 2 = phase end.
     public float waitingTime;
     public bool IsWaiting;
+    public bool hasBeenInteracted;
 
     public Slider movingSlider;
     public float endPosZoneY;
@@ -59,44 +60,51 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     //If in Area load this
     public void StartAreaMinigame()
     {
-        for (int i = 0; i < UIComponents.Length; i++)
+        if (hasBeenInteracted == false)
         {
-            UIComponents[i].SetActive(true);
+            for (int i = 0; i < UIComponents.Length; i++)
+            {
+                UIComponents[i].SetActive(true);
+            }
+            movingSlider.gameObject.SetActive(true);
+
+            Mouse.current.WarpCursorPosition(mouseStartPos);
+            UIInfo.mousePosX = mouseStartPos.x;
+            UIInfo.mousePosY = mouseStartPos.y;
+
+            mouseInZone = true;
+            playerInfo.minigameActiveMouseRectangle = true;
+
+            if (mouseCursor == null)
+            {
+                mouseCursor = GameObject.Find("MousePointer");
+            }
+            mouseCursor.GetComponent<Image>().enabled = !enabled;
+
+            if (playerMovementInfo == null)
+            {
+                GameObject playerMovementInfoHolder = GameObject.Find("racoon lookin ass");
+                playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
+            }
+
+            StartMinigame();
+
+            //safety
+            if (waitingTime == 0)
+            {
+                waitingTime = 0.01f;
+            }
+            if (strengthDebuff == 0)
+            {
+                strengthDebuff = 1;
+            }
+            movingSlider.maxValue = mouseEndPos.y - mouseStartPos.y;
+            endPosZoneY = mouseEndPos.y - (mouseEndPos.y / endPosModifier);
         }
-        movingSlider.gameObject.SetActive(true);
-
-        Mouse.current.WarpCursorPosition(mouseStartPos);
-        UIInfo.mousePosX = mouseStartPos.x;
-        UIInfo.mousePosY = mouseStartPos.y;
-
-        mouseInZone = true;
-        playerInfo.minigameActiveMouseRectangle = true;
-
-        if(mouseCursor == null)
+        else
         {
-            mouseCursor = GameObject.Find("MousePointer");
+            playerMovementInfo.OnExitMinigame();
         }
-        mouseCursor.GetComponent<Image>().enabled = !enabled;
-
-        if (playerMovementInfo == null)
-        {
-            GameObject playerMovementInfoHolder = GameObject.Find("racoon lookin ass");
-            playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
-        }
-
-        StartMinigame();
-
-        //safety
-        if (waitingTime == 0)
-        {
-            waitingTime = 0.01f;
-        }
-        if(strengthDebuff == 0)
-        {
-            strengthDebuff = 1;
-        }
-        movingSlider.maxValue = mouseEndPos.y - mouseStartPos.y;
-        endPosZoneY = mouseEndPos.y - (mouseEndPos.y / endPosModifier) ;
     }
     // Use Interactable enter
     public void StartMinigame()
@@ -178,13 +186,18 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         //Completed
         if (mouseInZone == true)
         {
-            playerInfo.minigameActiveMouseRectangle = false;
-            savingInfo.totalMissionsCompleted++;
-            savingInfo.mouseTrackerTimesDone++;
-            rig.constraints = RigidbodyConstraints.None;
-            rig.constraints = RigidbodyConstraints.FreezeRotation;
-            rig.constraints = RigidbodyConstraints.FreezePositionY;
-            print("Completed/Victory!:D");
+            if (hasBeenInteracted == false)
+            {
+                hasBeenInteracted = true;
+                playerInfo.minigameActiveMouseRectangle = false;
+                savingInfo.totalMissionsCompleted++;
+                savingInfo.mouseTrackerTimesDone++;
+                rig.constraints = RigidbodyConstraints.None;
+                rig.constraints = RigidbodyConstraints.FreezeRotation;
+
+                playerMovementInfo.OnExitMinigame();
+                print("Completed/Victory!:D");
+            }
         }
     }
     public void InSquare()

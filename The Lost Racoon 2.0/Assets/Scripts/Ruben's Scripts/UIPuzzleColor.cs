@@ -18,6 +18,9 @@ public class UIPuzzleColor : MonoBehaviour
 
     public GameObject currentGameObject;
     public GameObject UIPuzzleGameObject;
+    public GameObject gatePuzzleGameObject;
+
+    public bool hasBeenInteracted;
 
     private void Awake()
     {
@@ -75,9 +78,10 @@ public class UIPuzzleColor : MonoBehaviour
                 totalButtonsCorrect++;
                 if(totalButtonsCorrect >= totalButtons)
                 {
+                    gatePuzzleGameObject.GetComponent<UIPuzzleColor>().hasBeenInteracted = true;
                     savingInfo.totalMissionsCompleted++;
                     UIPuzzleGameObject.SetActive(false);
-                    playerMovementInfo.movementLock = false;
+                    playerMovementInfo.OnExitMinigame();
 
                 }
             }
@@ -104,6 +108,14 @@ public class UIPuzzleColor : MonoBehaviour
     }
     public void SpawnPuzzleUI()
     {
-        UIPuzzleGameObject.SetActive(true);
+        if (hasBeenInteracted == false)
+        {
+            UIPuzzleGameObject.SetActive(true);
+            playerMovementInfo.OnEnterMinigame();
+        }
+        else
+        {
+            playerMovementInfo.OnExitMinigame();
+        }
     }
 }
