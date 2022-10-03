@@ -9,6 +9,7 @@ TagManager:
   - CamFreezeZone
   - Item
   - Minigame
+  - CamCollideIgnore
   layers:
   - Default
   - TransparentFX

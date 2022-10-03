@@ -8,6 +8,7 @@ public class Interact : MonoBehaviour
     [Header("References", order = 0)]
     public PlayerInput playerInput;
     public Pickup pickupscript;
+    public CamFreezeScript camFreeze;
     public PlayerMovement playerMovementInfo;
     [Header("Detection Sphere", order = 1)]
     public Transform detectionAria;
@@ -62,6 +63,7 @@ public class Interact : MonoBehaviour
                     minigameBeingPlayed = true;
                     playerMovementInfo.OnEnterMinigame();
                     CollidedMinigame(coll);
+                    camFreeze.CamFreeze();
                   //interaction here
                     Debug.Log("Interacted");
                 }

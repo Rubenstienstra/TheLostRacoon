@@ -9,10 +9,13 @@ public class CamFreezeScript : MonoBehaviour
     [Header("References", order = 0)]
     public GameObject freeLook;
     public GameObject freezeLook;
+    public GameObject cam;
+    public GameObject freezeCam;
     [Header("Snap to Transform", order = 1)]
     public bool snapToTransform;
     public Transform camSpot;
     bool camFroze;
+    public bool smoothTransition;
     //fix prefab
     // Start is called before the first frame update
     void Start()
@@ -20,33 +23,62 @@ public class CamFreezeScript : MonoBehaviour
         camFroze = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerExit(Collider other)
     {
-      
+        if (other.tag == "CamFreezeZone" && camFroze)
+        {
+            CamUnfreeze();
+        }
+
     }
-    private void OnTriggerExit(Collider other) {
-        if (other.tag == "CamFreezeZone" && camFroze) {
-            freezeLook.SetActive(false);
-            freeLook.SetActive(true);
-            camFroze = false;
-            Debug.Log("Cam pos unlocked");
+    public void OnTriggerEnter(Collider other)
+    {
+
+        if (other.tag == "CamFreezeZone" && !camFroze)
+        {
+            CamFreeze();
         }
     }
-    private void OnTriggerEnter(Collider other) {
-        if (other.tag == "CamFreezeZone" && !camFroze) {
-            freezeLook.SetActive(true); 
-            freeLook.SetActive(false);
-            Debug.Log("cam froze");
-            if (snapToTransform) {
+    public void CamFreeze()
+    {
+        freezeLook.SetActive(true);
+        freezeCam.SetActive(true);
+        freeLook.SetActive(false);
+
+        if (!smoothTransition)
+        {
+            cam.SetActive(false);
+        }
+        else
+        {
+            if (snapToTransform)
+            {
                 freezeLook.transform.position = camSpot.position;
                 freezeLook.transform.rotation = camSpot.rotation;
-            } else {
-                freezeLook.transform.position = freeLook.transform.position;
-                freezeLook.transform.rotation = freeLook.transform.rotation;
             }
-            camFroze = true;
-            Debug.Log("Cam pos locked");
+            else
+            {
+
+            }
+
         }
+        freezeLook.transform.position = freeLook.transform.position;
+        freezeLook.transform.rotation = freeLook.transform.rotation;
+        camFroze = true;
+        Debug.Log("Cam pos locked");
+    }
+    public void CamUnfreeze()
+    {
+
+        freezeLook.SetActive(false);
+        if (!smoothTransition)
+        {
+            cam.SetActive(true);
+            freezeCam.SetActive(false);
+        }
+        freeLook.SetActive(true);
+
+        camFroze = false;
+        Debug.Log("Cam pos unlocked");
     }
 }
