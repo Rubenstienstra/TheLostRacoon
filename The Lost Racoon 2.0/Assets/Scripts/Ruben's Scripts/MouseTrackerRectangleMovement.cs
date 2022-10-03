@@ -194,7 +194,6 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
                 savingInfo.mouseTrackerTimesDone++;
                 rig.constraints = RigidbodyConstraints.None;
                 rig.constraints = RigidbodyConstraints.FreezeRotation;
-                rig.constraints = RigidbodyConstraints.FreezePositionY;
 
                 playerMovementInfo.OnExitMinigame();
                 print("Completed/Victory!:D");
