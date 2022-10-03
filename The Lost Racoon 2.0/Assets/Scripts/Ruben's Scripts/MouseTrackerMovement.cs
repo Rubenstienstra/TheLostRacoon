@@ -10,12 +10,14 @@ public class MouseTrackerMovement : MonoBehaviour
     public ScriptableSaving savingInfo;
     public PlayerInputUIController UIInfo;
     public Interact interactInfo;
-    
+    public PlayerMovement playerMovementInfo;
+
     private float randomMousePosX;
     private float randomMousePosY;
 
     public Vector2 mouseStartPos;
     public GameObject[] circles;
+    public GameObject playerGameObject;
 
     // 0 = default, 1 = phase 1, 2 = phase end.
     public int currentPhase;
@@ -33,13 +35,21 @@ public class MouseTrackerMovement : MonoBehaviour
     private CircleCollider2D bigCircleSchrinkCollider;
     public float circleSchrinkStrengthBuff = 1;
 
+    public bool hasBeenInteracted;
     public GameObject activateGameObject;
     public bool mouseInZone;
     
     void Start()
     {
-        //saving data
-        
+        //safety
+        playerGameObject = GameObject.Find("racoon lookin ass");
+
+        GameObject parentPlayerGameObject = GameObject.Find("Player");
+        UIInfo = parentPlayerGameObject.GetComponent<PlayerInputUIController>();
+
+        playerInfo = playerGameObject.GetComponent<PlayerScript>();
+        interactInfo = playerGameObject.GetComponent<Interact>();
+        playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
     }
     //If in Area load this
     public void StartAreaMinigame()
@@ -57,6 +67,7 @@ public class MouseTrackerMovement : MonoBehaviour
 
         mouseInZone = true;
         playerInfo.minigameActiveMouse = true;
+        hasBeenInteracted = false;
 
         //safety
         StopCoroutine(CountDown());
@@ -67,13 +78,20 @@ public class MouseTrackerMovement : MonoBehaviour
         bigCircleSchrinkCollider = circles[0].GetComponent<CircleCollider2D>();
         bigCircleSchrinkRect = circles[0].GetComponent<RectTransform>();
 
-        StartMinigame();
+        if (playerMovementInfo == null)
+        {
+            GameObject playerMovementInfoHolder = GameObject.Find("racoon lookin ass");
+            playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
+        }
+            StartMinigame();
     }
     // Use Interactable enter
     public void StartMinigame()
     {
         StartCoroutine(MouseMover());
         StartCoroutine(CountDown());
+
+        playerMovementInfo.OnEnterMinigame();
     }
     public IEnumerator MouseMover()
     {     
@@ -179,23 +197,33 @@ public class MouseTrackerMovement : MonoBehaviour
         yield return new WaitForSeconds(waitingTime);
         if(mouseInZone == false)
         {
+            print("waiting for shutdown game end");
+            //boxcol.enabled = boxcol.enabled;
+            gameObject.GetComponent<BoxCollider>().enabled = gameObject.GetComponent<BoxCollider>().enabled;
             ShutDown();
         }
     }
     public void ShutDown()
     {
-        print("ended minigame at Phase: " + currentPhase.ToString());
-        StopCoroutine(CountDown());
-        StopCoroutine(MouseMover());
-        for (int i = 0; i < circles.Length; i++)
+        if (hasBeenInteracted == false)
         {
-            circles[i].SetActive(false);
-        }
-        currentPhase = 0;
-        playerInfo.minigameActiveMouse = false;
-        bigCircleSchrinkRect.sizeDelta = new Vector2(400,400); // default size
+            hasBeenInteracted = true;
 
-        interactInfo.minigameBeingPlayed = false;
+            print("ended minigame at Phase: " + currentPhase.ToString());
+            StopCoroutine(CountDown());
+            StopCoroutine(MouseMover());
+            for (int i = 0; i < circles.Length; i++)
+            {
+                circles[i].SetActive(false);
+            }
+            currentPhase = 0;
+            playerInfo.minigameActiveMouse = false;
+            bigCircleSchrinkRect.sizeDelta = new Vector2(400, 400); // default size
+
+            interactInfo.minigameBeingPlayed = false;
+
+            playerMovementInfo.movementLock = false;
+        }
     }
     
 

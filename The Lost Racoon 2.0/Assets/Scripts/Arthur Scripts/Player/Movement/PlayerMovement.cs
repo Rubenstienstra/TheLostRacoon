@@ -112,4 +112,10 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, groundDetectRadius);
     }
+    public void OnEnterMinigame()
+    {
+        //weet nog niet zeker welke CursorLockMode ik moet hebben.
+        Cursor.lockState = CursorLockMode.Confined;
+        movementLock = true;
+    }
 }

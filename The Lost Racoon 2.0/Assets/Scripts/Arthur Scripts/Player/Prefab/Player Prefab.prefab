@@ -583,7 +583,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2916023789508095782}
-  m_LocalRotation: {x: 0.2897841, y: -3e-45, z: 1e-45, w: 0.95709205}
+  m_LocalRotation: {x: 0.2897841, y: 1e-45, z: -0, w: 0.95709205}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3890448570852093856}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -1192,7 +1192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 6596604511863840430}
   pickupscript: {fileID: 3865723428416789457}
-  savinginfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerMovementInfo: {fileID: 6596604511056919648}
   detectionAria: {fileID: 6596604511056919653}
   detectDiameter: 1.5
   detectedColliders: []
@@ -1415,7 +1415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05754d928997cfc41938ed7d03effbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseCursor: {fileID: 0}
+  mouseCursor: {fileID: 8227120992300225225}
   mousePosX: 0
   mousePosY: 0
 --- !u!1 &6868623704116790666
@@ -1952,6 +1952,12 @@ PrefabInstance:
 --- !u!224 &8227120992300225224 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3368314807452155856, guid: fcfa7aad2b7d7e14b9ced6c832f8c9da,
+    type: 3}
+  m_PrefabInstance: {fileID: 6670449577850137880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8227120992300225225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3368314807452155857, guid: fcfa7aad2b7d7e14b9ced6c832f8c9da,
     type: 3}
   m_PrefabInstance: {fileID: 6670449577850137880}
   m_PrefabAsset: {fileID: 0}

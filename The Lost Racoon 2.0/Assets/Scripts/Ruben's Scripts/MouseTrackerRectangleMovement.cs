@@ -10,10 +10,12 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public MouseTrackerMovement circleMouseInfo;
     public PlayerInputUIController UIInfo;
     public Interact interactInfo;
+    public PlayerMovement playerMovementInfo;
 
     public GameObject mouseCursor;
+    public GameObject playerGameObject;
 
-    public float randomMousePosY;
+    //public float randomMousePosY;
 
     public Vector2 mouseStartPos;
     public Vector2 mouseEndPos;
@@ -24,16 +26,35 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public bool IsWaiting;
 
     public Slider movingSlider;
-
+    public float endPosZoneY;
+    public float endPosModifier;
     public bool mouseInZone;
-    public int strengthStage;
 
     public float strengthDebuff;
     public float totalMousePos;
 
+    public Rigidbody rig;
+
     void Start()
     {
-        
+       GameObject parentPlayerGameObject = GameObject.Find("Player");
+
+        UIInfo = parentPlayerGameObject.GetComponent<PlayerInputUIController>();
+
+
+        playerGameObject = GameObject.Find("racoon lookin ass");
+
+        playerInfo = playerGameObject.GetComponent<PlayerScript>();
+        interactInfo = playerGameObject.GetComponent<Interact>();
+        playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
+        circleMouseInfo = playerGameObject.GetComponent<MouseTrackerMovement>();
+
+
+        GameObject gateCircleMinigame = GameObject.Find("Gate circle shrink minigame");
+
+        circleMouseInfo = gateCircleMinigame.GetComponent<MouseTrackerMovement>();
+
+        mouseCursor = GameObject.Find("MousePointer");
     }
     //If in Area load this
     public void StartAreaMinigame()
@@ -47,7 +68,6 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         Mouse.current.WarpCursorPosition(mouseStartPos);
         UIInfo.mousePosX = mouseStartPos.x;
         UIInfo.mousePosY = mouseStartPos.y;
-        strengthStage = 0;
 
         mouseInZone = true;
         playerInfo.minigameActiveMouseRectangle = true;
@@ -56,7 +76,13 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             mouseCursor = GameObject.Find("MousePointer");
         }
-        mouseCursor.GetComponent<Image>().enabled = !enabled; //!
+        mouseCursor.GetComponent<Image>().enabled = !enabled;
+
+        if (playerMovementInfo == null)
+        {
+            GameObject playerMovementInfoHolder = GameObject.Find("racoon lookin ass");
+            playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
+        }
 
         StartMinigame();
 
@@ -70,6 +96,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             strengthDebuff = 1;
         }
         movingSlider.maxValue = mouseEndPos.y - mouseStartPos.y;
+        endPosZoneY = mouseEndPos.y - (mouseEndPos.y / endPosModifier) ;
     }
     // Use Interactable enter
     public void StartMinigame()
@@ -78,6 +105,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             StartCoroutine(MouseMover());
         }
+        playerMovementInfo.OnEnterMinigame();
     }
     public IEnumerator MouseMover()
     {
@@ -91,11 +119,13 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         if (UIInfo.mousePosY > mouseStartPos.y)
         {
             Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, totalMousePos + UIInfo.mousePosY));
+            UIInfo.mousePosY = totalMousePos + UIInfo.mousePosY;
         }
         yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
 
         if (playerInfo.minigameActiveMouseRectangle == true) // double check
         {
+            print("Reactivated");            
             StartCoroutine(MouseMover());
         }
         if (mouseInZone == false)
@@ -106,7 +136,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             ReconnectPosition();
         }
-        if (UIInfo.mousePosY > mouseEndPos.y && IsWaiting == false)
+        if (UIInfo.mousePosY > endPosZoneY && IsWaiting == false)
         {
             IsWaiting = true;
             StartCoroutine(WaitingForShutDown());
@@ -117,7 +147,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     {
         print("Activating WaitingShutdown");
         yield return new WaitForSeconds(waitingTime);
-        if (UIInfo.mousePosY > mouseEndPos.y)
+        if (UIInfo.mousePosY > endPosZoneY)
         {
             ShutDown();
         }
@@ -129,7 +159,6 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     }
     public void ShutDown()
     {
-        print("ended minigame at Phase: " + strengthStage.ToString() + " Victory!");
         StopCoroutine(MouseMover());
         StopCoroutine(WaitingForShutDown());
 
@@ -140,10 +169,11 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         movingSlider.gameObject.SetActive(false);
         mouseCursor.GetComponent<Image>().enabled = enabled;
 
-        strengthStage = 0;
         playerInfo.minigameActiveMouseRectangle = false;
 
         interactInfo.minigameBeingPlayed = false;
+
+        playerMovementInfo.movementLock = false;
 
         //Completed
         if (mouseInZone == true)
@@ -151,6 +181,9 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             playerInfo.minigameActiveMouseRectangle = false;
             savingInfo.totalMissionsCompleted++;
             savingInfo.mouseTrackerTimesDone++;
+            rig.constraints = RigidbodyConstraints.None;
+            rig.constraints = RigidbodyConstraints.FreezeRotation;
+            rig.constraints = RigidbodyConstraints.FreezePositionY;
             print("Completed/Victory!:D");
         }
     }
@@ -168,7 +201,6 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             print("Mouse to far!");
             Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, mouseEndPos.y));
-            strengthStage = UIComponents.Length -1;
             mouseInZone = true;
             IsWaiting = true;
 
