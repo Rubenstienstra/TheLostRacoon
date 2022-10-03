@@ -60,10 +60,8 @@ public class Interact : MonoBehaviour
                 //Ui element stage 2
                 if (interactInput == 1 && minigameDetected && minigameBeingPlayed == false)
                 {
-                    minigameBeingPlayed = true;
                     playerMovementInfo.OnEnterMinigame();
                     CollidedMinigame(coll);
-                    camFreeze.CamFreeze();
                   //interaction here
                     Debug.Log("Interacted");
                 }
@@ -97,6 +95,6 @@ public class Interact : MonoBehaviour
         {
             coll.gameObject.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
         }
-        coll.gameObject.GetComponent<Collider>().enabled = !enabled;
+        
     }
 }
