@@ -404,6 +404,8 @@ MonoBehaviour:
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 0}
+  gatePuzzleGameObject: {fileID: 0}
+  hasBeenInteracted: 0
 --- !u!1 &1312670641092657029
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,6 +725,8 @@ MonoBehaviour:
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 0}
+  gatePuzzleGameObject: {fileID: 0}
+  hasBeenInteracted: 0
 --- !u!1 &3969167662813393707
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +968,8 @@ MonoBehaviour:
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 0}
+  gatePuzzleGameObject: {fileID: 0}
+  hasBeenInteracted: 0
 --- !u!1 &5089174804096123408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,6 +1289,8 @@ MonoBehaviour:
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 0}
+  gatePuzzleGameObject: {fileID: 0}
+  hasBeenInteracted: 0
 --- !u!1 &5695752308812149120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,10 +1364,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1545,6 +1553,8 @@ MonoBehaviour:
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 0}
+  gatePuzzleGameObject: {fileID: 0}
+  hasBeenInteracted: 0
 --- !u!1 &6417683357624204299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,6 +1714,8 @@ MonoBehaviour:
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 0}
+  gatePuzzleGameObject: {fileID: 0}
+  hasBeenInteracted: 0
 --- !u!1 &7223577166165776582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,6 +1877,8 @@ MonoBehaviour:
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 0}
+  gatePuzzleGameObject: {fileID: 0}
+  hasBeenInteracted: 0
 --- !u!1 &8208939081497430868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,6 +2038,8 @@ MonoBehaviour:
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 0}
+  gatePuzzleGameObject: {fileID: 0}
+  hasBeenInteracted: 0
 --- !u!1 &8526978865166691979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,6 +2327,8 @@ MonoBehaviour:
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 0}
+  gatePuzzleGameObject: {fileID: 0}
+  hasBeenInteracted: 0
 --- !u!1001 &2829970356116795504
 PrefabInstance:
   m_ObjectHideFlags: 0
