@@ -72,9 +72,9 @@ public class PlayerMovementBetter : MonoBehaviour
         {
             isOnGround = true;
         }
-        if(gameObjectCollider.gameObject.tag == "")
+        if(gameObjectCollider.gameObject.tag == "Ground")
         {
-
+            isOnGround = true;
         }
     }
     public void Update()
