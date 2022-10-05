@@ -27,7 +27,7 @@ public class Interact : MonoBehaviour
     {
         if (playerMovementInfo == null)
         {
-            GameObject playerMovementInfoHolder = GameObject.Find("racoon lookin ass");
+            GameObject playerMovementInfoHolder = GameObject.Find("Racoon");
             playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
         }
     }

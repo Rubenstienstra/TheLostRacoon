@@ -39,7 +39,7 @@ public class UIPuzzleColor : MonoBehaviour
         GameObject playerScript = GameObject.Find("Player");
         playerInfo = playerScript.GetComponent<PlayerScript>();
 
-       GameObject playerGameObject = GameObject.Find("racoon lookin ass");
+       GameObject playerGameObject = GameObject.Find("Racoon");
        playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
 
 

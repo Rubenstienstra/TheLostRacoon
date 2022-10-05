@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5883799081826260271
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3966059412271794986, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000051244356
+      objectReference: {fileID: 0}
+    - target: {fileID: 3966059412271794986, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000018292358
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610973163322973266, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674830922084284, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_Name
+      value: Player Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674830922084287, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674830922084287, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674830922084287, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674830922084287, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674830922084287, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674830922084287, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674830922084287, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674830922084287, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674830922084287, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674830922084287, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674830922084287, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425674831900745998, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: camSpot
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607017936907041563, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000032409776
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607017936907041563, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000011569104
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980147600408847502, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: mouseInfo
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980147600408847502, guid: 9828ec45f5196cd45ae1df4e50b5b44d,
+        type: 3}
+      propertyPath: mouseRectangleInfo
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9828ec45f5196cd45ae1df4e50b5b44d, type: 3}

@@ -67,42 +67,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Forward",
-                    "type": "Value",
-                    "id": "014a04ea-1ea5-475e-80c4-6171ad67da98",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Left",
-                    "type": "Value",
-                    "id": "9d1210ef-78b1-413c-bf75-a459cab2f01d",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Right",
-                    "type": "Value",
-                    "id": "715a10c7-57a9-439c-9736-17b82d1c4bce",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Down",
-                    "type": "Value",
-                    "id": "c1768524-2faa-417f-b3ee-1ef97aa15a26",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -226,12 +190,92 @@
                     "action": "MouseY",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "New movement",
+            "id": "ea3b08a0-cd7f-4179-a301-40099e7d83e0",
+            "actions": [
+                {
+                    "name": "Forward",
+                    "type": "Value",
+                    "id": "7cf22c9a-23a7-4325-ba8c-d4b3e17be9d4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
+                    "name": "Left",
+                    "type": "Value",
+                    "id": "73b665ef-6783-42a8-a44b-9271b1804b77",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Right",
+                    "type": "Value",
+                    "id": "75a2a776-d277-42b1-8eaf-75c770b86f69",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Down",
+                    "type": "Value",
+                    "id": "fd60717f-fe80-44ee-9b1b-cc1b76817eb2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MouseX",
+                    "type": "Value",
+                    "id": "77f87a0f-2633-481f-9373-e3d04f35b5f8",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MouseY",
+                    "type": "Value",
+                    "id": "465b5ab2-2306-4117-881c-7bbdefd841dc",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Value",
+                    "id": "550bbf3f-b089-4e4c-b4cf-3c0f33ab51ba",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "1db2b9d2-cc11-4bc7-9e3c-6bd86be74f9b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
                     "name": "",
-                    "id": "101b5d25-1eb6-4839-ab1f-740686fce98b",
+                    "id": "da12cd19-a5dc-42c8-8e4e-e1e599dc7e45",
                     "path": "<Keyboard>/w",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Forward",
@@ -240,7 +284,7 @@
                 },
                 {
                     "name": "",
-                    "id": "10d044c5-10d8-495f-a8ce-c5c894540009",
+                    "id": "b622e9c5-0999-4d79-b31e-e36563f001ce",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -251,7 +295,7 @@
                 },
                 {
                     "name": "",
-                    "id": "df66cbbb-3bfb-4f59-a531-9bdae2640c08",
+                    "id": "2f47a071-7dc1-4941-bc3f-31b946c915df",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -262,7 +306,7 @@
                 },
                 {
                     "name": "",
-                    "id": "e217c682-8816-47e8-b7b0-167a0e842738",
+                    "id": "105b65ed-dd38-4529-aec1-85f9371d4ebe",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -270,14 +314,52 @@
                     "action": "Down",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20ec48d8-9834-40e6-a4ff-509e2b29b0dc",
+                    "path": "<Mouse>/position/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6afac916-90ff-4338-99e6-59372d138c8c",
+                    "path": "<Mouse>/position/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c1e3072-b94b-4110-a572-d9fa3674ffe2",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4874f20-6d3b-44d5-87e7-81dca9ad0900",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
-        },
-        {
-            "name": "New movement",
-            "id": "ea3b08a0-cd7f-4179-a301-40099e7d83e0",
-            "actions": [],
-            "bindings": []
         }
     ],
     "controlSchemes": [

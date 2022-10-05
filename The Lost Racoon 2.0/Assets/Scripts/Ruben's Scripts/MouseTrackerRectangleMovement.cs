@@ -43,7 +43,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         UIInfo = parentPlayerGameObject.GetComponent<PlayerInputUIController>();
 
 
-        playerGameObject = GameObject.Find("racoon lookin ass");
+        playerGameObject = GameObject.Find("Racoon");
 
         playerInfo = playerGameObject.GetComponent<PlayerScript>();
         interactInfo = playerGameObject.GetComponent<Interact>();
@@ -83,8 +83,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
 
             if (playerMovementInfo == null)
             {
-                GameObject playerMovementInfoHolder = GameObject.Find("racoon lookin ass");
-                playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
+                playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
             }
 
             StartMinigame();
@@ -149,13 +148,17 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             IsWaiting = true;
             StartCoroutine(WaitingForShutDown());
         }
+        else if (UIInfo.mousePosY < endPosZoneY)
+        {
+            IsWaiting = false;
+        }
         
     }
     public IEnumerator WaitingForShutDown()
     {
         print("Activating WaitingShutdown");
         yield return new WaitForSeconds(waitingTime);
-        if (UIInfo.mousePosY > endPosZoneY)
+        if (UIInfo.mousePosY > endPosZoneY && IsWaiting == true)
         {
             ShutDown();
         }
@@ -163,7 +166,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             StopCoroutine(WaitingForShutDown());
         }
-        IsWaiting = false;
+        
     }
     public void ShutDown()
     {

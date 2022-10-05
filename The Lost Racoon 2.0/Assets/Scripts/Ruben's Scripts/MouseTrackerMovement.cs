@@ -42,7 +42,7 @@ public class MouseTrackerMovement : MonoBehaviour
     void Start()
     {
         //safety
-        playerGameObject = GameObject.Find("racoon lookin ass");
+        playerGameObject = GameObject.Find("Racoon");
 
         GameObject parentPlayerGameObject = GameObject.Find("Player");
         UIInfo = parentPlayerGameObject.GetComponent<PlayerInputUIController>();
@@ -82,8 +82,7 @@ public class MouseTrackerMovement : MonoBehaviour
 
             if (playerMovementInfo == null)
             {
-                GameObject playerMovementInfoHolder = GameObject.Find("racoon lookin ass");
-                playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
+                playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
             }
             StartMinigame();
         }

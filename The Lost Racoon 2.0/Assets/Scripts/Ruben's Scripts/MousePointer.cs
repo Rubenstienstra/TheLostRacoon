@@ -10,7 +10,7 @@ public class MousePointer : MonoBehaviour
 
     public void Start()
     {
-      findingScriptGameobject = GameObject.Find("Gate circle shrink minigame");
+        findingScriptGameobject = GameObject.Find("Gate circle shrink minigame");
         if(mouseInfo == null)
         {
             mouseInfo = findingScriptGameobject.GetComponent<MouseTrackerMovement>();
