@@ -876,8 +876,8 @@ GameObject:
   - component: {fileID: 965707938186798073}
   - component: {fileID: 965707938186798072}
   - component: {fileID: 965707938186798075}
+  - component: {fileID: 3405848011144617880}
   - component: {fileID: 965707938186798074}
-  - component: {fileID: 2558299534615753854}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -989,9 +989,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2558299534615753854}
-        m_TargetAssemblyTypeName: PlayButton, Assembly-CSharp
-        m_MethodName: Button
+      - m_Target: {fileID: 3405848011144617880}
+        m_TargetAssemblyTypeName: LoadToScene, Assembly-CSharp
+        m_MethodName: PlayButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1001,6 +1001,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3405848011144617880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965707938186798076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ed6722de1ef7b4f93e351efff389d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fade: {fileID: 977402785093593643}
+  fadeGameObject: {fileID: 3870514025800251142}
 --- !u!95 &965707938186798074
 Animator:
   serializedVersion: 4
@@ -1021,22 +1035,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2558299534615753854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 965707938186798076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3550d466cd00a67469cbea1034555d16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuClose: {fileID: 1320232453013381788}
-  fade: {fileID: 977402785093593643}
-  menuOpen: {fileID: 0}
-  fadeGameObject: {fileID: 3870514025800251142}
 --- !u!1 &965707938686931771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,6 +1963,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fade Play
       objectReference: {fileID: 0}
+    - target: {fileID: 2355958083586052126, guid: a66523e2374e988429d530e37f65916d,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 419fc342bb05e784fb45929658e7235e, type: 2}
     - target: {fileID: 8649566850617687492, guid: a66523e2374e988429d530e37f65916d,
         type: 3}
       propertyPath: m_Color.a

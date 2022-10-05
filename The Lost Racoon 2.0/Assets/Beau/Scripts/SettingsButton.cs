@@ -9,8 +9,8 @@ public class SettingsButton : MonoBehaviour
 
     public void SetttingsButton()
     {       
-        lastButton.GetComponent<PlayButton>().menuOpen = newMenu;
-        lastButton.GetComponent<PlayButton>().Button();
+        lastButton.GetComponent<MenuFade>().menuOpen = newMenu;
+        lastButton.GetComponent<MenuFade>().Button();
 
     }
 }
