@@ -15,6 +15,6 @@ MonoBehaviour:
   totalMissionsCompleted: 0
   minigame3x3: 1
   minigame4x4: 0
+  volumeSFX: 0
+  volumeMUSIC: -8
   mouseTrackerTimesDone: 0
-  mouseInZone: 0
-  strengthMouse: 0
