@@ -7,8 +7,14 @@ public class PlayerMovementBetter : MonoBehaviour
 {
     public CamFreezeScript camFreezeInfo;
     public Interact interactInfo;
-    
+
+    public CharacterController characterControl;
+    public float angle;
+
     public float[] forwardWASD;
+    public float multiplierSpeedBonus = 1;
+    private float crspeedBonus = 1;
+
     public float jump;
     public float beginJumpBonus = 1.5f;
     public float totalHeightJump = 1.5f;
@@ -38,6 +44,17 @@ public class PlayerMovementBetter : MonoBehaviour
     public void OnRight(InputValue value)
     {
         forwardWASD[3] = value.Get<float>();
+    }
+    public void OnSprint(InputValue value)
+    {
+        if(value.Get<float>() == 1)
+        {
+            crspeedBonus = multiplierSpeedBonus;
+        }
+        else
+        {
+            crspeedBonus = 1;
+        }
     }
     public void OnJump(InputValue value)
     {
@@ -79,9 +96,13 @@ public class PlayerMovementBetter : MonoBehaviour
     }
     public void Update()
     {
-        transform.localPosition += new Vector3(forwardWASD[3] + -forwardWASD[1], 0 ,-forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
+        Vector3 addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
+        
+        angle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, angle, 0);
+        characterControl.Move(addMovement * crspeedBonus);
     }
-
+    //transform.localPosition += new Vector3(forwardWASD[3] + -forwardWASD[1], 0 ,-forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
 
 
 

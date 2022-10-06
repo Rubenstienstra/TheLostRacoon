@@ -1237,7 +1237,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  controller: {fileID: 5425674831900745999}
+  controller: {fileID: 0}
   cam: {fileID: 3966059412271794986}
   playerModel: {fileID: 1206971681126141794}
   camFreezeInfo: {fileID: 5425674831900745998}
@@ -1425,10 +1425,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5425674831900746034}
   - component: {fileID: 5425674831900745996}
-  - component: {fileID: 5425674831900745999}
   - component: {fileID: 5425674831900745998}
   - component: {fileID: 1206971680304192007}
   - component: {fileID: 3803885677468695928}
+  - component: {fileID: 1686833434129637840}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1485,24 +1485,6 @@ MonoBehaviour:
   m_DefaultActionMap: New movement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!143 &5425674831900745999
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5425674831900746035}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 0
-  m_Radius: 0.16
-  m_SlopeLimit: 45
-  m_StepOffset: 0
-  m_SkinWidth: 0.0001
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!114 &5425674831900745998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1551,14 +1533,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camFreezeInfo: {fileID: 5425674831900745998}
   interactInfo: {fileID: 5425674830556152797}
+  characterControl: {fileID: 1686833434129637840}
+  angle: 0
   forwardWASD:
   - 0
   - 0
   - 0
   - 0
+  crspeedBonus: 1
+  addedSpeedBonus: 2
   jump: 0
   beginJumpBonus: 1.5
-  totalHeightJump: 1
+  totalHeightJump: 1.5
   jumpMultiplier: 50
   maxTimeHoldJump: 4
   rb: {fileID: 6869643510187698885}
@@ -1566,6 +1552,24 @@ MonoBehaviour:
   gameObjectCollider: {fileID: 1206971681126141794}
   isOnGround: 1
   movementLock: 0
+--- !u!143 &1686833434129637840
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5425674831900746035}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 0.5
+  m_Radius: 0.1
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1 &5425674832126026845
 GameObject:
   m_ObjectHideFlags: 0
