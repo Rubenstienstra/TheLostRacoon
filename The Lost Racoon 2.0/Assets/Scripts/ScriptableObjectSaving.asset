@@ -16,5 +16,5 @@ MonoBehaviour:
   minigame3x3: 1
   minigame4x4: 0
   volumeSFX: 0
-  volumeMUSIC: -8
+  volumeMUSIC: 0
   mouseTrackerTimesDone: 0

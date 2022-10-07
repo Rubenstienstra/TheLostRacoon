@@ -3418,7 +3418,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxAudioMixer: {fileID: 24100000, guid: 5f5ad63f73fa5cc44aec14ad734821ed, type: 2}
   musicAudioMixer: {fileID: 24100000, guid: ccc9b7879af66544a9a8305daacd354d, type: 2}
+  sliderSFX: {fileID: 4799950980768667376}
+  sliderMusic: {fileID: 4799950980852337701}
   resolutionDropdown: {fileID: 4799950980593661052}
+  scriptableinfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
 --- !u!114 &5328019670105478546
 MonoBehaviour:
   m_ObjectHideFlags: 0

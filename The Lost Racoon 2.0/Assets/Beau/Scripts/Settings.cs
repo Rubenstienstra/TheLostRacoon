@@ -8,9 +8,10 @@ public class Settings : MonoBehaviour
 {
     public AudioMixer sfxAudioMixer;
     public AudioMixer musicAudioMixer;
-
+    public Slider sliderSFX;
+    public Slider sliderMusic;
     public Dropdown resolutionDropdown;
-
+    public ScriptableSaving scriptableinfo;
     Resolution[] resolutions;
 
 
@@ -38,6 +39,10 @@ public class Settings : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+        sliderMusic.value = scriptableinfo.volumeMUSIC;
+        sliderSFX.value = scriptableinfo.volumeSFX;
+        
     }
 
     public void SetResolution(int resolutionIndex)
@@ -53,6 +58,7 @@ public class Settings : MonoBehaviour
     {
         musicAudioMixer.SetFloat("volume", volume);
     }
+
 
     public void SetQuality(int qualityIndex)
     {
