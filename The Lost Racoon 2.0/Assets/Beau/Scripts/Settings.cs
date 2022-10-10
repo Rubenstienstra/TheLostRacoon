@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Settings : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Settings : MonoBehaviour
     public Dropdown resolutionDropdown;
     public ScriptableSaving scriptableinfo;
     Resolution[] resolutions;
+    public Text fullscreenText;
+
 
 
 
@@ -39,10 +42,10 @@ public class Settings : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
-
+        
         sliderMusic.value = scriptableinfo.volumeMUSIC;
         sliderSFX.value = scriptableinfo.volumeSFX;
-        
+
     }
 
     public void SetResolution(int resolutionIndex)
@@ -68,6 +71,16 @@ public class Settings : MonoBehaviour
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+        if (isFullscreen == true)
+        {
+            fullscreenText.text = "ON";
+        }
+        else
+        {
+            fullscreenText.text = "Off";
+        }
+        
+
     }
 
 
