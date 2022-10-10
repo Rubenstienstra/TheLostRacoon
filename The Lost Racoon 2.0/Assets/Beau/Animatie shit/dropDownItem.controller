@@ -500,13 +500,6 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 46f9659db1555d44396092d7f0b875ef, type: 3}
-    attribute: m_Sprite
-    path: Item Background
-    classID: 114
-    script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  - curve:
-    - time: 0
       value: {fileID: 2100000, guid: 101020a6fb546914dae518c335c91504, type: 2}
     attribute: m_Material
     path: Item Background
@@ -519,13 +512,6 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - serializedVersion: 2
-      path: 2879063841
-      attribute: 2015549526
-      script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-      typeID: 114
-      customType: 0
-      isPPtrCurve: 1
     - serializedVersion: 2
       path: 2879063841
       attribute: 2324865467
@@ -555,7 +541,6 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 46f9659db1555d44396092d7f0b875ef, type: 3}
     - {fileID: 2100000, guid: 101020a6fb546914dae518c335c91504, type: 2}
   m_AnimationClipSettings:
     serializedVersion: 2
