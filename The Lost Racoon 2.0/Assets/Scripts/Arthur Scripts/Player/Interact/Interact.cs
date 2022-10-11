@@ -9,7 +9,7 @@ public class Interact : MonoBehaviour
     public PlayerInput playerInput;
     public Pickup pickupscript;
     public CamFreezeScript camFreeze;
-    public PlayerMovement playerMovementInfo;
+    public PlayerMovementBetter playerMovementInfo;
     [Header("Detection Sphere", order = 1)]
     public Transform detectionAria;
     public float detectDiameter;
@@ -27,8 +27,8 @@ public class Interact : MonoBehaviour
     {
         if (playerMovementInfo == null)
         {
-            GameObject playerMovementInfoHolder = GameObject.Find("Racoon");
-            playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
+            GameObject playerMovementInfoHolder = GameObject.Find("Player");
+            playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovementBetter>();
         }
     }
     void Update()

@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class UIPuzzleColor : MonoBehaviour
 {
     //public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
-    public PlayerMovement playerMovementInfo;
+    public PlayerMovementBetter playerMovementInfo;
 
     public PlayerScript playerInfo;
     public GameObject[] colorButtons;
@@ -15,6 +16,8 @@ public class UIPuzzleColor : MonoBehaviour
     public bool startRed;
     public int totalButtons;
     public int totalButtonsCorrect;
+    public bool is3x3Minigame;
+    public bool is4x4Minigame;
 
     public GameObject currentGameObject;
     public GameObject UIPuzzleGameObject;
@@ -24,11 +27,11 @@ public class UIPuzzleColor : MonoBehaviour
 
     private void Awake()
     {
-        if (savingInfo.minigame3x3 == true)
+        if (is3x3Minigame == true)
         {
             totalButtons = 9;
         }
-        else if (savingInfo.minigame4x4 == true)
+        else if (is4x4Minigame == true)
         {
             totalButtons = 16;
         }
@@ -38,9 +41,10 @@ public class UIPuzzleColor : MonoBehaviour
         //find main player
         GameObject playerScript = GameObject.Find("Player");
         playerInfo = playerScript.GetComponent<PlayerScript>();
+        playerMovementInfo = playerScript.GetComponent<PlayerMovementBetter>();
 
-       GameObject playerGameObject = GameObject.Find("Racoon");
-       playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
+        //GameObject playerGameObject = GameObject.Find("Racoon");
+       
 
 
         ResetColors();
@@ -110,6 +114,7 @@ public class UIPuzzleColor : MonoBehaviour
     {
         if (hasBeenInteracted == false)
         {
+            Cursor.visible = false;
             UIPuzzleGameObject.SetActive(true);
             playerMovementInfo.OnEnterMinigame();
         }

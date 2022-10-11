@@ -9,11 +9,17 @@ public class PlayerMovementBetter : MonoBehaviour
     public Interact interactInfo;
 
     public CharacterController characterControl;
-    public float angle;
+    public float lookAtAngle;
+    public float endAngle;
 
     public float[] forwardWASD;
+    public bool[] isMovingForwardWASD;
+    public int checkingBools;
+
     public float multiplierSpeedBonus = 1;
     private float crspeedBonus = 1;
+    public float timeToTurn;
+    public float velocity;
 
     public float jump;
     public float beginJumpBonus = 1.5f;
@@ -26,24 +32,29 @@ public class PlayerMovementBetter : MonoBehaviour
     public Collision gameObjectCollision;
     public Collider gameObjectCollider;
 
+    public bool moving;
     public bool isOnGround;
     public bool movementLock;
 
     public void OnForward(InputValue value)
     {
        forwardWASD[0] = value.Get<float>();
+       CheckMoving(0);
     }
     public void OnLeft(InputValue value)
     {
         forwardWASD[1] = value.Get<float>();
+        CheckMoving(1);
     }
     public void OnDown(InputValue value)
     {
         forwardWASD[2] = value.Get<float>();
+        CheckMoving(2);
     }
     public void OnRight(InputValue value)
     {
         forwardWASD[3] = value.Get<float>();
+        CheckMoving(3);
     }
     public void OnSprint(InputValue value)
     {
@@ -62,6 +73,22 @@ public class PlayerMovementBetter : MonoBehaviour
         if(isOnGround == true)
         {
             StartCoroutine(JumpTiming());
+        }
+    }
+    public void CheckMoving(int movementNumber)
+    {
+        if(forwardWASD[movementNumber] == 1)
+        {
+            isMovingForwardWASD[movementNumber] = true;
+        }
+        else
+        {
+            isMovingForwardWASD[movementNumber] = false;
+        }
+        if(moving == false)
+        {
+            moving = true;
+            StartCoroutine(Movement());
         }
     }
     public IEnumerator JumpTiming()
@@ -94,13 +121,37 @@ public class PlayerMovementBetter : MonoBehaviour
             isOnGround = true;
         }
     }
-    public void Update()
+    public IEnumerator Movement()
     {
+        print("activated");
         Vector3 addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
-        
-        angle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, angle, 0);
+
+        lookAtAngle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg;
+        endAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, lookAtAngle, ref velocity, timeToTurn);
+        transform.rotation = Quaternion.Euler(0, endAngle, 0);
         characterControl.Move(addMovement * crspeedBonus);
+
+        yield return new WaitForSeconds(0.01f);
+        for (int i = 0; i < isMovingForwardWASD.Length; i++)
+       {
+           if(isMovingForwardWASD[i] == true)
+           {
+               checkingBools++;
+           }
+           
+       }
+       if (checkingBools > 0)
+       {
+            new WaitForSeconds(0.01f);
+            StartCoroutine(Movement());
+       }
+       else
+       {
+            moving = false;
+       }
+       checkingBools = 0;
+
+        
     }
     //transform.localPosition += new Vector3(forwardWASD[3] + -forwardWASD[1], 0 ,-forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
 
@@ -113,7 +164,7 @@ public class PlayerMovementBetter : MonoBehaviour
     public void OnEnterMinigame()
     {
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Cursor.visible = false;
         movementLock = true;
         interactInfo.minigameBeingPlayed = true;
         camFreezeInfo.CamFreeze();

@@ -118,6 +118,8 @@ MonoBehaviour:
   startRed: 0
   totalButtons: 0
   totalButtonsCorrect: 0
+  is3x3Minigame: 0
+  is4x4Minigame: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 7402547780273720767}
   gatePuzzleGameObject: {fileID: 2076464334426977072}
@@ -129,6 +131,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2076464334426977076}
     m_Modifications:
+    - target: {fileID: 1317892262029871564, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: is3x3Minigame
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1317892262029871564, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: UIPuzzleGameObject
@@ -446,6 +453,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2289328702388505295, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
+      propertyPath: is3x3Minigame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2289328702388505295, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
       propertyPath: UIPuzzleGameObject
       value: 
       objectReference: {fileID: 7402547780273720767}
@@ -456,6 +468,11 @@ PrefabInstance:
       objectReference: {fileID: 2076464334426977072}
     - target: {fileID: 2421769061231647168, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
+      propertyPath: is3x3Minigame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421769061231647168, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
       propertyPath: UIPuzzleGameObject
       value: 
       objectReference: {fileID: 7402547780273720767}
@@ -466,6 +483,11 @@ PrefabInstance:
       objectReference: {fileID: 2076464334426977072}
     - target: {fileID: 3666080558600697987, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
+      propertyPath: is3x3Minigame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666080558600697987, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
       propertyPath: UIPuzzleGameObject
       value: 
       objectReference: {fileID: 7402547780273720767}
@@ -474,6 +496,11 @@ PrefabInstance:
       propertyPath: gatePuzzleGameObject
       value: 
       objectReference: {fileID: 2076464334426977072}
+    - target: {fileID: 4442791067488731238, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: is3x3Minigame
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4442791067488731238, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: UIPuzzleGameObject
@@ -521,6 +548,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6111419663868385062, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
+      propertyPath: is3x3Minigame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111419663868385062, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
       propertyPath: UIPuzzleGameObject
       value: 
       objectReference: {fileID: 7402547780273720767}
@@ -531,6 +563,11 @@ PrefabInstance:
       objectReference: {fileID: 2076464334426977072}
     - target: {fileID: 7018809122252469310, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
+      propertyPath: is3x3Minigame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7018809122252469310, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
       propertyPath: UIPuzzleGameObject
       value: 
       objectReference: {fileID: 7402547780273720767}
@@ -539,6 +576,11 @@ PrefabInstance:
       propertyPath: gatePuzzleGameObject
       value: 
       objectReference: {fileID: 2076464334426977072}
+    - target: {fileID: 7035141363454227437, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: is3x3Minigame
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7035141363454227437, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: UIPuzzleGameObject
@@ -556,6 +598,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8900005663822567146, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
+      propertyPath: is3x3Minigame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8900005663822567146, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
       propertyPath: UIPuzzleGameObject
       value: 
       objectReference: {fileID: 7402547780273720767}
@@ -564,6 +611,11 @@ PrefabInstance:
       propertyPath: gatePuzzleGameObject
       value: 
       objectReference: {fileID: 2076464334426977072}
+    - target: {fileID: 9070239682575829062, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: is3x3Minigame
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9070239682575829062, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: UIPuzzleGameObject

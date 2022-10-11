@@ -10,7 +10,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public MouseTrackerMovement circleMouseInfo;
     public PlayerInputUIController UIInfo;
     public Interact interactInfo;
-    public PlayerMovement playerMovementInfo;
+    public PlayerMovementBetter playerMovementInfo;
 
     public GameObject mouseCursor;
     public GameObject playerGameObject;
@@ -41,13 +41,13 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
        GameObject parentPlayerGameObject = GameObject.Find("Player");
 
         UIInfo = parentPlayerGameObject.GetComponent<PlayerInputUIController>();
+        playerMovementInfo = parentPlayerGameObject.GetComponent<PlayerMovementBetter>();
 
 
         playerGameObject = GameObject.Find("Racoon");
 
         playerInfo = playerGameObject.GetComponent<PlayerScript>();
         interactInfo = playerGameObject.GetComponent<Interact>();
-        playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
         circleMouseInfo = playerGameObject.GetComponent<MouseTrackerMovement>();
 
 
@@ -80,11 +80,6 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
                 mouseCursor = GameObject.Find("MousePointer");
             }
             mouseCursor.GetComponent<Image>().enabled = !enabled;
-
-            if (playerMovementInfo == null)
-            {
-                playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
-            }
 
             StartMinigame();
 

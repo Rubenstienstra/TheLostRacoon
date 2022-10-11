@@ -137,7 +137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000435025404189527}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.38700002, z: -1}
+  m_LocalPosition: {x: 0, y: 1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -333,7 +333,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2683476900240297986}
-  m_LocalRotation: {x: 0.3361865, y: -0.000000051244356, z: 0.000000018292358, w: 0.9417955}
+  m_LocalRotation: {x: 0.3361865, y: 0.000000051244356, z: -0.000000018292358, w: 0.9417955}
   m_LocalPosition: {x: 0, y: -0.29218608, z: 0.29218608}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -829,7 +829,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4086957798799003780}
-  m_LocalRotation: {x: 0.2897841, y: -0, z: -0, w: 0.95709205}
+  m_LocalRotation: {x: 0.2897841, y: 1e-45, z: -0, w: 0.95709205}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1193,7 +1193,7 @@ BoxCollider:
   m_GameObject: {fileID: 5425674830556152772}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.21361971, y: 0.022439336, z: 0.7490016}
   m_Center: {x: -0.0019553602, y: -0.024247382, z: -0.05247599}
@@ -1272,7 +1272,7 @@ MonoBehaviour:
   playerInput: {fileID: 5425674831900745996}
   pickupscript: {fileID: 2694780555360904307}
   camFreeze: {fileID: 5425674831900745998}
-  playerMovementInfo: {fileID: 5425674830556152770}
+  playerMovementInfo: {fileID: 3803885677468695928}
   detectionAria: {fileID: 5425674830556152775}
   detectDiameter: 1.5
   detectedColliders: []
@@ -1444,7 +1444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5425674831900746035}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.613, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1534,13 +1534,18 @@ MonoBehaviour:
   camFreezeInfo: {fileID: 5425674831900745998}
   interactInfo: {fileID: 5425674830556152797}
   characterControl: {fileID: 1686833434129637840}
-  angle: 0
+  lookAtAngle: 0
+  endAngle: 0
   forwardWASD:
   - 0
   - 0
   - 0
   - 0
-  multiplierSpeedBonus: 1
+  isMovingForwardWASD: 00000000
+  checkingBools: 0
+  multiplierSpeedBonus: 1.5
+  timeToTurn: 0.5
+  velocity: 0
   jump: 0
   beginJumpBonus: 1.5
   totalHeightJump: 1.5
@@ -1549,6 +1554,7 @@ MonoBehaviour:
   rb: {fileID: 6869643510187698885}
   jumpAnimation: {fileID: 0}
   gameObjectCollider: {fileID: 1206971681126141794}
+  moving: 0
   isOnGround: 1
   movementLock: 0
 --- !u!143 &1686833434129637840
@@ -1584,7 +1590,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5425674832126026844
 Transform:
   m_ObjectHideFlags: 0
@@ -1655,7 +1661,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5733722822185794088}
-  m_LocalRotation: {x: 0.33618647, y: -0.000000032409787, z: 0.000000011569108, w: 0.94179547}
+  m_LocalRotation: {x: 0.33618647, y: 0.000000032409776, z: -0.000000011569104, w: 0.94179547}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1939,7 +1945,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9205507310308890843}
-  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: -1e-45, z: 1e-45, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2138,12 +2144,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5425674830556152775}
     m_Modifications:
-    - target: {fileID: 1945000355755264004, guid: fcfa7aad2b7d7e14b9ced6c832f8c9da,
-        type: 3}
-      propertyPath: playerInfo
-      value: 
-      objectReference: {fileID: 9115052203366980396, guid: daa491ec766b8ed49a394ecb9dea55b1,
-        type: 3}
     - target: {fileID: 3368314807452155856, guid: fcfa7aad2b7d7e14b9ced6c832f8c9da,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2253,11 +2253,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MousePointer
-      objectReference: {fileID: 0}
-    - target: {fileID: 3368314807452155857, guid: fcfa7aad2b7d7e14b9ced6c832f8c9da,
-        type: 3}
-      propertyPath: m_TagString
-      value: CamCollideIgnore
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcfa7aad2b7d7e14b9ced6c832f8c9da, type: 3}
