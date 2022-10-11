@@ -42,11 +42,7 @@ public class UIPuzzleColor : MonoBehaviour
         GameObject playerScript = GameObject.Find("Player");
         playerInfo = playerScript.GetComponent<PlayerScript>();
         playerMovementInfo = playerScript.GetComponent<PlayerMovementBetter>();
-
-        //GameObject playerGameObject = GameObject.Find("Racoon");
-       
-
-
+        
         ResetColors();
     }
     public void OnButtonColorPress()

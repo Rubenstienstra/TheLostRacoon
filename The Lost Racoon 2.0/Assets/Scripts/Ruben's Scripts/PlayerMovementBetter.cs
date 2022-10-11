@@ -10,7 +10,9 @@ public class PlayerMovementBetter : MonoBehaviour
 
     public CharacterController characterControl;
     public float lookAtAngle;
+    public Vector3 movementAngle;
     public float endAngle;
+    public Camera playerCam;
 
     public float[] forwardWASD;
     public bool[] isMovingForwardWASD;
@@ -126,30 +128,31 @@ public class PlayerMovementBetter : MonoBehaviour
         print("activated");
         Vector3 addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
 
-        lookAtAngle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg;
+        lookAtAngle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg + playerCam.transform.eulerAngles.y;
         endAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, lookAtAngle, ref velocity, timeToTurn);
         transform.rotation = Quaternion.Euler(0, endAngle, 0);
-        characterControl.Move(addMovement * crspeedBonus);
+
+        movementAngle = Quaternion.Euler(0, endAngle, 0) * Vector3.forward;
+        characterControl.Move(movementAngle * crspeedBonus * Time.deltaTime);
 
         yield return new WaitForSeconds(0.01f);
         for (int i = 0; i < isMovingForwardWASD.Length; i++)
-       {
+        {
            if(isMovingForwardWASD[i] == true)
            {
                checkingBools++;
            }
-           
-       }
-       if (checkingBools > 0)
-       {
+        }
+        if (checkingBools > 0)
+        {
             new WaitForSeconds(0.01f);
             StartCoroutine(Movement());
-       }
-       else
-       {
+        }
+        else
+        {
             moving = false;
-       }
-       checkingBools = 0;
+        }
+        checkingBools = 0;
 
         
     }
