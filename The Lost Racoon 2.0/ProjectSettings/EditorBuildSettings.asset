@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/OutdoorsScene.unity
-    guid: 8124e5870f4fd4c779e7a5f994e84ad1
   - enabled: 1
-    path: Assets/Scenes/ArthurCode.unity
-    guid: 7f6cb590bdfac174fa3456c6b14ceaf6
+    path: Assets/Scenes/MainMenu.unity
+    guid: 126a34812745e4e4d95cb1c4be495afb
+  - enabled: 1
+    path: Assets/Scenes/World Scene.unity
+    guid: 9e9a35fb0df7aa3469ba26113e5d5a87
   m_configObjects: {}
