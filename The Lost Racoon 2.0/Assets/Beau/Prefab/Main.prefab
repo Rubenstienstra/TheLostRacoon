@@ -1015,6 +1015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: {fileID: 977402785093593643}
   fadeGameObject: {fileID: 3870514025800251142}
+  sceneToLoad: 1
 --- !u!95 &965707938186798074
 Animator:
   serializedVersion: 4

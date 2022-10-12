@@ -9,6 +9,8 @@ public class LoadToScene : MonoBehaviour
     public Animator fade;
     public GameObject fadeGameObject;
     bool allowedToChange;
+    public int sceneToLoad;
+
 
     public void PlayButton()
     {
@@ -23,7 +25,7 @@ public class LoadToScene : MonoBehaviour
         {
             if (allowedToChange == true)
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(sceneToLoad);
             }
 
         }
