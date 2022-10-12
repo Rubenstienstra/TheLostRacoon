@@ -125,7 +125,6 @@ public class PlayerMovementBetter : MonoBehaviour
     }
     public IEnumerator Movement()
     {
-        print("activated");
         Vector3 addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
 
         lookAtAngle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg + playerCam.transform.eulerAngles.y;
@@ -133,9 +132,9 @@ public class PlayerMovementBetter : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, endAngle, 0);
 
         movementAngle = Quaternion.Euler(0, endAngle, 0) * Vector3.forward;
-        characterControl.Move(movementAngle * crspeedBonus * Time.deltaTime);
+        characterControl.Move(movementAngle.normalized * crspeedBonus * Time.deltaTime);
 
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.01f); // do not move
         for (int i = 0; i < isMovingForwardWASD.Length; i++)
         {
            if(isMovingForwardWASD[i] == true)
@@ -156,14 +155,6 @@ public class PlayerMovementBetter : MonoBehaviour
 
         
     }
-    //transform.localPosition += new Vector3(forwardWASD[3] + -forwardWASD[1], 0 ,-forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
-
-
-
-
-
-
-
     public void OnEnterMinigame()
     {
         Cursor.lockState = CursorLockMode.None;

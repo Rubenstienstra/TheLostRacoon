@@ -17,7 +17,6 @@ public class MouseTrackerMovement : MonoBehaviour
 
     public Vector2 mouseStartPos;
     public GameObject[] circles;
-    public GameObject playerGameObject;
 
     // 0 = default, 1 = phase 1, 2 = phase end.
     public int currentPhase;
@@ -43,11 +42,9 @@ public class MouseTrackerMovement : MonoBehaviour
     {
         //safety
 
-        GameObject parentPlayerGameObject = GameObject.Find("Player");
-        UIInfo = parentPlayerGameObject.GetComponent<PlayerInputUIController>();
-        playerMovementInfo = parentPlayerGameObject.GetComponent<PlayerMovementBetter>();
-
-        playerGameObject = GameObject.Find("Racoon");
+        GameObject playerGameObject = GameObject.Find("RacoonPlayer");
+        UIInfo = playerGameObject.GetComponent<PlayerInputUIController>();
+        playerMovementInfo = playerGameObject.GetComponent<PlayerMovementBetter>();
         playerInfo = playerGameObject.GetComponent<PlayerScript>();
         interactInfo = playerGameObject.GetComponent<Interact>();
     }
