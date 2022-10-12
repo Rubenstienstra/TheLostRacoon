@@ -920,6 +920,7 @@ GameObject:
   - component: {fileID: 517477552774587585}
   - component: {fileID: 1102439609751921367}
   - component: {fileID: 5351934342813780887}
+  - component: {fileID: 2043602290709452683}
   m_Layer: 0
   m_Name: RacoonPlayer
   m_TagString: Player
@@ -1057,6 +1058,7 @@ MonoBehaviour:
   isOnGround: 1
   movementLock: 0
   allowInteraction: 0
+  animationWalking: {fileID: 2043602290709452683}
 --- !u!114 &5351934342813780877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,6 +1153,26 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!95 &2043602290709452683
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351934342813780878}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d20d8226c5fa124eaf0ed868df3e859, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5351934342883598989
 GameObject:
   m_ObjectHideFlags: 0

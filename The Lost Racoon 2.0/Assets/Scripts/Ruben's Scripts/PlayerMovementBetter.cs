@@ -44,7 +44,7 @@ public class PlayerMovementBetter : MonoBehaviour
     public bool movementLock;
     public bool allowInteraction;
 
-    //public Animator animationWalking;
+    public Animator animationWalking;
 
     public void OnForward(InputValue value)
     {
@@ -135,7 +135,7 @@ public class PlayerMovementBetter : MonoBehaviour
     {
         if (!movementLock)
         {
-            //animationWalking.Play(1, 0, 0);
+            animationWalking.Play("Walking");
             Vector3 addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
 
             lookAtAngle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg + playerCam.transform.eulerAngles.y;
