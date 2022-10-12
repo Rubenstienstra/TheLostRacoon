@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934341521527521}
-  m_LocalRotation: {x: 0.33618647, y: 0.000000032409776, z: -0.000000011569104, w: 0.94179547}
+  m_LocalRotation: {x: 0.33618647, y: 0.000000016204893, z: -0.000000005784554, w: 0.94179547}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -566,7 +566,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934342388259041}
-  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: -0.000000015896623, z: 0.0000000065845964, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -917,11 +917,12 @@ GameObject:
   - component: {fileID: 5351934342813780874}
   - component: {fileID: 5351934342813780877}
   - component: {fileID: 5351934342813780876}
-  - component: {fileID: 5351934342813780879}
+  - component: {fileID: 517477552774587585}
+  - component: {fileID: 1102439609751921367}
   - component: {fileID: 5351934342813780887}
   m_Layer: 0
   m_Name: RacoonPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1046,10 +1047,16 @@ MonoBehaviour:
   maxTimeHoldJump: 4
   rb: {fileID: 5351934342310750629}
   jumpAnimation: {fileID: 0}
-  gameObjectCollider: {fileID: 5351934342310750628}
+  gameObjectCollider: {fileID: 1102439609751921367}
+  maxDistanceRaycast: 0
+  crCollider: {fileID: 0}
+  filterMask:
+    serializedVersion: 2
+    m_Bits: 128
   moving: 0
   isOnGround: 1
   movementLock: 0
+  allowInteraction: 0
 --- !u!114 &5351934342813780877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,7 +1064,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934342813780878}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 878783c5dd0c155458c0925ed89c02b9, type: 3}
   m_Name: 
@@ -1071,9 +1078,11 @@ MonoBehaviour:
   detectedColliders: []
   detected: 0
   minigameDetected: 0
-  interactionAria: {fileID: 5351934342813780886}
+  interactionAreaOfset: {x: 0, y: 0, z: 0}
   interactionDiameter: 0.069
   interactionColliders: []
+  allowInteraction: 0
+  crCollider: {fileID: 0}
   minigameActive: 0
   minigameBeingPlayed: 0
 --- !u!114 &5351934342813780876
@@ -1093,7 +1102,7 @@ MonoBehaviour:
   slotfull: 0
   playerInput: {fileID: 5351934342813780873}
   itemContainer: {fileID: 0}
---- !u!114 &5351934342813780879
+--- !u!114 &517477552774587585
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1111,6 +1120,19 @@ MonoBehaviour:
   minigameActiveMouse: 0
   minigameActiveMouseRectangle: 0
   minigameActive3x3Puzzle: 0
+--- !u!135 &1102439609751921367
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351934342813780878}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.17
+  m_Center: {x: 0, y: 0.15, z: 0.3}
 --- !u!143 &5351934342813780887
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1228,8 +1250,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934343016198465}
-  m_LocalRotation: {x: 0.3361865, y: 0.000000051244356, z: -0.000000018292358, w: 0.9417955}
-  m_LocalPosition: {x: 0, y: -0.29218608, z: 0.29218608}
+  m_LocalRotation: {x: 0.3361865, y: 0.000000032409787, z: -0.000000011569107, w: 0.9417955}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []

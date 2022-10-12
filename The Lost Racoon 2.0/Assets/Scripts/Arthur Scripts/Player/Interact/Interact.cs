@@ -17,9 +17,13 @@ public class Interact : MonoBehaviour
     public bool detected;
     public bool minigameDetected;
     [Header("Interaction Sphere", order = 1)]
-    public Transform interactionAria;
+    public Vector3 interactionAreaOfset;
     public float interactionDiameter;
     public Collider[] interactionColliders;
+
+    public bool allowInteraction;
+    public Collider crCollider;
+    
     public bool minigameActive;
     public bool minigameBeingPlayed;
     //piemel -davido 
@@ -52,48 +56,76 @@ public class Interact : MonoBehaviour
                 // - Ruben
             }
         }
-        interactionColliders = Physics.OverlapSphere(interactionAria.position, interactionDiameter * 2);
+        //interactionColliders = Physics.OverlapSphere(interactionAreaOfset, interactionDiameter * 2);
         
-        foreach (Collider coll in interactionColliders) {
-            if (coll.gameObject.tag == "Minigame") {
-                Debug.Log("Interactible or Item in reach, press E to interact or pick up");
-                //Ui element stage 2
-                if (interactInput == 1 && minigameDetected && minigameBeingPlayed == false)
-                {
-                    playerMovementInfo.OnEnterMinigame();
-                    CollidedMinigame(coll);
-                  //interaction here
-                    Debug.Log("Interacted");
-                }
-            }
-            else if (coll.gameObject.tag == "Item") {
-                if (interactInput == 1) {
-                    //Pick up here
-                    pickupscript.PickUp(coll);
-                }
-            }
-        }
+        //foreach (Collider coll in interactionColliders) {
+        //    if (coll.gameObject.tag == "Minigame") {
+        //        Debug.Log("Interactible or Item in reach, press E to interact or pick up");
+        //        //Ui element stage 2
+        //        if (interactInput == 1 && minigameDetected && minigameBeingPlayed == false)
+        //        {
+        //            playerMovementInfo.OnEnterMinigame();
+        //            CollidedMinigame(coll);
+        //            Debug.Log("Interacted");
+        //        }
+        //    }
+        //    else if (coll.gameObject.tag == "Item") {
+        //        if (interactInput == 1) {
+        //            //Pick up here
+        //            pickupscript.PickUp(coll);
+        //        }
+        //    }
+        //}
     }
-    private void OnDrawGizmos() {
-        
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(interactionAria.position, interactionDiameter * 2);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(detectionAria.position, detectDiameter * 2);
-    }
-    public void CollidedMinigame(Collider coll)
+    public void OnInteract(InputValue value)
     {
-        if (coll.gameObject.GetComponent<MouseTrackerMovement>())
+        if(value.Get<float>() == 1)
         {
-            coll.gameObject.GetComponent<MouseTrackerMovement>().StartAreaMinigame();
+            allowInteraction = true;
         }
-        else if (coll.gameObject.GetComponent<MouseTrackerRectangleMovement>())
+        else
         {
-            coll.gameObject.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
+            allowInteraction = !allowInteraction;
         }
-        else if (coll.gameObject.GetComponent<UIPuzzleColor>())
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Minigame")
         {
-            coll.gameObject.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
+            print(other);
+            crCollider = other;
+            if (!minigameBeingPlayed)
+            {
+                playerMovementInfo.OnEnterMinigame();
+                CollidedMinigame(other);
+                Debug.Log("Interacted Minigame");
+            }
+        }
+        else if(other.gameObject.tag == "Item")
+        {
+            pickupscript.PickUp(other);
+        }
+    }
+    private void OnDrawGizmos()
+    {    
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(interactionAreaOfset, interactionDiameter * 2);
+        //Gizmos.color = Color.blue;
+        //Gizmos.DrawWireSphere(detectionAria.position, detectDiameter * 2);
+    }
+    public void CollidedMinigame(Collider col)
+    {
+        if (col.gameObject.GetComponent<MouseTrackerMovement>())
+        {
+            col.gameObject.GetComponent<MouseTrackerMovement>().StartAreaMinigame();
+        }
+        else if (col.gameObject.GetComponent<MouseTrackerRectangleMovement>())
+        {
+            col.gameObject.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
+        }
+        else if (col.gameObject.GetComponent<UIPuzzleColor>())
+        {
+            col.gameObject.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
         }
         
     }

@@ -41,7 +41,6 @@ public class MouseTrackerMovement : MonoBehaviour
     void Start()
     {
         //safety
-
         GameObject playerGameObject = GameObject.Find("RacoonPlayer");
         UIInfo = playerGameObject.GetComponent<PlayerInputUIController>();
         playerMovementInfo = playerGameObject.GetComponent<PlayerMovementBetter>();

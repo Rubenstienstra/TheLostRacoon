@@ -34,9 +34,17 @@ public class PlayerMovementBetter : MonoBehaviour
     public Collision gameObjectCollision;
     public Collider gameObjectCollider;
 
+    public RaycastHit hit;
+    public float maxDistanceRaycast;
+    public Collider crCollider;
+    public LayerMask filterMask;
+
     public bool moving;
     public bool isOnGround;
     public bool movementLock;
+    public bool allowInteraction;
+
+    //public Animator animationWalking;
 
     public void OnForward(InputValue value)
     {
@@ -125,35 +133,43 @@ public class PlayerMovementBetter : MonoBehaviour
     }
     public IEnumerator Movement()
     {
-        Vector3 addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
-
-        lookAtAngle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg + playerCam.transform.eulerAngles.y;
-        endAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, lookAtAngle, ref velocity, timeToTurn);
-        transform.rotation = Quaternion.Euler(0, endAngle, 0);
-
-        movementAngle = Quaternion.Euler(0, endAngle, 0) * Vector3.forward;
-        characterControl.Move(movementAngle.normalized * crspeedBonus * Time.deltaTime);
-
-        yield return new WaitForSeconds(0.01f); // do not move
-        for (int i = 0; i < isMovingForwardWASD.Length; i++)
+        if (!movementLock)
         {
-           if(isMovingForwardWASD[i] == true)
-           {
-               checkingBools++;
-           }
-        }
-        if (checkingBools > 0)
-        {
-            new WaitForSeconds(0.01f);
-            StartCoroutine(Movement());
-        }
-        else
-        {
-            moving = false;
-        }
-        checkingBools = 0;
+            //animationWalking.Play(1, 0, 0);
+            Vector3 addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
 
-        
+            lookAtAngle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg + playerCam.transform.eulerAngles.y;
+            endAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, lookAtAngle, ref velocity, timeToTurn);
+            transform.rotation = Quaternion.Euler(0, endAngle, 0);
+
+            movementAngle = Quaternion.Euler(0, endAngle, 0) * Vector3.forward;
+            characterControl.Move(movementAngle.normalized * crspeedBonus * Time.deltaTime);
+
+            yield return new WaitForSeconds(0.01f); // do not move
+            for (int i = 0; i < isMovingForwardWASD.Length; i++)
+            {
+                if (isMovingForwardWASD[i] == true)
+                {
+                    checkingBools++;
+                }
+            }
+            if (checkingBools > 0)
+            {
+                new WaitForSeconds(0.01f);
+                StartCoroutine(Movement());
+            }
+            else
+            {
+                moving = false;
+            }
+            checkingBools = 0;
+
+        }
+    }
+    public void OnInteract(InputValue value)
+    {
+        Physics.Raycast(transform.position, Vector3.forward, out hit, filterMask);
+        crCollider = hit.collider;
     }
     public void OnEnterMinigame()
     {

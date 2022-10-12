@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4207142238038150413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4077853880250806923}
+  m_Layer: 0
+  m_Name: CameraSpotMinigame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4077853880250806923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4207142238038150413}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.022714656, y: -0.23219424, z: 4.4167385}
+  m_LocalScale: {x: 0.69214076, y: 0.69214076, z: 0.69214076}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6137289964130086595}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6137289964130086599
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +44,7 @@ GameObject:
   - component: {fileID: 6137289964130086597}
   - component: {fileID: 6137289964130086598}
   - component: {fileID: 6137289964130086594}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gate circle shrink minigame
   m_TagString: Minigame
   m_Icon: {fileID: 0}
@@ -33,6 +64,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 613998943299012035}
+  - {fileID: 4077853880250806923}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -122,7 +154,6 @@ MonoBehaviour:
   - {fileID: 613998943836134712}
   - {fileID: 613998944083152410}
   - {fileID: 4778852869459059321}
-  playerGameObject: {fileID: 0}
   currentPhase: 0
   phaseTime:
   - 3
@@ -134,7 +165,7 @@ MonoBehaviour:
   - 1.5
   waitingTime: 0.01
   circleSchrinkStrengthBuff: 1
-  boxcol: {fileID: 0}
+  hasBeenInteracted: 0
   activateGameObject: {fileID: 613998943299012047}
   mouseInZone: 0
 --- !u!1001 &6137289965606555609
@@ -144,6 +175,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6137289964130086595}
     m_Modifications:
+    - target: {fileID: 1692770622066322848, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1692770622066322848, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
       propertyPath: m_IsActive
@@ -166,13 +202,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6749018415140618691, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749018415140618691, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6749018415397933793, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749018415397933793, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749018415515335214, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6749018415515335214, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
@@ -183,6 +234,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: minigame circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749018415933016598, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6749018415933016598, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
