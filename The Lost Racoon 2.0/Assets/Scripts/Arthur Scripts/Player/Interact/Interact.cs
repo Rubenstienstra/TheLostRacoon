@@ -35,27 +35,27 @@ public class Interact : MonoBehaviour
             playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovementBetter>();
         }
     }
-    void Update()
-    {
-        float interactInput = playerInput.actions["Interact"].ReadValue<float>();
-        detectedColliders = Physics.OverlapSphere(detectionAria.position, detectDiameter * 2);
-        foreach (Collider coll in detectedColliders) {
-            if(coll.gameObject.tag == "Interactible" || coll.gameObject.tag == "Item") {
-                Debug.Log("Interactible or Item nearby");
-                //Ui elliment stage 1
-            }
-            if(coll.gameObject.tag == "Minigame")
-            {
-                print("Is in Range!");
-                minigameDetected = true;
-                //coll.gameObject.SetActive(false);
-            }
-            else if(minigameDetected != true)
-            {
-                minigameDetected = false;
-                // - Ruben
-            }
-        }
+    //void Update()
+    //{
+    //    float interactInput = playerInput.actions["Interact"].ReadValue<float>();
+    //    detectedColliders = Physics.OverlapSphere(detectionAria.position, detectDiameter * 2);
+    //    foreach (Collider coll in detectedColliders) {
+    //        if(coll.gameObject.tag == "Interactible" || coll.gameObject.tag == "Item") {
+    //            Debug.Log("Interactible or Item nearby");
+    //            //Ui elliment stage 1
+    //        }
+    //        if(coll.gameObject.tag == "Minigame")
+    //        {
+    //            print("Is in Range!");
+    //            minigameDetected = true;
+    //            //coll.gameObject.SetActive(false);
+    //        }
+    //        else if(minigameDetected != true)
+    //        {
+    //            minigameDetected = false;
+    //            // - Ruben
+    //        }
+    //    }
         //interactionColliders = Physics.OverlapSphere(interactionAreaOfset, interactionDiameter * 2);
         
         //foreach (Collider coll in interactionColliders) {
@@ -76,7 +76,7 @@ public class Interact : MonoBehaviour
         //        }
         //    }
         //}
-    }
+    //}
     public void OnInteract(InputValue value)
     {
         if(value.Get<float>() == 1)
@@ -126,7 +126,6 @@ public class Interact : MonoBehaviour
         else if (col.gameObject.GetComponent<UIPuzzleColor>())
         {
             col.gameObject.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
-        }
-        
+        } 
     }
 }

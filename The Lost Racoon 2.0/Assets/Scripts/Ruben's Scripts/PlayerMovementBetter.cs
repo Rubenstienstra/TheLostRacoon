@@ -8,7 +8,6 @@ public class PlayerMovementBetter : MonoBehaviour
     public CamFreezeScript camFreezeInfo;
     public Interact interactInfo;
 
-    public CharacterController characterControl;
     public float lookAtAngle;
     public Vector3 movementAngle;
     public float endAngle;
@@ -16,7 +15,7 @@ public class PlayerMovementBetter : MonoBehaviour
 
     public float[] forwardWASD;
     public bool[] isMovingForwardWASD;
-    public int checkingBools;
+    private int checkingBools;
 
     public float multiplierSpeedBonus = 1;
     private float crspeedBonus = 1;
@@ -26,13 +25,11 @@ public class PlayerMovementBetter : MonoBehaviour
     public float jump;
     public float beginJumpBonus = 1.5f;
     public float totalHeightJump = 1.5f;
-    public float jumpMultiplier = 75;
+    public float jumpMultiplier = 50;
     public float maxTimeHoldJump = 4;
 
     public Rigidbody rb;
-    public Animation jumpAnimation;
     public Collision gameObjectCollision;
-    public Collider gameObjectCollider;
 
     public RaycastHit hit;
     public float maxDistanceRaycast;
@@ -43,9 +40,11 @@ public class PlayerMovementBetter : MonoBehaviour
     public bool isOnGround;
     public bool movementLock;
     public bool allowInteraction;
+    public Animator animationMovement;
 
-    public Animator animationWalking;
+    public bool testing;
 
+    
     public void OnForward(InputValue value)
     {
        forwardWASD[0] = value.Get<float>();
@@ -126,24 +125,33 @@ public class PlayerMovementBetter : MonoBehaviour
         {
             isOnGround = true;
         }
-        if(gameObjectCollider.gameObject.tag == "Ground")
-        {
-            isOnGround = true;
-        }
     }
     public IEnumerator Movement()
     {
+        
         if (!movementLock)
         {
-            animationWalking.Play("Walking");
             Vector3 addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
 
             lookAtAngle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg + playerCam.transform.eulerAngles.y;
             endAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, lookAtAngle, ref velocity, timeToTurn);
-            transform.rotation = Quaternion.Euler(0, endAngle, 0);
+            
 
-            movementAngle = Quaternion.Euler(0, endAngle, 0) * Vector3.forward;
-            characterControl.Move(movementAngle.normalized * crspeedBonus * Time.deltaTime);
+            if (!testing)
+            {
+                transform.rotation = Quaternion.Euler(transform.rotation.x, endAngle, transform.rotation.y);
+                movementAngle = Quaternion.Euler(0, endAngle, 0) * Vector3.forward;
+                transform.position += movementAngle.normalized * crspeedBonus * Time.deltaTime;
+            }
+            else
+            {
+                rb.MoveRotation(Quaternion.Euler(transform.rotation.x, endAngle, transform.rotation.y));
+                movementAngle = new Vector3 (transform.position.x + addMovement.x,transform.position.y, transform.position.z + addMovement.z);
+                rb.MovePosition(movementAngle);
+                
+            }
+                      
+            
 
             yield return new WaitForSeconds(0.01f); // do not move
             for (int i = 0; i < isMovingForwardWASD.Length; i++)
@@ -156,10 +164,12 @@ public class PlayerMovementBetter : MonoBehaviour
             if (checkingBools > 0)
             {
                 new WaitForSeconds(0.01f);
+                animationMovement.SetBool("Walking", true);
                 StartCoroutine(Movement());
             }
             else
             {
+                animationMovement.SetBool("Walking", false);
                 moving = false;
             }
             checkingBools = 0;
@@ -170,6 +180,22 @@ public class PlayerMovementBetter : MonoBehaviour
     {
         Physics.Raycast(transform.position, Vector3.forward, out hit, filterMask);
         crCollider = hit.collider;
+        CollidedMinigame(hit.collider);
+    }
+    public void CollidedMinigame(Collider col)
+    {
+        if (col.gameObject.GetComponent<MouseTrackerMovement>())
+        {
+            col.gameObject.GetComponent<MouseTrackerMovement>().StartAreaMinigame();
+        }
+        else if (col.gameObject.GetComponent<MouseTrackerRectangleMovement>())
+        {
+            col.gameObject.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
+        }
+        else if (col.gameObject.GetComponent<UIPuzzleColor>())
+        {
+            col.gameObject.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
+        }
     }
     public void OnEnterMinigame()
     {

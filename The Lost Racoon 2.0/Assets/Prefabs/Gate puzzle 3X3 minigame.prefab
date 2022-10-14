@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2076464334426977075}
   m_Layer: 0
   m_Name: Gate puzzle 3X3 minigame
-  m_TagString: Minigame
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,6 +175,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TLRCodePadPuzzels
       objectReference: {fileID: 0}
+    - target: {fileID: 640750492546238380, guid: db9b81c65f978bb46ae395b777f90934,
+        type: 3}
+      propertyPath: m_TagString
+      value: Minigame
+      objectReference: {fileID: 0}
     - target: {fileID: 1271979612976842903, guid: db9b81c65f978bb46ae395b777f90934,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -189,7 +194,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 913725719869789726}
+      objectReference: {fileID: 0}
     - target: {fileID: 4834831580803556550, guid: db9b81c65f978bb46ae395b777f90934,
         type: 3}
       propertyPath: m_Enabled
@@ -237,12 +242,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db9b81c65f978bb46ae395b777f90934, type: 3}
---- !u!20 &913725719869789726 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 3224741600833470824, guid: db9b81c65f978bb46ae395b777f90934,
-    type: 3}
-  m_PrefabInstance: {fileID: 2336983196893222774}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2576365015954147936 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 265632667772411158, guid: db9b81c65f978bb46ae395b777f90934,
