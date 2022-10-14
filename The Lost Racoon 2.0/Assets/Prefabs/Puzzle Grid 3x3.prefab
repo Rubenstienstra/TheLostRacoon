@@ -268,7 +268,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297589192362113898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.9821777}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -278,8 +278,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 117.30005}
-  m_SizeDelta: {x: 500, y: 90}
+  m_AnchoredPosition: {x: -0.000000007450581, y: 0.000000022351742}
+  m_SizeDelta: {x: 0.07, y: 0.07}
   m_Pivot: {x: 0.4999999, y: 0.5000003}
 --- !u!222 &5208596104754511495
 CanvasRenderer:
@@ -403,7 +403,7 @@ MonoBehaviour:
   totalButtons: 25
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
-  UIPuzzleGameObject: {fileID: 0}
+  UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
   hasBeenInteracted: 0
 --- !u!1 &1312670641092657029
@@ -594,7 +594,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842857207265508150}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.9821777}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -602,10 +602,10 @@ RectTransform:
   m_Father: {fileID: 8067878086856746346}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 252}
-  m_SizeDelta: {x: 500, y: 90}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.035000008, y: -0.034999978}
+  m_SizeDelta: {x: 0.07, y: 0.07}
   m_Pivot: {x: 0.4999999, y: 0.5000003}
 --- !u!222 &6061110928794712184
 CanvasRenderer:
@@ -724,7 +724,7 @@ MonoBehaviour:
   totalButtons: 25
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
-  UIPuzzleGameObject: {fileID: 0}
+  UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
   hasBeenInteracted: 0
 --- !u!1 &3969167662813393707
@@ -835,7 +835,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4578782274179081912}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.9821777}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -843,10 +843,10 @@ RectTransform:
   m_Father: {fileID: 8067878086856746346}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035, y: -30}
-  m_SizeDelta: {x: 500, y: 90}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -0.000000007450581, y: 0.03500002}
+  m_SizeDelta: {x: 0.07, y: 0.07}
   m_Pivot: {x: 0.4999999, y: 0.5000003}
 --- !u!222 &178111275512416467
 CanvasRenderer:
@@ -967,7 +967,7 @@ MonoBehaviour:
   totalButtons: 25
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
-  UIPuzzleGameObject: {fileID: 0}
+  UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
   hasBeenInteracted: 0
 --- !u!1 &5089174804096123408
@@ -1158,7 +1158,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5408709428273164743}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.9821777}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1166,10 +1166,10 @@ RectTransform:
   m_Father: {fileID: 8067878086856746346}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -600, y: -18}
-  m_SizeDelta: {x: 500, y: 90}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.035000004, y: 0.035000004}
+  m_SizeDelta: {x: 0.07, y: 0.07}
   m_Pivot: {x: 0.5000001, y: 0.5}
 --- !u!222 &322118504441275731
 CanvasRenderer:
@@ -1288,7 +1288,7 @@ MonoBehaviour:
   totalButtons: 25
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
-  UIPuzzleGameObject: {fileID: 0}
+  UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
   hasBeenInteracted: 0
 --- !u!1 &5695752308812149120
@@ -1309,7 +1309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1579694869456826042
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1324,6 +1324,7 @@ RectTransform:
   m_Children:
   - {fileID: 8067878086856746346}
   - {fileID: 5483796949235941509}
+  - {fileID: 8962894577412387171}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1342,7 +1343,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 7578287371042780170}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1374,7 +1375,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
+  m_DynamicPixelsPerUnit: 370
   m_PresetInfoIsWorld: 1
 --- !u!114 &8027489598960142031
 MonoBehaviour:
@@ -1421,7 +1422,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5765187414714401831}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.9821777}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1429,10 +1430,10 @@ RectTransform:
   m_Father: {fileID: 8067878086856746346}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035, y: 263}
-  m_SizeDelta: {x: 500, y: 90}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -0.000000007450581, y: -0.034999978}
+  m_SizeDelta: {x: 0.07, y: 0.07}
   m_Pivot: {x: 0.4999999, y: 0.5000003}
 --- !u!222 &3352349880623673983
 CanvasRenderer:
@@ -1553,7 +1554,7 @@ MonoBehaviour:
   totalButtons: 25
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
-  UIPuzzleGameObject: {fileID: 0}
+  UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
   hasBeenInteracted: 0
 --- !u!1 &6417683357624204299
@@ -1584,7 +1585,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6417683357624204299}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.9821777}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1592,10 +1593,10 @@ RectTransform:
   m_Father: {fileID: 8067878086856746346}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -600, y: 263}
-  m_SizeDelta: {x: 500, y: 90}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0.03500001, y: -0.035}
+  m_SizeDelta: {x: 0.07, y: 0.07}
   m_Pivot: {x: 0.5000001, y: 0.5}
 --- !u!222 &8890602775022284637
 CanvasRenderer:
@@ -1714,9 +1715,89 @@ MonoBehaviour:
   totalButtons: 25
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
-  UIPuzzleGameObject: {fileID: 0}
+  UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
   hasBeenInteracted: 0
+--- !u!1 &7218507573093778488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8962894577412387171}
+  - component: {fileID: 8899301789827414431}
+  - component: {fileID: 2587909913273552109}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8962894577412387171
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7218507573093778488}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1579694869456826042}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0.13, y: -0.00835}
+  m_SizeDelta: {x: 25.4, y: 19.58002}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8899301789827414431
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7218507573093778488}
+  m_CullTransparentMesh: 1
+--- !u!114 &2587909913273552109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7218507573093778488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 7084d850b23aa1b46843bb8f385b04eb, type: 3}
+    m_FontSize: 15
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: You need to light up al the buttons blue
 --- !u!1 &7223577166165776582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,7 +1826,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7223577166165776582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.9821777}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1753,10 +1834,10 @@ RectTransform:
   m_Father: {fileID: 8067878086856746346}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 119.90005}
-  m_SizeDelta: {x: 500, y: 90}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -0.035000008, y: 0.000000022351742}
+  m_SizeDelta: {x: 0.07, y: 0.07}
   m_Pivot: {x: 0.4999999, y: 0.5000003}
 --- !u!222 &5661190882998984481
 CanvasRenderer:
@@ -1877,7 +1958,7 @@ MonoBehaviour:
   totalButtons: 25
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
-  UIPuzzleGameObject: {fileID: 0}
+  UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
   hasBeenInteracted: 0
 --- !u!1 &7285384917196775039
@@ -1892,7 +1973,7 @@ GameObject:
   - component: {fileID: 7578287371042780170}
   - component: {fileID: 3540416016802136721}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: TIjdelijke Camera MOET ANDERS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1907,7 +1988,7 @@ Transform:
   m_GameObject: {fileID: 7285384917196775039}
   m_LocalRotation: {x: -8.2318047e-10, y: 0.00000005960463, z: -0.0000000026341775,
     w: 1}
-  m_LocalPosition: {x: -0.0020001289, y: -0.016999705, z: -0.3530003}
+  m_LocalPosition: {x: 0, y: -0.019, z: -0.374}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2110,7 +2191,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8208939081497430868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.9821777}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2118,10 +2199,10 @@ RectTransform:
   m_Father: {fileID: 8067878086856746346}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 599.9999, y: -29.999989}
-  m_SizeDelta: {x: 500, y: 90}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -0.035000004, y: 0.03500002}
+  m_SizeDelta: {x: 0.07, y: 0.07}
   m_Pivot: {x: 0.4999999, y: 0.5000003}
 --- !u!222 &2516878750110442369
 CanvasRenderer:
@@ -2240,7 +2321,7 @@ MonoBehaviour:
   totalButtons: 25
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
-  UIPuzzleGameObject: {fileID: 0}
+  UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
   hasBeenInteracted: 0
 --- !u!1 &8526978865166691979
@@ -2347,7 +2428,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8820920766562532862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.03704}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2364,10 +2445,10 @@ RectTransform:
   m_Father: {fileID: 1579694869456826042}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -0.11660999, y: 0.00392}
+  m_SizeDelta: {x: 0.21683997, y: 0.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8949674970620884169
 GameObject:
@@ -2397,7 +2478,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8949674970620884169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.9821777}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2405,10 +2486,10 @@ RectTransform:
   m_Father: {fileID: 8067878086856746346}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -600, y: 117.29999}
-  m_SizeDelta: {x: 500, y: 90}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0.035000004, y: 0}
+  m_SizeDelta: {x: 0.07, y: 0.07}
   m_Pivot: {x: 0.5000001, y: 0.5}
 --- !u!222 &4142555195887075930
 CanvasRenderer:
@@ -2529,7 +2610,7 @@ MonoBehaviour:
   totalButtons: 25
   totalButtonsCorrect: 0
   currentGameObject: {fileID: 0}
-  UIPuzzleGameObject: {fileID: 0}
+  UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
   hasBeenInteracted: 0
 --- !u!1001 &2829970356116795504
@@ -2539,6 +2620,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8067878086856746346}
     m_Modifications:
+    - target: {fileID: 494772719653775792, guid: 6dd3f05a72e950747ae67cdb533886e3,
+        type: 3}
+      propertyPath: UIPuzzleGameObject
+      value: 
+      objectReference: {fileID: 8820920766562532862}
     - target: {fileID: 494772719653775792, guid: 6dd3f05a72e950747ae67cdb533886e3,
         type: 3}
       propertyPath: colorButtons.Array.data[0]
