@@ -1037,6 +1037,9 @@ MonoBehaviour:
   multiplierSpeedBonus: 1.5
   timeToTurn: 0.1
   velocity: 0
+  movingAngle: {x: 0, y: 0, z: 0}
+  vector1: {x: 0, y: 0, z: 0}
+  planeNormal: {x: 0, y: 0, z: 0}
   jump: 0
   beginJumpBonus: 1.5
   totalHeightJump: 1.5

@@ -21,6 +21,9 @@ public class PlayerMovementBetter : MonoBehaviour
     private float crspeedBonus = 1;
     public float timeToTurn;
     public float velocity;
+    public Vector3 movingAngle;
+    public Vector3 vector1;
+    public Vector3 planeNormal;
 
     public float jump;
     public float beginJumpBonus = 1.5f;
@@ -131,27 +134,18 @@ public class PlayerMovementBetter : MonoBehaviour
         
         if (!movementLock)
         {
+            
             Vector3 addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
 
             lookAtAngle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg + playerCam.transform.eulerAngles.y;
             endAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, lookAtAngle, ref velocity, timeToTurn);
             
+            transform.rotation = Quaternion.Euler(transform.rotation.x, endAngle, transform.rotation.y);
+            movementAngle = Quaternion.Euler(0, endAngle, 0) * Vector3.forward;
 
-            if (!testing)
-            {
-                transform.rotation = Quaternion.Euler(transform.rotation.x, endAngle, transform.rotation.y);
-                movementAngle = Quaternion.Euler(0, endAngle, 0) * Vector3.forward;
-                transform.position += movementAngle.normalized * crspeedBonus * Time.deltaTime;
-            }
-            else
-            {
-                rb.MoveRotation(Quaternion.Euler(transform.rotation.x, endAngle, transform.rotation.y));
-                movementAngle = new Vector3 (transform.position.x + addMovement.x,transform.position.y, transform.position.z + addMovement.z);
-                rb.MovePosition(movementAngle);
-                
-            }
-                      
-            
+            movingAngle = Vector3.ProjectOnPlane(movementAngle, planeNormal);
+
+            transform.position += movingAngle.normalized * crspeedBonus * Time.deltaTime;
 
             yield return new WaitForSeconds(0.01f); // do not move
             for (int i = 0; i < isMovingForwardWASD.Length; i++)
