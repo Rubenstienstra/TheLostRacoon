@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,8 +21,12 @@ public class PlayerMovementBetter : MonoBehaviour
     public float timeToTurn;
     public float velocity;
     public Vector3 movingAngle;
-    public Vector3 vector1;
-    public Vector3 planeNormal;
+    public Vector3 addMovement;
+
+    public RaycastHit hitSlope;
+    public Vector3 RaycastPos;
+    public float crSlopeAngle;
+    public float maxUpSlopeAngle;
 
     public float jump;
     public float beginJumpBonus = 1.5f;
@@ -32,11 +35,10 @@ public class PlayerMovementBetter : MonoBehaviour
     public float maxTimeHoldJump = 4;
 
     public Rigidbody rb;
-    public Collision gameObjectCollision;
-
-    public RaycastHit hit;
-    public float maxDistanceRaycast;
     public Collider crCollider;
+
+    public RaycastHit hitInteract;
+    public float maxDistanceRaycast;
     public LayerMask filterMask;
 
     public bool moving;
@@ -47,11 +49,11 @@ public class PlayerMovementBetter : MonoBehaviour
 
     public bool testing;
 
-    
+
     public void OnForward(InputValue value)
     {
-       forwardWASD[0] = value.Get<float>();
-       CheckMoving(0);
+        forwardWASD[0] = value.Get<float>();
+        CheckMoving(0);
     }
     public void OnLeft(InputValue value)
     {
@@ -70,26 +72,37 @@ public class PlayerMovementBetter : MonoBehaviour
     }
     public void OnSprint(InputValue value)
     {
-        if(value.Get<float>() == 1)
+        if (value.Get<float>() == 1)
         {
             crspeedBonus = multiplierSpeedBonus;
+            if(moving == true)
+            {
+                animationMovement.SetBool("Walking", false);
+                animationMovement.SetBool("Running", true);
+            }
+            
         }
         else
         {
             crspeedBonus = 1;
+            animationMovement.SetBool("Running", false);
+            if(moving == true)
+            {
+                animationMovement.SetBool("Walking", true);
+            }
         }
     }
     public void OnJump(InputValue value)
     {
         jump = value.Get<float>();
-        if(isOnGround == true)
+        if (isOnGround == true)
         {
             StartCoroutine(JumpTiming());
         }
     }
     public void CheckMoving(int movementNumber)
     {
-        if(forwardWASD[movementNumber] == 1)
+        if (forwardWASD[movementNumber] == 1)
         {
             isMovingForwardWASD[movementNumber] = true;
         }
@@ -97,7 +110,7 @@ public class PlayerMovementBetter : MonoBehaviour
         {
             isMovingForwardWASD[movementNumber] = false;
         }
-        if(moving == false)
+        if (moving == false)
         {
             moving = true;
             StartCoroutine(Movement());
@@ -107,45 +120,62 @@ public class PlayerMovementBetter : MonoBehaviour
     {
         if (jump > 0)
         {
-            if (totalHeightJump < maxTimeHoldJump +beginJumpBonus)
+            if (totalHeightJump < maxTimeHoldJump + beginJumpBonus)
             {
                 yield return new WaitForSeconds(0.1f);
                 totalHeightJump += 0.1f;
+                animationMovement.SetBool("Charging", true);
                 StartCoroutine(JumpTiming());
             }
         }
         else //als de speler geen spatie meer vast houdt komt er een force er bij
         {
+            animationMovement.SetBool("Charging", false);
+            animationMovement.SetBool("Jumping", true);
             isOnGround = false;
             print(totalHeightJump);
-            rb.AddForce(0,totalHeightJump * jumpMultiplier,0);
+            rb.AddForce(0, totalHeightJump * jumpMultiplier, 0);
             totalHeightJump = beginJumpBonus;
         }
     }
     public void OnCollisionEnter(Collision col)
     {
-        if(col.collider.gameObject.tag == "Ground")
+        if (col.collider.gameObject.tag == "Ground")
         {
             isOnGround = true;
+            animationMovement.SetBool("Jumping", false);
+            crCollider = col.collider;
         }
     }
     public IEnumerator Movement()
     {
-        
+
         if (!movementLock)
         {
+            addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime; // gets input values
+
+            lookAtAngle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg + playerCam.transform.eulerAngles.y; // berekent de angle waar je naar kijkt
+            endAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, lookAtAngle, ref velocity, timeToTurn); // hiermee berekent je de angle van de speler naar links of rechts toe via de camera
             
-            Vector3 addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime;
-
-            lookAtAngle = Mathf.Atan2(addMovement.x, addMovement.z) * Mathf.Rad2Deg + playerCam.transform.eulerAngles.y;
-            endAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, lookAtAngle, ref velocity, timeToTurn);
+            movementAngle = Quaternion.Euler(0, endAngle, 0) * Vector3.forward; // 
             
-            transform.rotation = Quaternion.Euler(transform.rotation.x, endAngle, transform.rotation.y);
-            movementAngle = Quaternion.Euler(0, endAngle, 0) * Vector3.forward;
+            movingAngle = Vector3.ProjectOnPlane(movementAngle, hitSlope.normal).normalized; //
+            Physics.Raycast(RaycastPos + transform.position, Vector3.down, out hitSlope); // maakt een rayccast aan die naar beneden toe gaat
+            crSlopeAngle = Vector3.Angle(Vector3.up, hitSlope.normal); //
+            if (crSlopeAngle >= maxUpSlopeAngle)
+            {
+                crSlopeAngle = maxUpSlopeAngle;
+            }
+            if (movingAngle.y > 0)
+            {
+                crSlopeAngle = -crSlopeAngle;
+            }
 
-            movingAngle = Vector3.ProjectOnPlane(movementAngle, planeNormal);
+            transform.rotation = Quaternion.Euler(crSlopeAngle, endAngle, transform.rotation.y); // voegt telkens de rotatie(endAngle) toe aan de speler.
+            transform.position += movingAngle.normalized * crspeedBonus * Time.deltaTime; //
 
-            transform.position += movingAngle.normalized * crspeedBonus * Time.deltaTime;
+            //rb.MovePosition(transform.position + movingAngle.normalized * crspeedBonus * Time.deltaTime);
+            //rb.MoveRotation(Quaternion.Euler(movementAngle + new Vector3(transform.rotation.x,endAngle,transform.rotation.y)));
 
             yield return new WaitForSeconds(0.01f); // do not move
             for (int i = 0; i < isMovingForwardWASD.Length; i++)
@@ -172,9 +202,8 @@ public class PlayerMovementBetter : MonoBehaviour
     }
     public void OnInteract(InputValue value)
     {
-        Physics.Raycast(transform.position, Vector3.forward, out hit, filterMask);
-        crCollider = hit.collider;
-        CollidedMinigame(hit.collider);
+        Physics.Raycast(transform.position, Vector3.forward, out hitInteract, filterMask);
+        CollidedMinigame(hitInteract.collider);
     }
     public void CollidedMinigame(Collider col)
     {
@@ -190,6 +219,7 @@ public class PlayerMovementBetter : MonoBehaviour
         {
             col.gameObject.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
         }
+
     }
     public void OnEnterMinigame()
     {

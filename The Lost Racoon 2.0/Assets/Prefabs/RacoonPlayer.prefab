@@ -566,7 +566,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934342388259041}
-  m_LocalRotation: {x: 0.38268346, y: 0.000000015896623, z: -0.0000000065845964, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: -0.000000015896623, z: 0.0000000065845964, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1038,16 +1038,18 @@ MonoBehaviour:
   timeToTurn: 0.1
   velocity: 0
   movingAngle: {x: 0, y: 0, z: 0}
-  vector1: {x: 0, y: 0, z: 0}
-  planeNormal: {x: 0, y: 0, z: 0}
+  addMovement: {x: 0, y: 0, z: 0}
+  RaycastPos: {x: 0, y: 0, z: 0}
+  crSlopeAngle: 0
+  maxUpSlopeAngle: 20
   jump: 0
   beginJumpBonus: 1.5
   totalHeightJump: 1.5
   jumpMultiplier: 50
   maxTimeHoldJump: 4
   rb: {fileID: 172206667163872471}
-  maxDistanceRaycast: 1
   crCollider: {fileID: 0}
+  maxDistanceRaycast: 1
   filterMask:
     serializedVersion: 2
     m_Bits: 128
@@ -1235,7 +1237,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934343016198465}
-  m_LocalRotation: {x: 0.3361865, y: 0.000000032409787, z: -0.000000011569107, w: 0.9417955}
+  m_LocalRotation: {x: 0.3361865, y: -0.000000032409783, z: 0.000000011569105, w: 0.9417955}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
