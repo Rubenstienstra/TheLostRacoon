@@ -1034,7 +1034,7 @@ MonoBehaviour:
   - 0
   - 0
   isMovingForwardWASD: 00000000
-  multiplierSpeedBonus: 1.5
+  multiplierSpeedBonus: 2
   timeToTurn: 0.1
   velocity: 0
   movingAngle: {x: 0, y: 0, z: 0}
@@ -1054,6 +1054,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moving: 0
+  sprinting: 0
   isOnGround: 1
   movementLock: 0
   allowInteraction: 0
@@ -1136,7 +1137,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 96
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &5351934342883598989
 GameObject:

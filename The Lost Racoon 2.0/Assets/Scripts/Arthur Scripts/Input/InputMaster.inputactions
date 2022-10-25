@@ -363,7 +363,7 @@
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard and mouse",
+                    "groups": "",
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -371,7 +371,7 @@
                 {
                     "name": "",
                     "id": "4628ad7b-6a3c-4887-ad20-ebdf94c9bb1c",
-                    "path": "<Keyboard>/leftShift",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

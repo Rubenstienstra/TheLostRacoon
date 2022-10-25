@@ -40,8 +40,10 @@ public class PlayerMovementBetter : MonoBehaviour
     public RaycastHit hitInteract;
     public float maxDistanceRaycast;
     public LayerMask filterMask;
+    public GameObject crGameObjectHit;
 
     public bool moving;
+    public bool sprinting;
     public bool isOnGround;
     public bool movementLock;
     public bool allowInteraction;
@@ -75,21 +77,12 @@ public class PlayerMovementBetter : MonoBehaviour
         if (value.Get<float>() == 1)
         {
             crspeedBonus = multiplierSpeedBonus;
-            if(moving == true)
-            {
-                animationMovement.SetBool("Walking", false);
-                animationMovement.SetBool("Running", true);
-            }
-            
+            sprinting = true;
         }
         else
         {
             crspeedBonus = 1;
-            animationMovement.SetBool("Running", false);
-            if(moving == true)
-            {
-                animationMovement.SetBool("Walking", true);
-            }
+            sprinting = false;
         }
     }
     public void OnJump(InputValue value)
@@ -143,9 +136,9 @@ public class PlayerMovementBetter : MonoBehaviour
         if (col.collider.gameObject.tag == "Ground")
         {
             isOnGround = true;
-            animationMovement.SetBool("Jumping", false);
             crCollider = col.collider;
         }
+        animationMovement.SetBool("Jumping", false);
     }
     public IEnumerator Movement()
     {
@@ -174,9 +167,6 @@ public class PlayerMovementBetter : MonoBehaviour
             transform.rotation = Quaternion.Euler(crSlopeAngle, endAngle, transform.rotation.y); // voegt telkens de rotatie(endAngle) toe aan de speler.
             transform.position += movingAngle.normalized * crspeedBonus * Time.deltaTime; //
 
-            //rb.MovePosition(transform.position + movingAngle.normalized * crspeedBonus * Time.deltaTime);
-            //rb.MoveRotation(Quaternion.Euler(movementAngle + new Vector3(transform.rotation.x,endAngle,transform.rotation.y)));
-
             yield return new WaitForSeconds(0.01f); // do not move
             for (int i = 0; i < isMovingForwardWASD.Length; i++)
             {
@@ -188,38 +178,48 @@ public class PlayerMovementBetter : MonoBehaviour
             if (checkingBools > 0)
             {
                 new WaitForSeconds(0.01f);
-                animationMovement.SetBool("Walking", true);
+                if (!sprinting)
+                {
+                    animationMovement.SetBool("Running", false);
+                    animationMovement.SetBool("Walking", true);
+                }
+                else
+                {
+                    animationMovement.SetBool("Walking", false);
+                    animationMovement.SetBool("Running", true);
+                }
                 StartCoroutine(Movement());
             }
             else
             {
                 animationMovement.SetBool("Walking", false);
+                animationMovement.SetBool("Running", false);
                 moving = false;
             }
             checkingBools = 0;
-
         }
     }
     public void OnInteract(InputValue value)
     {
-        Physics.Raycast(transform.position, Vector3.forward, out hitInteract, filterMask);
-        CollidedMinigame(hitInteract.collider);
+        Physics.Raycast(transform.position + new Vector3(0,0,0), Vector3.forward, out hitInteract, 1000);
+        crGameObjectHit = hitInteract.collider.gameObject;
+        CollidedMinigame(hitInteract.collider.gameObject);
     }
-    public void CollidedMinigame(Collider col)
-    {
-        if (col.gameObject.GetComponent<MouseTrackerMovement>())
-        {
-            col.gameObject.GetComponent<MouseTrackerMovement>().StartAreaMinigame();
-        }
-        else if (col.gameObject.GetComponent<MouseTrackerRectangleMovement>())
-        {
-            col.gameObject.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
-        }
-        else if (col.gameObject.GetComponent<UIPuzzleColor>())
-        {
-            col.gameObject.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
-        }
 
+    public void CollidedMinigame(GameObject minigame) //elke keer dat er nieuwe minigame komt moet hier een nieuwe GetComponent te staan.
+    {
+        if (minigame.GetComponent<MouseTrackerMovement>())
+        {
+            minigame.GetComponent<MouseTrackerMovement>().StartAreaMinigame();
+        }
+        else if (minigame.GetComponent<MouseTrackerRectangleMovement>())
+        {
+            minigame.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
+        }
+        else if (minigame.GetComponent<UIPuzzleColor>())
+        {
+            minigame.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
+        }
     }
     public void OnEnterMinigame()
     {

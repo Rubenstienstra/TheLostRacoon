@@ -97,7 +97,6 @@ public class Interact : MonoBehaviour
             if (!minigameBeingPlayed)
             {
                 playerMovementInfo.OnEnterMinigame();
-                CollidedMinigame(other);
                 Debug.Log("Interacted Minigame");
             }
         }
@@ -105,27 +104,5 @@ public class Interact : MonoBehaviour
         {
             pickupscript.PickUp(other);
         }
-    }
-    private void OnDrawGizmos()
-    {    
-        //Gizmos.color = Color.red;
-        //Gizmos.DrawWireSphere(interactionAreaOfset, interactionDiameter * 2);
-        //Gizmos.color = Color.blue;
-        //Gizmos.DrawWireSphere(detectionAria.position, detectDiameter * 2);
-    }
-    public void CollidedMinigame(Collider col)
-    {
-        if (col.gameObject.GetComponent<MouseTrackerMovement>())
-        {
-            col.gameObject.GetComponent<MouseTrackerMovement>().StartAreaMinigame();
-        }
-        else if (col.gameObject.GetComponent<MouseTrackerRectangleMovement>())
-        {
-            col.gameObject.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
-        }
-        else if (col.gameObject.GetComponent<UIPuzzleColor>())
-        {
-            col.gameObject.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
-        } 
     }
 }
