@@ -5,10 +5,13 @@ using System.Linq;
 
 public class DataPersistenceManager : MonoBehaviour
 {
+    [Header("File Storage Config")]
+    [SerializeField] private string fileName;
 
     private GameData gamedata;
 
     private List<IDataPresistence> dataPresistenceObjects;
+    private FileDataHandler dataHandler;
 
     public static DataPersistenceManager instance { get; private set; }
 
@@ -20,11 +23,12 @@ public class DataPersistenceManager : MonoBehaviour
     }
 
     private void Start() {
+
+        this.dataPresistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();     
     }
 
     public void NewGame() {
-        this.dataPresistenceObjects = FindAllDataPersistenceObjects();
         this.gamedata = new GameData(); 
     }
 

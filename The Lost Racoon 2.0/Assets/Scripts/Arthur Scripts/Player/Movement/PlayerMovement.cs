@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
     public Collider playerModel;
+    public CamFreezeScript camFreezeInfo;
+    public Interact interactInfo;
     [Header("Changeable", order = 1)]
     public float speed;
     public float sprintSpeed;
@@ -111,5 +113,21 @@ public class PlayerMovement : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, groundDetectRadius);
+    }
+    public void OnEnterMinigame()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        movementLock = true;
+        interactInfo.minigameBeingPlayed = true;
+        camFreezeInfo.CamFreeze();
+    }
+    public void OnExitMinigame()
+    {
+        Cursor.visible = false;
+        movementLock = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        interactInfo.minigameBeingPlayed = false;
+        camFreezeInfo.CamUnfreeze();
     }
 }

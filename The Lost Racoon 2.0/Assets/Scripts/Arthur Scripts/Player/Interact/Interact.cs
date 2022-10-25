@@ -8,7 +8,8 @@ public class Interact : MonoBehaviour
     [Header("References", order = 0)]
     public PlayerInput playerInput;
     public Pickup pickupscript;
-    public ScriptableSaving savinginfo;
+    public CamFreezeScript camFreeze;
+    public PlayerMovement playerMovementInfo;
     [Header("Detection Sphere", order = 1)]
     public Transform detectionAria;
     public float detectDiameter;
@@ -22,8 +23,13 @@ public class Interact : MonoBehaviour
     public bool minigameActive;
     public bool minigameBeingPlayed;
     //piemel -davido 
-    private void Start() {
-        
+    private void Start()
+    {
+        if (playerMovementInfo == null)
+        {
+            GameObject playerMovementInfoHolder = GameObject.Find("racoon lookin ass");
+            playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
+        }
     }
     void Update()
     {
@@ -54,7 +60,7 @@ public class Interact : MonoBehaviour
                 //Ui element stage 2
                 if (interactInput == 1 && minigameDetected && minigameBeingPlayed == false)
                 {
-                    minigameBeingPlayed = true;
+                    playerMovementInfo.OnEnterMinigame();
                     CollidedMinigame(coll);
                   //interaction here
                     Debug.Log("Interacted");
@@ -85,10 +91,10 @@ public class Interact : MonoBehaviour
         {
             coll.gameObject.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
         }
-        else if (coll.gameObject.GetComponent<MouseTrackerRectangleMovement>())
+        else if (coll.gameObject.GetComponent<UIPuzzleColor>())
         {
-
+            coll.gameObject.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
         }
-        coll.gameObject.GetComponent<Collider>().enabled = !enabled;
+        
     }
 }

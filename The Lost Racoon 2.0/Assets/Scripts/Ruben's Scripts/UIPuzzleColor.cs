@@ -7,6 +7,7 @@ public class UIPuzzleColor : MonoBehaviour
 {
     //public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
+    public PlayerMovement playerMovementInfo;
 
     public PlayerScript playerInfo;
     public GameObject[] colorButtons;
@@ -17,6 +18,9 @@ public class UIPuzzleColor : MonoBehaviour
 
     public GameObject currentGameObject;
     public GameObject UIPuzzleGameObject;
+    public GameObject gatePuzzleGameObject;
+
+    public bool hasBeenInteracted;
 
     private void Awake()
     {
@@ -34,7 +38,10 @@ public class UIPuzzleColor : MonoBehaviour
         //find main player
         GameObject playerScript = GameObject.Find("Player");
         playerInfo = playerScript.GetComponent<PlayerScript>();
-        UIPuzzleGameObject = this.gameObject.transform.parent.gameObject;
+
+       GameObject playerGameObject = GameObject.Find("racoon lookin ass");
+       playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
+
 
         ResetColors();
     }
@@ -63,7 +70,7 @@ public class UIPuzzleColor : MonoBehaviour
 
         //Checking witch buttons is color.Red
         //need +1 because button 1 is not 0
-        for (int i = 1; i < totalButtons+1; i++)
+        for (int i = 1; i < totalButtons +1; i++)
         {
           currentGameObject = GameObject.Find("Color Change Button " + i.ToString());
             if (currentGameObject.GetComponent<Image>().color == Color.red)
@@ -71,14 +78,15 @@ public class UIPuzzleColor : MonoBehaviour
                 totalButtonsCorrect++;
                 if(totalButtonsCorrect >= totalButtons)
                 {
+                    gatePuzzleGameObject.GetComponent<UIPuzzleColor>().hasBeenInteracted = true;
                     savingInfo.totalMissionsCompleted++;
                     UIPuzzleGameObject.SetActive(false);
+                    playerMovementInfo.OnExitMinigame();
+
                 }
             }
         }
-        //print(totalButtonsCorrect);
         totalButtonsCorrect = 0;
-
     }
     public void ResetColors()
     {
@@ -100,6 +108,14 @@ public class UIPuzzleColor : MonoBehaviour
     }
     public void SpawnPuzzleUI()
     {
-        UIPuzzleGameObject.SetActive(true);
+        if (hasBeenInteracted == false)
+        {
+            UIPuzzleGameObject.SetActive(true);
+            playerMovementInfo.OnEnterMinigame();
+        }
+        else
+        {
+            playerMovementInfo.OnExitMinigame();
+        }
     }
 }

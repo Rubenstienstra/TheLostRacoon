@@ -10,6 +10,8 @@ public class ScriptableSaving : ScriptableObject
 
     public bool minigame3x3;
     public bool minigame4x4;
+    public float volumeSFX;
+    public float volumeMUSIC;
 
     //mousetracker movement minigame completed
     public int mouseTrackerTimesDone;
