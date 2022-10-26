@@ -199,12 +199,6 @@ public class PlayerMovementBetter : MonoBehaviour
             checkingBools = 0;
         }
     }
-    public void OnInteract(InputValue value)
-    {
-        Physics.Raycast(transform.position + new Vector3(0,0,0), Vector3.forward, out hitInteract, 1000);
-        crGameObjectHit = hitInteract.collider.gameObject;
-        CollidedMinigame(hitInteract.collider.gameObject);
-    }
 
     public void CollidedMinigame(GameObject minigame) //elke keer dat er nieuwe minigame komt moet hier een nieuwe GetComponent te staan.
     {
@@ -224,7 +218,7 @@ public class PlayerMovementBetter : MonoBehaviour
     public void OnEnterMinigame()
     {
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
+        Cursor.visible = true;
         movementLock = true;
         interactInfo.minigameBeingPlayed = true;
         camFreezeInfo.CamFreeze();

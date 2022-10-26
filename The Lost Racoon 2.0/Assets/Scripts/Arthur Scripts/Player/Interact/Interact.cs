@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class Interact : MonoBehaviour
 {
     [Header("References", order = 0)]
-    public PlayerInput playerInput;
     public Pickup pickupscript;
     public CamFreezeScript camFreeze;
     public PlayerMovementBetter playerMovementInfo;
@@ -14,10 +13,9 @@ public class Interact : MonoBehaviour
     public Transform detectionAria;
     public float detectDiameter;
     public Collider[] detectedColliders;
-    public bool detected;
     public bool minigameDetected;
     [Header("Interaction Sphere", order = 1)]
-    public Vector3 interactionAreaOfset;
+    public Transform sphereLocation;
     public float interactionDiameter;
     public Collider[] interactionColliders;
 
@@ -27,65 +25,79 @@ public class Interact : MonoBehaviour
     public bool minigameActive;
     public bool minigameBeingPlayed;
     //piemel -davido 
-    private void Start()
+    void Update()
     {
-        if (playerMovementInfo == null)
+        if (playerMovementInfo.moving)
         {
-            GameObject playerMovementInfoHolder = GameObject.Find("RacoonPlayer");
-            playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovementBetter>();
+            detectedColliders = Physics.OverlapSphere(detectionAria.position, detectDiameter * 2);
+            foreach (Collider coll in detectedColliders)
+            {
+                if (coll.gameObject.tag == "Interactible" || coll.gameObject.tag == "Item")
+                {
+                    //Ui elliment stage 1
+                }
+                if (coll.gameObject.tag == "Minigame")
+                {
+                    minigameDetected = true;
+                }
+                else if (minigameDetected != true)
+                {
+                    minigameDetected = false;
+                }
+            }
+            interactionColliders = Physics.OverlapSphere(sphereLocation.position, interactionDiameter * 2);
         }
     }
-    //void Update()
-    //{
-    //    float interactInput = playerInput.actions["Interact"].ReadValue<float>();
-    //    detectedColliders = Physics.OverlapSphere(detectionAria.position, detectDiameter * 2);
-    //    foreach (Collider coll in detectedColliders) {
-    //        if(coll.gameObject.tag == "Interactible" || coll.gameObject.tag == "Item") {
-    //            Debug.Log("Interactible or Item nearby");
-    //            //Ui elliment stage 1
-    //        }
-    //        if(coll.gameObject.tag == "Minigame")
-    //        {
-    //            print("Is in Range!");
-    //            minigameDetected = true;
-    //            //coll.gameObject.SetActive(false);
-    //        }
-    //        else if(minigameDetected != true)
-    //        {
-    //            minigameDetected = false;
-    //            // - Ruben
-    //        }
-    //    }
-        //interactionColliders = Physics.OverlapSphere(interactionAreaOfset, interactionDiameter * 2);
-        
-        //foreach (Collider coll in interactionColliders) {
-        //    if (coll.gameObject.tag == "Minigame") {
-        //        Debug.Log("Interactible or Item in reach, press E to interact or pick up");
-        //        //Ui element stage 2
-        //        if (interactInput == 1 && minigameDetected && minigameBeingPlayed == false)
-        //        {
-        //            playerMovementInfo.OnEnterMinigame();
-        //            CollidedMinigame(coll);
-        //            Debug.Log("Interacted");
-        //        }
-        //    }
-        //    else if (coll.gameObject.tag == "Item") {
-        //        if (interactInput == 1) {
-        //            //Pick up here
-        //            pickupscript.PickUp(coll);
-        //        }
-        //    }
-        //}
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(sphereLocation.position, interactionDiameter * 2);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(detectionAria.position, detectDiameter * 2);
+    }
     public void OnInteract(InputValue value)
     {
         if(value.Get<float>() == 1)
         {
+            foreach (Collider coll in interactionColliders)
+            {
+                if (coll.gameObject.tag == "Minigame")
+                {
+                    //Ui element stage 2
+                    if (minigameDetected && minigameBeingPlayed == false)
+                    {
+                        playerMovementInfo.OnEnterMinigame();
+                        CollidedMinigame(coll.gameObject);
+                        Debug.Log("Interacted");
+                    }
+                }
+                else if (coll.gameObject.tag == "Item")
+                {
+                    //Pick up here
+                    pickupscript.PickUp(coll);
+                }
+            }
             allowInteraction = true;
         }
         else
         {
             allowInteraction = !allowInteraction;
+        }
+    }
+
+    public void CollidedMinigame(GameObject minigame) //elke keer dat er nieuwe minigame komt moet hier een nieuwe GetComponent te staan.
+    {
+        if (minigame.GetComponent<MouseTrackerMovement>())
+        {
+            minigame.GetComponent<MouseTrackerMovement>().StartAreaMinigame();
+        }
+        else if (minigame.GetComponent<MouseTrackerRectangleMovement>())
+        {
+            minigame.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
+        }
+        else if (minigame.GetComponent<UIPuzzleColor>())
+        {
+            minigame.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
         }
     }
     private void OnTriggerEnter(Collider other)

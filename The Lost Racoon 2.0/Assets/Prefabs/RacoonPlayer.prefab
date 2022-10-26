@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1200358509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1200358510}
+  m_Layer: 0
+  m_Name: Transform interaction circle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1200358510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200358509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.176, z: 0.415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8935389356273021501}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5351934341521527521
 GameObject:
   m_ObjectHideFlags: 3
@@ -354,7 +385,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934341954305053}
-  m_LocalRotation: {x: 0.2897841, y: -0, z: -0, w: 0.95709205}
+  m_LocalRotation: {x: 0.2897841, y: -3e-45, z: 1e-45, w: 0.95709205}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1041,7 +1072,7 @@ MonoBehaviour:
   addMovement: {x: 0, y: 0, z: 0}
   RaycastPos: {x: 0, y: 0, z: 0}
   crSlopeAngle: 0
-  maxUpSlopeAngle: 20
+  maxUpSlopeAngle: 30
   jump: 0
   beginJumpBonus: 1.5
   totalHeightJump: 1.5
@@ -1053,6 +1084,7 @@ MonoBehaviour:
   filterMask:
     serializedVersion: 2
     m_Bits: 128
+  crGameObjectHit: {fileID: 0}
   moving: 0
   sprinting: 0
   isOnGround: 1
@@ -1072,16 +1104,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878783c5dd0c155458c0925ed89c02b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 5351934342813780873}
   pickupscript: {fileID: 5351934342813780876}
   camFreeze: {fileID: 5351934342813780872}
   playerMovementInfo: {fileID: 5351934342813780874}
   detectionAria: {fileID: 5351934342813780886}
   detectDiameter: 1.5
   detectedColliders: []
-  detected: 0
   minigameDetected: 0
-  interactionAreaOfset: {x: 0, y: 0, z: 0}
+  sphereLocation: {fileID: 1200358510}
   interactionDiameter: 0.069
   interactionColliders: []
   allowInteraction: 0

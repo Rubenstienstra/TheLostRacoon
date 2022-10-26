@@ -14,7 +14,7 @@ public class UIPuzzleColor : MonoBehaviour
     public GameObject[] colorButtons;
 
     public bool startRed;
-    public int totalButtons;
+    public int totalButtons = 9;
     public int totalButtonsCorrect;
     public bool is3x3Minigame;
     public bool is4x4Minigame;
