@@ -7,10 +7,10 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
 {
     public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
-    public MouseTrackerMovement circleMouseInfo;
+    public MouseTrackerMovement ircleMouseInfo;
     public PlayerInputUIController UIInfo;
     public Interact interactInfo;
-    public PlayerMovement playerMovementInfo;
+    public PlayerMovementBetter playerMovementInfo;
 
     public GameObject mouseCursor;
     public GameObject playerGameObject;
@@ -38,22 +38,12 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
 
     void Start()
     {
-       GameObject parentPlayerGameObject = GameObject.Find("Player");
+       GameObject playerGameObject = GameObject.Find("RacoonPlayer");
 
-        UIInfo = parentPlayerGameObject.GetComponent<PlayerInputUIController>();
-
-
-        playerGameObject = GameObject.Find("racoon lookin ass");
-
+        UIInfo = playerGameObject.GetComponent<PlayerInputUIController>();
+        playerMovementInfo = playerGameObject.GetComponent<PlayerMovementBetter>();
         playerInfo = playerGameObject.GetComponent<PlayerScript>();
         interactInfo = playerGameObject.GetComponent<Interact>();
-        playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
-        circleMouseInfo = playerGameObject.GetComponent<MouseTrackerMovement>();
-
-
-        GameObject gateCircleMinigame = GameObject.Find("Gate circle shrink minigame");
-
-        circleMouseInfo = gateCircleMinigame.GetComponent<MouseTrackerMovement>();
 
         mouseCursor = GameObject.Find("MousePointer");
     }
@@ -75,17 +65,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             mouseInZone = true;
             playerInfo.minigameActiveMouseRectangle = true;
 
-            if (mouseCursor == null)
-            {
-                mouseCursor = GameObject.Find("MousePointer");
-            }
             mouseCursor.GetComponent<Image>().enabled = !enabled;
-
-            if (playerMovementInfo == null)
-            {
-                GameObject playerMovementInfoHolder = GameObject.Find("racoon lookin ass");
-                playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
-            }
 
             StartMinigame();
 
@@ -149,13 +129,17 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             IsWaiting = true;
             StartCoroutine(WaitingForShutDown());
         }
+        else if (UIInfo.mousePosY < endPosZoneY)
+        {
+            IsWaiting = false;
+        }
         
     }
     public IEnumerator WaitingForShutDown()
     {
         print("Activating WaitingShutdown");
         yield return new WaitForSeconds(waitingTime);
-        if (UIInfo.mousePosY > endPosZoneY)
+        if (UIInfo.mousePosY > endPosZoneY && IsWaiting == true)
         {
             ShutDown();
         }
@@ -163,7 +147,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             StopCoroutine(WaitingForShutDown());
         }
-        IsWaiting = false;
+        
     }
     public void ShutDown()
     {

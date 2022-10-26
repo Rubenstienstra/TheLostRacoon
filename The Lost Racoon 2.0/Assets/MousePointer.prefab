@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1945000355755264004}
   m_Layer: 5
   m_Name: MousePointer
-  m_TagString: Untagged
+  m_TagString: CamCollideIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +138,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e9486bd13f1534d971bf09d3493968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInfo: {fileID: 0}
   mouseInfo: {fileID: 0}
-  mouseRectangleInfo: {fileID: 0}
-  savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}

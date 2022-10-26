@@ -10,14 +10,13 @@ public class MouseTrackerMovement : MonoBehaviour
     public ScriptableSaving savingInfo;
     public PlayerInputUIController UIInfo;
     public Interact interactInfo;
-    public PlayerMovement playerMovementInfo;
+    public PlayerMovementBetter playerMovementInfo;
 
     private float randomMousePosX;
     private float randomMousePosY;
 
     public Vector2 mouseStartPos;
     public GameObject[] circles;
-    public GameObject playerGameObject;
 
     // 0 = default, 1 = phase 1, 2 = phase end.
     public int currentPhase;
@@ -42,14 +41,11 @@ public class MouseTrackerMovement : MonoBehaviour
     void Start()
     {
         //safety
-        playerGameObject = GameObject.Find("racoon lookin ass");
-
-        GameObject parentPlayerGameObject = GameObject.Find("Player");
-        UIInfo = parentPlayerGameObject.GetComponent<PlayerInputUIController>();
-
+        GameObject playerGameObject = GameObject.Find("RacoonPlayer");
+        UIInfo = playerGameObject.GetComponent<PlayerInputUIController>();
+        playerMovementInfo = playerGameObject.GetComponent<PlayerMovementBetter>();
         playerInfo = playerGameObject.GetComponent<PlayerScript>();
         interactInfo = playerGameObject.GetComponent<Interact>();
-        playerMovementInfo = playerGameObject.GetComponent<PlayerMovement>();
     }
     //If in Area load this
     public void StartAreaMinigame()
@@ -80,11 +76,6 @@ public class MouseTrackerMovement : MonoBehaviour
             bigCircleSchrinkCollider = circles[0].GetComponent<CircleCollider2D>();
             bigCircleSchrinkRect = circles[0].GetComponent<RectTransform>();
 
-            if (playerMovementInfo == null)
-            {
-                GameObject playerMovementInfoHolder = GameObject.Find("racoon lookin ass");
-                playerMovementInfo = playerMovementInfoHolder.GetComponent<PlayerMovement>();
-            }
             StartMinigame();
         }
         else

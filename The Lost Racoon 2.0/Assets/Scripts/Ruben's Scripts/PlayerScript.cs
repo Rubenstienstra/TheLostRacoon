@@ -28,16 +28,16 @@ public class PlayerScript : MonoBehaviour
         savingInfo.mouseTrackerTimesDone = 0;
     }
     
-    public void OnInteract(InputValue value)
-    {
-        if(value.Get<float>() >= 1)
-        {
-            //Testing Press E
-            if(mouseInfo.currentPhase == 0 && minigameActiveMouseRectangle == false)
-            {
-                //mouseInfo.StartAreaMinigame();
-                mouseRectangleInfo.StartAreaMinigame();
-            }
-        }
-    }
+    //public void OnInteract(InputValue value)
+    //{
+    //    if(value.Get<float>() >= 1)
+    //    {
+    //        //Testing Press E
+    //        if(mouseInfo.currentPhase == 0 && minigameActiveMouseRectangle == false)
+    //        {
+    //            //mouseInfo.StartAreaMinigame();
+    //            mouseRectangleInfo.StartAreaMinigame();
+    //        }
+    //    }
+    //}
 }

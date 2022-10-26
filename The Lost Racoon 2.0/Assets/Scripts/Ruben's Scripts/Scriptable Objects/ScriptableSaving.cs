@@ -8,8 +8,6 @@ public class ScriptableSaving : ScriptableObject
 {
     public int totalMissionsCompleted;
 
-    public bool minigame3x3;
-    public bool minigame4x4;
     public float volumeSFX;
     public float volumeMUSIC;
 
