@@ -94,8 +94,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f38e4b7064bc69e428793de9edd21f6c, type: 2}
   - {fileID: 2100000, guid: 718b17ee902c9bb43ae0ee4939e6a158, type: 2}
   emissionRenderer: {fileID: 8139543238429196131}
-  startingGray: 010101000000010101
-  buttonCorrect: 
+  startingGray: 000000000000000000
+  buttonCorrect: 000000000000000000
   totalButtons: 9
   totalButtonsCorrect: 0
   is3x3Minigame: 1
@@ -237,15 +237,15 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e0dce814f83d53a41888ee1f6fe53231, type: 2}
-  - {fileID: 2100000, guid: 4eae3c71f4b8576439296efb022965e7, type: 2}
-  - {fileID: 2100000, guid: c9bcdfb943d27694f89d8a2735d071b0, type: 2}
+  - {fileID: 2100000, guid: 7184ec740ea680a4d93188b801b93d3a, type: 2}
   - {fileID: 2100000, guid: efacd513dd4265d4fa4235963d0764f2, type: 2}
   - {fileID: 2100000, guid: a816a0433a28b8441986b7d60355f8d1, type: 2}
+  - {fileID: 2100000, guid: d070970144c59e543af2a15627c41271, type: 2}
+  - {fileID: 2100000, guid: 4eae3c71f4b8576439296efb022965e7, type: 2}
+  - {fileID: 2100000, guid: c9bcdfb943d27694f89d8a2735d071b0, type: 2}
+  - {fileID: 2100000, guid: 81c5a7d58ea8ed04583c7f1d81a70535, type: 2}
   - {fileID: 2100000, guid: f38e4b7064bc69e428793de9edd21f6c, type: 2}
   - {fileID: 2100000, guid: 718b17ee902c9bb43ae0ee4939e6a158, type: 2}
-  - {fileID: 2100000, guid: d070970144c59e543af2a15627c41271, type: 2}
-  - {fileID: 2100000, guid: 81c5a7d58ea8ed04583c7f1d81a70535, type: 2}
-  - {fileID: 2100000, guid: 7184ec740ea680a4d93188b801b93d3a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

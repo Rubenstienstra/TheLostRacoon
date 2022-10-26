@@ -38,12 +38,13 @@ public class Better3X3Puzzle : MonoBehaviour
         {
             totalButtons = 16;
         }
-        ResetColors();
 
         //find main player
         GameObject playerScript = GameObject.Find("RacoonPlayer");
         playerInfo = playerScript.GetComponent<PlayerScript>();
         playerMovementInfo = playerScript.GetComponent<PlayerMovementBetter>();
+
+        ResetColors();
     }
     public void OnButtonColorPress(int buttonNumber)
     {
@@ -52,49 +53,56 @@ public class Better3X3Puzzle : MonoBehaviour
             //volgorde van links naar rechts : moet je invullen
             //4:1, 5:2, 1:3, 2:4, 7:5, 8:6, 3:7, 6:8, 0:9;
             case 0:
+                SwitchEmission(0,9);
                 SwitchEmission(1,3);
                 SwitchEmission(3,7);
                 SwitchEmission(4,1);
                 return;
             case 1:
                 SwitchEmission(0,9);
-                SwitchEmission(2,7);
-                SwitchEmission(3,1);
-                SwitchEmission(4,2);
-                SwitchEmission(5,8);
+                SwitchEmission(1,3);
+                SwitchEmission(2,4);
+                SwitchEmission(3,7);
+                SwitchEmission(4,1);
+                SwitchEmission(5,2);
                 return;
             case 2:
-                SwitchEmission(1,4);
-                SwitchEmission(3,2);
-                SwitchEmission(4,8);
+                SwitchEmission(1,3);
+                SwitchEmission(2,4);
+                SwitchEmission(4,1);
+                SwitchEmission(5,2);
                 return;
             case 3:
                 SwitchEmission(0,9);
                 SwitchEmission(1,3);
-                SwitchEmission(4,2);
-                SwitchEmission(6,5);
-                SwitchEmission(7,6);
+                SwitchEmission(3,7);
+                SwitchEmission(4,1);
+                SwitchEmission(6,8);
+                SwitchEmission(7,5);
                 return;
             case 4:
-                SwitchEmission(0,2);
+                SwitchEmission(0,9);
                 SwitchEmission(1,3);
                 SwitchEmission(2,4);
-                SwitchEmission(3,5);
-                SwitchEmission(5,6);
-                SwitchEmission(6,7);
-                SwitchEmission(7,8);
-                SwitchEmission(8,9);
+                SwitchEmission(3,7);
+                SwitchEmission(4,1);
+                SwitchEmission(5,2);
+                SwitchEmission(6,8);
+                SwitchEmission(7,5);
+                SwitchEmission(8,6);
                 return;
             case 5:
                 SwitchEmission(1,3);
                 SwitchEmission(2,4);
                 SwitchEmission(4,1);
+                SwitchEmission(5,2);
                 SwitchEmission(7,5);
                 SwitchEmission(8,6);
                 return;
             case 6:
                 SwitchEmission(3,7);
                 SwitchEmission(4,1);
+                SwitchEmission(6,8);
                 SwitchEmission(7,5);
                 return;
             case 7:
@@ -102,28 +110,32 @@ public class Better3X3Puzzle : MonoBehaviour
                 SwitchEmission(4,1);
                 SwitchEmission(5,2);
                 SwitchEmission(6,8);
+                SwitchEmission(7,5);
                 SwitchEmission(8,6);
                 return;
             case 8:
                 SwitchEmission(4,1);
                 SwitchEmission(5,2);
                 SwitchEmission(7,5);
+                SwitchEmission(8,6);
                 return;
         }
+        CheckingCorrectButtons();
     }
     public void SwitchEmission(int buttonNumber,int materialNumber)
     {
-        if(!buttonCorrect[buttonNumber])
-        {
-            emissionRenderer.materials[materialNumber].SetFloat("_EmissiveExposureWeight", 1);
-            buttonCorrect[buttonNumber] = true;
-        }
-        else
+        if(buttonCorrect[buttonNumber] == false)
         {
             emissionRenderer.materials[materialNumber].SetFloat("_EmissiveExposureWeight", 0);
+            buttonCorrect[buttonNumber] = true;
+        }
+        else if(buttonCorrect[buttonNumber] == true)
+        {
+            emissionRenderer.materials[materialNumber].SetFloat("_EmissiveExposureWeight", 1);
             buttonCorrect[buttonNumber] = false;
         }
-        CheckingCorrectButtons();
+        print(buttonNumber);
+        
     }
     public void CheckingCorrectButtons()
     {
@@ -137,7 +149,7 @@ public class Better3X3Puzzle : MonoBehaviour
         }
         if (totalButtonsCorrect >= totalButtons)
         {
-            gatePuzzleGameObject.GetComponent<UIPuzzleColor>().hasBeenInteracted = true;
+            hasBeenInteracted = true;
             savingInfo.totalMissionsCompleted++;
             UIPuzzleMinigame.SetActive(false);
             playerMovementInfo.OnExitMinigame();
@@ -148,14 +160,14 @@ public class Better3X3Puzzle : MonoBehaviour
     {
         for (int i = 0; i < colorButtons.Length; i++)
         {
-            if (startingGray[i])
+            if (startingGray[i] == true)
             {
-                emissionRenderer.materials[i].SetFloat("_EmissiveExposureWeight", 0);
+                emissionRenderer.materials[i].SetFloat("_EmissiveExposureWeight", 1);
                 buttonCorrect[i] = false;
             }
             else
             {
-                emissionRenderer.materials[i].SetFloat("_EmissiveExposureWeight", 1);
+                emissionRenderer.materials[i].SetFloat("_EmissiveExposureWeight", 0);
                 buttonCorrect[i] = true;
             }
         }
