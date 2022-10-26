@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 4264.617, g: 3329.6836, b: 3800.8281, a: 1}
+  m_IndirectSpecularColor: {r: 4273.5, g: 3330.17, b: 3787.211, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2478,6 +2478,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kamers
       objectReference: {fileID: 0}
+    - target: {fileID: 148351645918577223, guid: ce1998b166a16a944afddb5ad4e34e5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8210808771519481294, guid: ce1998b166a16a944afddb5ad4e34e5a,
         type: 3}
       propertyPath: m_RootOrder
@@ -2926,6 +2931,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4192613630865555796}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6218733935776017758
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 303519763334660840, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 303519763334660840, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303519763334660840, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303519763334660840, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303519763334660840, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 303519763334660840, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303519763334660840, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303519763334660840, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303519763334660840, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303519763334660840, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303519763334660840, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5868534857892695995, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_Name
+      value: Riool
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f1e4b932005e029498ef3d1f788efb2c, type: 3}
 --- !u!1001 &7160088164511377169
 PrefabInstance:
   m_ObjectHideFlags: 0
