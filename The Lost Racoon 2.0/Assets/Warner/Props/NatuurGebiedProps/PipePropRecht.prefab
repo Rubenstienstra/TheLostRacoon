@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1574071907679021562}
   m_Layer: 0
   m_Name: PipePropRecht
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
