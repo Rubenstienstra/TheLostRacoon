@@ -1384,30 +1384,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 298661427161171650, guid: db9b81c65f978bb46ae395b777f90934,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 640750492546238380, guid: db9b81c65f978bb46ae395b777f90934,
         type: 3}
       propertyPath: m_Name
       value: TLRCodePadPuzzels
-      objectReference: {fileID: 0}
-    - target: {fileID: 7262112948569065056, guid: db9b81c65f978bb46ae395b777f90934,
-        type: 3}
-      propertyPath: playerInfo
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7262112948569065056, guid: db9b81c65f978bb46ae395b777f90934,
-        type: 3}
-      propertyPath: playerMovementInfo
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7262112948569065056, guid: db9b81c65f978bb46ae395b777f90934,
-        type: 3}
-      propertyPath: colorButtons.Array.size
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db9b81c65f978bb46ae395b777f90934, type: 3}
@@ -1516,11 +1496,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.0000000065845964
-      objectReference: {fileID: 0}
-    - target: {fileID: 5351934342813780874, guid: 96dd95628ee48aa43bfa02359ef8c86e,
-        type: 3}
-      propertyPath: maxUpSlopeAngle
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5351934342813780878, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}

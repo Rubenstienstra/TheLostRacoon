@@ -37,19 +37,12 @@ public class PlayerMovementBetter : MonoBehaviour
     public Rigidbody rb;
     public Collider crCollider;
 
-    public RaycastHit hitInteract;
-    public float maxDistanceRaycast;
-    public LayerMask filterMask;
-    public GameObject crGameObjectHit;
-
     public bool moving;
     public bool sprinting;
     public bool isOnGround;
     public bool movementLock;
     public bool allowInteraction;
     public Animator animationMovement;
-
-    public bool testing;
 
 
     public void OnForward(InputValue value)
@@ -210,10 +203,15 @@ public class PlayerMovementBetter : MonoBehaviour
         {
             minigame.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
         }
-        else if (minigame.GetComponent<UIPuzzleColor>())
+        else if (minigame.GetComponent<Better3X3Puzzle>())
         {
-            minigame.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
+            minigame.GetComponent<Better3X3Puzzle>();
         }
+        //else if (minigame.GetComponent<UIPuzzleColor>())
+        //{
+        //    minigame.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
+        //}
+        
     }
     public void OnEnterMinigame()
     {

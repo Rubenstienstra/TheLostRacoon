@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 265632667772411158}
   - component: {fileID: 298661427161171650}
+  - component: {fileID: 3809154012559198457}
   - component: {fileID: 7262112948569065056}
   - component: {fileID: 3196840066998871332}
   m_Layer: 0
@@ -57,7 +58,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7262112948569065056
+--- !u!114 &3809154012559198457
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,6 +66,53 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640750492546238380}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1694da49df5c44787e8a305d4b82ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerMovementInfo: {fileID: 0}
+  playerInfo: {fileID: 0}
+  colorButtons:
+  - {fileID: 6726970089752320550}
+  - {fileID: 6073317186806997514}
+  - {fileID: 2151008100321664283}
+  - {fileID: 8681092158426632932}
+  - {fileID: 1606440209117617479}
+  - {fileID: 6950606238016225003}
+  - {fileID: 5712066486948468714}
+  - {fileID: 4305956490427072661}
+  - {fileID: 8477687920416058745}
+  emissionButtonMaterials:
+  - {fileID: 2100000, guid: 7184ec740ea680a4d93188b801b93d3a, type: 2}
+  - {fileID: 2100000, guid: efacd513dd4265d4fa4235963d0764f2, type: 2}
+  - {fileID: 2100000, guid: a816a0433a28b8441986b7d60355f8d1, type: 2}
+  - {fileID: 2100000, guid: d070970144c59e543af2a15627c41271, type: 2}
+  - {fileID: 2100000, guid: 4eae3c71f4b8576439296efb022965e7, type: 2}
+  - {fileID: 2100000, guid: c9bcdfb943d27694f89d8a2735d071b0, type: 2}
+  - {fileID: 2100000, guid: 81c5a7d58ea8ed04583c7f1d81a70535, type: 2}
+  - {fileID: 2100000, guid: f38e4b7064bc69e428793de9edd21f6c, type: 2}
+  - {fileID: 2100000, guid: 718b17ee902c9bb43ae0ee4939e6a158, type: 2}
+  emissionRenderer: {fileID: 8139543238429196131}
+  startingGray: 010101000000010101
+  buttonCorrect: 
+  totalButtons: 9
+  totalButtonsCorrect: 0
+  is3x3Minigame: 1
+  is4x4Minigame: 0
+  currentGameObject: {fileID: 640750492546238380}
+  UIPuzzleMinigame: {fileID: 5422806917936764845}
+  gatePuzzleGameObject: {fileID: 0}
+  buttonAnimations: {fileID: 298661427161171650}
+  hasBeenInteracted: 0
+--- !u!114 &7262112948569065056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640750492546238380}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c989c99242bbb24598119bfd693fe71, type: 3}
   m_Name: 
@@ -147,7 +195,7 @@ GameObject:
   - component: {fileID: 4025673890430535283}
   - component: {fileID: 8139543238429196131}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: EmissionHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -854,6 +902,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 265632667772411158}
     m_Modifications:
+    - target: {fileID: 791679057110333741, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 791679057110333741, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 791679057110333741, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Better3X3Puzzle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1297589192362113898, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Name
+      value: Color Change Button 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317892262029871564, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383861501113923155, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383861501113923155, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 1383861501113923155, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Better3X3Puzzle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383861501113923155, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1579694869456826042, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: m_Pivot.x
@@ -959,6 +1052,106 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1842857207265508150, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Name
+      value: Color Change Button 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234468985041950270, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234468985041950270, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 2234468985041950270, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Better3X3Puzzle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234468985041950270, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2289328702388505295, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421769061231647168, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587909913273552109, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Text
+      value: You need to light up all the buttons blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334003630048439517, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334003630048439517, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 3334003630048439517, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Better3X3Puzzle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334003630048439517, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666080558600697987, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442791067488731238, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578782274179081912, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Name
+      value: Color Change Button 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408709428273164743, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Name
+      value: Color Change Button 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495002604819366409, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495002604819366409, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 5495002604819366409, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Better3X3Puzzle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495002604819366409, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5695752308812149120, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: m_Name
@@ -967,6 +1160,141 @@ PrefabInstance:
     - target: {fileID: 5695752308812149120, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5765187414714401831, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Name
+      value: Color Change Button 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111419663868385062, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187371809909372404, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187371809909372404, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 6187371809909372404, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Better3X3Puzzle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187371809909372404, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6417683357624204299, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Name
+      value: Color Change Button 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552000175574922983, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552000175574922983, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 6552000175574922983, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Better3X3Puzzle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552000175574922983, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7018809122252469310, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7035141363454227437, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223577166165776582, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Name
+      value: Color Change Button 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853284810628733937, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853284810628733937, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 7853284810628733937, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Better3X3Puzzle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853284810628733937, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161502931538958527, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208939081497430868, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Name
+      value: Color Change Button 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339212150934632198, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339212150934632198, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 8339212150934632198, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Better3X3Puzzle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339212150934632198, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8900005663822567146, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8949674970620884169, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Name
+      value: Color Change Button 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070239682575829062, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

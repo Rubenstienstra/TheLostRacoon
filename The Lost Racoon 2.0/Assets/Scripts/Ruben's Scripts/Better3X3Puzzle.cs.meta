@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: bb1694da49df5c44787e8a305d4b82ca
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  - playerMovementInfo: {instanceID: 0}
+  - playerInfo: {instanceID: 0}
+  - currentGameObject: {instanceID: 0}
+  - UIPuzzleGameObject: {instanceID: 0}
+  - gatePuzzleGameObject: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

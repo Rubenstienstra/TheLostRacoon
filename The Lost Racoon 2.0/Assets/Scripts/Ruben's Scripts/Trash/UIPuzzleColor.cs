@@ -76,15 +76,14 @@ public class UIPuzzleColor : MonoBehaviour
             if (currentGameObject.GetComponent<Image>().color == Color.red)
             {
                 totalButtonsCorrect++;
-                if(totalButtonsCorrect >= totalButtons)
-                {
-                    gatePuzzleGameObject.GetComponent<UIPuzzleColor>().hasBeenInteracted = true;
-                    savingInfo.totalMissionsCompleted++;
-                    UIPuzzleGameObject.SetActive(false);
-                    playerMovementInfo.OnExitMinigame();
-
-                }
             }
+        }
+        if (totalButtonsCorrect >= totalButtons)
+        {
+            gatePuzzleGameObject.GetComponent<UIPuzzleColor>().hasBeenInteracted = true;
+            savingInfo.totalMissionsCompleted++;
+            UIPuzzleGameObject.SetActive(false);
+            playerMovementInfo.OnExitMinigame();
         }
         totalButtonsCorrect = 0;
     }
