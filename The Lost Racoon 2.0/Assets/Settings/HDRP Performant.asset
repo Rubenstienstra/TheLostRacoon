@@ -41,7 +41,7 @@ MonoBehaviour:
     supportDecals: 1
     supportDecalLayers: 0
     supportSurfaceGradient: 0
-    decalNormalBufferHP: 0
+    decalNormalBufferHP: 1
     msaaSampleCount: 1
     supportMotionVectors: 1
     supportRuntimeAOVAPI: 0
@@ -140,6 +140,7 @@ MonoBehaviour:
       singlePass: 1
       occlusionMesh: 1
       cameraJitter: 0
+      allowMotionBlur: 1
     postProcessQualitySettings:
       NearBlurSampleCount: 030000000400000004000000
       NearBlurMaxRadius:
