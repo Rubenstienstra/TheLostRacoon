@@ -16,12 +16,13 @@ public class PlayerMovementBetter : MonoBehaviour
     public bool[] isMovingForwardWASD;
     private int checkingBools;
 
-    public float multiplierSpeedBonus = 1;
+    public float multiplierSprintSpeed = 2;
     private float crspeedBonus = 1;
     public float timeToTurn;
-    public float velocity;
-    public Vector3 movingAngle;
-    public Vector3 addMovement;
+    private float velocity;
+    private Vector3 movingAngle;
+    private Vector3 addMovement;
+    public float increasedMoveSpeed = 1;
 
     public RaycastHit hitSlope;
     public Vector3 RaycastPos;
@@ -69,7 +70,7 @@ public class PlayerMovementBetter : MonoBehaviour
     {
         if (value.Get<float>() == 1)
         {
-            crspeedBonus = multiplierSpeedBonus;
+            crspeedBonus = multiplierSprintSpeed;
             sprinting = true;
         }
         else
@@ -158,7 +159,7 @@ public class PlayerMovementBetter : MonoBehaviour
             }
 
             transform.rotation = Quaternion.Euler(crSlopeAngle, endAngle, transform.rotation.y); // voegt telkens de rotatie(endAngle) toe aan de speler.
-            transform.position += movingAngle.normalized * crspeedBonus * Time.deltaTime; //
+            transform.position += movingAngle.normalized * crspeedBonus * Time.deltaTime * increasedMoveSpeed; //
 
             yield return new WaitForSeconds(0.01f); // do not move
             for (int i = 0; i < isMovingForwardWASD.Length; i++)
@@ -191,6 +192,13 @@ public class PlayerMovementBetter : MonoBehaviour
             }
             checkingBools = 0;
         }
+    }
+    public void ResettingAllAnimations()
+    {
+        animationMovement.SetBool("Walking",false);
+        animationMovement.SetBool("Running", false);
+        animationMovement.SetBool("Charging", false);
+        animationMovement.SetBool("Jumping", false);
     }
 
     

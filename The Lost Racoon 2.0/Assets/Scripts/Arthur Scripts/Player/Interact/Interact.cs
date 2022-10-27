@@ -69,11 +69,6 @@ public class Interact : MonoBehaviour
                         OnEnterMinigame();
                         CollidedMinigame(coll.gameObject);
                     }
-                    //else if(minigameDetected && minigameBeingPlayed)
-                    //{
-                    //    OnExitMinigame();
-                    //    CollidedMinigame(coll.gameObject);
-                    //}
                 }
                 else if (coll.gameObject.tag == "Item")
                 {

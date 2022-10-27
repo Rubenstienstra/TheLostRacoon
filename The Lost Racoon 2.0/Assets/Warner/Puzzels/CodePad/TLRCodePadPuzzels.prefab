@@ -94,10 +94,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 81c5a7d58ea8ed04583c7f1d81a70535, type: 2}
   - {fileID: 2100000, guid: f38e4b7064bc69e428793de9edd21f6c, type: 2}
   - {fileID: 2100000, guid: 718b17ee902c9bb43ae0ee4939e6a158, type: 2}
-  startingGray: 010101000000010101
+  startingGray: 010001000000010001
   buttonCorrect: 000000000000000000
   totalButtons: 9
   totalButtonsCorrect: 0
+  animationButtonDelay: 0.5
   is3x3Minigame: 1
   is4x4Minigame: 0
   currentGameObject: {fileID: 640750492546238380}

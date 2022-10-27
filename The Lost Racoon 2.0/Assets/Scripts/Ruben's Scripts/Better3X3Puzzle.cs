@@ -6,11 +6,9 @@ using UnityEngine.UI;
 public class Better3X3Puzzle : MonoBehaviour
 {
     public ScriptableSaving savingInfo;
-    public PlayerMovementBetter playerMovementInfo;
-    public CamFreezeScript camFreezeInfo;
-    public Interact interactInfo;
+    private PlayerMovementBetter playerMovementInfo;
+    private Interact interactInfo;
 
-    public PlayerScript playerInfo;
     public GameObject[] colorButtons;
     public Material[] emissionButtonMaterials;
     
@@ -20,13 +18,13 @@ public class Better3X3Puzzle : MonoBehaviour
     public bool[] buttonCorrect;
     public int totalButtons = 9;
     public int totalButtonsCorrect;
+    public float animationButtonDelay;
     public bool is3x3Minigame;
     public bool is4x4Minigame;
 
     public GameObject currentGameObject;
     public GameObject UIPuzzleMinigame;
-    public GameObject racoonMesh;
-    public Transform camTransform;
+    private GameObject racoonMesh;
 
     public Animator buttonAnimations;
     public SkinnedMeshRenderer emissionRenderer;
@@ -44,15 +42,26 @@ public class Better3X3Puzzle : MonoBehaviour
             totalButtons = 16;
         }
 
-        //find main player
+        //finding main player + finding racoon mesh
         GameObject playerScript = GameObject.Find("RacoonPlayer");
-        playerInfo = playerScript.GetComponent<PlayerScript>();
         playerMovementInfo = playerScript.GetComponent<PlayerMovementBetter>();
         interactInfo = playerScript.GetComponent<Interact>();
-        camFreezeInfo = playerScript.GetComponent<CamFreezeScript>();
+
         racoonMesh = GameObject.Find("RaccoonModel");
 
         ResetColors();
+    }
+    public void ForButtonOnClick(int buttonNumber) //Deze functie is om de IEnumarator aan te roepen (vanwege de UI buttons)
+    {
+        StartCoroutine(Animationtrigger(buttonNumber));
+    }
+    public IEnumerator Animationtrigger(int buttonNumber)
+    {
+        buttonNumber++;
+        buttonAnimations.SetTrigger(buttonNumber.ToString());
+        buttonNumber--;
+        yield return new WaitForSeconds(animationButtonDelay);
+        OnButtonColorPress(buttonNumber);
     }
     public void OnButtonColorPress(int buttonNumber)
     {
@@ -61,7 +70,7 @@ public class Better3X3Puzzle : MonoBehaviour
             //volgorde van links naar rechts : moet je invullen
             //4:1, 5:2, 1:3, 2:4, 7:5, 8:6, 3:7, 6:8, 0:9;
             case 0:
-                buttonAnimations.SetTrigger("1");
+                
                 SwitchEmission(0,9);
                 SwitchEmission(1,3);
                 SwitchEmission(3,7);
@@ -69,7 +78,6 @@ public class Better3X3Puzzle : MonoBehaviour
                 CheckingCorrectButtons();
                 return;
             case 1:
-                buttonAnimations.SetTrigger("2");
                 SwitchEmission(0,9);
                 SwitchEmission(1,3);
                 SwitchEmission(2,4);
@@ -79,7 +87,6 @@ public class Better3X3Puzzle : MonoBehaviour
                 CheckingCorrectButtons();
                 return;
             case 2:
-                buttonAnimations.SetTrigger("3");
                 SwitchEmission(1,3);
                 SwitchEmission(2,4);
                 SwitchEmission(4,1);
@@ -87,7 +94,6 @@ public class Better3X3Puzzle : MonoBehaviour
                 CheckingCorrectButtons();
                 return;
             case 3:
-                buttonAnimations.SetTrigger("4");
                 SwitchEmission(0,9);
                 SwitchEmission(1,3);
                 SwitchEmission(3,7);
@@ -97,7 +103,6 @@ public class Better3X3Puzzle : MonoBehaviour
                 CheckingCorrectButtons();
                 return;
             case 4:
-                buttonAnimations.SetTrigger("5");
                 SwitchEmission(0,9);
                 SwitchEmission(1,3);
                 SwitchEmission(2,4);
@@ -110,7 +115,6 @@ public class Better3X3Puzzle : MonoBehaviour
                 CheckingCorrectButtons();
                 return;
             case 5:
-                buttonAnimations.SetTrigger("6");
                 SwitchEmission(1,3);
                 SwitchEmission(2,4);
                 SwitchEmission(4,1);
@@ -120,7 +124,6 @@ public class Better3X3Puzzle : MonoBehaviour
                 CheckingCorrectButtons();
                 return;
             case 6:
-                buttonAnimations.SetTrigger("7");
                 SwitchEmission(3,7);
                 SwitchEmission(4,1);
                 SwitchEmission(6,8);
@@ -128,7 +131,6 @@ public class Better3X3Puzzle : MonoBehaviour
                 CheckingCorrectButtons();
                 return;
             case 7:
-                buttonAnimations.SetTrigger("8");
                 SwitchEmission(3,7);
                 SwitchEmission(4,1);
                 SwitchEmission(5,2);
@@ -138,7 +140,6 @@ public class Better3X3Puzzle : MonoBehaviour
                 CheckingCorrectButtons();
                 return;
             case 8:
-                buttonAnimations.SetTrigger("9");
                 SwitchEmission(4,1);
                 SwitchEmission(5,2);
                 SwitchEmission(7,5);
@@ -173,11 +174,7 @@ public class Better3X3Puzzle : MonoBehaviour
         }
         if (totalButtonsCorrect >= totalButtons)
         {
-            hasBeenInteracted = true;
-            racoonMesh.SetActive(true);
-            savingInfo.totalMissionsCompleted++;
-            UIPuzzleMinigame.SetActive(false);
-            interactInfo.OnExitMinigame();
+            WinMinigame();
         }
         print(totalButtonsCorrect);
         totalButtonsCorrect = 0;
@@ -203,6 +200,7 @@ public class Better3X3Puzzle : MonoBehaviour
         if (!hasBeenInteracted)
         {
             UIPuzzleMinigame.SetActive(true);
+            playerMovementInfo.movementLock = true;
             racoonMesh.SetActive(false);
             ResetColors();
         }
@@ -211,5 +209,19 @@ public class Better3X3Puzzle : MonoBehaviour
             UIPuzzleMinigame.SetActive(false);
             interactInfo.OnExitMinigame();
         }
+    }
+    public void WinMinigame()
+    {
+        hasBeenInteracted = true;
+
+        playerMovementInfo.ResettingAllAnimations();
+        playerMovementInfo.moving = false;
+        playerMovementInfo.movementLock = false;
+                                                        //zet hier de animaties neer die moeten afgespeeld worden als de minigame klaar is.
+        
+        racoonMesh.SetActive(true);
+        savingInfo.totalMissionsCompleted++;
+        UIPuzzleMinigame.SetActive(false);
+        interactInfo.OnExitMinigame();
     }
 }

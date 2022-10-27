@@ -1065,11 +1065,9 @@ MonoBehaviour:
   - 0
   - 0
   isMovingForwardWASD: 00000000
-  multiplierSpeedBonus: 2
+  multiplierSprintSpeed: 2
   timeToTurn: 0.1
-  velocity: 0
-  movingAngle: {x: 0, y: 0, z: 0}
-  addMovement: {x: 0, y: 0, z: 0}
+  increasedMoveSpeed: 1
   RaycastPos: {x: 0, y: 0, z: 0}
   crSlopeAngle: 0
   maxUpSlopeAngle: 30
