@@ -27,6 +27,7 @@ public class Better3X3Puzzle : MonoBehaviour
     private GameObject racoonMesh;
 
     public Animator buttonAnimations;
+    public Animator AnimationAfterCompletion;
     public SkinnedMeshRenderer emissionRenderer;
 
     public bool hasBeenInteracted;
@@ -217,11 +218,12 @@ public class Better3X3Puzzle : MonoBehaviour
         playerMovementInfo.ResettingAllAnimations();
         playerMovementInfo.moving = false;
         playerMovementInfo.movementLock = false;
-                                                        //zet hier de animaties neer die moeten afgespeeld worden als de minigame klaar is.
-        
+                                                        
         racoonMesh.SetActive(true);
         savingInfo.totalMissionsCompleted++;
         UIPuzzleMinigame.SetActive(false);
         interactInfo.OnExitMinigame();
+        //zet hier de animaties neer die moeten afgespeeld worden als de minigame klaar is.
+        AnimationAfterCompletion.SetTrigger("Open");
     }
 }
