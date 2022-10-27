@@ -7,11 +7,14 @@ public class Better3X3Puzzle : MonoBehaviour
 {
     public ScriptableSaving savingInfo;
     public PlayerMovementBetter playerMovementInfo;
+    public CamFreezeScript camFreezeInfo;
+    public Interact interactInfo;
 
     public PlayerScript playerInfo;
     public GameObject[] colorButtons;
     public Material[] emissionButtonMaterials;
-    public SkinnedMeshRenderer emissionRenderer;
+    
+    
 
     public bool[] startingGray;
     public bool[] buttonCorrect;
@@ -22,9 +25,11 @@ public class Better3X3Puzzle : MonoBehaviour
 
     public GameObject currentGameObject;
     public GameObject UIPuzzleMinigame;
-    public GameObject gatePuzzleGameObject;
+    public GameObject racoonMesh;
+    public Transform camTransform;
 
     public Animator buttonAnimations;
+    public SkinnedMeshRenderer emissionRenderer;
 
     public bool hasBeenInteracted;
 
@@ -43,6 +48,9 @@ public class Better3X3Puzzle : MonoBehaviour
         GameObject playerScript = GameObject.Find("RacoonPlayer");
         playerInfo = playerScript.GetComponent<PlayerScript>();
         playerMovementInfo = playerScript.GetComponent<PlayerMovementBetter>();
+        interactInfo = playerScript.GetComponent<Interact>();
+        camFreezeInfo = playerScript.GetComponent<CamFreezeScript>();
+        racoonMesh = GameObject.Find("RaccoonModel");
 
         ResetColors();
     }
@@ -53,34 +61,43 @@ public class Better3X3Puzzle : MonoBehaviour
             //volgorde van links naar rechts : moet je invullen
             //4:1, 5:2, 1:3, 2:4, 7:5, 8:6, 3:7, 6:8, 0:9;
             case 0:
+                buttonAnimations.SetTrigger("1");
                 SwitchEmission(0,9);
                 SwitchEmission(1,3);
                 SwitchEmission(3,7);
                 SwitchEmission(4,1);
+                CheckingCorrectButtons();
                 return;
             case 1:
+                buttonAnimations.SetTrigger("2");
                 SwitchEmission(0,9);
                 SwitchEmission(1,3);
                 SwitchEmission(2,4);
                 SwitchEmission(3,7);
                 SwitchEmission(4,1);
                 SwitchEmission(5,2);
+                CheckingCorrectButtons();
                 return;
             case 2:
+                buttonAnimations.SetTrigger("3");
                 SwitchEmission(1,3);
                 SwitchEmission(2,4);
                 SwitchEmission(4,1);
                 SwitchEmission(5,2);
+                CheckingCorrectButtons();
                 return;
             case 3:
+                buttonAnimations.SetTrigger("4");
                 SwitchEmission(0,9);
                 SwitchEmission(1,3);
                 SwitchEmission(3,7);
                 SwitchEmission(4,1);
                 SwitchEmission(6,8);
                 SwitchEmission(7,5);
+                CheckingCorrectButtons();
                 return;
             case 4:
+                buttonAnimations.SetTrigger("5");
                 SwitchEmission(0,9);
                 SwitchEmission(1,3);
                 SwitchEmission(2,4);
@@ -90,37 +107,45 @@ public class Better3X3Puzzle : MonoBehaviour
                 SwitchEmission(6,8);
                 SwitchEmission(7,5);
                 SwitchEmission(8,6);
+                CheckingCorrectButtons();
                 return;
             case 5:
+                buttonAnimations.SetTrigger("6");
                 SwitchEmission(1,3);
                 SwitchEmission(2,4);
                 SwitchEmission(4,1);
                 SwitchEmission(5,2);
                 SwitchEmission(7,5);
                 SwitchEmission(8,6);
+                CheckingCorrectButtons();
                 return;
             case 6:
+                buttonAnimations.SetTrigger("7");
                 SwitchEmission(3,7);
                 SwitchEmission(4,1);
                 SwitchEmission(6,8);
                 SwitchEmission(7,5);
+                CheckingCorrectButtons();
                 return;
             case 7:
+                buttonAnimations.SetTrigger("8");
                 SwitchEmission(3,7);
                 SwitchEmission(4,1);
                 SwitchEmission(5,2);
                 SwitchEmission(6,8);
                 SwitchEmission(7,5);
                 SwitchEmission(8,6);
+                CheckingCorrectButtons();
                 return;
             case 8:
+                buttonAnimations.SetTrigger("9");
                 SwitchEmission(4,1);
                 SwitchEmission(5,2);
                 SwitchEmission(7,5);
                 SwitchEmission(8,6);
+                CheckingCorrectButtons();
                 return;
         }
-        CheckingCorrectButtons();
     }
     public void SwitchEmission(int buttonNumber,int materialNumber)
     {
@@ -134,7 +159,6 @@ public class Better3X3Puzzle : MonoBehaviour
             emissionRenderer.materials[materialNumber].SetFloat("_EmissiveExposureWeight", 1);
             buttonCorrect[buttonNumber] = false;
         }
-        print(buttonNumber);
         
     }
     public void CheckingCorrectButtons()
@@ -150,10 +174,12 @@ public class Better3X3Puzzle : MonoBehaviour
         if (totalButtonsCorrect >= totalButtons)
         {
             hasBeenInteracted = true;
+            racoonMesh.SetActive(true);
             savingInfo.totalMissionsCompleted++;
             UIPuzzleMinigame.SetActive(false);
-            playerMovementInfo.OnExitMinigame();
+            interactInfo.OnExitMinigame();
         }
+        print(totalButtonsCorrect);
         totalButtonsCorrect = 0;
     }
     public void ResetColors()
@@ -162,27 +188,28 @@ public class Better3X3Puzzle : MonoBehaviour
         {
             if (startingGray[i] == true)
             {
-                emissionRenderer.materials[i].SetFloat("_EmissiveExposureWeight", 1);
+                emissionButtonMaterials[i].SetFloat("_EmissiveExposureWeight", 1);
                 buttonCorrect[i] = false;
             }
             else
             {
-                emissionRenderer.materials[i].SetFloat("_EmissiveExposureWeight", 0);
+                emissionButtonMaterials[i].SetFloat("_EmissiveExposureWeight", 0);
                 buttonCorrect[i] = true;
             }
         }
     }
     public void SpawnPuzzleUI()
     {
-        if (hasBeenInteracted == false)
+        if (!hasBeenInteracted)
         {
             UIPuzzleMinigame.SetActive(true);
+            racoonMesh.SetActive(false);
             ResetColors();
-            playerMovementInfo.OnEnterMinigame();
         }
         else
         {
-            playerMovementInfo.OnExitMinigame();
+            UIPuzzleMinigame.SetActive(false);
+            interactInfo.OnExitMinigame();
         }
     }
 }

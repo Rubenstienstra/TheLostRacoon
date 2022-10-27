@@ -385,7 +385,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934341954305053}
-  m_LocalRotation: {x: 0.2897841, y: -3e-45, z: 1e-45, w: 0.95709205}
+  m_LocalRotation: {x: 0.2897841, y: 1e-45, z: -0, w: 0.95709205}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupscript: {fileID: 5351934342813780876}
-  camFreeze: {fileID: 5351934342813780872}
+  camFreezeInfo: {fileID: 5351934342813780872}
   playerMovementInfo: {fileID: 5351934342813780874}
   detectionAria: {fileID: 5351934342813780886}
   detectDiameter: 1

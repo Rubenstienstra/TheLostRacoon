@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 265632667772411158}
   - component: {fileID: 298661427161171650}
   - component: {fileID: 3809154012559198457}
-  - component: {fileID: 7262112948569065056}
   - component: {fileID: 3196840066998871332}
   m_Layer: 0
   m_Name: TLRCodePadPuzzels
@@ -72,6 +71,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
   playerMovementInfo: {fileID: 0}
+  camFreezeInfo: {fileID: 0}
+  interactInfo: {fileID: 0}
   playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 6726970089752320550}
@@ -93,8 +94,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 81c5a7d58ea8ed04583c7f1d81a70535, type: 2}
   - {fileID: 2100000, guid: f38e4b7064bc69e428793de9edd21f6c, type: 2}
   - {fileID: 2100000, guid: 718b17ee902c9bb43ae0ee4939e6a158, type: 2}
-  emissionRenderer: {fileID: 8139543238429196131}
-  startingGray: 000000000000000000
+  startingGray: 010101000000010101
   buttonCorrect: 000000000000000000
   totalButtons: 9
   totalButtonsCorrect: 0
@@ -102,42 +102,10 @@ MonoBehaviour:
   is4x4Minigame: 0
   currentGameObject: {fileID: 640750492546238380}
   UIPuzzleMinigame: {fileID: 5422806917936764845}
-  gatePuzzleGameObject: {fileID: 0}
+  racoonMesh: {fileID: 0}
+  camTransform: {fileID: 0}
   buttonAnimations: {fileID: 298661427161171650}
-  hasBeenInteracted: 0
---- !u!114 &7262112948569065056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640750492546238380}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c989c99242bbb24598119bfd693fe71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
-  playerMovementInfo: {fileID: 0}
-  playerInfo: {fileID: 0}
-  colorButtons:
-  - {fileID: 6726970089752320550}
-  - {fileID: 6073317186806997514}
-  - {fileID: 2151008100321664283}
-  - {fileID: 8681092158426632932}
-  - {fileID: 1606440209117617479}
-  - {fileID: 6950606238016225003}
-  - {fileID: 5712066486948468714}
-  - {fileID: 4305956490427072661}
-  - {fileID: 8477687920416058745}
-  startRed: 0
-  totalButtons: 9
-  totalButtonsCorrect: 0
-  is3x3Minigame: 0
-  is4x4Minigame: 0
-  currentGameObject: {fileID: 640750492546238380}
-  UIPuzzleGameObject: {fileID: 5422806917936764845}
-  gatePuzzleGameObject: {fileID: 640750492546238380}
+  emissionRenderer: {fileID: 8139543238429196131}
   hasBeenInteracted: 0
 --- !u!65 &3196840066998871332
 BoxCollider:
@@ -237,15 +205,15 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e0dce814f83d53a41888ee1f6fe53231, type: 2}
-  - {fileID: 2100000, guid: 7184ec740ea680a4d93188b801b93d3a, type: 2}
-  - {fileID: 2100000, guid: efacd513dd4265d4fa4235963d0764f2, type: 2}
-  - {fileID: 2100000, guid: a816a0433a28b8441986b7d60355f8d1, type: 2}
-  - {fileID: 2100000, guid: d070970144c59e543af2a15627c41271, type: 2}
   - {fileID: 2100000, guid: 4eae3c71f4b8576439296efb022965e7, type: 2}
   - {fileID: 2100000, guid: c9bcdfb943d27694f89d8a2735d071b0, type: 2}
-  - {fileID: 2100000, guid: 81c5a7d58ea8ed04583c7f1d81a70535, type: 2}
+  - {fileID: 2100000, guid: efacd513dd4265d4fa4235963d0764f2, type: 2}
+  - {fileID: 2100000, guid: a816a0433a28b8441986b7d60355f8d1, type: 2}
   - {fileID: 2100000, guid: f38e4b7064bc69e428793de9edd21f6c, type: 2}
   - {fileID: 2100000, guid: 718b17ee902c9bb43ae0ee4939e6a158, type: 2}
+  - {fileID: 2100000, guid: d070970144c59e543af2a15627c41271, type: 2}
+  - {fileID: 2100000, guid: 81c5a7d58ea8ed04583c7f1d81a70535, type: 2}
+  - {fileID: 2100000, guid: 7184ec740ea680a4d93188b801b93d3a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -902,6 +870,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 265632667772411158}
     m_Modifications:
+    - target: {fileID: 333038906969313871, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 791679057110333741, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1127,6 +1100,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Color Change Button 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5139182295929832171, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5408709428273164743, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: m_Name
@@ -1167,6 +1145,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Color Change Button 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5931028052695043354, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6111419663868385062, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: m_Enabled
@@ -1191,6 +1174,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272160932433555771, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6417683357624204299, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
@@ -1232,6 +1220,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Color Change Button 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7433457342638389351, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440179160976350907, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7853284810628733937, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1262,6 +1260,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Color Change Button 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8257825671999822165, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326378182848923437, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8339212150934632198, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1281,6 +1289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851148880608075063, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8900005663822567146, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}

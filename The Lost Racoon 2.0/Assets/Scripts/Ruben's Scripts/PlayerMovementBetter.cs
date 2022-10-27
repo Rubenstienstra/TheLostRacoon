@@ -193,41 +193,6 @@ public class PlayerMovementBetter : MonoBehaviour
         }
     }
 
-    public void CollidedMinigame(GameObject minigame) //elke keer dat er nieuwe minigame komt moet hier een nieuwe GetComponent te staan.
-    {
-        if (minigame.GetComponent<MouseTrackerMovement>())
-        {
-            minigame.GetComponent<MouseTrackerMovement>().StartAreaMinigame();
-        }
-        else if (minigame.GetComponent<MouseTrackerRectangleMovement>())
-        {
-            minigame.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
-        }
-        else if (minigame.GetComponent<Better3X3Puzzle>())
-        {
-            minigame.GetComponent<Better3X3Puzzle>();
-        }
-        //else if (minigame.GetComponent<UIPuzzleColor>())
-        //{
-        //    minigame.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
-        //}
-        
-    }
-    public void OnEnterMinigame()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        movementLock = true;
-        interactInfo.minigameBeingPlayed = true;
-        camFreezeInfo.CamFreeze();
-    }
-    public void OnExitMinigame()
-    {
-        Cursor.visible = false;
-        movementLock = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        interactInfo.minigameBeingPlayed = false;
-        camFreezeInfo.CamUnfreeze();
-    }
+    
 
 }

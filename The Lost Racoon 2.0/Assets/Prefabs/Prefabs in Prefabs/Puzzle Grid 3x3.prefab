@@ -402,6 +402,8 @@ MonoBehaviour:
   startRed: 0
   totalButtons: 25
   totalButtonsCorrect: 0
+  is3x3Minigame: 0
+  is4x4Minigame: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
@@ -723,6 +725,8 @@ MonoBehaviour:
   startRed: 1
   totalButtons: 25
   totalButtonsCorrect: 0
+  is3x3Minigame: 0
+  is4x4Minigame: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
@@ -966,6 +970,8 @@ MonoBehaviour:
   startRed: 0
   totalButtons: 25
   totalButtonsCorrect: 0
+  is3x3Minigame: 0
+  is4x4Minigame: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
@@ -1287,6 +1293,8 @@ MonoBehaviour:
   startRed: 1
   totalButtons: 25
   totalButtonsCorrect: 0
+  is3x3Minigame: 0
+  is4x4Minigame: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
@@ -1553,6 +1561,8 @@ MonoBehaviour:
   startRed: 0
   totalButtons: 25
   totalButtonsCorrect: 0
+  is3x3Minigame: 0
+  is4x4Minigame: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
@@ -1714,6 +1724,8 @@ MonoBehaviour:
   startRed: 1
   totalButtons: 25
   totalButtonsCorrect: 0
+  is3x3Minigame: 0
+  is4x4Minigame: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
@@ -1957,6 +1969,8 @@ MonoBehaviour:
   startRed: 0
   totalButtons: 25
   totalButtonsCorrect: 0
+  is3x3Minigame: 0
+  is4x4Minigame: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
@@ -2320,6 +2334,8 @@ MonoBehaviour:
   startRed: 1
   totalButtons: 25
   totalButtonsCorrect: 0
+  is3x3Minigame: 0
+  is4x4Minigame: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
@@ -2441,7 +2457,6 @@ RectTransform:
   - {fileID: 1370762764259469555}
   - {fileID: 2166877677611731736}
   - {fileID: 3716311285835793355}
-  - {fileID: 8037130808650209482}
   m_Father: {fileID: 1579694869456826042}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2609,202 +2624,9 @@ MonoBehaviour:
   startRed: 0
   totalButtons: 25
   totalButtonsCorrect: 0
+  is3x3Minigame: 0
+  is4x4Minigame: 0
   currentGameObject: {fileID: 0}
   UIPuzzleGameObject: {fileID: 8820920766562532862}
   gatePuzzleGameObject: {fileID: 0}
   hasBeenInteracted: 0
---- !u!1001 &2829970356116795504
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8067878086856746346}
-    m_Modifications:
-    - target: {fileID: 494772719653775792, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: UIPuzzleGameObject
-      value: 
-      objectReference: {fileID: 8820920766562532862}
-    - target: {fileID: 494772719653775792, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: colorButtons.Array.data[0]
-      value: 
-      objectReference: {fileID: 6417683357624204299}
-    - target: {fileID: 494772719653775792, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: colorButtons.Array.data[1]
-      value: 
-      objectReference: {fileID: 5765187414714401831}
-    - target: {fileID: 494772719653775792, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: colorButtons.Array.data[2]
-      value: 
-      objectReference: {fileID: 1842857207265508150}
-    - target: {fileID: 494772719653775792, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: colorButtons.Array.data[3]
-      value: 
-      objectReference: {fileID: 8949674970620884169}
-    - target: {fileID: 494772719653775792, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: colorButtons.Array.data[4]
-      value: 
-      objectReference: {fileID: 1297589192362113898}
-    - target: {fileID: 494772719653775792, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: colorButtons.Array.data[5]
-      value: 
-      objectReference: {fileID: 7223577166165776582}
-    - target: {fileID: 494772719653775792, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: colorButtons.Array.data[6]
-      value: 
-      objectReference: {fileID: 5408709428273164743}
-    - target: {fileID: 494772719653775792, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: colorButtons.Array.data[7]
-      value: 
-      objectReference: {fileID: 4578782274179081912}
-    - target: {fileID: 494772719653775792, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: colorButtons.Array.data[8]
-      value: 
-      objectReference: {fileID: 8208939081497430868}
-    - target: {fileID: 1335189752234949196, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 1335189752234949196, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1335189752234949196, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_FontData.m_LineSpacing
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1335189752234949196, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_FontData.m_AlignByGeometry
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.4999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.4193876
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.00005722
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -192
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6198475529462114511, guid: 6dd3f05a72e950747ae67cdb533886e3,
-        type: 3}
-      propertyPath: m_Name
-      value: Reset Button
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6dd3f05a72e950747ae67cdb533886e3, type: 3}
---- !u!224 &8037130808650209482 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5246567022322231482, guid: 6dd3f05a72e950747ae67cdb533886e3,
-    type: 3}
-  m_PrefabInstance: {fileID: 2829970356116795504}
-  m_PrefabAsset: {fileID: 0}
