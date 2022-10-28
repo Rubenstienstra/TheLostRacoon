@@ -29,21 +29,23 @@ public class PlayerMovementBetter : MonoBehaviour
     public float crSlopeAngle;
     public float maxUpSlopeAngle;
 
-    public float jump;
+    private float jumpInput;
     public float beginJumpBonus = 1.5f;
     public float totalHeightJump = 1.5f;
-    public float jumpMultiplier = 50;
+    public float jumpHeightMultiplier = 50;
     public float maxTimeHoldJump = 4;
+    public float addJumpForceZ = 10; 
+    public float sprintJumpBoost = 1.25f; //If the player jumps he goes further by pressing the sprint button. 
 
     public Rigidbody rb;
-    public Collider crCollider;
+    public Animator animationMovement;
 
     public bool moving;
     public bool sprinting;
     public bool isOnGround;
     public bool movementLock;
     public bool allowInteraction;
-    public Animator animationMovement;
+    
 
 
     public void OnForward(InputValue value)
@@ -81,7 +83,7 @@ public class PlayerMovementBetter : MonoBehaviour
     }
     public void OnJump(InputValue value)
     {
-        jump = value.Get<float>();
+        jumpInput = value.Get<float>();
         if (isOnGround == true)
         {
             StartCoroutine(JumpTiming());
@@ -105,7 +107,7 @@ public class PlayerMovementBetter : MonoBehaviour
     }
     public IEnumerator JumpTiming()
     {
-        if (jump > 0)
+        if (jumpInput > 0)
         {
             if (totalHeightJump < maxTimeHoldJump + beginJumpBonus)
             {
@@ -121,7 +123,14 @@ public class PlayerMovementBetter : MonoBehaviour
             animationMovement.SetBool("Jumping", true);
             isOnGround = false;
             print(totalHeightJump);
-            rb.AddForce(0, totalHeightJump * jumpMultiplier, 0);
+            if (sprinting)
+            {
+                rb.AddRelativeForce(0, totalHeightJump * jumpHeightMultiplier, addJumpForceZ * totalHeightJump * sprintJumpBoost);
+            }
+            else
+            {
+                rb.AddRelativeForce(0, totalHeightJump * jumpHeightMultiplier, addJumpForceZ * totalHeightJump);
+            }
             totalHeightJump = beginJumpBonus;
         }
     }
@@ -130,7 +139,6 @@ public class PlayerMovementBetter : MonoBehaviour
         if (col.collider.gameObject.tag == "Ground")
         {
             isOnGround = true;
-            crCollider = col.collider;
         }
         animationMovement.SetBool("Jumping", false);
     }
