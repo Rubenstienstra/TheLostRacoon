@@ -55,7 +55,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934341521527521}
-  m_LocalRotation: {x: 0.33618647, y: -0.000000016204888, z: 0.000000005784552, w: 0.94179547}
+  m_LocalRotation: {x: 0.33618647, y: 0.000000016204893, z: -0.000000005784554, w: 0.94179547}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -385,7 +385,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934341954305053}
-  m_LocalRotation: {x: 0.2897841, y: -3e-45, z: 1e-45, w: 0.95709205}
+  m_LocalRotation: {x: 0.2897841, y: 1e-45, z: -0, w: 0.95709205}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -597,7 +597,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934342388259041}
-  m_LocalRotation: {x: 0.38268346, y: 0.000000015896623, z: -0.0000000065845964, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: -0.000000015896623, z: 0.0000000065845964, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1065,27 +1065,25 @@ MonoBehaviour:
   - 0
   - 0
   isMovingForwardWASD: 00000000
-  multiplierSpeedBonus: 2
+  multiplierSprintSpeed: 2
   timeToTurn: 0.1
-  velocity: 0
-  movingAngle: {x: 0, y: 0, z: 0}
-  addMovement: {x: 0, y: 0, z: 0}
+  increasedMoveSpeed: 1
   RaycastPos: {x: 0, y: 0, z: 0}
   crSlopeAngle: 0
   maxUpSlopeAngle: 30
-  jump: 0
   beginJumpBonus: 1.5
   totalHeightJump: 1.5
-  jumpMultiplier: 50
+  jumpHeightMultiplier: 50
   maxTimeHoldJump: 4
+  addJumpForceZ: 10
+  sprintJumpBoost: 1.25
   rb: {fileID: 172206667163872471}
-  crCollider: {fileID: 0}
+  animationMovement: {fileID: 5796353869943569653}
   moving: 0
   sprinting: 0
   isOnGround: 1
   movementLock: 0
   allowInteraction: 0
-  animationMovement: {fileID: 5796353869943569653}
 --- !u!114 &5351934342813780877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,7 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupscript: {fileID: 5351934342813780876}
-  camFreeze: {fileID: 5351934342813780872}
+  camFreezeInfo: {fileID: 5351934342813780872}
   playerMovementInfo: {fileID: 5351934342813780874}
   detectionAria: {fileID: 5351934342813780886}
   detectDiameter: 1
@@ -1262,7 +1260,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934343016198465}
-  m_LocalRotation: {x: 0.3361865, y: -0.000000032409783, z: 0.000000011569105, w: 0.9417955}
+  m_LocalRotation: {x: 0.3361865, y: 0.000000032409787, z: -0.000000011569107, w: 0.9417955}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0

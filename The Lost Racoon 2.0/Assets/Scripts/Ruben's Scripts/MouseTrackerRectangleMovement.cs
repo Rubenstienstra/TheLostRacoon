@@ -83,7 +83,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         }
         else
         {
-            playerMovementInfo.OnExitMinigame();
+            interactInfo.OnExitMinigame();
         }
     }
     // Use Interactable enter
@@ -93,7 +93,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         {
             StartCoroutine(MouseMover());
         }
-        playerMovementInfo.OnEnterMinigame();
+        interactInfo.OnEnterMinigame();
     }
     public IEnumerator MouseMover()
     {
@@ -179,7 +179,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
                 rig.constraints = RigidbodyConstraints.None;
                 rig.constraints = RigidbodyConstraints.FreezeRotation;
 
-                playerMovementInfo.OnExitMinigame();
+                interactInfo.OnExitMinigame();
                 print("Completed/Victory!:D");
             }
         }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 4265.287, g: 3325.0566, b: 3784.9453, a: 1}
+  m_IndirectSpecularColor: {r: 4271.9697, g: 3326.504, b: 3778.5312, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2478,11 +2478,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kamers
       objectReference: {fileID: 0}
-    - target: {fileID: 148351645918577223, guid: ce1998b166a16a944afddb5ad4e34e5a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8210808771519481294, guid: ce1998b166a16a944afddb5ad4e34e5a,
         type: 3}
       propertyPath: m_RootOrder
@@ -2997,6 +2992,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Riool
+      objectReference: {fileID: 0}
+    - target: {fileID: 5868534857892695995, guid: f1e4b932005e029498ef3d1f788efb2c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1e4b932005e029498ef3d1f788efb2c, type: 3}

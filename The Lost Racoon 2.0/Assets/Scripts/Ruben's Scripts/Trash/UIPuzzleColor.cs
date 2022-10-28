@@ -11,6 +11,7 @@ public class UIPuzzleColor : MonoBehaviour
     public PlayerMovementBetter playerMovementInfo;
 
     public PlayerScript playerInfo;
+    public Interact interactInfo;
     public GameObject[] colorButtons;
 
     public bool startRed;
@@ -42,6 +43,7 @@ public class UIPuzzleColor : MonoBehaviour
         GameObject playerScript = GameObject.Find("RacoonPlayer");
         playerInfo = playerScript.GetComponent<PlayerScript>();
         playerMovementInfo = playerScript.GetComponent<PlayerMovementBetter>();
+        interactInfo = playerScript.GetComponent<Interact>();
         
         ResetColors();
     }
@@ -83,7 +85,7 @@ public class UIPuzzleColor : MonoBehaviour
             gatePuzzleGameObject.GetComponent<UIPuzzleColor>().hasBeenInteracted = true;
             savingInfo.totalMissionsCompleted++;
             UIPuzzleGameObject.SetActive(false);
-            playerMovementInfo.OnExitMinigame();
+            interactInfo.OnExitMinigame();
         }
         totalButtonsCorrect = 0;
     }
@@ -111,11 +113,11 @@ public class UIPuzzleColor : MonoBehaviour
         {
             Cursor.visible = false;
             UIPuzzleGameObject.SetActive(true);
-            playerMovementInfo.OnEnterMinigame();
+            interactInfo.OnEnterMinigame();
         }
         else
         {
-            playerMovementInfo.OnExitMinigame();
+            interactInfo.OnExitMinigame();
         }
     }
 }

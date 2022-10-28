@@ -16,33 +16,36 @@ public class PlayerMovementBetter : MonoBehaviour
     public bool[] isMovingForwardWASD;
     private int checkingBools;
 
-    public float multiplierSpeedBonus = 1;
+    public float multiplierSprintSpeed = 2;
     private float crspeedBonus = 1;
     public float timeToTurn;
-    public float velocity;
-    public Vector3 movingAngle;
-    public Vector3 addMovement;
+    private float velocity;
+    private Vector3 movingAngle;
+    private Vector3 addMovement;
+    public float increasedMoveSpeed = 1;
 
     public RaycastHit hitSlope;
     public Vector3 RaycastPos;
     public float crSlopeAngle;
     public float maxUpSlopeAngle;
 
-    public float jump;
+    private float jumpInput;
     public float beginJumpBonus = 1.5f;
     public float totalHeightJump = 1.5f;
-    public float jumpMultiplier = 50;
+    public float jumpHeightMultiplier = 50;
     public float maxTimeHoldJump = 4;
+    public float addJumpForceZ = 10; 
+    public float sprintJumpBoost = 1.25f; //If the player jumps he goes further by pressing the sprint button. 
 
     public Rigidbody rb;
-    public Collider crCollider;
+    public Animator animationMovement;
 
     public bool moving;
     public bool sprinting;
     public bool isOnGround;
     public bool movementLock;
     public bool allowInteraction;
-    public Animator animationMovement;
+    
 
 
     public void OnForward(InputValue value)
@@ -69,7 +72,7 @@ public class PlayerMovementBetter : MonoBehaviour
     {
         if (value.Get<float>() == 1)
         {
-            crspeedBonus = multiplierSpeedBonus;
+            crspeedBonus = multiplierSprintSpeed;
             sprinting = true;
         }
         else
@@ -80,7 +83,7 @@ public class PlayerMovementBetter : MonoBehaviour
     }
     public void OnJump(InputValue value)
     {
-        jump = value.Get<float>();
+        jumpInput = value.Get<float>();
         if (isOnGround == true)
         {
             StartCoroutine(JumpTiming());
@@ -104,7 +107,7 @@ public class PlayerMovementBetter : MonoBehaviour
     }
     public IEnumerator JumpTiming()
     {
-        if (jump > 0)
+        if (jumpInput > 0)
         {
             if (totalHeightJump < maxTimeHoldJump + beginJumpBonus)
             {
@@ -120,7 +123,14 @@ public class PlayerMovementBetter : MonoBehaviour
             animationMovement.SetBool("Jumping", true);
             isOnGround = false;
             print(totalHeightJump);
-            rb.AddForce(0, totalHeightJump * jumpMultiplier, 0);
+            if (sprinting)
+            {
+                rb.AddRelativeForce(0, totalHeightJump * jumpHeightMultiplier, addJumpForceZ * totalHeightJump * sprintJumpBoost);
+            }
+            else
+            {
+                rb.AddRelativeForce(0, totalHeightJump * jumpHeightMultiplier, addJumpForceZ * totalHeightJump);
+            }
             totalHeightJump = beginJumpBonus;
         }
     }
@@ -129,7 +139,6 @@ public class PlayerMovementBetter : MonoBehaviour
         if (col.collider.gameObject.tag == "Ground")
         {
             isOnGround = true;
-            crCollider = col.collider;
         }
         animationMovement.SetBool("Jumping", false);
     }
@@ -158,7 +167,7 @@ public class PlayerMovementBetter : MonoBehaviour
             }
 
             transform.rotation = Quaternion.Euler(crSlopeAngle, endAngle, transform.rotation.y); // voegt telkens de rotatie(endAngle) toe aan de speler.
-            transform.position += movingAngle.normalized * crspeedBonus * Time.deltaTime; //
+            transform.position += movingAngle.normalized * crspeedBonus * Time.deltaTime * increasedMoveSpeed; //
 
             yield return new WaitForSeconds(0.01f); // do not move
             for (int i = 0; i < isMovingForwardWASD.Length; i++)
@@ -192,42 +201,14 @@ public class PlayerMovementBetter : MonoBehaviour
             checkingBools = 0;
         }
     }
+    public void ResettingAllAnimations()
+    {
+        animationMovement.SetBool("Walking",false);
+        animationMovement.SetBool("Running", false);
+        animationMovement.SetBool("Charging", false);
+        animationMovement.SetBool("Jumping", false);
+    }
 
-    public void CollidedMinigame(GameObject minigame) //elke keer dat er nieuwe minigame komt moet hier een nieuwe GetComponent te staan.
-    {
-        if (minigame.GetComponent<MouseTrackerMovement>())
-        {
-            minigame.GetComponent<MouseTrackerMovement>().StartAreaMinigame();
-        }
-        else if (minigame.GetComponent<MouseTrackerRectangleMovement>())
-        {
-            minigame.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
-        }
-        else if (minigame.GetComponent<Better3X3Puzzle>())
-        {
-            minigame.GetComponent<Better3X3Puzzle>();
-        }
-        //else if (minigame.GetComponent<UIPuzzleColor>())
-        //{
-        //    minigame.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
-        //}
-        
-    }
-    public void OnEnterMinigame()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        movementLock = true;
-        interactInfo.minigameBeingPlayed = true;
-        camFreezeInfo.CamFreeze();
-    }
-    public void OnExitMinigame()
-    {
-        Cursor.visible = false;
-        movementLock = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        interactInfo.minigameBeingPlayed = false;
-        camFreezeInfo.CamUnfreeze();
-    }
+    
 
 }
