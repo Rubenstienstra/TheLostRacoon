@@ -164,9 +164,10 @@ GameObject:
   - component: {fileID: 5221814545054473654}
   - component: {fileID: 6535533982661339512}
   - component: {fileID: 8582355056219809255}
+  - component: {fileID: 4229053307233878812}
   m_Layer: 0
   m_Name: Wheel3
-  m_TagString: Untagged
+  m_TagString: Minigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,6 +250,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.11684136, y: 0.08623956, z: 0.05160719}
   m_Center: {x: 0.009155653, y: -0.04311978, z: 0.000000029802322}
+--- !u!135 &4229053307233878812
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846606421987444821}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.04
+  m_Center: {x: 0.03, y: -0.05, z: 0}
 --- !u!1 &1988119710333218219
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,9 +427,10 @@ GameObject:
   - component: {fileID: 2826489488870480788}
   - component: {fileID: 4791610775455464204}
   - component: {fileID: 1202129498598150876}
+  - component: {fileID: 8156394654927628557}
   m_Layer: 0
   m_Name: Wheel4
-  m_TagString: Untagged
+  m_TagString: Minigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -498,6 +513,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.11684136, y: 0.08623956, z: 0.05160719}
   m_Center: {x: -0.009155653, y: -0.04311978, z: 0.000000029802322}
+--- !u!135 &8156394654927628557
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5136921198450458276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.04
+  m_Center: {x: -0.03, y: -0.05, z: 0}
 --- !u!1 &6762441550507377191
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,9 +538,11 @@ GameObject:
   - component: {fileID: 8969020198258079933}
   - component: {fileID: 3417261730658626751}
   - component: {fileID: 666424936982111435}
+  - component: {fileID: 4800294170445847862}
+  - component: {fileID: 4770436963586579219}
   m_Layer: 0
   m_Name: Wheel1
-  m_TagString: Untagged
+  m_TagString: Minigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -595,6 +625,47 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.11684136, y: 0.08623956, z: 0.05160719}
   m_Center: {x: -0.009155653, y: -0.04311978, z: -0.000000029802322}
+--- !u!135 &4800294170445847862
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6762441550507377191}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.04
+  m_Center: {x: -0.03, y: -0.05, z: 0}
+--- !u!114 &4770436963586579219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6762441550507377191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc87cf06ae0f7e40bcf294a92e95b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  mouseStartPos: {x: 1625, y: 300}
+  mouseEndPos: {x: 1625, y: 775}
+  UIComponents:
+  - {fileID: 0}
+  waitingTime: 0.5
+  IsWaiting: 0
+  hasBeenInteracted: 0
+  movingSlider: {fileID: 0}
+  endPosZoneY: 0
+  endPosModifier: 8
+  mouseInZone: 0
+  strengthDebuff: 15
+  totalMousePos: 0
+  rig: {fileID: 109566848}
+  animationSlider: {fileID: 0}
 --- !u!1 &7016521041873209134
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,9 +799,10 @@ GameObject:
   - component: {fileID: 8177858782727171034}
   - component: {fileID: 3199602214246937711}
   - component: {fileID: 8940846867663516610}
+  - component: {fileID: 1415739069665795973}
   m_Layer: 0
   m_Name: Wheel2
-  m_TagString: Untagged
+  m_TagString: Minigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -813,3 +885,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.11684136, y: 0.08623956, z: 0.05160719}
   m_Center: {x: 0.009155653, y: -0.04311978, z: -0.000000029802322}
+--- !u!135 &1415739069665795973
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7378322448431211284}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.04
+  m_Center: {x: 0.03, y: -0.05, z: 0}

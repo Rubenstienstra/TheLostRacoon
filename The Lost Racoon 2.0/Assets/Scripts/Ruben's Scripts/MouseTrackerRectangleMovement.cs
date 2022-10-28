@@ -5,15 +5,14 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class MouseTrackerRectangleMovement : MonoBehaviour
 {
-    public PlayerScript playerInfo;
     public ScriptableSaving savingInfo;
-    public MouseTrackerMovement ircleMouseInfo;
-    public PlayerInputUIController UIInfo;
-    public Interact interactInfo;
-    public PlayerMovementBetter playerMovementInfo;
+    private PlayerScript playerInfo;
+    private PlayerInputUIController UIInfo;
+    private Interact interactInfo;
+    private PlayerMovementBetter playerMovementInfo;
 
-    public GameObject mouseCursor;
-    public GameObject playerGameObject;
+    private GameObject mouseCursor;
+    private GameObject playerGameObject;
 
     //public float randomMousePosY;
 
@@ -35,17 +34,18 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public float totalMousePos;
 
     public Rigidbody rig;
+    public Animator animationSlider;
 
     void Start()
     {
-       GameObject playerGameObject = GameObject.Find("RacoonPlayer");
+       playerGameObject = GameObject.Find("RacoonPlayer");
 
         UIInfo = playerGameObject.GetComponent<PlayerInputUIController>();
         playerMovementInfo = playerGameObject.GetComponent<PlayerMovementBetter>();
         playerInfo = playerGameObject.GetComponent<PlayerScript>();
         interactInfo = playerGameObject.GetComponent<Interact>();
 
-        mouseCursor = GameObject.Find("MousePointer");
+        //mouseCursor = GameObject.Find("MousePointer");
     }
     //If in Area load this
     public void StartAreaMinigame()
@@ -65,7 +65,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             mouseInZone = true;
             playerInfo.minigameActiveMouseRectangle = true;
 
-            mouseCursor.GetComponent<Image>().enabled = !enabled;
+            //mouseCursor.GetComponent<Image>().enabled = !enabled;
 
             StartMinigame();
 
@@ -91,9 +91,12 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     {
         if (playerInfo.minigameActiveMouseRectangle == true)
         {
+            playerMovementInfo.movementLock = true;
+            playerMovementInfo.ResettingAllAnimations();
+            interactInfo.OnEnterMinigame();
             StartCoroutine(MouseMover());
         }
-        interactInfo.OnEnterMinigame();
+        
     }
     public IEnumerator MouseMover()
     {
@@ -104,6 +107,9 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             totalMousePos = -totalMousePos;
         }
         movingSlider.value = UIInfo.mousePosY - mouseStartPos.y;
+        
+        animationSlider.SetFloat("Blend", movingSlider.value);
+
         if (UIInfo.mousePosY > mouseStartPos.y)
         {
             Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, totalMousePos + UIInfo.mousePosY));
@@ -159,13 +165,15 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             UIComponents[i].SetActive(false);
         }
         movingSlider.gameObject.SetActive(false);
-        mouseCursor.GetComponent<Image>().enabled = enabled;
+        //mouseCursor.GetComponent<Image>().enabled = enabled;
 
         playerInfo.minigameActiveMouseRectangle = false;
 
         interactInfo.minigameBeingPlayed = false;
 
         playerMovementInfo.movementLock = false;
+        playerMovementInfo.moving = false;
+        playerMovementInfo.ResettingAllAnimations();
 
         //Completed
         if (mouseInZone == true)

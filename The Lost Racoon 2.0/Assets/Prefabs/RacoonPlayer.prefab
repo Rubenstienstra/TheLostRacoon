@@ -1104,7 +1104,7 @@ MonoBehaviour:
   detectedColliders: []
   minigameDetected: 0
   sphereLocation: {fileID: 1200358510}
-  interactionDiameter: 0.069
+  interactionDiameter: 0.08
   interactionColliders: []
   allowInteraction: 0
   crCollider: {fileID: 0}

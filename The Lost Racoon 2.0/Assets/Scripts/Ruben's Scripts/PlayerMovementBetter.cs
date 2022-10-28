@@ -47,7 +47,10 @@ public class PlayerMovementBetter : MonoBehaviour
     public bool allowInteraction;
     
 
+    public void OnReset()
+    {
 
+    }
     public void OnForward(InputValue value)
     {
         forwardWASD[0] = value.Get<float>();
@@ -123,6 +126,7 @@ public class PlayerMovementBetter : MonoBehaviour
             animationMovement.SetBool("Jumping", true);
             isOnGround = false;
             print(totalHeightJump);
+            // = maxTimeHoldJump / totalHeightJump;
             if (sprinting)
             {
                 rb.AddRelativeForce(0, totalHeightJump * jumpHeightMultiplier, addJumpForceZ * totalHeightJump * sprintJumpBoost);
