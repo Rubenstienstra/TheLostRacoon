@@ -28,6 +28,7 @@ public class Better3X3Puzzle : MonoBehaviour
 
     public Animator buttonAnimations;
     public Animator AnimationAfterCompletion;
+    public string parameterName;
     public SkinnedMeshRenderer emissionRenderer;
 
     public bool hasBeenInteracted;
@@ -224,6 +225,9 @@ public class Better3X3Puzzle : MonoBehaviour
         UIPuzzleMinigame.SetActive(false);
         interactInfo.OnExitMinigame();
         //zet hier de animaties neer die moeten afgespeeld worden als de minigame klaar is.
-        AnimationAfterCompletion.SetTrigger("Open");
+        if(AnimationAfterCompletion != null)
+        {
+            AnimationAfterCompletion.SetTrigger(parameterName);
+        }
     }
 }

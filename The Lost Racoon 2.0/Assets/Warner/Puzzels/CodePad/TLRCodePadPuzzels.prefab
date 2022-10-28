@@ -70,10 +70,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
-  playerMovementInfo: {fileID: 0}
-  camFreezeInfo: {fileID: 0}
-  interactInfo: {fileID: 0}
-  playerInfo: {fileID: 0}
   colorButtons:
   - {fileID: 6726970089752320550}
   - {fileID: 6073317186806997514}
@@ -103,9 +99,9 @@ MonoBehaviour:
   is4x4Minigame: 0
   currentGameObject: {fileID: 640750492546238380}
   UIPuzzleMinigame: {fileID: 5422806917936764845}
-  racoonMesh: {fileID: 0}
-  camTransform: {fileID: 0}
   buttonAnimations: {fileID: 298661427161171650}
+  AnimationAfterCompletion: {fileID: 0}
+  parameterName: Open
   emissionRenderer: {fileID: 8139543238429196131}
   hasBeenInteracted: 0
 --- !u!65 &3196840066998871332
@@ -888,6 +884,11 @@ PrefabInstance:
       objectReference: {fileID: 3809154012559198457}
     - target: {fileID: 791679057110333741, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForButtonOnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 791679057110333741, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Better3X3Puzzle, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -911,6 +912,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 1383861501113923155, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForButtonOnClick
+      objectReference: {fileID: 0}
     - target: {fileID: 1383861501113923155, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1043,6 +1049,11 @@ PrefabInstance:
       objectReference: {fileID: 3809154012559198457}
     - target: {fileID: 2234468985041950270, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForButtonOnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234468985041950270, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Better3X3Puzzle, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -1076,6 +1087,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 3334003630048439517, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForButtonOnClick
+      objectReference: {fileID: 0}
     - target: {fileID: 3334003630048439517, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1123,6 +1139,11 @@ PrefabInstance:
       objectReference: {fileID: 3809154012559198457}
     - target: {fileID: 5495002604819366409, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForButtonOnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495002604819366409, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Better3X3Puzzle, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -1168,6 +1189,11 @@ PrefabInstance:
       objectReference: {fileID: 3809154012559198457}
     - target: {fileID: 6187371809909372404, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForButtonOnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187371809909372404, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Better3X3Puzzle, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -1196,6 +1222,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 6552000175574922983, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForButtonOnClick
+      objectReference: {fileID: 0}
     - target: {fileID: 6552000175574922983, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1243,6 +1274,11 @@ PrefabInstance:
       objectReference: {fileID: 3809154012559198457}
     - target: {fileID: 7853284810628733937, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForButtonOnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853284810628733937, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Better3X3Puzzle, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -1281,6 +1317,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3809154012559198457}
+    - target: {fileID: 8339212150934632198, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForButtonOnClick
+      objectReference: {fileID: 0}
     - target: {fileID: 8339212150934632198, guid: 6c859ccfc1d605c48aa40e5aa16b5180,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
