@@ -7,7 +7,7 @@ public class Interact : MonoBehaviour
 {
     [Header("References", order = 0)]
     public Pickup pickupscript;
-    public CamFreezeScript camFreeze;
+    public CamFreezeScript camFreezeInfo;
     public PlayerMovementBetter playerMovementInfo;
     [Header("Detection Sphere", order = 1)]
     public Transform detectionAria;
@@ -64,11 +64,10 @@ public class Interact : MonoBehaviour
                 if (coll.gameObject.tag == "Minigame")
                 {
                     //Ui element stage 2
-                    if (minigameDetected && minigameBeingPlayed == false)
+                    if (minigameDetected && !minigameBeingPlayed)
                     {
-                        playerMovementInfo.OnEnterMinigame();
+                        OnEnterMinigame();
                         CollidedMinigame(coll.gameObject);
-                        Debug.Log("Interacted");
                     }
                 }
                 else if (coll.gameObject.tag == "Item")
@@ -95,10 +94,14 @@ public class Interact : MonoBehaviour
         {
             minigame.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
         }
-        else if (minigame.GetComponent<UIPuzzleColor>())
+        else if (minigame.GetComponent<Better3X3Puzzle>())
         {
-            minigame.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
+            minigame.GetComponent<Better3X3Puzzle>().SpawnPuzzleUI();
         }
+        //else if (minigame.GetComponent<UIPuzzleColor>())
+        //{
+        //    minigame.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
+        //}
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -108,7 +111,7 @@ public class Interact : MonoBehaviour
             crCollider = other;
             if (!minigameBeingPlayed)
             {
-                playerMovementInfo.OnEnterMinigame();
+                OnEnterMinigame();
                 Debug.Log("Interacted Minigame");
             }
         }
@@ -116,5 +119,21 @@ public class Interact : MonoBehaviour
         {
             pickupscript.PickUp(other);
         }
+    }
+    public void OnEnterMinigame()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+       playerMovementInfo.movementLock = true;
+        minigameBeingPlayed = true;
+        camFreezeInfo.CamFreeze();
+    }
+    public void OnExitMinigame()
+    {
+        Cursor.visible = false;
+        playerMovementInfo.movementLock = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        minigameBeingPlayed = false;
+        camFreezeInfo.CamUnfreeze();
     }
 }

@@ -6,25 +6,29 @@ using UnityEngine.UI;
 public class Better3X3Puzzle : MonoBehaviour
 {
     public ScriptableSaving savingInfo;
-    public PlayerMovementBetter playerMovementInfo;
+    private PlayerMovementBetter playerMovementInfo;
+    private Interact interactInfo;
 
-    public PlayerScript playerInfo;
     public GameObject[] colorButtons;
     public Material[] emissionButtonMaterials;
-    public SkinnedMeshRenderer emissionRenderer;
+    
+    
 
     public bool[] startingGray;
     public bool[] buttonCorrect;
     public int totalButtons = 9;
     public int totalButtonsCorrect;
+    public float animationButtonDelay;
     public bool is3x3Minigame;
     public bool is4x4Minigame;
 
     public GameObject currentGameObject;
     public GameObject UIPuzzleMinigame;
-    public GameObject gatePuzzleGameObject;
+    private GameObject racoonMesh;
 
     public Animator buttonAnimations;
+    public Animator AnimationAfterCompletion;
+    public SkinnedMeshRenderer emissionRenderer;
 
     public bool hasBeenInteracted;
 
@@ -38,12 +42,27 @@ public class Better3X3Puzzle : MonoBehaviour
         {
             totalButtons = 16;
         }
-        ResetColors();
 
-        //find main player
+        //finding main player + finding racoon mesh
         GameObject playerScript = GameObject.Find("RacoonPlayer");
-        playerInfo = playerScript.GetComponent<PlayerScript>();
         playerMovementInfo = playerScript.GetComponent<PlayerMovementBetter>();
+        interactInfo = playerScript.GetComponent<Interact>();
+
+        racoonMesh = GameObject.Find("RaccoonModel");
+
+        ResetColors();
+    }
+    public void ForButtonOnClick(int buttonNumber) //Deze functie is om de IEnumarator aan te roepen (vanwege de UI buttons)
+    {
+        StartCoroutine(Animationtrigger(buttonNumber));
+    }
+    public IEnumerator Animationtrigger(int buttonNumber)
+    {
+        buttonNumber++;
+        buttonAnimations.SetTrigger(buttonNumber.ToString());
+        buttonNumber--;
+        yield return new WaitForSeconds(animationButtonDelay);
+        OnButtonColorPress(buttonNumber);
     }
     public void OnButtonColorPress(int buttonNumber)
     {
@@ -52,78 +71,97 @@ public class Better3X3Puzzle : MonoBehaviour
             //volgorde van links naar rechts : moet je invullen
             //4:1, 5:2, 1:3, 2:4, 7:5, 8:6, 3:7, 6:8, 0:9;
             case 0:
+                
+                SwitchEmission(0,9);
                 SwitchEmission(1,3);
                 SwitchEmission(3,7);
                 SwitchEmission(4,1);
+                CheckingCorrectButtons();
                 return;
             case 1:
                 SwitchEmission(0,9);
-                SwitchEmission(2,7);
-                SwitchEmission(3,1);
-                SwitchEmission(4,2);
-                SwitchEmission(5,8);
+                SwitchEmission(1,3);
+                SwitchEmission(2,4);
+                SwitchEmission(3,7);
+                SwitchEmission(4,1);
+                SwitchEmission(5,2);
+                CheckingCorrectButtons();
                 return;
             case 2:
-                SwitchEmission(1,4);
-                SwitchEmission(3,2);
-                SwitchEmission(4,8);
+                SwitchEmission(1,3);
+                SwitchEmission(2,4);
+                SwitchEmission(4,1);
+                SwitchEmission(5,2);
+                CheckingCorrectButtons();
                 return;
             case 3:
                 SwitchEmission(0,9);
                 SwitchEmission(1,3);
-                SwitchEmission(4,2);
-                SwitchEmission(6,5);
-                SwitchEmission(7,6);
+                SwitchEmission(3,7);
+                SwitchEmission(4,1);
+                SwitchEmission(6,8);
+                SwitchEmission(7,5);
+                CheckingCorrectButtons();
                 return;
             case 4:
-                SwitchEmission(0,2);
+                SwitchEmission(0,9);
                 SwitchEmission(1,3);
                 SwitchEmission(2,4);
-                SwitchEmission(3,5);
-                SwitchEmission(5,6);
-                SwitchEmission(6,7);
-                SwitchEmission(7,8);
-                SwitchEmission(8,9);
+                SwitchEmission(3,7);
+                SwitchEmission(4,1);
+                SwitchEmission(5,2);
+                SwitchEmission(6,8);
+                SwitchEmission(7,5);
+                SwitchEmission(8,6);
+                CheckingCorrectButtons();
                 return;
             case 5:
                 SwitchEmission(1,3);
                 SwitchEmission(2,4);
                 SwitchEmission(4,1);
+                SwitchEmission(5,2);
                 SwitchEmission(7,5);
                 SwitchEmission(8,6);
+                CheckingCorrectButtons();
                 return;
             case 6:
                 SwitchEmission(3,7);
                 SwitchEmission(4,1);
+                SwitchEmission(6,8);
                 SwitchEmission(7,5);
+                CheckingCorrectButtons();
                 return;
             case 7:
                 SwitchEmission(3,7);
                 SwitchEmission(4,1);
                 SwitchEmission(5,2);
                 SwitchEmission(6,8);
+                SwitchEmission(7,5);
                 SwitchEmission(8,6);
+                CheckingCorrectButtons();
                 return;
             case 8:
                 SwitchEmission(4,1);
                 SwitchEmission(5,2);
                 SwitchEmission(7,5);
+                SwitchEmission(8,6);
+                CheckingCorrectButtons();
                 return;
         }
     }
     public void SwitchEmission(int buttonNumber,int materialNumber)
     {
-        if(!buttonCorrect[buttonNumber])
-        {
-            emissionRenderer.materials[materialNumber].SetFloat("_EmissiveExposureWeight", 1);
-            buttonCorrect[buttonNumber] = true;
-        }
-        else
+        if(buttonCorrect[buttonNumber] == false)
         {
             emissionRenderer.materials[materialNumber].SetFloat("_EmissiveExposureWeight", 0);
+            buttonCorrect[buttonNumber] = true;
+        }
+        else if(buttonCorrect[buttonNumber] == true)
+        {
+            emissionRenderer.materials[materialNumber].SetFloat("_EmissiveExposureWeight", 1);
             buttonCorrect[buttonNumber] = false;
         }
-        CheckingCorrectButtons();
+        
     }
     public void CheckingCorrectButtons()
     {
@@ -137,40 +175,55 @@ public class Better3X3Puzzle : MonoBehaviour
         }
         if (totalButtonsCorrect >= totalButtons)
         {
-            gatePuzzleGameObject.GetComponent<UIPuzzleColor>().hasBeenInteracted = true;
-            savingInfo.totalMissionsCompleted++;
-            UIPuzzleMinigame.SetActive(false);
-            playerMovementInfo.OnExitMinigame();
+            WinMinigame();
         }
+        print(totalButtonsCorrect);
         totalButtonsCorrect = 0;
     }
     public void ResetColors()
     {
         for (int i = 0; i < colorButtons.Length; i++)
         {
-            if (startingGray[i])
+            if (startingGray[i] == true)
             {
-                emissionRenderer.materials[i].SetFloat("_EmissiveExposureWeight", 0);
+                emissionButtonMaterials[i].SetFloat("_EmissiveExposureWeight", 1);
                 buttonCorrect[i] = false;
             }
             else
             {
-                emissionRenderer.materials[i].SetFloat("_EmissiveExposureWeight", 1);
+                emissionButtonMaterials[i].SetFloat("_EmissiveExposureWeight", 0);
                 buttonCorrect[i] = true;
             }
         }
     }
     public void SpawnPuzzleUI()
     {
-        if (hasBeenInteracted == false)
+        if (!hasBeenInteracted)
         {
             UIPuzzleMinigame.SetActive(true);
+            playerMovementInfo.movementLock = true;
+            racoonMesh.SetActive(false);
             ResetColors();
-            playerMovementInfo.OnEnterMinigame();
         }
         else
         {
-            playerMovementInfo.OnExitMinigame();
+            UIPuzzleMinigame.SetActive(false);
+            interactInfo.OnExitMinigame();
         }
+    }
+    public void WinMinigame()
+    {
+        hasBeenInteracted = true;
+
+        playerMovementInfo.ResettingAllAnimations();
+        playerMovementInfo.moving = false;
+        playerMovementInfo.movementLock = false;
+                                                        
+        racoonMesh.SetActive(true);
+        savingInfo.totalMissionsCompleted++;
+        UIPuzzleMinigame.SetActive(false);
+        interactInfo.OnExitMinigame();
+        //zet hier de animaties neer die moeten afgespeeld worden als de minigame klaar is.
+        AnimationAfterCompletion.SetTrigger("Open");
     }
 }

@@ -80,7 +80,7 @@ public class MouseTrackerMovement : MonoBehaviour
         }
         else
         {
-            playerMovementInfo.OnExitMinigame();
+            interactInfo.OnExitMinigame();
         }
     }
     // Use Interactable enter
@@ -89,7 +89,7 @@ public class MouseTrackerMovement : MonoBehaviour
         StartCoroutine(MouseMover());
         StartCoroutine(CountDown());
 
-        playerMovementInfo.OnEnterMinigame();
+        interactInfo.OnEnterMinigame();
     }
     public IEnumerator MouseMover()
     {     
@@ -223,7 +223,7 @@ public class MouseTrackerMovement : MonoBehaviour
 
             interactInfo.minigameBeingPlayed = false;
 
-            playerMovementInfo.OnExitMinigame();
+            interactInfo.OnExitMinigame();
         }
     }
     
