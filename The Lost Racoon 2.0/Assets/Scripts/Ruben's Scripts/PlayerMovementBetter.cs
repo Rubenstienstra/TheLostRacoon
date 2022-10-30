@@ -6,6 +6,7 @@ public class PlayerMovementBetter : MonoBehaviour
 {
     public CamFreezeScript camFreezeInfo;
     public Interact interactInfo;
+    public ScriptableSaving scriptableSavingInfo;
 
     public float lookAtAngle;
     public Vector3 movementAngle;
@@ -40,16 +41,35 @@ public class PlayerMovementBetter : MonoBehaviour
     public Rigidbody rb;
     public Animator animationMovement;
 
+    public GameObject deathScreen;
+
     public bool moving;
     public bool sprinting;
     public bool isOnGround;
     public bool movementLock;
     public bool allowInteraction;
-    
 
+    public void Start()
+    {
+        if(deathScreen == null)
+        {
+           deathScreen = GameObject.Find("DeathScreen");
+        }
+        if(scriptableSavingInfo.crCheckpointRotation == new Vector3(0,0,0))
+        {
+            scriptableSavingInfo.crCheckpointVector3 = gameObject.transform.position;
+           scriptableSavingInfo.crCheckpointRotation = gameObject.transform.rotation.eulerAngles;
+        }
+    }
     public void OnReset()
     {
-
+        if(deathScreen == true)
+        {
+            Cursor.visible = false;
+            deathScreen.SetActive(false);
+        }
+        gameObject.transform.position = scriptableSavingInfo.crCheckpointVector3;
+        gameObject.transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation);
     }
     public void OnForward(InputValue value)
     {
@@ -138,14 +158,6 @@ public class PlayerMovementBetter : MonoBehaviour
             totalHeightJump = beginJumpBonus;
         }
     }
-    public void OnCollisionEnter(Collision col)
-    {
-        if (col.collider.gameObject.tag == "Ground")
-        {
-            isOnGround = true;
-        }
-        animationMovement.SetBool("Jumping", false);
-    }
     public IEnumerator Movement()
     {
 
@@ -203,6 +215,29 @@ public class PlayerMovementBetter : MonoBehaviour
                 moving = false;
             }
             checkingBools = 0;
+        }
+    }
+    public void OnCollisionEnter(Collision col)
+    {
+        if (col.collider.gameObject.tag == "Ground")
+        {
+            isOnGround = true;
+        }
+        animationMovement.SetBool("Jumping", false);
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Checkpoint")
+        {
+            scriptableSavingInfo.crCheckpointVector3 = other.gameObject.GetComponentInParent<Transform>().position; // doesn't work great
+            scriptableSavingInfo.crCheckpointVector3 = other.gameObject.GetComponentInParent<Transform>().rotation.eulerAngles;
+            scriptableSavingInfo.activatedCheckpoints.Add(other.gameObject);
+            other.gameObject.SetActive(false); //scriptableSavingInfo.activatedCheckpoints[scriptableSavingInfo.activatedCheckpoints.Count - 1].SetActive(false);
+        }
+        else if(other.gameObject.tag == "Deathzone")
+        {
+            Cursor.visible = true;
+            deathScreen.SetActive(true);
         }
     }
     public void ResettingAllAnimations()

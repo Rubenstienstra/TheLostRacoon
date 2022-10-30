@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: ScriptableObjectSaving
   m_EditorClassIdentifier: 
   totalMissionsCompleted: 0
-  minigame3x3: 1
-  minigame4x4: 0
   volumeSFX: 0
   volumeMUSIC: 0
+  activatedCheckpoints:
+  - {fileID: 0}
+  crCheckpointVector3: {x: -0, y: 49.599987, z: -0}
+  crCheckpointRotation: {x: -0, y: 10.000004, z: -0}
   mouseTrackerTimesDone: 0
