@@ -1090,6 +1090,7 @@ MonoBehaviour:
   isOnGround: 1
   movementLock: 0
   allowInteraction: 0
+  saveAndLoadSystem: 0
 --- !u!114 &5351934342813780877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,6 +1150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playermovementInfo: {fileID: 5351934342813780874}
   mouseInfo: {fileID: 0}
   mouseRectangleInfo: {fileID: 0}
   minigameActiveMouse: 0

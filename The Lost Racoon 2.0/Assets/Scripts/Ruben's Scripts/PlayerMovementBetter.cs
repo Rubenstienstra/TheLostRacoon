@@ -51,6 +51,7 @@ public class PlayerMovementBetter : MonoBehaviour
     public bool isOnGround;
     public bool movementLock;
     public bool allowInteraction;
+    public bool saveAndLoadSystem;
 
     public void Start()
     {
@@ -58,10 +59,21 @@ public class PlayerMovementBetter : MonoBehaviour
         {
            deathScreen = GameObject.Find("DeathScreen");
         }
-        if(scriptableSavingInfo.crCheckpointRotation == new Vector3(0,0,0))
+        if(scriptableSavingInfo.crCheckpointVector3 == new Vector3(0,0,0))
         {
            scriptableSavingInfo.crCheckpointVector3 = gameObject.transform.position;
            scriptableSavingInfo.crCheckpointRotation = gameObject.transform.rotation.eulerAngles;
+        }
+        else if(saveAndLoadSystem)
+        {
+            for (int i = scriptableSavingInfo.activatedCheckpoints.Count - 1; i >= 0; i--)
+            {
+                scriptableSavingInfo.activatedCheckpoints[i].SetActive(false);
+                print(i);
+            }
+
+            transform.position = scriptableSavingInfo.crCheckpointVector3;
+            transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation);
         }
     }
     public void OnEsc(InputValue value) //het enige probleem is nog wanneer een minigame wel een muis nodig heeft. heeft hij die niet.
