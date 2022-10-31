@@ -24,6 +24,9 @@ public class Interact : MonoBehaviour
     
     public bool minigameActive;
     public bool minigameBeingPlayed;
+    public bool minigameActiveMouseCircle;
+    public bool minigameActiveMouseRectangle;
+    public bool minigameActive3x3Puzzle;
     //piemel -davido 
     void Update()
     {
@@ -88,14 +91,17 @@ public class Interact : MonoBehaviour
     {
         if (minigame.GetComponent<MouseTrackerMovement>())
         {
+            minigameActiveMouseCircle = true;
             minigame.GetComponent<MouseTrackerMovement>().StartAreaMinigame();
         }
         else if (minigame.GetComponent<MouseTrackerRectangleMovement>())
         {
+            minigameActiveMouseRectangle = true;
             minigame.GetComponent<MouseTrackerRectangleMovement>().StartAreaMinigame();
         }
         else if (minigame.GetComponent<Better3X3Puzzle>())
         {
+            minigameActive3x3Puzzle = true;
             minigame.GetComponent<Better3X3Puzzle>().SpawnPuzzleUI();
         }
     }
@@ -130,5 +136,9 @@ public class Interact : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         minigameBeingPlayed = false;
         camFreezeInfo.CamUnfreeze();
+
+        minigameActive3x3Puzzle = false;
+        minigameActiveMouseCircle = false;
+        minigameActiveMouseRectangle = false;
     }
 }
