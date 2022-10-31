@@ -42,6 +42,8 @@ public class PlayerMovementBetter : MonoBehaviour
     public Animator animationMovement;
 
     public GameObject deathScreen;
+    public GameObject freeLookCamera;
+    public Vector3 instantCameraResetPos;
 
     public bool moving;
     public bool sprinting;
@@ -57,19 +59,23 @@ public class PlayerMovementBetter : MonoBehaviour
         }
         if(scriptableSavingInfo.crCheckpointRotation == new Vector3(0,0,0))
         {
-            scriptableSavingInfo.crCheckpointVector3 = gameObject.transform.position;
+           scriptableSavingInfo.crCheckpointVector3 = gameObject.transform.position;
            scriptableSavingInfo.crCheckpointRotation = gameObject.transform.rotation.eulerAngles;
         }
     }
     public void OnReset()
     {
-        if(deathScreen == true)
+        rb.velocity = new Vector3(0, 0, 0);
+        gameObject.transform.position = scriptableSavingInfo.crCheckpointVector3;
+        gameObject.transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation);
+        freeLookCamera.transform.position = instantCameraResetPos;
+
+        if (deathScreen == true)
         {
             Cursor.visible = false;
             deathScreen.SetActive(false);
+            freeLookCamera.transform.position = instantCameraResetPos;
         }
-        gameObject.transform.position = scriptableSavingInfo.crCheckpointVector3;
-        gameObject.transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation);
     }
     public void OnForward(InputValue value)
     {
@@ -248,6 +254,10 @@ public class PlayerMovementBetter : MonoBehaviour
         {
             Cursor.visible = true;
             deathScreen.SetActive(true);
+
+            rb.velocity = new Vector3(0, 0, 0);
+            gameObject.transform.position = scriptableSavingInfo.crCheckpointVector3;
+            gameObject.transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation);
         }
     }
     public void ResettingAllAnimations()
