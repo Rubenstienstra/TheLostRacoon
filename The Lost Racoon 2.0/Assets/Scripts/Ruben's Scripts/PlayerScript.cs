@@ -13,7 +13,6 @@ public class PlayerScript : MonoBehaviour
 
     public bool minigameActiveMouse;
     public bool minigameActiveMouseRectangle;
-    public bool minigameActive3x3Puzzle;
 
     private void Awake()
     {

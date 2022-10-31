@@ -43,6 +43,7 @@ public class PlayerMovementBetter : MonoBehaviour
 
     public GameObject deathScreen;
     public GameObject freeLookCamera;
+    public GameObject escMenu;
     public Vector3 instantCameraResetPos;
 
     public bool moving;
@@ -61,6 +62,27 @@ public class PlayerMovementBetter : MonoBehaviour
         {
            scriptableSavingInfo.crCheckpointVector3 = gameObject.transform.position;
            scriptableSavingInfo.crCheckpointRotation = gameObject.transform.rotation.eulerAngles;
+        }
+    }
+    public void OnEsc(InputValue value) //het enige probleem is nog wanneer een minigame wel een muis nodig heeft. heeft hij die niet.
+    {
+        if (!deathScreen.activeSelf && value.Get<float>() == 1)
+        {
+            if (!escMenu.activeSelf)
+            {
+                Time.timeScale = 0;
+                escMenu.SetActive(true);
+                Cursor.visible = true;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                escMenu.SetActive(false);
+                if (!interactInfo.minigameActive3x3Puzzle)
+                {
+                    Cursor.visible = false;
+                }
+            }
         }
     }
     public void OnReset()

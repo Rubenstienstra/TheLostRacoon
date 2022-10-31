@@ -1069,7 +1069,7 @@ MonoBehaviour:
   isMovingForwardWASD: 00000000
   multiplierSprintSpeed: 2
   timeToTurn: 0.1
-  increasedMoveSpeed: 1
+  increasedMoveSpeed: 1.2
   RaycastPos: {x: 0, y: 0, z: 0}
   crSlopeAngle: 0
   maxUpSlopeAngle: 30
@@ -1083,6 +1083,7 @@ MonoBehaviour:
   animationMovement: {fileID: 5796353869943569653}
   deathScreen: {fileID: 0}
   freeLookCamera: {fileID: 5351934342684794661}
+  escMenu: {fileID: 0}
   instantCameraResetPos: {x: 0, y: 0.25, z: -1}
   moving: 0
   sprinting: 0
@@ -1115,6 +1116,9 @@ MonoBehaviour:
   crCollider: {fileID: 0}
   minigameActive: 0
   minigameBeingPlayed: 0
+  minigameActiveMouseCircle: 0
+  minigameActiveMouseRectangle: 0
+  minigameActive3x3Puzzle: 0
 --- !u!114 &5351934342813780876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,7 +1153,6 @@ MonoBehaviour:
   mouseRectangleInfo: {fileID: 0}
   minigameActiveMouse: 0
   minigameActiveMouseRectangle: 0
-  minigameActive3x3Puzzle: 0
 --- !u!54 &172206667163872471
 Rigidbody:
   m_ObjectHideFlags: 0
