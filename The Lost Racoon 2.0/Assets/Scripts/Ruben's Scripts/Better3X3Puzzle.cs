@@ -204,6 +204,7 @@ public class Better3X3Puzzle : MonoBehaviour
             UIPuzzleMinigame.SetActive(true);
             playerMovementInfo.movementLock = true;
             racoonMesh.SetActive(false);
+            Cursor.visible = true;
             ResetColors();
         }
         else
