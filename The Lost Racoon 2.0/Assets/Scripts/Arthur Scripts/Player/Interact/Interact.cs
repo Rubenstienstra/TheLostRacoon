@@ -98,10 +98,6 @@ public class Interact : MonoBehaviour
         {
             minigame.GetComponent<Better3X3Puzzle>().SpawnPuzzleUI();
         }
-        //else if (minigame.GetComponent<UIPuzzleColor>())
-        //{
-        //    minigame.GetComponent<UIPuzzleColor>().SpawnPuzzleUI();
-        //}
     }
     private void OnTriggerEnter(Collider other)
     {

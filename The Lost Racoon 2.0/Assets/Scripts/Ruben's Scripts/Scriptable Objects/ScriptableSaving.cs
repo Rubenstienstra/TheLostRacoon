@@ -11,6 +11,10 @@ public class ScriptableSaving : ScriptableObject
     public float volumeSFX;
     public float volumeMUSIC;
 
+    public List<GameObject> activatedCheckpoints;
+    public Vector3 crCheckpointVector3;
+    public Vector3 crCheckpointRotation;
+
     //mousetracker movement minigame completed
     public int mouseTrackerTimesDone;
 }
