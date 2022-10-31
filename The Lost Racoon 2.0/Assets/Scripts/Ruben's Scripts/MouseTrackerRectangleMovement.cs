@@ -13,6 +13,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
 
     private GameObject mouseCursor;
     private GameObject playerGameObject;
+    public GameObject parentGameobject;
 
     //public float randomMousePosY;
 
@@ -24,6 +25,8 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public float waitingTime;
     public bool IsWaiting;
     public bool hasBeenInteracted;
+    public bool isParentContainer;
+    public int timesMinigameDone;
 
     public Slider movingSlider;
     public float endPosZoneY;
@@ -58,6 +61,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             }
             movingSlider.gameObject.SetActive(true);
 
+            Cursor.visible = false;
             Mouse.current.WarpCursorPosition(mouseStartPos);
             UIInfo.mousePosX = mouseStartPos.x;
             UIInfo.mousePosY = mouseStartPos.y;
@@ -66,9 +70,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             playerInfo.minigameActiveMouseRectangle = true;
 
             //mouseCursor.GetComponent<Image>().enabled = !enabled;
-
-            StartMinigame();
-
+            
             //safety
             if (waitingTime == 0)
             {
@@ -80,6 +82,8 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             }
             movingSlider.maxValue = mouseEndPos.y - mouseStartPos.y;
             endPosZoneY = mouseEndPos.y - (mouseEndPos.y / endPosModifier);
+
+            StartMinigame();
         }
         else
         {
@@ -89,14 +93,9 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     // Use Interactable enter
     public void StartMinigame()
     {
-        if (playerInfo.minigameActiveMouseRectangle == true)
-        {
-            playerMovementInfo.movementLock = true;
-            playerMovementInfo.ResettingAllAnimations();
-            interactInfo.OnEnterMinigame();
-            StartCoroutine(MouseMover());
-        }
-        
+        playerMovementInfo.movementLock = true;
+        playerMovementInfo.ResettingAllAnimations();
+        StartCoroutine(MouseMover());
     }
     public IEnumerator MouseMover()
     {
@@ -184,8 +183,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
                 playerInfo.minigameActiveMouseRectangle = false;
                 savingInfo.totalMissionsCompleted++;
                 savingInfo.mouseTrackerTimesDone++;
-                rig.constraints = RigidbodyConstraints.None;
-                rig.constraints = RigidbodyConstraints.FreezeRotation;
+                OnMinigameCompleted();
 
                 interactInfo.OnExitMinigame();
                 print("Completed/Victory!:D");
@@ -219,5 +217,16 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             Mouse.current.WarpCursorPosition(new Vector2(mouseStartPos.x, UIInfo.mousePosY));
         }
     }
-
+    public void OnMinigameCompleted()
+    {
+        if (parentGameobject.GetComponent<MouseTrackerRectangleMovement>().timesMinigameDone < 4 -1)
+        {
+            parentGameobject.GetComponent<MouseTrackerRectangleMovement>().timesMinigameDone++;
+        }
+        else
+        {
+            rig.constraints = RigidbodyConstraints.None;
+            rig.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+    }
 }
