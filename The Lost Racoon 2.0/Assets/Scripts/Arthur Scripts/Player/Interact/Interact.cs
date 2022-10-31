@@ -119,8 +119,7 @@ public class Interact : MonoBehaviour
     public void OnEnterMinigame()
     {
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-       playerMovementInfo.movementLock = true;
+        playerMovementInfo.movementLock = true;
         minigameBeingPlayed = true;
         camFreezeInfo.CamFreeze();
     }

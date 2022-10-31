@@ -142,6 +142,8 @@ public class PlayerMovementBetter : MonoBehaviour
         }
         else //als de speler geen spatie meer vast houdt komt er een force er bij
         {
+            StopCoroutine(ReJumping());
+
             animationMovement.SetBool("Charging", false);
             animationMovement.SetBool("Jumping", true);
             isOnGround = false;
@@ -155,12 +157,20 @@ public class PlayerMovementBetter : MonoBehaviour
             {
                 rb.AddRelativeForce(0, totalHeightJump * jumpHeightMultiplier, addJumpForceZ * totalHeightJump);
             }
+            StartCoroutine(ReJumping());
             totalHeightJump = beginJumpBonus;
+        }
+    }
+    public IEnumerator ReJumping()
+    {
+        yield return new WaitForSeconds(5);
+        if(isOnGround == false)
+        {
+            isOnGround = true;
         }
     }
     public IEnumerator Movement()
     {
-
         if (!movementLock)
         {
             addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime; // gets input values
@@ -229,8 +239,8 @@ public class PlayerMovementBetter : MonoBehaviour
     {
         if(other.gameObject.tag == "Checkpoint")
         {
-            scriptableSavingInfo.crCheckpointVector3 = other.gameObject.GetComponentInParent<Transform>().position; // doesn't work great
-            scriptableSavingInfo.crCheckpointVector3 = other.gameObject.GetComponentInParent<Transform>().rotation.eulerAngles;
+            scriptableSavingInfo.crCheckpointVector3 = other.gameObject.GetComponentInParent<Transform>().position;
+            scriptableSavingInfo.crCheckpointRotation = other.gameObject.GetComponentInParent<Transform>().rotation.eulerAngles;
             scriptableSavingInfo.activatedCheckpoints.Add(other.gameObject);
             other.gameObject.SetActive(false); //scriptableSavingInfo.activatedCheckpoints[scriptableSavingInfo.activatedCheckpoints.Count - 1].SetActive(false);
         }
