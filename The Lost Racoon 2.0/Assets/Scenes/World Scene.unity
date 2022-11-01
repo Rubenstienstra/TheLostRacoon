@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 3681.1895, g: 2689.414, b: 2799.164, a: 1}
+  m_IndirectSpecularColor: {r: 3610.915, g: 2712.9238, b: 3027.5547, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -922,7 +922,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e89df20989da7d4438f6f1bd4f4d4a6a, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1933,11 +1933,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaatseNatuurGebied
       objectReference: {fileID: 0}
-    - target: {fileID: 8440141945960904192, guid: 7c5238b222849884cb7a7b6caf782330,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8991023335753659057, guid: 7c5238b222849884cb7a7b6caf782330,
         type: 3}
       propertyPath: m_RootOrder
@@ -2436,7 +2431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1922466978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2585,11 +2580,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9174319614869391128, guid: ce1998b166a16a944afddb5ad4e34e5a,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 3183.0989
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce1998b166a16a944afddb5ad4e34e5a, type: 3}
