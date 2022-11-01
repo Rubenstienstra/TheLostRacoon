@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6137289964130086598}
   - component: {fileID: 6137289964130086594}
   m_Layer: 7
-  m_Name: Gate circle shrink minigame
+  m_Name: Fence Gate circle shrink minigame
   m_TagString: Minigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

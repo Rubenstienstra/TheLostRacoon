@@ -14,7 +14,7 @@ public class MouseTrackerMovement : MonoBehaviour
     private float randomMousePosX;
     private float randomMousePosY;
 
-    public Vector2 mouseStartPos;
+    public Vector2 mouseStartPos = new Vector2(1250,560);
     public GameObject[] circles;
 
     // 0 = default, 1 = phase 1, 2 = phase end.
