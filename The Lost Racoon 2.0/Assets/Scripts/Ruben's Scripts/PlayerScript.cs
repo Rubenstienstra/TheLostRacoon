@@ -9,7 +9,6 @@ public class PlayerScript : MonoBehaviour
 {
     public ScriptableSaving savingInfo;
     public PlayerMovementBetter playermovementInfo;
-    public MouseTrackerMovement mouseInfo;
     public MouseTrackerRectangleMovement mouseRectangleInfo;
 
     public bool minigameActiveMouse;

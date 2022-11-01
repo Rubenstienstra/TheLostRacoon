@@ -167,6 +167,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
         //mouseCursor.GetComponent<Image>().enabled = enabled;
 
         playerInfo.minigameActiveMouseRectangle = false;
+        interactInfo.minigameActiveMouseCircle = false;
 
         interactInfo.minigameBeingPlayed = false;
 

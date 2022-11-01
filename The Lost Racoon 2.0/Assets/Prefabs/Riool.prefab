@@ -978,8 +978,8 @@ Transform:
   m_GameObject: {fileID: 5868534857892695995}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.98, y: 0.98, z: 0.98}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7640943427066265229}
   - {fileID: 1977699550289511184}
@@ -1177,6 +1177,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConncetorPuzzelPipe
       objectReference: {fileID: 0}
+    - target: {fileID: 6725304998723191379, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725304998723191379, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725304998723191379, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725304998723191379, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725304998723191379, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.252
+      objectReference: {fileID: 0}
     - target: {fileID: 6782641728340042849, guid: 2b522de2c58729a418ecee81f58183f4,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -1192,8 +1217,114 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.66360587
       objectReference: {fileID: 0}
+    - target: {fileID: 6782641728340042850, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 7219459389198624259, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Minigame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 6631622334029988640}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: timeOutCircle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: mouseStartPos.x
+      value: 940
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: mouseStartPos.y
+      value: 560
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: circles.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: phaseTime.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: circles.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: circles.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: circles.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: circles.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: phaseTime.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: phaseTime.Array.data[1]
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: phaseTime.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: strengthBuff.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: circleSchrinkStrengthBuff
+      value: 4.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: strengthBuff.Array.data[0]
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: strengthBuff.Array.data[1]
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: strengthBuff.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b522de2c58729a418ecee81f58183f4, type: 3}
+--- !u!54 &6631622334029988640 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 6782641728340042850, guid: 2b522de2c58729a418ecee81f58183f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 155525747012052802}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1013380260096578636
 PrefabInstance:
   m_ObjectHideFlags: 0

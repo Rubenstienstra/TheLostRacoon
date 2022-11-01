@@ -80,7 +80,7 @@ public class PlayerMovementBetter : MonoBehaviour
     {
         if (!deathScreen.activeSelf && value.Get<float>() == 1)
         {
-            if (!escMenu.activeSelf)
+            if (!escMenu.activeSelf && !interactInfo.minigameActiveMouseCircle)
             {
                 Time.timeScale = 0;
                 escMenu.SetActive(true);
@@ -90,7 +90,7 @@ public class PlayerMovementBetter : MonoBehaviour
             {
                 Time.timeScale = 1;
                 escMenu.SetActive(false);
-                if (!interactInfo.minigameActive3x3Puzzle)
+                if (!interactInfo.minigameActive)
                 {
                     Cursor.visible = false;
                 }

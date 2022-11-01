@@ -280,6 +280,8 @@ GameObject:
   - component: {fileID: 6782641728340042850}
   - component: {fileID: 6782641728340042851}
   - component: {fileID: 6782641728340042849}
+  - component: {fileID: 6725304998723191379}
+  - component: {fileID: 8735146174413135558}
   m_Layer: 0
   m_Name: HekPuzzelPipe
   m_TagString: Untagged
@@ -418,3 +420,40 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!65 &6725304998723191379
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7219459389198624259}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.75, y: 0.75, z: 0.2}
+  m_Center: {x: 0.3798052, y: 0, z: 0.1}
+--- !u!114 &8735146174413135558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7219459389198624259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b5450adba10eb489968c707f875d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  playerMovementInfo: {fileID: 0}
+  mouseStartPos: {x: 0, y: 0}
+  circles: []
+  currentPhase: 0
+  phaseTime: []
+  strengthBuff: []
+  timeOutCircle: 0.1
+  circleSchrinkStrengthBuff: 1
+  hasBeenInteracted: 0
+  activateGameObject: {fileID: 0}
+  mouseInZone: 0
