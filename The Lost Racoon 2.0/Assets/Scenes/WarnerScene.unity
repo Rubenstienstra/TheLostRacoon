@@ -3072,11 +3072,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Riool
       objectReference: {fileID: 0}
-    - target: {fileID: 5868534857892695995, guid: f1e4b932005e029498ef3d1f788efb2c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1e4b932005e029498ef3d1f788efb2c, type: 3}
 --- !u!1001 &7160088164511377169
