@@ -13,8 +13,8 @@ public class Waitsriptus : MonoBehaviour
 
     IEnumerator WaitGameObjectOff()
     {
-
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSecondsRealtime (0.2f);
+        Time.timeScale = 1;
         menuClose.SetActive(false);
     }
 }
