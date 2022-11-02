@@ -31,6 +31,10 @@ public class PlayerScript : MonoBehaviour
             savingInfo.crCheckpointVector3 = new Vector3(0, 0, 0);
             savingInfo.crCheckpointRotation = new Vector3(0, 0, 0);
 
+            for (int i = 0; i < savingInfo.tutorialStepsCompleted.Length; i++)
+            {
+                savingInfo.tutorialStepsCompleted[i] = false;
+            }
             for (int i = savingInfo.activatedCheckpoints.Count - 1; i >= 0; i--)
             {
                 savingInfo.activatedCheckpoints.RemoveAt(i);

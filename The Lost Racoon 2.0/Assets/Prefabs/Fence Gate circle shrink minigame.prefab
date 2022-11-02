@@ -9,11 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6137289964130086595}
-  - component: {fileID: 6137289964130086596}
-  - component: {fileID: 6137289964130086597}
   m_Layer: 7
   m_Name: Fence Gate circle shrink minigame
-  m_TagString: Minigame
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,57 +32,7 @@ Transform:
   - {fileID: 3434009966710124852}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6137289964130086596
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6137289964130086599}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6137289964130086597
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6137289964130086599}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 257
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 13, z: 0}
 --- !u!1001 &2707403428037193684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -224,6 +172,16 @@ PrefabInstance:
       objectReference: {fileID: 8913302772320291766}
     - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
         type: 3}
+      propertyPath: isFenceGate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
+      propertyPath: mousePointer
+      value: 
+      objectReference: {fileID: 8374227788615808335}
+    - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+        type: 3}
       propertyPath: timeOutCircle
       value: 0
       objectReference: {fileID: 0}
@@ -295,22 +253,22 @@ PrefabInstance:
     - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
         type: 3}
       propertyPath: circleSchrinkStrengthBuff
-      value: 4.76
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
         type: 3}
       propertyPath: strengthBuff.Array.data[0]
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
         type: 3}
       propertyPath: strengthBuff.Array.data[1]
-      value: 1.75
+      value: 1.125
       objectReference: {fileID: 0}
     - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
         type: 3}
       propertyPath: strengthBuff.Array.data[2]
-      value: 2
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b522de2c58729a418ecee81f58183f4, type: 3}
@@ -320,6 +278,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2707403428037193684}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4729356863825381847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7219459389198624259, guid: 2b522de2c58729a418ecee81f58183f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2707403428037193684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6677668611644272914 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2707403428037193684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4729356863825381847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b5450adba10eb489968c707f875d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &8913302772320291766 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 6782641728340042850, guid: 2b522de2c58729a418ecee81f58183f4,
@@ -333,15 +309,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6137289964130086595}
     m_Modifications:
+    - target: {fileID: 1538995800275193155, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
+      propertyPath: mouseInfo
+      value: 
+      objectReference: {fileID: 6677668611644272914}
+    - target: {fileID: 1538995800275193155, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
+      propertyPath: circleMinigame
+      value: 
+      objectReference: {fileID: 4729356863825381847}
     - target: {fileID: 1692770622066322848, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6749018415933016598, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
       propertyPath: m_Name
       value: minigame circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749018415933016598, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6749018415933016602, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
@@ -483,6 +474,12 @@ GameObject:
 --- !u!1 &4778852869459059321 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1692770622066322848, guid: a3ef4845f4140b54789da1fef40873d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6137289965606555609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8374227788615808335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2385557030378814102, guid: a3ef4845f4140b54789da1fef40873d4,
     type: 3}
   m_PrefabInstance: {fileID: 6137289965606555609}
   m_PrefabAsset: {fileID: 0}

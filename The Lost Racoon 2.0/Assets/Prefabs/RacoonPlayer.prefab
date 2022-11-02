@@ -950,6 +950,7 @@ GameObject:
   - component: {fileID: 5351934342813780876}
   - component: {fileID: 517477552774587585}
   - component: {fileID: 172206667163872471}
+  - component: {fileID: 2419715414069434213}
   m_Layer: 0
   m_Name: RacoonPlayer
   m_TagString: Player
@@ -1057,6 +1058,7 @@ MonoBehaviour:
   interactInfo: {fileID: 5351934342813780877}
   scriptableSavingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90,
     type: 2}
+  tutorialInfo: {fileID: 2419715414069434213}
   lookAtAngle: 0
   movementAngle: {x: 0, y: 0, z: 0}
   endAngle: 0
@@ -1151,7 +1153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
   playermovementInfo: {fileID: 5351934342813780874}
-  mouseInfo: {fileID: 0}
   mouseRectangleInfo: {fileID: 0}
   minigameActiveMouse: 0
   minigameActiveMouseRectangle: 0
@@ -1171,6 +1172,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &2419715414069434213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351934342813780878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2c85207d225d345a095c252b268d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovementInfo: {fileID: 5351934342813780874}
+  savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
+  tutorialSteps:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  tutorialStepsCompleted: 00000000
 --- !u!1 &5351934342883598989
 GameObject:
   m_ObjectHideFlags: 0

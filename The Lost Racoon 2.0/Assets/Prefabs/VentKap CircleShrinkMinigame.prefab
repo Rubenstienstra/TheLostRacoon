@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2032574918780004582}
   m_Layer: 0
   m_Name: VentKap CircleShrinkMinigame
-  m_TagString: Ground
+  m_TagString: Minigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3839581249173908963}
-  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -15.809948, y: -4.324055, z: -8.19793}
   m_LocalScale: {x: 0.96464, y: 0.96464, z: 0.96464}
   m_ConstrainProportionsScale: 0
@@ -167,11 +167,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
   playerMovementInfo: {fileID: 0}
-  mouseStartPos: {x: 0, y: 0}
+  mouseStartPos: {x: 1250, y: 560}
   circles:
-  - {fileID: 171922748966036471}
-  - {fileID: 171922749247598805}
   - {fileID: 171922749197342746}
+  - {fileID: 171922749247598805}
+  - {fileID: 171922748966036471}
   - {fileID: 5239501937683058580}
   currentPhase: 0
   phaseTime:
@@ -179,11 +179,13 @@ MonoBehaviour:
   - 2.5
   - 2
   strengthBuff:
-  - 1.5
-  - 1.75
-  - 2
+  - 1
+  - 1.125
+  - 1.25
   timeOutCircle: 0.1
-  circleSchrinkStrengthBuff: 4.76
+  circleSchrinkStrengthBuff: 3
+  isFenceGate: 0
+  mousePointer: {fileID: 9137994766603065506}
   hasBeenInteracted: 0
   activateGameObject: {fileID: 171922748709988386}
   rb: {fileID: 6835509930250181198}
@@ -195,6 +197,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6853911815451818490}
     m_Modifications:
+    - target: {fileID: 1538995800275193155, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
+      propertyPath: mouseInfo
+      value: 
+      objectReference: {fileID: 2032574918780004582}
     - target: {fileID: 1692770622066322848, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
       propertyPath: m_IsActive
@@ -345,6 +352,12 @@ GameObject:
 --- !u!1 &5239501937683058580 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1692770622066322848, guid: a3ef4845f4140b54789da1fef40873d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6902785306553688628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9137994766603065506 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2385557030378814102, guid: a3ef4845f4140b54789da1fef40873d4,
     type: 3}
   m_PrefabInstance: {fileID: 6902785306553688628}
   m_PrefabAsset: {fileID: 0}

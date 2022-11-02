@@ -9,6 +9,7 @@ public class Interact : MonoBehaviour
     public Pickup pickupscript;
     public CamFreezeScript camFreezeInfo;
     public PlayerMovementBetter playerMovementInfo;
+    public PlayerInputUIController UIInfo;
     [Header("Detection Sphere", order = 1)]
     public Transform detectionAria;
     public float detectDiameter;
@@ -22,13 +23,12 @@ public class Interact : MonoBehaviour
     public bool allowInteraction;
     public Collider crCollider;
     
-    public bool minigameActive;
     public bool minigameBeingPlayed;
     public bool minigameActiveMouseCircle;
     public bool minigameActiveMouseRectangle;
     public bool minigameActive3x3Puzzle;
     //piemel -davido 
-    void Update()
+    void FixedUpdate()
     {
         if (playerMovementInfo.moving)
         {
@@ -93,6 +93,7 @@ public class Interact : MonoBehaviour
         {
             minigameActiveMouseCircle = true;
             minigame.GetComponent<MouseTrackerMovement>().StartAreaMinigame();
+             
         }
         else if (minigame.GetComponent<MouseTrackerRectangleMovement>())
         {
@@ -107,7 +108,7 @@ public class Interact : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Minigame")
+        if (other.gameObject.tag == "Minigame")
         {
             print(other);
             crCollider = other;
@@ -117,7 +118,7 @@ public class Interact : MonoBehaviour
                 Debug.Log("Interacted Minigame");
             }
         }
-        else if(other.gameObject.tag == "Item")
+        else if (other.gameObject.tag == "Item")
         {
             pickupscript.PickUp(other);
         }
