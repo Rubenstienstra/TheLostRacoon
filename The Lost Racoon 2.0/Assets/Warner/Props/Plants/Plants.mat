@@ -140,7 +140,7 @@ Material:
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
-    - _AlphaCutoff: 0.06
+    - _AlphaCutoff: 0.446
     - _AlphaCutoffEnable: 1
     - _AlphaCutoffPostpass: 0.5
     - _AlphaCutoffPrepass: 0.5
@@ -154,7 +154,7 @@ Material:
     - _CoatMask: 0
     - _CullMode: 0
     - _CullModeForward: 0
-    - _Cutoff: 0.06
+    - _Cutoff: 0.446
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
     - _DetailNormalScale: 1
