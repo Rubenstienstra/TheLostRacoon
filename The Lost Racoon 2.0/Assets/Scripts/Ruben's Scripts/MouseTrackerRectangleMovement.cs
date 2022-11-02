@@ -62,6 +62,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             movingSlider.gameObject.SetActive(true);
 
             Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.None;
             Mouse.current.WarpCursorPosition(mouseStartPos);
             UIInfo.mousePosX = mouseStartPos.x;
             UIInfo.mousePosY = mouseStartPos.y;

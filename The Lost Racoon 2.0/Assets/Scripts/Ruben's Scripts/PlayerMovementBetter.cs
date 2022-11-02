@@ -95,7 +95,6 @@ public class PlayerMovementBetter : MonoBehaviour
             }
             else
             {
-                Cursor.lockState = CursorLockMode.Locked;
                 Time.timeScale = 1;
                 escMenu.SetActive(false);
                 Cursor.visible = false;
@@ -293,6 +292,7 @@ public class PlayerMovementBetter : MonoBehaviour
         else if(other.gameObject.tag == "Deathzone")
         {
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             deathScreen.SetActive(true);
 
             rb.velocity = new Vector3(0, 0, 0);
