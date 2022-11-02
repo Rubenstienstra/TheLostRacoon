@@ -32,6 +32,8 @@ public class MouseTrackerMovement : MonoBehaviour
     private RectTransform bigCircleSchrinkRect;
     private CircleCollider2D bigCircleSchrinkCollider;
     public float circleSchrinkStrengthBuff = 4.76f;
+    public bool isFenceGate;
+    public GameObject mousePointer;
 
     public bool hasBeenInteracted;
     public GameObject activateGameObject;
@@ -57,7 +59,7 @@ public class MouseTrackerMovement : MonoBehaviour
             }
             activateGameObject.SetActive(true);
 
-            Cursor.visible = true;
+            UIInfo.mouseCursor = mousePointer;
             Mouse.current.WarpCursorPosition(mouseStartPos);
             UIInfo.mousePosX = mouseStartPos.x;
             UIInfo.mousePosY = mouseStartPos.y;
@@ -91,10 +93,11 @@ public class MouseTrackerMovement : MonoBehaviour
           randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
           Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + UIInfo.mousePosX ,randomMousePosY + UIInfo.mousePosY));
 
+
           bigCircleSchrinkRect.sizeDelta = new Vector2(bigCircleSchrinkRect.rect.width - (0.25f * circleSchrinkStrengthBuff), bigCircleSchrinkRect.rect.height - (0.25f * circleSchrinkStrengthBuff));
           bigCircleSchrinkCollider.radius = bigCircleSchrinkRect.rect.width/2;
 
-          yield return new WaitForSeconds(0.01f);//NO CHANGE depents on MouseMover
+          yield return new WaitForSecondsRealtime(0.01f);//NO CHANGE depents on MouseMover, hier alleen realtime omdat je niet de esc menu kan oproepen tijdens DEZE minigame.
           if(interactInfo.minigameActiveMouseCircle == true) // double check
           {
              StartCoroutine(MouseMover());
@@ -108,25 +111,29 @@ public class MouseTrackerMovement : MonoBehaviour
     public IEnumerator CountDown()
     {
         RandomRangeMinMax();
-        yield return new WaitForSeconds(phaseTime[0]);
+        yield return new WaitForSecondsRealtime(phaseTime[0]);
         currentPhase++;
         RandomRangeMinMax();
 
-        yield return new WaitForSeconds(phaseTime[1]);
+        yield return new WaitForSecondsRealtime(phaseTime[1]);
         currentPhase++;
         RandomRangeMinMax();
 
-        yield return new WaitForSeconds(phaseTime[2]);
+        yield return new WaitForSecondsRealtime(phaseTime[2]);
 
         //Winning
         if (mouseInZone == true)
         {
             interactInfo.minigameActiveMouseCircle = false;
             playerMovementInfo.movementLock = false;
+            hasBeenInteracted = true;
             savingInfo.totalMissionsCompleted++;
             savingInfo.mouseTrackerTimesDone++;
 
-            gameObject.GetComponent<BoxCollider>().enabled = !enabled;
+            if (isFenceGate)
+            {
+                gameObject.GetComponent<BoxCollider>().enabled = !enabled;
+            }
             rb.constraints = RigidbodyConstraints.None;
             print("Completed/Victory! :D");
             ShutDown();
@@ -192,7 +199,7 @@ public class MouseTrackerMovement : MonoBehaviour
     }
     public IEnumerator WaitingForShutDown()
     {
-        yield return new WaitForSeconds(timeOutCircle);
+        yield return new WaitForSecondsRealtime(timeOutCircle);
         if(mouseInZone == false)
         {
             print("waiting for shutdown game end");
@@ -201,12 +208,6 @@ public class MouseTrackerMovement : MonoBehaviour
     }
     public void ShutDown()
     {
-        if (hasBeenInteracted == false)
-        {
-            if(interactInfo.minigameBeingPlayed == false) // if he has won:
-            {
-                hasBeenInteracted = true;
-            }
             print("ended minigame at Phase: " + currentPhase.ToString());
             StopCoroutine(CountDown());
             StopCoroutine(MouseMover());
@@ -224,32 +225,14 @@ public class MouseTrackerMovement : MonoBehaviour
             interactInfo.minigameBeingPlayed = false;
 
             interactInfo.OnExitMinigame();
-        }
+        
     }
-    
-
     //For button Event triggers
     public void ActivateWaitingForShutDown()
     {
         StartCoroutine(WaitingForShutDown());
     }
     //For Image animating/editing
-    public void InFirstCircle()
-    {
-
-    }
-    public void OutOfFirstCircle()
-    {
-
-    }
-    public void InSecondCircle()
-    {
-
-    }
-    public void OutOfSecondCircle()
-    {
-
-    }
     public void InThirdCircle()
     {
         StopCoroutine(WaitingForShutDown());

@@ -25,6 +25,7 @@ public class PlayerMovementBetter : MonoBehaviour
     private Vector3 movingAngle;
     private Vector3 addMovement;
     public float increasedMoveSpeed = 1;
+    public Vector3 crMoveSpeed;
 
     public RaycastHit hitSlope;
     public Vector3 RaycastPos;
@@ -72,19 +73,20 @@ public class PlayerMovementBetter : MonoBehaviour
                 scriptableSavingInfo.activatedCheckpoints[i].SetActive(false);
             }
 
-            transform.position = scriptableSavingInfo.crCheckpointVector3;
-            transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation);
+            transform.position = scriptableSavingInfo.crCheckpointVector3 * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation * Time.deltaTime);
         }
-        if (!tutorialInfo.completedTutorial)
+        if (!scriptableSavingInfo.tutorialStepsCompleted[0] && !scriptableSavingInfo.tutorialStepsCompleted[1])
         {
-            tutorialInfo.ActivateTutorial();
+            tutorialInfo.tutorialSteps[0].SetActive(true);
+            tutorialInfo.ActivateTutorial(0);
         }
     }
     public void OnEsc(InputValue value) //het enige probleem is nog wanneer een minigame wel een muis nodig heeft. heeft hij die niet.
     {
         if (!deathScreen.activeSelf && value.Get<float>() == 1)
         {
-            if (!escMenu.activeSelf && !interactInfo.minigameActiveMouseCircle)
+            if (!escMenu.activeSelf && !interactInfo.minigameBeingPlayed)
             {
                 Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
@@ -96,10 +98,7 @@ public class PlayerMovementBetter : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Time.timeScale = 1;
                 escMenu.SetActive(false);
-                if (!interactInfo.minigameActive)
-                {
-                    Cursor.visible = false;
-                }
+                Cursor.visible = false;
             }
         }
     }
@@ -171,7 +170,7 @@ public class PlayerMovementBetter : MonoBehaviour
         if (moving == false)
         {
             moving = true;
-            StartCoroutine(Movement());
+            //StartCoroutine(Movement());
         }
     }
     public IEnumerator JumpTiming()
@@ -215,9 +214,9 @@ public class PlayerMovementBetter : MonoBehaviour
             isOnGround = true;
         }
     }
-    public IEnumerator Movement()
+    public void FixedUpdate()
     {
-        if (!movementLock)
+        if (!movementLock && moving)
         {
             addMovement = new Vector3(forwardWASD[3] + -forwardWASD[1], 0, -forwardWASD[2] + forwardWASD[0]) * Time.deltaTime; // gets input values
 
@@ -227,7 +226,7 @@ public class PlayerMovementBetter : MonoBehaviour
             movementAngle = Quaternion.Euler(0, endAngle, 0) * Vector3.forward; // 
             
             movingAngle = Vector3.ProjectOnPlane(movementAngle, hitSlope.normal).normalized; //
-            Physics.Raycast(RaycastPos + transform.position, Vector3.down, out hitSlope); // maakt een rayccast aan die naar beneden toe gaat
+            Physics.Raycast(RaycastPos + transform.position, Vector3.down, out hitSlope, 1); // maakt een rayccast aan die naar beneden toe gaat
             crSlopeAngle = Vector3.Angle(Vector3.up, hitSlope.normal); //
             if (crSlopeAngle >= maxUpSlopeAngle)
             {
@@ -239,9 +238,10 @@ public class PlayerMovementBetter : MonoBehaviour
             }
 
             transform.rotation = Quaternion.Euler(crSlopeAngle, endAngle, transform.rotation.y); // voegt telkens de rotatie(endAngle) toe aan de speler.
-            transform.position += movingAngle.normalized * crspeedBonus * Time.deltaTime * increasedMoveSpeed; //
+            transform.position += movingAngle.normalized * crspeedBonus * increasedMoveSpeed * Time.deltaTime; //
+            crMoveSpeed = movingAngle.normalized * crspeedBonus * increasedMoveSpeed * Time.deltaTime;
 
-            yield return new WaitForSeconds(0.01f); // do not move
+            //yield return new WaitForSeconds(0.01f); // do not move
             for (int i = 0; i < isMovingForwardWASD.Length; i++)
             {
                 if (isMovingForwardWASD[i] == true)
@@ -262,7 +262,7 @@ public class PlayerMovementBetter : MonoBehaviour
                     animationMovement.SetBool("Walking", false);
                     animationMovement.SetBool("Running", true);
                 }
-                StartCoroutine(Movement());
+                //StartCoroutine(Movement());
             }
             else
             {
@@ -298,6 +298,16 @@ public class PlayerMovementBetter : MonoBehaviour
             rb.velocity = new Vector3(0, 0, 0);
             gameObject.transform.position = scriptableSavingInfo.crCheckpointVector3;
             gameObject.transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation);
+        }
+        else if (other.gameObject.tag == "TutorialJumpActivate" && !scriptableSavingInfo.tutorialStepsCompleted[2])
+        {
+            tutorialInfo.tutorialSteps[2].SetActive(true);
+            tutorialInfo.ActivateTutorial(1);
+        }
+        else if (other.gameObject.tag == "TutorialDifferentWayActivate" && !scriptableSavingInfo.tutorialStepsCompleted[3])
+        {
+            tutorialInfo.tutorialSteps[3].SetActive(true);
+            tutorialInfo.ActivateTutorial(2);
         }
     }
     public void ResettingAllAnimations()

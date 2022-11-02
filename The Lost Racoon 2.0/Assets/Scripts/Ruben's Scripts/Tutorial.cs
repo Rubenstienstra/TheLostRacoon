@@ -6,31 +6,54 @@ using UnityEngine.UI;
 public class Tutorial : MonoBehaviour
 {
     public PlayerMovementBetter playerMovementInfo;
+    public ScriptableSaving savingInfo;
 
-    public GameObject[] TutorialSteps; 
-
-    public bool completedTutorial;
+    public GameObject[] tutorialSteps;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         
     }
-    public void ActivateTutorial()
+    public void ActivateTutorial(int tutorialPart)
     {
-        StartCoroutine(TutorialStart());
+        StartCoroutine(TutorialStart(tutorialPart));
     }
-    public IEnumerator TutorialStart()
+    public IEnumerator TutorialStart(int tutorialPart)
     {
-        if (playerMovementInfo.forwardWASD[0] == 1)
-        {
-
+        switch(tutorialPart){
+            case 0:
+                if (playerMovementInfo.forwardWASD[0] == 1 && !savingInfo.tutorialStepsCompleted[0])
+                {
+                    tutorialSteps[0].SetActive(false);
+                    savingInfo.tutorialStepsCompleted[0] = true;
+                    tutorialSteps[1].SetActive(true);
+                }
+                if (playerMovementInfo.sprinting && !savingInfo.tutorialStepsCompleted[1])
+                {
+                    tutorialSteps[1].SetActive(false);
+                    savingInfo.tutorialStepsCompleted[1] = true;
+                }
+                yield return new WaitForSeconds(0.25f);
+                if (!savingInfo.tutorialStepsCompleted[0] || !savingInfo.tutorialStepsCompleted[1])
+                {
+                    StartCoroutine(TutorialStart(0));
+                }
+                break;
+            case 1:
+                if (playerMovementInfo.animationMovement.GetBool("Jumping") && !savingInfo.tutorialStepsCompleted[2])
+                {
+                    tutorialSteps[2].SetActive(false);
+                    savingInfo.tutorialStepsCompleted[2] = true;
+                }
+                yield return new WaitForSeconds(0.25f);
+                if (!savingInfo.tutorialStepsCompleted[2])
+                {
+                    StartCoroutine(TutorialStart(1));
+                }
+                break;
         }
-        yield return new WaitForSeconds(0.5f);
-        if (!completedTutorial)
-        {
-            StartCoroutine(TutorialStart());
-        }
-
+        
     }
 }

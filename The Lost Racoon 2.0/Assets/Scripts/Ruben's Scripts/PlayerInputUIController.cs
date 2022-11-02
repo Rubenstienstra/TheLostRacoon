@@ -6,27 +6,26 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputUIController : MonoBehaviour
 {
-    public GameObject mouseCursor;
+    public GameObject mouseCursor; // mouse cursor word gepakt in het interact script
     public float mousePosX;
     public float mousePosY;
 
-    public void Start()
-    {
-        if(mouseCursor == null)
-        {
-           mouseCursor = GameObject.Find("MousePointer");
-        }
-        
-    }
     public void OnMouseX(InputValue value)
     {
         mousePosX = value.Get<float>();
-        mouseCursor.transform.position = new Vector2(mousePosX, mousePosY);
+        MouseMoving();
     }
     public void OnMouseY(InputValue value)
     {
         mousePosY = value.Get<float>();
-        mouseCursor.transform.position = new Vector2(mousePosX, mousePosY);
+        MouseMoving();
+    }
+    public void MouseMoving()
+    {
+        if(mouseCursor != null)
+        {
+            mouseCursor.transform.position = new Vector2(mousePosX, mousePosY);
+        }
     }
     
 }

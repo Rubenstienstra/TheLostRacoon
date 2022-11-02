@@ -4,30 +4,34 @@ using UnityEngine;
 
 public class MousePointer : MonoBehaviour
 {
-    public MouseTrackerMovement mouseInfo;
+    private MouseTrackerMovement mouseInfo;
+    private PlayerInputUIController UIInfo;
+    private GameObject playerGameObject;
 
-    private GameObject findingScriptGameobject;
+    public GameObject gameObjectTrigger;
 
     public void Start()
     {
-        findingScriptGameobject = GameObject.Find("Gate circle shrink minigame");
-        if(mouseInfo == null)
-        {
-            mouseInfo = findingScriptGameobject.GetComponent<MouseTrackerMovement>();
-        }
+        playerGameObject = GameObject.Find("RacoonPlayer");
+        mouseInfo = playerGameObject.GetComponent<MouseTrackerMovement>();
+        UIInfo = playerGameObject.GetComponent<PlayerInputUIController>();
     }
     public void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject == mouseInfo.circles[0])
+        gameObjectTrigger = col.gameObject;
+        if (gameObjectTrigger)
         {
             mouseInfo.mouseInZone = true;
+            
         }        
     }
     public void OnTriggerExit2D(Collider2D col)
     {
+        print("out");
         if (col.gameObject == mouseInfo.circles[0])
         {
             mouseInfo.mouseInZone = false;
+            
         }        
     }
 }

@@ -12,6 +12,8 @@ TagManager:
   - CamCollideIgnore
   - Checkpoint
   - Deathzone
+  - TutorialJumpActivate
+  - TutorialDifferentWayActivate
   layers:
   - Default
   - TransparentFX
