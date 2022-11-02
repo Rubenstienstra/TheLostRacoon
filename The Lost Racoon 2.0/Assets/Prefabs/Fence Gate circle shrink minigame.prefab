@@ -258,17 +258,17 @@ PrefabInstance:
     - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
         type: 3}
       propertyPath: strengthBuff.Array.data[0]
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
         type: 3}
       propertyPath: strengthBuff.Array.data[1]
-      value: 1.75
+      value: 1.125
       objectReference: {fileID: 0}
     - target: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
         type: 3}
       propertyPath: strengthBuff.Array.data[2]
-      value: 2
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b522de2c58729a418ecee81f58183f4, type: 3}
@@ -278,6 +278,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2707403428037193684}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4729356863825381847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7219459389198624259, guid: 2b522de2c58729a418ecee81f58183f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2707403428037193684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6677668611644272914 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8735146174413135558, guid: 2b522de2c58729a418ecee81f58183f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2707403428037193684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4729356863825381847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b5450adba10eb489968c707f875d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &8913302772320291766 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 6782641728340042850, guid: 2b522de2c58729a418ecee81f58183f4,
@@ -291,6 +309,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6137289964130086595}
     m_Modifications:
+    - target: {fileID: 1538995800275193155, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
+      propertyPath: mouseInfo
+      value: 
+      objectReference: {fileID: 6677668611644272914}
+    - target: {fileID: 1538995800275193155, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
+      propertyPath: circleMinigame
+      value: 
+      objectReference: {fileID: 4729356863825381847}
     - target: {fileID: 1692770622066322848, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
       propertyPath: m_IsActive

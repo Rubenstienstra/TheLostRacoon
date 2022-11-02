@@ -9,7 +9,7 @@ public class Interact : MonoBehaviour
     public Pickup pickupscript;
     public CamFreezeScript camFreezeInfo;
     public PlayerMovementBetter playerMovementInfo;
-    private PlayerInputUIController UIInfo;
+    public PlayerInputUIController UIInfo;
     [Header("Detection Sphere", order = 1)]
     public Transform detectionAria;
     public float detectDiameter;
@@ -23,13 +23,12 @@ public class Interact : MonoBehaviour
     public bool allowInteraction;
     public Collider crCollider;
     
-    public bool minigameActive;
     public bool minigameBeingPlayed;
     public bool minigameActiveMouseCircle;
     public bool minigameActiveMouseRectangle;
     public bool minigameActive3x3Puzzle;
     //piemel -davido 
-    void Update()
+    void FixedUpdate()
     {
         if (playerMovementInfo.moving)
         {

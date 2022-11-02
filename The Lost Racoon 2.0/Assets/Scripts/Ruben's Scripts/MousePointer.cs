@@ -4,34 +4,40 @@ using UnityEngine;
 
 public class MousePointer : MonoBehaviour
 {
-    private MouseTrackerMovement mouseInfo;
-    private PlayerInputUIController UIInfo;
-    private GameObject playerGameObject;
+    public MouseTrackerMovement mouseInfo;
+    public PlayerInputUIController UIInfo;
 
-    public GameObject gameObjectTrigger;
+    private GameObject playerGameObject;
 
     public void Start()
     {
-        playerGameObject = GameObject.Find("RacoonPlayer");
-        mouseInfo = playerGameObject.GetComponent<MouseTrackerMovement>();
-        UIInfo = playerGameObject.GetComponent<PlayerInputUIController>();
+        
     }
     public void OnTriggerEnter2D(Collider2D col)
     {
-        gameObjectTrigger = col.gameObject;
-        if (gameObjectTrigger)
+        if (playerGameObject == null)
+        {
+            RefindingInfo();
+        }
+        else if (col.gameObject.name == "Big circle")
         {
             mouseInfo.mouseInZone = true;
-            
         }        
     }
     public void OnTriggerExit2D(Collider2D col)
     {
-        print("out");
-        if (col.gameObject == mouseInfo.circles[0])
+        if (playerGameObject == null)
+        {
+            RefindingInfo();
+        }
+        else if (col.gameObject.name == "Big circle")
         {
             mouseInfo.mouseInZone = false;
-            
         }        
+    }
+    public void RefindingInfo()
+    {
+        playerGameObject = GameObject.Find("RacoonPlayer");
+        UIInfo = playerGameObject.GetComponent<PlayerInputUIController>();
     }
 }

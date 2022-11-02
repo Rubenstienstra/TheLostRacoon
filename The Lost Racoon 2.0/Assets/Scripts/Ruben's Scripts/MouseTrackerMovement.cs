@@ -60,6 +60,8 @@ public class MouseTrackerMovement : MonoBehaviour
             activateGameObject.SetActive(true);
 
             UIInfo.mouseCursor = mousePointer;
+
+            Cursor.visible = true;
             Mouse.current.WarpCursorPosition(mouseStartPos);
             UIInfo.mousePosX = mouseStartPos.x;
             UIInfo.mousePosY = mouseStartPos.y;
@@ -93,10 +95,11 @@ public class MouseTrackerMovement : MonoBehaviour
           randomMousePosY = Random.Range(minRandomLengthY, maxRandomLengthY) * strengthBuff[currentPhase];
           Mouse.current.WarpCursorPosition(new Vector2(randomMousePosX + UIInfo.mousePosX ,randomMousePosY + UIInfo.mousePosY));
 
-
-          bigCircleSchrinkRect.sizeDelta = new Vector2(bigCircleSchrinkRect.rect.width - (0.25f * circleSchrinkStrengthBuff), bigCircleSchrinkRect.rect.height - (0.25f * circleSchrinkStrengthBuff));
-          bigCircleSchrinkCollider.radius = bigCircleSchrinkRect.rect.width/2;
-
+        if(bigCircleSchrinkCollider.radius > 50)
+        {
+            bigCircleSchrinkRect.sizeDelta = new Vector2(bigCircleSchrinkRect.rect.width - (0.25f * circleSchrinkStrengthBuff), bigCircleSchrinkRect.rect.height - (0.25f * circleSchrinkStrengthBuff));
+            bigCircleSchrinkCollider.radius = bigCircleSchrinkRect.rect.width / 2;
+        }
           yield return new WaitForSecondsRealtime(0.01f);//NO CHANGE depents on MouseMover, hier alleen realtime omdat je niet de esc menu kan oproepen tijdens DEZE minigame.
           if(interactInfo.minigameActiveMouseCircle == true) // double check
           {
@@ -208,23 +211,24 @@ public class MouseTrackerMovement : MonoBehaviour
     }
     public void ShutDown()
     {
-            print("ended minigame at Phase: " + currentPhase.ToString());
-            StopCoroutine(CountDown());
-            StopCoroutine(MouseMover());
+        print("ended minigame at Phase: " + currentPhase.ToString());
+        StopCoroutine(CountDown());
+        StopCoroutine(MouseMover());
 
-            for (int i = 0; i < circles.Length; i++)
-            {
-                circles[i].SetActive(false);
-            }
-            activateGameObject.SetActive(false);
+        for (int i = 0; i < circles.Length; i++)
+        {
+           circles[i].SetActive(false);
+        }
+        activateGameObject.SetActive(false);
 
-            currentPhase = 0;
-            interactInfo.minigameActiveMouseCircle = false;
-            bigCircleSchrinkRect.sizeDelta = new Vector2(400, 400); // default size
+        currentPhase = 0;
+        interactInfo.minigameActiveMouseCircle = false;
+        bigCircleSchrinkRect.sizeDelta = new Vector2(400, 400); // default size
+        bigCircleSchrinkCollider.radius = 200;
 
-            interactInfo.minigameBeingPlayed = false;
+        interactInfo.minigameBeingPlayed = false;
 
-            interactInfo.OnExitMinigame();
+        interactInfo.OnExitMinigame();
         
     }
     //For button Event triggers

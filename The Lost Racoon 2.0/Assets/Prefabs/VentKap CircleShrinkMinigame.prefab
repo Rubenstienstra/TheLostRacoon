@@ -179,9 +179,9 @@ MonoBehaviour:
   - 2.5
   - 2
   strengthBuff:
-  - 1.5
-  - 1.75
-  - 2
+  - 1
+  - 1.125
+  - 1.25
   timeOutCircle: 0.1
   circleSchrinkStrengthBuff: 3
   isFenceGate: 0
@@ -197,6 +197,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6853911815451818490}
     m_Modifications:
+    - target: {fileID: 1538995800275193155, guid: a3ef4845f4140b54789da1fef40873d4,
+        type: 3}
+      propertyPath: mouseInfo
+      value: 
+      objectReference: {fileID: 2032574918780004582}
     - target: {fileID: 1692770622066322848, guid: a3ef4845f4140b54789da1fef40873d4,
         type: 3}
       propertyPath: m_IsActive
