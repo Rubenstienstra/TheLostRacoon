@@ -7,6 +7,7 @@ public class PlayerMovementBetter : MonoBehaviour
     public CamFreezeScript camFreezeInfo;
     public Interact interactInfo;
     public ScriptableSaving scriptableSavingInfo;
+    public Tutorial tutorialInfo;
 
     public float lookAtAngle;
     public Vector3 movementAngle;
@@ -69,11 +70,14 @@ public class PlayerMovementBetter : MonoBehaviour
             for (int i = scriptableSavingInfo.activatedCheckpoints.Count - 1; i >= 0; i--)
             {
                 scriptableSavingInfo.activatedCheckpoints[i].SetActive(false);
-                print(i);
             }
 
             transform.position = scriptableSavingInfo.crCheckpointVector3;
             transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation);
+        }
+        if (!tutorialInfo.completedTutorial)
+        {
+            tutorialInfo.ActivateTutorial();
         }
     }
     public void OnEsc(InputValue value) //het enige probleem is nog wanneer een minigame wel een muis nodig heeft. heeft hij die niet.
@@ -82,12 +86,14 @@ public class PlayerMovementBetter : MonoBehaviour
         {
             if (!escMenu.activeSelf && !interactInfo.minigameActiveMouseCircle)
             {
+                Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
                 escMenu.SetActive(true);
                 Cursor.visible = true;
             }
             else
             {
+                Cursor.lockState = CursorLockMode.Locked;
                 Time.timeScale = 1;
                 escMenu.SetActive(false);
                 if (!interactInfo.minigameActive)
@@ -301,7 +307,4 @@ public class PlayerMovementBetter : MonoBehaviour
         animationMovement.SetBool("Charging", false);
         animationMovement.SetBool("Jumping", false);
     }
-
-    
-
 }
