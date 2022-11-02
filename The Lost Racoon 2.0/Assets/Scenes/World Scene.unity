@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 7347.5127, g: 5787.6035, b: 3791.6133, a: 1}
+  m_IndirectSpecularColor: {r: 7348.8975, g: 5788.5215, b: 3790.4648, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -902,7 +902,7 @@ PrefabInstance:
     - target: {fileID: 5351934341954305050, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.24115363
+      value: 0.24115361
       objectReference: {fileID: 0}
     - target: {fileID: 5351934341954305050, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
@@ -912,7 +912,7 @@ PrefabInstance:
     - target: {fileID: 5351934341954305050, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.24115366
+      value: -0.24115361
       objectReference: {fileID: 0}
     - target: {fileID: 5351934342388259054, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
@@ -932,7 +932,7 @@ PrefabInstance:
     - target: {fileID: 5351934342388259054, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3054794
+      value: 0.30547938
       objectReference: {fileID: 0}
     - target: {fileID: 5351934342388259054, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
@@ -942,7 +942,7 @@ PrefabInstance:
     - target: {fileID: 5351934342388259054, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.3054794
+      value: -0.30547938
       objectReference: {fileID: 0}
     - target: {fileID: 5351934342684794658, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
@@ -1507,6 +1507,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1210343739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8154864950142227994, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 4975332434511373268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1265733811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10388,6 +10394,31 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4518591317094136129, guid: ce1998b166a16a944afddb5ad4e34e5a,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 530527
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304913472396270389, guid: ce1998b166a16a944afddb5ad4e34e5a,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601721886172968385, guid: ce1998b166a16a944afddb5ad4e34e5a,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953216205479650023, guid: ce1998b166a16a944afddb5ad4e34e5a,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232024118992391187, guid: ce1998b166a16a944afddb5ad4e34e5a,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8004243306854574661, guid: ce1998b166a16a944afddb5ad4e34e5a,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -10620,6 +10651,11 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2759916712811073286, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3319218046162451950, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
         type: 3}
       propertyPath: m_RootOrder
@@ -10684,6 +10720,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.9004866
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894150304488064193, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+        type: 3}
+      propertyPath: soundOff
+      value: 
+      objectReference: {fileID: 1210343739}
+    - target: {fileID: 6456519796580274862, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7086165708495347596, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
         type: 3}

@@ -30761,6 +30761,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlashLight
       objectReference: {fileID: 0}
+    - target: {fileID: 1580307362357187893, guid: 8e77707d1d86f66468c2b9119a23b4ef,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 26526.35
+      objectReference: {fileID: 0}
     - target: {fileID: 1890215168618945751, guid: 8e77707d1d86f66468c2b9119a23b4ef,
         type: 3}
       propertyPath: m_RootOrder
@@ -30830,6 +30835,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2659532596109825266, guid: 8e77707d1d86f66468c2b9119a23b4ef,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 30000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e77707d1d86f66468c2b9119a23b4ef, type: 3}
@@ -31031,6 +31041,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlashLight
       objectReference: {fileID: 0}
+    - target: {fileID: 1580307362357187893, guid: 8e77707d1d86f66468c2b9119a23b4ef,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 26526.35
+      objectReference: {fileID: 0}
     - target: {fileID: 1890215168618945751, guid: 8e77707d1d86f66468c2b9119a23b4ef,
         type: 3}
       propertyPath: m_RootOrder
@@ -31085,6 +31100,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2659532596109825266, guid: 8e77707d1d86f66468c2b9119a23b4ef,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 30000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e77707d1d86f66468c2b9119a23b4ef, type: 3}

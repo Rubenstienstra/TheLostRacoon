@@ -9,7 +9,11 @@ public class SoundSwap : MonoBehaviour
 
         private void OnTriggerEnter(Collider other)
     {
-        soundOff.gameObject.SetActive(false);
-        soundOn.gameObject.SetActive(true);
+        if(other.gameObject.name == "TLR Racoon")
+        {
+            soundOff.gameObject.SetActive(false);
+            soundOn.gameObject.SetActive(true);
+
+        }
     }
 }
