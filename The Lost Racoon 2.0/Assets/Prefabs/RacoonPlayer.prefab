@@ -1072,6 +1072,7 @@ MonoBehaviour:
   multiplierSprintSpeed: 2
   timeToTurn: 0.1
   increasedMoveSpeed: 1.2
+  crMoveSpeed: {x: 0, y: 0, z: 0}
   RaycastPos: {x: 0, y: 0, z: 0}
   crSlopeAngle: 0
   maxUpSlopeAngle: 30
@@ -1108,6 +1109,7 @@ MonoBehaviour:
   pickupscript: {fileID: 5351934342813780876}
   camFreezeInfo: {fileID: 5351934342813780872}
   playerMovementInfo: {fileID: 5351934342813780874}
+  UIInfo: {fileID: 0}
   detectionAria: {fileID: 5351934342813780886}
   detectDiameter: 1
   detectedColliders: []
@@ -1117,7 +1119,6 @@ MonoBehaviour:
   interactionColliders: []
   allowInteraction: 0
   crCollider: {fileID: 0}
-  minigameActive: 0
   minigameBeingPlayed: 0
   minigameActiveMouseCircle: 0
   minigameActiveMouseRectangle: 0
@@ -1191,7 +1192,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  tutorialStepsCompleted: 00000000
 --- !u!1 &5351934342883598989
 GameObject:
   m_ObjectHideFlags: 0

@@ -95,7 +95,6 @@ public class PlayerMovementBetter : MonoBehaviour
             }
             else
             {
-                Cursor.lockState = CursorLockMode.Locked;
                 Time.timeScale = 1;
                 escMenu.SetActive(false);
                 Cursor.visible = false;
@@ -293,6 +292,7 @@ public class PlayerMovementBetter : MonoBehaviour
         else if(other.gameObject.tag == "Deathzone")
         {
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             deathScreen.SetActive(true);
 
             rb.velocity = new Vector3(0, 0, 0);
@@ -307,7 +307,13 @@ public class PlayerMovementBetter : MonoBehaviour
         else if (other.gameObject.tag == "TutorialDifferentWayActivate" && !scriptableSavingInfo.tutorialStepsCompleted[3])
         {
             tutorialInfo.tutorialSteps[3].SetActive(true);
-            tutorialInfo.ActivateTutorial(2);
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "TutorialDifferentWayActivate")
+        {
+            tutorialInfo.tutorialSteps[3].SetActive(false);
         }
     }
     public void ResettingAllAnimations()

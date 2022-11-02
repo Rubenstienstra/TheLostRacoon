@@ -767,12 +767,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &411686613 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8374227788615808335, guid: 05737995c12b28b4c842068955eab7be,
-    type: 3}
-  m_PrefabInstance: {fileID: 6137289964915948439}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &442857412
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,11 +2864,6 @@ PrefabInstance:
       propertyPath: deathScreen
       value: 
       objectReference: {fileID: 986641267}
-    - target: {fileID: 5351934342813780875, guid: 96dd95628ee48aa43bfa02359ef8c86e,
-        type: 3}
-      propertyPath: mouseCursor
-      value: 
-      objectReference: {fileID: 411686613}
     - target: {fileID: 5351934342813780878, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
       propertyPath: m_Name
