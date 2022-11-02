@@ -307,7 +307,13 @@ public class PlayerMovementBetter : MonoBehaviour
         else if (other.gameObject.tag == "TutorialDifferentWayActivate" && !scriptableSavingInfo.tutorialStepsCompleted[3])
         {
             tutorialInfo.tutorialSteps[3].SetActive(true);
-            tutorialInfo.ActivateTutorial(2);
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "TutorialDifferentWayActivate")
+        {
+            tutorialInfo.tutorialSteps[3].SetActive(false);
         }
     }
     public void ResettingAllAnimations()

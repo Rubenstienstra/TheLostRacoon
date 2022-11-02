@@ -10,12 +10,6 @@ public class Tutorial : MonoBehaviour
 
     public GameObject[] tutorialSteps;
     
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     public void ActivateTutorial(int tutorialPart)
     {
         StartCoroutine(TutorialStart(tutorialPart));
