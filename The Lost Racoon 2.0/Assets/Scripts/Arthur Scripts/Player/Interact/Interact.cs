@@ -107,10 +107,13 @@ public class Interact : MonoBehaviour
             if(color == "Blue")
             {
                 minigame.GetComponent<MouseTrackerRectangleMovement>().showingCircleUI.SetActive(true);
+                minigame.GetComponent<MouseTrackerMovement>().showingEUI.SetActive(false);
+
             }
             else if(color == "Red")
             {
                 minigame.GetComponent<MouseTrackerRectangleMovement>().showingEUI.SetActive(true);
+                minigame.GetComponent<MouseTrackerMovement>().showingCircleUI.SetActive(false);
             }
             
         }
@@ -119,10 +122,12 @@ public class Interact : MonoBehaviour
             if (color == "Blue")
             {
                 minigame.GetComponent<Better3X3Puzzle>().showingCircleUI.SetActive(true);
+                minigame.GetComponent<MouseTrackerMovement>().showingEUI.SetActive(false);
             }
             else if (color == "Red")
             {
                 minigame.GetComponent<Better3X3Puzzle>().showingEUI.SetActive(true);
+                minigame.GetComponent<MouseTrackerMovement>().showingCircleUI.SetActive(false);
             }
         }
     }
