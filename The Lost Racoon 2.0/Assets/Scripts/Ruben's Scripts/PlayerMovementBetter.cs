@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovementBetter : MonoBehaviour
 {
@@ -247,6 +248,7 @@ public class PlayerMovementBetter : MonoBehaviour
             transform.position += movingAngle.normalized * crspeedBonus * increasedMoveSpeed * Time.deltaTime; //
             crMoveSpeed = movingAngle.normalized * crspeedBonus * increasedMoveSpeed * Time.deltaTime;
 
+
             //yield return new WaitForSeconds(0.01f); // do not move
             for (int i = 0; i < isMovingForwardWASD.Length; i++)
             {
@@ -314,6 +316,10 @@ public class PlayerMovementBetter : MonoBehaviour
         else if (other.gameObject.tag == "TutorialDifferentWayActivate" && !scriptableSavingInfo.tutorialStepsCompleted[3])
         {
             tutorialInfo.tutorialSteps[3].SetActive(true);
+        }
+        else if (other.gameObject.tag == "TheEnding")
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
     public void OnTriggerExit(Collider other)
