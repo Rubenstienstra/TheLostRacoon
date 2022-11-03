@@ -142,7 +142,7 @@ public class MouseTrackerMovement : MonoBehaviour
             {
                 gameObject.GetComponent<BoxCollider>().enabled = !enabled;
             }
-            showingEUI.GetComponentInParent<GameObject>().SetActive(false);
+            showingEUI.transform.parent.gameObject.SetActive(false);
 
             rb.constraints = RigidbodyConstraints.None;
             print("Completed/Victory! :D");

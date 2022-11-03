@@ -189,7 +189,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             {
                 hasBeenInteracted = true;
                 playerInfo.minigameActiveMouseRectangle = false;
-                showingCircleUI.GetComponentInParent<GameObject>().SetActive(false);
+                showingEUI.transform.parent.gameObject.SetActive(false);
                 savingInfo.totalMissionsCompleted++;
                 savingInfo.mouseTrackerTimesDone++;
                 OnMinigameCompleted();

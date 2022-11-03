@@ -228,7 +228,7 @@ public class Better3X3Puzzle : MonoBehaviour
         playerMovementInfo.movementLock = false;
                                                         
         racoonMesh.SetActive(true);
-        showingEUI.GetComponentInParent<GameObject>().SetActive(false);
+        showingEUI.transform.parent.gameObject.SetActive(false);
         savingInfo.totalMissionsCompleted++;
         UIPuzzleMinigame.SetActive(false);
         interactInfo.OnExitMinigame();
