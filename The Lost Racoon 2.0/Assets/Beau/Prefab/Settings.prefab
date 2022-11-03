@@ -2317,6 +2317,7 @@ GameObject:
   - component: {fileID: 6022322049567925439}
   - component: {fileID: 8688155852027231970}
   - component: {fileID: 9089153941980258429}
+  - component: {fileID: 4804599131050933497}
   m_Layer: 5
   m_Name: Reset
   m_TagString: Untagged
@@ -2427,7 +2428,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6022322049567925439}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4804599131050933497}
+        m_TargetAssemblyTypeName: ResetButton, Assembly-CSharp
+        m_MethodName: ResetProgress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &9089153941980258429
 Animator:
   serializedVersion: 4
@@ -2448,6 +2461,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4804599131050933497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5075604403457125947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 328bab49f259c7948a068b29fa97332e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
 --- !u!1 &5380452581400954896
 GameObject:
   m_ObjectHideFlags: 0
