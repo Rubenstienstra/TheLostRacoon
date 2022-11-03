@@ -37,7 +37,6 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     public float totalMousePos;
 
     public Rigidbody rig;
-    public Animator animationSlider;
 
     void Start()
     {
@@ -107,8 +106,6 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             totalMousePos = -totalMousePos;
         }
         movingSlider.value = UIInfo.mousePosY - mouseStartPos.y;
-        
-        animationSlider.SetFloat("Blend", movingSlider.value);
 
         if (UIInfo.mousePosY > mouseStartPos.y)
         {

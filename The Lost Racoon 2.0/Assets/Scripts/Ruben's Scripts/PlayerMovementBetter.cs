@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class PlayerMovementBetter : MonoBehaviour
 {
@@ -53,7 +54,6 @@ public class PlayerMovementBetter : MonoBehaviour
     public bool isOnGround;
     public bool movementLock;
     public bool allowInteraction;
-    public bool saveAndLoadSystem;
 
     public void Start()
     {
@@ -66,15 +66,22 @@ public class PlayerMovementBetter : MonoBehaviour
            scriptableSavingInfo.crCheckpointVector3 = gameObject.transform.position;
            scriptableSavingInfo.crCheckpointRotation = gameObject.transform.rotation.eulerAngles;
         }
-        else if(saveAndLoadSystem)
+        else if(scriptableSavingInfo.saveAndLoadSystem)
         {
-            for (int i = scriptableSavingInfo.activatedCheckpoints.Count - 1; i >= 0; i--)
+            for (int i = scriptableSavingInfo.crActivatedCheckpoints.Count -1; i >= 0; i--)
             {
-                scriptableSavingInfo.activatedCheckpoints[i].SetActive(false);
+                scriptableSavingInfo.crActivatedCheckpoints.RemoveAt(i);
             }
-
-            transform.position = scriptableSavingInfo.crCheckpointVector3 * Time.deltaTime;
-            transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation * Time.deltaTime);
+            for (int i = 0; i < scriptableSavingInfo.checkpointNames.Count; i++) //uses the name to find the gameobject to put it in a list. also disables every gameobject in the array.
+            {
+                scriptableSavingInfo.crActivatedCheckpoints.Add(GameObject.Find(scriptableSavingInfo.checkpointNames[i]));
+                scriptableSavingInfo.crActivatedCheckpoints[i].SetActive(false);
+            }
+            for (int i = 0; i < scriptableSavingInfo.tutorialStepsCompleted.Length; i++)
+            {
+                tutorialInfo.tutorialSteps[i].SetActive(false);
+            }
+                OnReset();
         }
         if (!scriptableSavingInfo.tutorialStepsCompleted[0] && !scriptableSavingInfo.tutorialStepsCompleted[1])
         {
@@ -286,7 +293,7 @@ public class PlayerMovementBetter : MonoBehaviour
         {
             scriptableSavingInfo.crCheckpointVector3 = other.gameObject.GetComponentInParent<Transform>().position;
             scriptableSavingInfo.crCheckpointRotation = other.gameObject.GetComponentInParent<Transform>().rotation.eulerAngles;
-            scriptableSavingInfo.activatedCheckpoints.Add(other.gameObject);
+            scriptableSavingInfo.checkpointNames.Add(other.transform.parent.name.ToString());
             other.gameObject.SetActive(false); //scriptableSavingInfo.activatedCheckpoints[scriptableSavingInfo.activatedCheckpoints.Count - 1].SetActive(false);
         }
         else if(other.gameObject.tag == "Deathzone")
@@ -314,6 +321,7 @@ public class PlayerMovementBetter : MonoBehaviour
         if(other.gameObject.tag == "TutorialDifferentWayActivate")
         {
             tutorialInfo.tutorialSteps[3].SetActive(false);
+            scriptableSavingInfo.tutorialStepsCompleted[3] = true;
         }
     }
     public void ResettingAllAnimations()

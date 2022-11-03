@@ -1093,7 +1093,6 @@ MonoBehaviour:
   isOnGround: 1
   movementLock: 0
   allowInteraction: 0
-  saveAndLoadSystem: 0
 --- !u!114 &5351934342813780877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,7 +1108,7 @@ MonoBehaviour:
   pickupscript: {fileID: 5351934342813780876}
   camFreezeInfo: {fileID: 5351934342813780872}
   playerMovementInfo: {fileID: 5351934342813780874}
-  UIInfo: {fileID: 0}
+  UIInfo: {fileID: 5351934342813780875}
   detectionAria: {fileID: 5351934342813780886}
   detectDiameter: 1
   detectedColliders: []
@@ -1153,7 +1152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
-  playermovementInfo: {fileID: 5351934342813780874}
   mouseRectangleInfo: {fileID: 0}
   minigameActiveMouse: 0
   minigameActiveMouseRectangle: 0
