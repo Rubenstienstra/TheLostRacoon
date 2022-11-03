@@ -56,6 +56,8 @@ public class PlayerMovementBetter : MonoBehaviour
     public bool movementLock;
     public bool allowInteraction;
 
+    public Animator fadeOut;
+    public GameObject FadeOutObject;
     public void Start()
     {
         if(deathScreen == null)
@@ -319,9 +321,16 @@ public class PlayerMovementBetter : MonoBehaviour
         }
         else if (other.gameObject.tag == "TheEnding")// fade out here
         {
+            fadeOut.SetBool("Fade out",true);
+            StartCoroutine(FadeOut());
+          
             
-            SceneManager.LoadScene("MainMenu");
         }
+    }
+    public IEnumerator FadeOut()
+    {
+        yield return new WaitForSecondsRealtime(1.075f);
+        SceneManager.LoadScene(0);
     }
     public void OnTriggerExit(Collider other)
     {
