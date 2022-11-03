@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 122829929631280980}
   - component: {fileID: 122829929631280983}
   - component: {fileID: 122829929631280982}
+  - component: {fileID: 4387055389237575939}
   m_Layer: 0
   m_Name: E
   m_TagString: Untagged
@@ -4812,6 +4813,24 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4387055389237575939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122829929631280985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a4e2447a91ff546baeb1ee7b18e17e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crMetersAway: 0
+  maxMetersAway: 0.25
+  minMetersAway: 0
+  playerTargetGameObject: {fileID: 0}
+  isPopupE: 1
+  isPopupCircle: 0
 --- !u!1 &122829930589712405
 GameObject:
   m_ObjectHideFlags: 0
@@ -4823,6 +4842,7 @@ GameObject:
   - component: {fileID: 122829930589712401}
   - component: {fileID: 122829930589712400}
   - component: {fileID: 122829930589712403}
+  - component: {fileID: 1690254319045908174}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -9624,6 +9644,24 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1690254319045908174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122829930589712405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a4e2447a91ff546baeb1ee7b18e17e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crMetersAway: 0
+  maxMetersAway: 1.75
+  minMetersAway: 0
+  playerTargetGameObject: {fileID: 0}
+  isPopupE: 0
+  isPopupCircle: 1
 --- !u!1 &1174210880559744340
 GameObject:
   m_ObjectHideFlags: 0

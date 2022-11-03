@@ -26,6 +26,9 @@ public class Better3X3Puzzle : MonoBehaviour
     public GameObject UIPuzzleMinigame;
     private GameObject racoonMesh;
 
+    public GameObject showingCircleUI;
+    public GameObject showingEUI;
+
     public Animator buttonAnimations;
     public Animator AnimationAfterCompletion;
     public string parameterName;
@@ -50,6 +53,9 @@ public class Better3X3Puzzle : MonoBehaviour
         interactInfo = playerScript.GetComponent<Interact>();
 
         racoonMesh = GameObject.Find("RaccoonModel");
+
+        showingCircleUI.SetActive(false);
+        showingEUI.SetActive(false);
 
         ResetColors();
     }
@@ -222,6 +228,7 @@ public class Better3X3Puzzle : MonoBehaviour
         playerMovementInfo.movementLock = false;
                                                         
         racoonMesh.SetActive(true);
+        showingEUI.GetComponentInParent<GameObject>().SetActive(false);
         savingInfo.totalMissionsCompleted++;
         UIPuzzleMinigame.SetActive(false);
         interactInfo.OnExitMinigame();
