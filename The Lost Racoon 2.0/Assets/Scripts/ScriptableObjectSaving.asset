@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d82f21995b4014aac5c3ff6cb42322, type: 3}
   m_Name: ScriptableObjectSaving
   m_EditorClassIdentifier: 
-  totalMissionsCompleted: 0
+  totalMissionsCompleted: 1
   volumeSFX: 0
   volumeMUSIC: 0
   crActivatedCheckpoints: []
   checkpointNames: []
-  crCheckpointVector3: {x: 17.671, y: 20.602, z: -5.926}
-  crCheckpointRotation: {x: 0, y: 270, z: 0}
-  tutorialStepsCompleted: 00000000
-  saveAndLoadSystem: 1
-  mouseTrackerTimesDone: 0
+  crCheckpointVector3: {x: 0, y: -0.769, z: 0}
+  crCheckpointRotation: {x: -0, y: 0, z: 0}
+  tutorialStepsCompleted: 01000000
+  saveAndLoadSystem: 0
+  mouseTrackerTimesDone: 1

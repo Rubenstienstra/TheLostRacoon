@@ -33,15 +33,16 @@ public class Interact : MonoBehaviour
         if (playerMovementInfo.moving)
         {
             detectedColliders = Physics.OverlapSphere(detectionAria.position, detectDiameter * 2);
-            foreach (Collider coll in detectedColliders)
+            foreach (Collider col in detectedColliders)
             {
-                if (coll.gameObject.tag == "Interactible" || coll.gameObject.tag == "Item")
+                if (col.gameObject.tag == "Interactible" || col.gameObject.tag == "Item")
                 {
                     //Ui elliment stage 1
                 }
-                if (coll.gameObject.tag == "Minigame")
+                if (col.gameObject.tag == "Minigame")
                 {
                     minigameDetected = true;
+                    DetectedMinigame(col.gameObject);
                 }
                 else if (minigameDetected != true)
                 {
@@ -86,7 +87,21 @@ public class Interact : MonoBehaviour
             allowInteraction = !allowInteraction;
         }
     }
+    public void DetectedMinigame(GameObject minigame)
+    {
+        if (minigame.GetComponent<MouseTrackerMovement>())
+        {
+            minigame.GetComponent<MouseTrackerMovement>();
+        }
+        else if (minigame.GetComponent<MouseTrackerRectangleMovement>())
+        {
+            minigame.GetComponent<MouseTrackerRectangleMovement>().showingCircleUI.SetActive(true);
+        }
+        else if (minigame.GetComponent<Better3X3Puzzle>())
+        {
 
+        }
+    }
     public void CollidedMinigame(GameObject minigame) //elke keer dat er nieuwe minigame komt moet hier een nieuwe GetComponent te staan.
     {
         if (minigame.GetComponent<MouseTrackerMovement>())
