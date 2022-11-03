@@ -14,6 +14,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
     private GameObject mouseCursor;
     private GameObject playerGameObject;
     public GameObject parentGameobject;
+
     public GameObject showingCircleUI;
     public GameObject showingEUI;
 
@@ -62,8 +63,11 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
                 UIComponents[i].SetActive(true);
             }
             movingSlider.gameObject.SetActive(true);
-            showingCircleUI.SetActive(false);
-            showingEUI.SetActive(false);
+            if(showingCircleUI != null && showingEUI != null)
+            {
+                showingCircleUI.SetActive(false);
+                showingEUI.SetActive(false);
+            }
 
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.None;
@@ -185,7 +189,7 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
             {
                 hasBeenInteracted = true;
                 playerInfo.minigameActiveMouseRectangle = false;
-                showingCircleUI.GetComponentInParent<GameObject>().SetActive(false);
+                showingEUI.transform.parent.gameObject.SetActive(false);
                 savingInfo.totalMissionsCompleted++;
                 savingInfo.mouseTrackerTimesDone++;
                 OnMinigameCompleted();

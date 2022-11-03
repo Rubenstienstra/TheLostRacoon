@@ -10,6 +10,7 @@ public class PlayerMovementBetter : MonoBehaviour
     public Interact interactInfo;
     public ScriptableSaving scriptableSavingInfo;
     public Tutorial tutorialInfo;
+    public PlayerScript playerInfo;
 
     public float lookAtAngle;
     public Vector3 movementAngle;
@@ -250,7 +251,10 @@ public class PlayerMovementBetter : MonoBehaviour
             transform.position += movingAngle.normalized * crspeedBonus * increasedMoveSpeed * Time.deltaTime; //
             crMoveSpeed = movingAngle.normalized * crspeedBonus * increasedMoveSpeed * Time.deltaTime;
 
-
+            if(Cursor.visible == true)
+            {
+                Cursor.visible = false;
+            }
             //yield return new WaitForSeconds(0.01f); // do not move
             for (int i = 0; i < isMovingForwardWASD.Length; i++)
             {
@@ -323,14 +327,27 @@ public class PlayerMovementBetter : MonoBehaviour
         {
             fadeOut.SetBool("Fade out",true);
             StartCoroutine(FadeOut());
-          
-            
         }
     }
     public IEnumerator FadeOut()
     {
         yield return new WaitForSecondsRealtime(1.075f);
+        playerInfo.ResetProgressGuaranteedSucces();
+        Cursor.visible = true;
         SceneManager.LoadScene(0);
+
+        //yield return new WaitForSecondsRealtime(0.1f); //1.075f
+        //if(fadeOut.GetBool("Fade out"))
+        //{
+        //    StartCoroutine(FadeOut());
+        //}
+        //else if(fadeOut.GetBool("Fade out"))
+        //{
+        //    OnReset();
+        //    Cursor.visible = true;
+        //    SceneManager.LoadScene(0);
+        //}
+        //yield return new WaitForSecondsRealtime(0.1f);
     }
     public void OnTriggerExit(Collider other)
     {

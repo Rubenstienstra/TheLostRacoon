@@ -35,6 +35,9 @@ public class MouseTrackerMovement : MonoBehaviour
     public bool isFenceGate;
     public GameObject mousePointer;
 
+    public GameObject showingCircleUI;
+    public GameObject showingEUI;
+
     public bool hasBeenInteracted;
     public GameObject activateGameObject;
     public Rigidbody rb;
@@ -58,6 +61,8 @@ public class MouseTrackerMovement : MonoBehaviour
                 circles[i].SetActive(true);
             }
             activateGameObject.SetActive(true);
+            showingCircleUI.SetActive(false);
+            showingEUI.SetActive(false);
 
             UIInfo.mouseCursor = mousePointer;
 
@@ -137,6 +142,8 @@ public class MouseTrackerMovement : MonoBehaviour
             {
                 gameObject.GetComponent<BoxCollider>().enabled = !enabled;
             }
+            showingEUI.transform.parent.gameObject.SetActive(false);
+
             rb.constraints = RigidbodyConstraints.None;
             print("Completed/Victory! :D");
             ShutDown();

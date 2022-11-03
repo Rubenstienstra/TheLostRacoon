@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d82f21995b4014aac5c3ff6cb42322, type: 3}
   m_Name: ScriptableObjectSaving
   m_EditorClassIdentifier: 
-  totalMissionsCompleted: 0
+  totalMissionsCompleted: 3
   volumeSFX: 0
   volumeMUSIC: 0
   crActivatedCheckpoints:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -31,4 +29,4 @@ MonoBehaviour:
   crCheckpointRotation: {x: -0, y: 150.13437, z: -0}
   tutorialStepsCompleted: 01010101
   saveAndLoadSystem: 1
-  mouseTrackerTimesDone: 0
+  mouseTrackerTimesDone: 2

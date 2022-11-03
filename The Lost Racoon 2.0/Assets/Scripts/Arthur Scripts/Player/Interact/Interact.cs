@@ -35,18 +35,24 @@ public class Interact : MonoBehaviour
             detectedColliders = Physics.OverlapSphere(detectionAria.position, detectDiameter * 2);
             foreach (Collider col in detectedColliders)
             {
-                if (col.gameObject.tag == "Interactible" || col.gameObject.tag == "Item")
-                {
-                    //Ui elliment stage 1
-                }
                 if (col.gameObject.tag == "Minigame")
                 {
                     minigameDetected = true;
-                    DetectedMinigame(col.gameObject);
+                    DetectedMinigame(col.gameObject,"Blue");
                 }
                 else if (minigameDetected != true)
                 {
                     minigameDetected = false;
+                }
+            }
+            foreach (Collider coll in interactionColliders)
+            {
+                if (coll.gameObject.tag == "Minigame")
+                {
+                    if (minigameDetected && !minigameBeingPlayed)
+                    {
+                        DetectedMinigame(coll.gameObject,"Red");
+                    }
                 }
             }
             interactionColliders = Physics.OverlapSphere(sphereLocation.position, interactionDiameter * 2);
@@ -67,17 +73,11 @@ public class Interact : MonoBehaviour
             {
                 if (coll.gameObject.tag == "Minigame")
                 {
-                    //Ui element stage 2
                     if (minigameDetected && !minigameBeingPlayed)
                     {
                         OnEnterMinigame();
                         CollidedMinigame(coll.gameObject);
                     }
-                }
-                else if (coll.gameObject.tag == "Item")
-                {
-                    //Pick up here
-                    pickupscript.PickUp(coll);
                 }
             }
             allowInteraction = true;
@@ -87,19 +87,47 @@ public class Interact : MonoBehaviour
             allowInteraction = !allowInteraction;
         }
     }
-    public void DetectedMinigame(GameObject minigame)
+    public void DetectedMinigame(GameObject minigame, string color)
     {
         if (minigame.GetComponent<MouseTrackerMovement>())
         {
-            minigame.GetComponent<MouseTrackerMovement>();
+            if (color == "Blue")
+            {
+                minigame.GetComponent<MouseTrackerMovement>().showingCircleUI.SetActive(true);
+                minigame.GetComponent<MouseTrackerMovement>().showingEUI.SetActive(false);
+            }
+            if (color == "Red")
+            {
+                minigame.GetComponent<MouseTrackerMovement>().showingEUI.SetActive(true);
+                minigame.GetComponent<MouseTrackerMovement>().showingCircleUI.SetActive(false);
+            }
         }
         else if (minigame.GetComponent<MouseTrackerRectangleMovement>())
         {
-            minigame.GetComponent<MouseTrackerRectangleMovement>().showingCircleUI.SetActive(true);
+            if(color == "Blue")
+            {
+                minigame.GetComponent<MouseTrackerRectangleMovement>().showingCircleUI.SetActive(true);
+                minigame.GetComponent<MouseTrackerRectangleMovement>().showingEUI.SetActive(false);
+
+            }
+            if(color == "Red")
+            {
+                minigame.GetComponent<MouseTrackerRectangleMovement>().showingEUI.SetActive(true);
+                minigame.GetComponent<MouseTrackerRectangleMovement>().showingCircleUI.SetActive(false);
+            }
         }
         else if (minigame.GetComponent<Better3X3Puzzle>())
         {
-
+            if (color == "Blue")
+            {
+                minigame.GetComponent<Better3X3Puzzle>().showingCircleUI.SetActive(true);
+                minigame.GetComponent<Better3X3Puzzle>().showingEUI.SetActive(false);
+            }
+            if (color == "Red")
+            {
+                minigame.GetComponent<Better3X3Puzzle>().showingEUI.SetActive(true);
+                minigame.GetComponent<Better3X3Puzzle>().showingCircleUI.SetActive(false);
+            }
         }
     }
     public void CollidedMinigame(GameObject minigame) //elke keer dat er nieuwe minigame komt moet hier een nieuwe GetComponent te staan.
@@ -121,23 +149,23 @@ public class Interact : MonoBehaviour
             minigame.GetComponent<Better3X3Puzzle>().SpawnPuzzleUI();
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Minigame")
-        {
-            print(other);
-            crCollider = other;
-            if (!minigameBeingPlayed)
-            {
-                OnEnterMinigame();
-                Debug.Log("Interacted Minigame");
-            }
-        }
-        else if (other.gameObject.tag == "Item")
-        {
-            pickupscript.PickUp(other);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Minigame")
+    //    {
+    //        print(other);
+    //        crCollider = other;
+    //        if (!minigameBeingPlayed)
+    //        {
+    //            OnEnterMinigame();
+    //            Debug.Log("Interacted Minigame");
+    //        }
+    //    }
+    //    //else if (other.gameObject.tag == "Item")
+    //    //{
+    //    //    pickupscript.PickUp(other);
+    //    //}
+    //}
     public void OnEnterMinigame()
     {
         Cursor.lockState = CursorLockMode.None;
