@@ -317,8 +317,9 @@ public class PlayerMovementBetter : MonoBehaviour
         {
             tutorialInfo.tutorialSteps[3].SetActive(true);
         }
-        else if (other.gameObject.tag == "TheEnding")
+        else if (other.gameObject.tag == "TheEnding")// fade out here
         {
+            
             SceneManager.LoadScene("MainMenu");
         }
     }
