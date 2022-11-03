@@ -11,10 +11,12 @@ public class ScriptableSaving : ScriptableObject
     public float volumeSFX;
     public float volumeMUSIC;
 
-    public List<GameObject> activatedCheckpoints;
+    public List<GameObject> crActivatedCheckpoints;
+    public List<string> checkpointNames; 
     public Vector3 crCheckpointVector3;
     public Vector3 crCheckpointRotation;
     public bool[] tutorialStepsCompleted;
+    public bool saveAndLoadSystem;
 
     //mousetracker movement minigame completed
     public int mouseTrackerTimesDone;
