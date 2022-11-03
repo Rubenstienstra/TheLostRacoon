@@ -94,10 +94,12 @@ public class Interact : MonoBehaviour
             if (color == "Blue")
             {
                 minigame.GetComponent<MouseTrackerMovement>().showingCircleUI.SetActive(true);
+                minigame.GetComponent<MouseTrackerMovement>().showingEUI.SetActive(false);
             }
             else if (color == "Red")
             {
                 minigame.GetComponent<MouseTrackerMovement>().showingEUI.SetActive(true);
+                minigame.GetComponent<MouseTrackerMovement>().showingCircleUI.SetActive(false);
             }
         }
         else if (minigame.GetComponent<MouseTrackerRectangleMovement>())

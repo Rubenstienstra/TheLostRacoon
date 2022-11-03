@@ -63,8 +63,11 @@ public class MouseTrackerRectangleMovement : MonoBehaviour
                 UIComponents[i].SetActive(true);
             }
             movingSlider.gameObject.SetActive(true);
-            showingCircleUI.SetActive(false);
-            showingEUI.SetActive(false);
+            if(showingCircleUI != null && showingEUI != null)
+            {
+                showingCircleUI.SetActive(false);
+                showingEUI.SetActive(false);
+            }
 
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.None;

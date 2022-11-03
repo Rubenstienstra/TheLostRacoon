@@ -15,20 +15,10 @@ MonoBehaviour:
   totalMissionsCompleted: 0
   volumeSFX: 0
   volumeMUSIC: 0
-  crActivatedCheckpoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  checkpointNames:
-  - Spawnpoint one
-  - Spawnpoint Two
-  - Spawnpoint Three
-  - Spawnpoint Four
-  - Spawnpoint five
-  crCheckpointVector3: {x: -66.17054, y: 23.675137, z: -90.68027}
-  crCheckpointRotation: {x: -0, y: 150.13437, z: -0}
-  tutorialStepsCompleted: 01010101
+  crActivatedCheckpoints: []
+  checkpointNames: []
+  crCheckpointVector3: {x: 0, y: -0.769, z: 0}
+  crCheckpointRotation: {x: -0, y: 0, z: 0}
+  tutorialStepsCompleted: 01010000
   saveAndLoadSystem: 1
   mouseTrackerTimesDone: 0
