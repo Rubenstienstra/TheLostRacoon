@@ -334,6 +334,7 @@ public class PlayerMovementBetter : MonoBehaviour
         yield return new WaitForSecondsRealtime(1.075f);
         playerInfo.ResetProgressGuaranteedSucces();
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(0);
 
         //yield return new WaitForSecondsRealtime(0.1f); //1.075f
