@@ -348,19 +348,6 @@ public class PlayerMovementBetter : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(0);
-
-        //yield return new WaitForSecondsRealtime(0.1f); //1.075f
-        //if(fadeOut.GetBool("Fade out"))
-        //{
-        //    StartCoroutine(FadeOut());
-        //}
-        //else if(fadeOut.GetBool("Fade out"))
-        //{
-        //    OnReset();
-        //    Cursor.visible = true;
-        //    SceneManager.LoadScene(0);
-        //}
-        //yield return new WaitForSecondsRealtime(0.1f);
     }
     public void OnTriggerExit(Collider other)
     {

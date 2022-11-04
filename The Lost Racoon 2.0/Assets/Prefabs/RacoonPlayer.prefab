@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   savingInfo: {fileID: 11400000, guid: 260290e3022426d45bfad2e54b97ce90, type: 2}
   mouseRectangleInfo: {fileID: 0}
-  playerMovingInfo: {fileID: 0}
+  playerMovingInfo: {fileID: 5351934342813780874}
   minigameActiveMouse: 0
   minigameActiveMouseRectangle: 0
 --- !u!54 &172206667163872471
