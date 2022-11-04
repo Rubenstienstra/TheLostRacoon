@@ -83,9 +83,9 @@ public class PlayerMovementBetter : MonoBehaviour
     }
     public void OnEsc(InputValue value) //het enige probleem is nog wanneer een minigame wel een muis nodig heeft. heeft hij die niet.
     {
-        if (!deathScreen.activeSelf && value.Get<float>() == 1)
+        if (!deathScreen.activeSelf && value.Get<float>() == 1 && !interactInfo.minigameBeingPlayed)
         {
-            if (!escMenu.activeSelf && !interactInfo.minigameBeingPlayed)
+            if (!escMenu.activeSelf )
             {
                 Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
@@ -102,37 +102,40 @@ public class PlayerMovementBetter : MonoBehaviour
     }
     public void OnReset()
     {
-        rb.velocity = new Vector3(0, 0, 0);
-        gameObject.transform.position = scriptableSavingInfo.crCheckpointVector3;
-        gameObject.transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation);
-        freeLookCamera.transform.position = instantCameraResetPos;
-
-        if (scriptableSavingInfo.checkpointNames.Count >= 1 && scriptableSavingInfo.checkpointNames.Count <= 4)//MUSIC
+        if (!interactInfo.minigameBeingPlayed)
         {
-            GameObject.Find("Natuur Audio Source").GetComponent<AudioSource>().enabled = enabled;
-            GameObject.Find("Kamers Audio Source").GetComponent<AudioSource>().enabled = !enabled;
-        }
-        else if (scriptableSavingInfo.checkpointNames.Count == 0)
-        {
-            GameObject.Find("Riool Audio Source").GetComponent<AudioSource>().enabled = enabled;
-            GameObject.Find("Natuur Audio Source").GetComponent<AudioSource>().enabled = !enabled;
-        }
-        else if (scriptableSavingInfo.checkpointNames.Count == 5)
-        {
-            GameObject.Find("Kamers Audio Source").GetComponent<AudioSource>().enabled = enabled;
-            GameObject.Find("Natuur Audio Source").GetComponent<AudioSource>().enabled = !enabled;
-        }
-        for (int i = allInGameSoundSwaps.Length - 1; i >= 0; i--)
-        {
-            allInGameSoundSwaps[i].GetComponent<SoundSwap>().toggleSwitch = false;
-        }
-
-
-        if (deathScreen == true)
-        {
-            Cursor.visible = false;
-            deathScreen.SetActive(false);
+            rb.velocity = new Vector3(0, 0, 0);
+            gameObject.transform.position = scriptableSavingInfo.crCheckpointVector3;
+            gameObject.transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation);
             freeLookCamera.transform.position = instantCameraResetPos;
+
+            if (scriptableSavingInfo.checkpointNames.Count >= 1 && scriptableSavingInfo.checkpointNames.Count <= 4)//MUSIC
+            {
+                GameObject.Find("Natuur Audio Source").GetComponent<AudioSource>().enabled = enabled;
+                GameObject.Find("Kamers Audio Source").GetComponent<AudioSource>().enabled = !enabled;
+            }
+            else if (scriptableSavingInfo.checkpointNames.Count == 0)
+            {
+                GameObject.Find("Riool Audio Source").GetComponent<AudioSource>().enabled = enabled;
+                GameObject.Find("Natuur Audio Source").GetComponent<AudioSource>().enabled = !enabled;
+            }
+            else if (scriptableSavingInfo.checkpointNames.Count == 5)
+            {
+                GameObject.Find("Kamers Audio Source").GetComponent<AudioSource>().enabled = enabled;
+                GameObject.Find("Natuur Audio Source").GetComponent<AudioSource>().enabled = !enabled;
+            }
+            for (int i = allInGameSoundSwaps.Length - 1; i >= 0; i--)
+            {
+                allInGameSoundSwaps[i].GetComponent<SoundSwap>().toggleSwitch = false;
+            }
+
+
+            if (deathScreen == true)
+            {
+                Cursor.visible = false;
+                deathScreen.SetActive(false);
+                freeLookCamera.transform.position = instantCameraResetPos;
+            }
         }
     }
     public void OnForward(InputValue value)
