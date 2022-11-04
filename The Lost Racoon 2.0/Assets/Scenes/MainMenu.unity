@@ -1537,6 +1537,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1519669826447109981, guid: bdf14c62dbe3c3845b0cbfce8a5e5f51,
+        type: 3}
+      propertyPath: m_Looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519669826447109981, guid: bdf14c62dbe3c3845b0cbfce8a5e5f51,
+        type: 3}
+      propertyPath: m_DirectAudioMutes.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7043997571436699281, guid: bdf14c62dbe3c3845b0cbfce8a5e5f51,
         type: 3}
       propertyPath: m_LocalRotation.w
