@@ -1096,6 +1096,10 @@ MonoBehaviour:
   allowInteraction: 0
   fadeOut: {fileID: 0}
   FadeOutObject: {fileID: 0}
+  allInGameSoundSwaps:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &5351934342813780877
 MonoBehaviour:
   m_ObjectHideFlags: 0

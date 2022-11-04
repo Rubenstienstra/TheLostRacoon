@@ -43,6 +43,11 @@ public class PlayerScript : MonoBehaviour
             {
                 savingInfo.checkpointNames.RemoveAt(i);
             }
+
+            for (int i = playerMovingInfo.allInGameSoundSwaps.Length - 1; i >= 0; i--)
+            {
+                playerMovingInfo.allInGameSoundSwaps[i].GetComponent<SoundSwap>().toggleSwitch = false;
+            }
         }
     }
     public void ResetProgressGuaranteedSucces()
@@ -65,6 +70,11 @@ public class PlayerScript : MonoBehaviour
          for (int i = savingInfo.checkpointNames.Count - 1; i >= 0; i--)
          {
              savingInfo.checkpointNames.RemoveAt(i);
+         }
+
+         for (int i = playerMovingInfo.allInGameSoundSwaps.Length - 1; i >= 0; i--)
+         {
+            playerMovingInfo.allInGameSoundSwaps[i].GetComponent<SoundSwap>().toggleSwitch = false;
          }
     }
 }

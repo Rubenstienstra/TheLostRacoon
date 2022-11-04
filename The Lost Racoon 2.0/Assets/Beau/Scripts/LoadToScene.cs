@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadToScene : MonoBehaviour
 {
-
+    
     public Animator fade;
     public GameObject fadeGameObject;
     bool allowedToChange;
@@ -14,6 +14,10 @@ public class LoadToScene : MonoBehaviour
 
     public void PlayButton()
     {
+        if(sceneToLoad == 0)
+        {
+            Time.timeScale = 1;
+        }
         fade.SetTrigger("Fade use");
         allowedToChange = true;
 
@@ -25,6 +29,7 @@ public class LoadToScene : MonoBehaviour
         {
             if (allowedToChange == true)
             {
+                
                 SceneManager.LoadScene(sceneToLoad);
             }
 

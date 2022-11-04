@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 7347.366, g: 5787.5156, b: 3792.1602, a: 1}
+  m_IndirectSpecularColor: {r: 7349.089, g: 5788.633, b: 3790.2812, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -281,6 +281,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 74.563, z: 0}
+--- !u!1 &198845198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6456519796580274862, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 4975332434511373268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &292961528
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,12 +954,12 @@ PrefabInstance:
     - target: {fileID: 5351934341521527534, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2757653
+      value: 0.27576536
       objectReference: {fileID: 0}
     - target: {fileID: 5351934341521527534, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.2757653
+      value: -0.27576536
       objectReference: {fileID: 0}
     - target: {fileID: 5351934342388259054, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
@@ -985,6 +991,21 @@ PrefabInstance:
       propertyPath: FadeOutObject
       value: 
       objectReference: {fileID: 1259954148}
+    - target: {fileID: 5351934342813780874, guid: 96dd95628ee48aa43bfa02359ef8c86e,
+        type: 3}
+      propertyPath: allInGameSoundSwaps.Array.data[0]
+      value: 
+      objectReference: {fileID: 1407651501}
+    - target: {fileID: 5351934342813780874, guid: 96dd95628ee48aa43bfa02359ef8c86e,
+        type: 3}
+      propertyPath: allInGameSoundSwaps.Array.data[1]
+      value: 
+      objectReference: {fileID: 198845198}
+    - target: {fileID: 5351934342813780874, guid: 96dd95628ee48aa43bfa02359ef8c86e,
+        type: 3}
+      propertyPath: allInGameSoundSwaps.Array.data[2]
+      value: 
+      objectReference: {fileID: 2019012689}
     - target: {fileID: 5351934342813780878, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
       propertyPath: m_Name
@@ -1048,12 +1069,12 @@ PrefabInstance:
     - target: {fileID: 5351934343016198478, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.27576533
+      value: 0.2757653
       objectReference: {fileID: 0}
     - target: {fileID: 5351934343016198478, guid: 96dd95628ee48aa43bfa02359ef8c86e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.27576533
+      value: -0.27576536
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96dd95628ee48aa43bfa02359ef8c86e, type: 3}
@@ -1538,12 +1559,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1210343739 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8154864950142227994, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 4975332434511373268}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1243466335
 GameObject:
   m_ObjectHideFlags: 0
@@ -9338,6 +9353,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1381721616}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1407651501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2759916712811073286, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 4975332434511373268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1486485659 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5454937126594328937, guid: 27d1e3ddbdcbdef47a5459e635159471,
@@ -10526,6 +10547,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2086208290}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2019012689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3216655320654695959, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 4975332434511373268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2086208290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11118,6 +11145,21 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1520973545855292660, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710820859674480347, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024146186025192286, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2759916712811073286, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
         type: 3}
       propertyPath: m_IsActive
@@ -11188,11 +11230,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9004866
       objectReference: {fileID: 0}
-    - target: {fileID: 5894150304488064193, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+    - target: {fileID: 4123020948758173169, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
         type: 3}
-      propertyPath: soundOff
-      value: 
-      objectReference: {fileID: 1210343739}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591359350475752527, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721707904475061641, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6456519796580274862, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
         type: 3}
       propertyPath: m_IsActive
@@ -11202,6 +11254,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.9515722
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154864950142227994, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6fd9f2ef9dc2fa48b175d5ac377f2cd, type: 3}

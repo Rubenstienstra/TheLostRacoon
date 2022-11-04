@@ -59,6 +59,7 @@ public class PlayerMovementBetter : MonoBehaviour
 
     public Animator fadeOut;
     public GameObject FadeOutObject;
+    public GameObject[] allInGameSoundSwaps;
     public void Start()
     {
         if(deathScreen == null)
@@ -70,22 +71,9 @@ public class PlayerMovementBetter : MonoBehaviour
            scriptableSavingInfo.crCheckpointVector3 = gameObject.transform.position;
            scriptableSavingInfo.crCheckpointRotation = gameObject.transform.rotation.eulerAngles;
         }
-        else if(scriptableSavingInfo.saveAndLoadSystem)
+        if(scriptableSavingInfo.saveAndLoadSystem)
         {
-            for (int i = scriptableSavingInfo.crActivatedCheckpoints.Count -1; i >= 0; i--)
-            {
-                scriptableSavingInfo.crActivatedCheckpoints.RemoveAt(i);
-            }
-            for (int i = 0; i < scriptableSavingInfo.checkpointNames.Count; i++) //uses the name to find the gameobject to put it in a list. also disables every gameobject in the array.
-            {
-                scriptableSavingInfo.crActivatedCheckpoints.Add(GameObject.Find(scriptableSavingInfo.checkpointNames[i]));
-                scriptableSavingInfo.crActivatedCheckpoints[i].SetActive(false);
-            }
-            for (int i = 0; i < scriptableSavingInfo.tutorialStepsCompleted.Length; i++)
-            {
-                tutorialInfo.tutorialSteps[i].SetActive(false);
-            }
-                OnReset();
+            ActivateScriptbleObject();
         }
         if (!scriptableSavingInfo.tutorialStepsCompleted[0] && !scriptableSavingInfo.tutorialStepsCompleted[1])
         {
@@ -118,6 +106,27 @@ public class PlayerMovementBetter : MonoBehaviour
         gameObject.transform.position = scriptableSavingInfo.crCheckpointVector3;
         gameObject.transform.rotation = Quaternion.Euler(scriptableSavingInfo.crCheckpointRotation);
         freeLookCamera.transform.position = instantCameraResetPos;
+
+        if (scriptableSavingInfo.checkpointNames.Count >= 1 && scriptableSavingInfo.checkpointNames.Count <= 4)//MUSIC
+        {
+            GameObject.Find("Natuur Audio Source").GetComponent<AudioSource>().enabled = enabled;
+            GameObject.Find("Kamers Audio Source").GetComponent<AudioSource>().enabled = !enabled;
+        }
+        else if (scriptableSavingInfo.checkpointNames.Count == 0)
+        {
+            GameObject.Find("Riool Audio Source").GetComponent<AudioSource>().enabled = enabled;
+            GameObject.Find("Natuur Audio Source").GetComponent<AudioSource>().enabled = !enabled;
+        }
+        else if (scriptableSavingInfo.checkpointNames.Count == 5)
+        {
+            GameObject.Find("Kamers Audio Source").GetComponent<AudioSource>().enabled = enabled;
+            GameObject.Find("Natuur Audio Source").GetComponent<AudioSource>().enabled = !enabled;
+        }
+        for (int i = allInGameSoundSwaps.Length - 1; i >= 0; i--)
+        {
+            allInGameSoundSwaps[i].GetComponent<SoundSwap>().toggleSwitch = false;
+        }
+
 
         if (deathScreen == true)
         {
@@ -364,5 +373,43 @@ public class PlayerMovementBetter : MonoBehaviour
         animationMovement.SetBool("Running", false);
         animationMovement.SetBool("Charging", false);
         animationMovement.SetBool("Jumping", false);
+    }
+    public void ActivateScriptbleObject()
+    {
+        if (scriptableSavingInfo.checkpointNames.Count >= 1 && scriptableSavingInfo.checkpointNames.Count <= 4)//MUSIC
+        {
+            GameObject.Find("Natuur Audio Source").GetComponent<AudioSource>().enabled = enabled;
+            GameObject.Find("Kamers Audio Source").GetComponent<AudioSource>().enabled = !enabled;
+        }
+        else if(scriptableSavingInfo.checkpointNames.Count == 0)
+        {
+            GameObject.Find("Riool Audio Source").GetComponent<AudioSource>().enabled = enabled;
+            GameObject.Find("Natuur Audio Source").GetComponent<AudioSource>().enabled = !enabled;
+        }
+        else if(scriptableSavingInfo.checkpointNames.Count == 5)
+        {
+            GameObject.Find("Kamers Audio Source").GetComponent<AudioSource>().enabled = enabled;
+            GameObject.Find("Natuur Audio Source").GetComponent<AudioSource>().enabled = !enabled; 
+        }
+        for (int i = allInGameSoundSwaps.Length - 1; i >= 0; i--)
+        {
+            allInGameSoundSwaps[i].GetComponent<SoundSwap>().toggleSwitch = false;
+        }
+
+        for (int i = scriptableSavingInfo.crActivatedCheckpoints.Count - 1; i >= 0; i--)//CHECKPOINTS. Deletes everycheckpoint so it can re assemble all the checkpoints.
+        {
+            scriptableSavingInfo.crActivatedCheckpoints.RemoveAt(i);
+        }
+        for (int i = 0; i < scriptableSavingInfo.checkpointNames.Count; i++) //uses the name to find the gameobject to put it in a list. also disables every gameobject in the array.
+        {
+            scriptableSavingInfo.crActivatedCheckpoints.Add(GameObject.Find(scriptableSavingInfo.checkpointNames[i]));
+            scriptableSavingInfo.crActivatedCheckpoints[i].SetActive(false);
+        }
+
+        for (int i = 0; i < scriptableSavingInfo.tutorialStepsCompleted.Length; i++)
+        {
+            tutorialInfo.tutorialSteps[i].SetActive(false);
+        }
+        OnReset();
     }
 }
