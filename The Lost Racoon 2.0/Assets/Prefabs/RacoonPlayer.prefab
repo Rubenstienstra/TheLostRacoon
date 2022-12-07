@@ -55,7 +55,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934341521527521}
-  m_LocalRotation: {x: 0.2757653, y: 0.65111715, z: -0.2757653, w: 0.65111715}
+  m_LocalRotation: {x: 0.27576536, y: 0.65111715, z: -0.27576536, w: 0.65111715}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -597,7 +597,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934342388259041}
-  m_LocalRotation: {x: 0.29835096, y: 0.64108247, z: -0.29835096, w: 0.64108247}
+  m_LocalRotation: {x: 0.29835093, y: 0.64108247, z: -0.29835093, w: 0.64108247}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   crMoveSpeed: {x: 0, y: 0, z: 0}
   RaycastPos: {x: 0, y: 0, z: 0}
   crSlopeAngle: 0
-  maxUpSlopeAngle: 30
+  maxUpSlopeAngle: 60
   beginJumpBonus: 1.5
   totalHeightJump: 1.5
   jumpHeightMultiplier: 50
@@ -1297,7 +1297,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5351934343016198465}
-  m_LocalRotation: {x: 0.27576533, y: 0.6511172, z: -0.27576533, w: 0.6511171}
+  m_LocalRotation: {x: 0.2757653, y: 0.6511172, z: -0.27576536, w: 0.6511171}
   m_LocalPosition: {x: 0.66249716, y: -0.5990143, z: -0.00000008940697}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
