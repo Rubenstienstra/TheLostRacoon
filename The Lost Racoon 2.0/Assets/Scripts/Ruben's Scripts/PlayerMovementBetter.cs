@@ -260,7 +260,7 @@ public class PlayerMovementBetter : MonoBehaviour
             }
             
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(transform.rotation.x, endAngle, transform.rotation.y),0.4f); // voegt telkens de rotatie(endAngle) toe aan de speler.
-            //transform.rotation = Quaternion.Euler(crSlopeAngle, endAngle, transform.rotation.y);
+            //transform.rotation = Quaternion.Euler(crSlopeAngle, endAngle, transform.rotation.y); // Oude rotation script
             transform.position += movingAngle.normalized * crspeedBonus * increasedMoveSpeed * Time.deltaTime; //
             crMoveSpeed = movingAngle.normalized * crspeedBonus * increasedMoveSpeed * Time.deltaTime;
 
